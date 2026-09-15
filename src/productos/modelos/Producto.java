@@ -12,15 +12,20 @@ public class Producto {
     public int codigo;
     public String descripcion;
     public float precio;
-    public boolean disponible;
+    public String estado;
     public String categoria;
     
     public void mostrar() {        
         System.out.println(descripcion);
         System.out.println(precio);
         System.out.println(categoria);
-        System.out.println(disponible);
+        System.out.println(estado);
         System.out.println(codigo);
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", precio=" + precio + ", estado=" + estado + ", categoria=" + categoria + '}';
     }
     
     
