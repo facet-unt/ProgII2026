@@ -24,6 +24,6 @@ public class Producto {
     }    
     @Override
     public String toString(){
-        System.out.println(descripcion);
+        return descripcion;
     }
 }
