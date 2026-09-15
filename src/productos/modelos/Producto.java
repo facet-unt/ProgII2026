@@ -21,7 +21,9 @@ public class Producto {
         System.out.println(categoria);
         System.out.println(disponible);
         System.out.println(codigo);
+    }    
+    @Override
+    public String toString(){
+        System.out.println(descripcion);
     }
-    
-    
 }
