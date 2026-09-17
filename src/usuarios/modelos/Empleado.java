@@ -10,7 +10,7 @@ public class Empleado {
     public String nombre;
 
     public void mostrar() {
-        System.out.println("Apellido y Nombre: " + apellido + nombre +
+        System.out.println("Apellido y Nombre: " + apellido + " " + nombre +
                            " | Correo: " + correo + " | Clave: " + clave);
     }
 }

@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change
+ * this license Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit
+ * this template
  */
 package productos.modelos;
 
@@ -11,17 +12,17 @@ package productos.modelos;
 public class Producto {
     public int codigo;
     public String descripcion;
-    public float precio;
-    public boolean disponible;
     public String categoria;
-    
-    public void mostrar() {        
+    public String estado;
+    public float precio;
+
+    public void mostrar() {
         System.out.println(descripcion);
         System.out.println(precio);
         System.out.println(categoria);
-        System.out.println(disponible);
+        System.out.println(estado);
         System.out.println(codigo);
     }
-    
-    
+
+    @Override public String toString() { return this.descripcion; }
 }
