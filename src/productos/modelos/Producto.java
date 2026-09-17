@@ -23,5 +23,9 @@ public class Producto {
         System.out.println(codigo);
     }
     
+    @Override
+    public String toString() {
+        return descripcion;
+    }
     
 }
