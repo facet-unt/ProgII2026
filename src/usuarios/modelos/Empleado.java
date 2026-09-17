@@ -9,16 +9,13 @@ package usuarios.modelos;
  * @author foxeen
  */
 public class Empleado {
-    private String correo;
-    private String clave;
-    private String apellido;
-    private String nombre;
+    public String correo;
+    public String clave;
+    public String apellido;
+    public String nombre;
     
     public void mostrar(){
-        System.out.println("El Correo es " + correo);
-        System.out.println("La Clave: " + clave);
-        System.out.println("El Apellido: " + apellido);
-        System.out.println("El Nombre: " + nombre);
+        System.out.printf("\n\tEmpleado <%s %s>: \n||Correo: %s\n||Clave: %s\n", apellido, nombre, correo, clave);
     }
     
 }

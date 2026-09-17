@@ -7,7 +7,7 @@ public class Encargado {
     public String nombre;
     
     public void mostrar(){
-        System.out.printf("\n\tEncargado <%s %s>: \n||Correo: %s\n||Clave: %s\n\n", apellido, nombre, correo, clave);
+        System.out.printf("\n\tEncargado <%s %s>: \n||Correo: %s\n||Clave: %s\n", apellido, nombre, correo, clave);
     }
     
 }
