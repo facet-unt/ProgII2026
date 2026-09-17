@@ -11,17 +11,18 @@ package productos.modelos;
 public class Producto {
     public int codigo;
     public String descripcion;
-    public float precio;
-    public boolean disponible;
     public String categoria;
+    public String estado;
+    public float precio;
     
-    public void mostrar() {        
-        System.out.println(descripcion);
-        System.out.println(precio);
-        System.out.println(categoria);
-        System.out.println(disponible);
-        System.out.println(codigo);
+    public void mostrar() {    
+        System.out.printf("\n\tProducto <Codigo %d>: \n||Descripcion: %s\n||Categoria: %s\n||Estado: %s\n||Precio: %.2f\n",codigo ,descripcion,categoria, estado, precio);
+   
     }
     
-    
+    @Override
+    public String toString(){
+        return "Descripcion del producto " + descripcion;
+     
+    }
 }
