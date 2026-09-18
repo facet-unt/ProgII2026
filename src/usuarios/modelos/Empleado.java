@@ -16,8 +16,8 @@ public class Empleado {
     
     public void mostrar(){
         System.out.println("**********EMPLEADO**********");
-        System.out.println("|Apellido: "+apellido+"Nombre: "+nombre+"|");
-        System.out.println("|Correo: "+correo+" | Clave: "+clave+"|");
+        System.out.println("|Apellido: " + apellido + "| Nombre: " + nombre + "|");
+        System.out.println("|Correo: " + correo + " | Clave: " + clave + "|");
         System.out.println();
     }
 }
