@@ -4,25 +4,27 @@
  */
 package productos.modelos;
 
-/**
- *
- * @author luis
- */
 public class Producto {
+    //Atributos
     public int codigo;
     public String descripcion;
     public String categoria;
     public String estado;
     public float precio;
-    
-    public void mostrar() {    
-        System.out.printf("\n\tProducto <Codigo %d>: \n||Descripcion: %s\n||Categoria: %s\n||Estado: %s\n||Precio: %.2f\n",codigo ,descripcion,categoria, estado, precio);
-   
+    //Constructor
+    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
     }
     
-    @Override
-    public String toString(){
-        return "Descripcion del producto " + descripcion;
-     
+    public void mostrar(){
+        System.out.println("Codigo: " + codigo + "| Descripcion: " + descripcion + "| Categoria: " + categoria + "| Estado: " + estado + "| Precio: " + precio);
+    }
+@Override
+    public String toString() {
+        return this.descripcion;
     }
 }

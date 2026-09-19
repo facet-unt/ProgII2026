@@ -4,17 +4,22 @@
  */
 package usuarios.modelos;
 
-/**
- *
- * @author estudiante
- */
+
 public class Cliente {
+    //Atributos
     public String correo;
     public String clave;
     public String apellido;
     public String nombre;
+//Contructor
+    public Cliente(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
     
     public void mostrar(){
-        System.out.printf("\n\tCliente <%s %s>: \n||Correo: %s\n||Clave: %s\n", apellido, nombre, correo, clave);
-    }
+        System.out.println("Correo: " + correo + "| Clave: " + clave + "| Apellido: " + apellido + "| Nombre: " + nombre);
+    }    
 }

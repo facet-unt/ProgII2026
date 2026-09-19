@@ -4,18 +4,22 @@
  */
 package usuarios.modelos;
 
-/**
- *
- * @author foxeen
- */
+
 public class Empleado {
+    //Atributos
     public String correo;
     public String clave;
     public String apellido;
     public String nombre;
-    
-    public void mostrar(){
-        System.out.printf("\n\tEmpleado <%s %s>: \n||Correo: %s\n||Clave: %s\n", apellido, nombre, correo, clave);
+    //Constructor
+    public Empleado(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
     }
     
+    public void mostrar(){
+        System.out.println("Correo: " + correo + "| Clave: " + clave + "| Apellido: " + apellido + "| Nombre: " + nombre);
+    }      
 }
