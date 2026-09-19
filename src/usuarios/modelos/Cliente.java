@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 
+
 public class Cliente {
     //Atributos
     public String correo;

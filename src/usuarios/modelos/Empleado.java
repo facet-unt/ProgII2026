@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 
+
 public class Empleado {
     //Atributos
     public String correo;
