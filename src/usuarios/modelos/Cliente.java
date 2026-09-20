@@ -15,6 +15,6 @@ public class Cliente {
   public String nombre;
   
   public void mostrar(){
-      System.out.println("Cliente: "+apellido+nombre+"\nClave: "+clave+"\nCorreo: "+correo+"\n");
+      System.out.println("Cliente: "+apellido+" "+nombre+"\nClave: "+clave+"\nCorreo: "+correo+"\n");
   }
 }

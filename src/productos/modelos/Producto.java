@@ -11,17 +11,20 @@ package productos.modelos;
 public class Producto {
     public int codigo;
     public String descripcion;
-    public float precio;
-    public boolean disponible;
     public String categoria;
+    public boolean estado;
+    public float precio;
     
-    public void mostrar() {        
-        System.out.println(descripcion);
-        System.out.println(precio);
-        System.out.println(categoria);
-        System.out.println(disponible);
-        System.out.println(codigo);
+    public void mostrar() {
+        System.out.println("Codigo: "+codigo);
+        System.out.println("Descripcion: "+descripcion);
+        System.out.println("Categoria: "+categoria);
+        System.out.println("Estado: "+estado);
+        System.out.println("Precio: "+precio+"\n");
     }
     
+    public String toString(){
+        return "Descripcion: "+descripcion;
+    }
     
 }

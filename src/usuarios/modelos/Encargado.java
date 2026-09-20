@@ -15,6 +15,6 @@ public class Encargado {
     public String nombre;
     
     public void mostrar(){
-      System.out.println("Usuario encargado: "+apellido+nombre+"\nClave: "+clave+"\nCorreo: "+correo+"\n");
+      System.out.println("Usuario encargado: "+apellido+" "+nombre+"\nClave: "+clave+"\nCorreo: "+correo+"\n");
   }
 }
