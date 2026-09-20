@@ -6,7 +6,7 @@ package usuarios.modelos;
 
 /**
  *
- * @author foxeen
+ * @author ramayo
  */
 public class Empleado {
     public String correo;
@@ -15,7 +15,6 @@ public class Empleado {
     public String nombre;
     
     public void mostrar(){
-        System.out.printf("\n\tEmpleado <%s %s>: \n||Correo: %s\n||Clave: %s\n", apellido, nombre, correo, clave);
-    }
-    
+      System.out.println("Usuario: "+apellido+nombre+"\nClave: "+clave+"\nCorreo: "+correo+"\n");
+  }
 }
