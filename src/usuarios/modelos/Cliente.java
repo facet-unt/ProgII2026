@@ -27,6 +27,9 @@ public class Cliente {
     public void asignarNombre(String nombre){
         this.nombre = nombre;
     }
+    public void asignarApellido(String apellido){
+        this.apellido = apellido;
+    }
     public String mostrarNombre(){
         return this.nombre;
     }

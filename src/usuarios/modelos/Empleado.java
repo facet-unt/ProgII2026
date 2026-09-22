@@ -9,10 +9,10 @@ package usuarios.modelos;
  * @author foxeen
  */
 public class Empleado {
-    public String correo;
-    public String clave;
-    public String apellido;
-    public String nombre;
+    private String correo;
+    private String clave;
+    private String apellido;
+    private String nombre;
 
     public Empleado(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
@@ -27,6 +27,9 @@ public class Empleado {
     
     public void asignarNombre(String nombre){
         this.nombre = nombre;
+    }
+    public void asignarApellido(String apellido){
+        this.apellido = apellido;
     }
     public String mostrarNombre(){
         return this.nombre;
