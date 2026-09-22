@@ -20,62 +20,62 @@ public class Encargado {
     }
     
     public void mostrar(){
-        System.out.println("Correo: " + getCorreo() + "| Clave: " + getClave() + "| Apellido: " + getApellido() + "| Nombre: " + getNombre());
+        System.out.println("Correo: " + verCorreo() + "| Clave: " + verClave() + "| Apellido: " + verApellido() + "| Nombre: " + verNombre());
     }   
 
     /**
      * @return the correo
      */
-    public String getCorreo() {
+    public String verCorreo() {
         return correo;
     }
 
     /**
-     * @param correo the correo to set
+     * @param correo the correo to asignar
      */
-    public void setCorreo(String correo) {
+    public void asignarCorreo(String correo) {
         this.correo = correo;
     }
 
     /**
      * @return the clave
      */
-    public String getClave() {
+    public String verClave() {
         return clave;
     }
 
     /**
-     * @param clave the clave to set
+     * @param clave the clave to asignar
      */
-    public void setClave(String clave) {
+    public void asignarClave(String clave) {
         this.clave = clave;
     }
 
     /**
      * @return the apellido
      */
-    public String getApellido() {
+    public String verApellido() {
         return apellido;
     }
 
     /**
-     * @param apellido the apellido to set
+     * @param apellido the apellido to asignar
      */
-    public void setApellido(String apellido) {
+    public void asignarApellido(String apellido) {
         this.apellido = apellido;
     }
 
     /**
      * @return the nombre
      */
-    public String getNombre() {
+    public String verNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param nombre the nombre to asignar
      */
-    public void setNombre(String nombre) {
+    public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
 }

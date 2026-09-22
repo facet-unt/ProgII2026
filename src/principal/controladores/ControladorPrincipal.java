@@ -67,11 +67,11 @@ public class ControladorPrincipal {
             p.mostrar();
         }
     for(int i=0; i<clientes.size();i++){
-        Cliente c=clientes.get(i);
+        Cliente c= clientes.get(i);
         int num=i+2;
-        c.setCorreo("Correo"+num);
-        c.setClave("Clave"+num);
-        c.setApellido("Apellido"+num);
+        c.asignarCorreo("Correo"+num);
+        c.asignarClave("Clave"+num);
+        c.asignarApellido("Apellido"+num);
         c.asignarNombre("Nombre"+num);
         
     }
@@ -87,10 +87,10 @@ public class ControladorPrincipal {
     for(int i=0; i<encargados.size();i++){
         Encargado en=encargados.get(i);
         int num=i+2;
-        en.setCorreo("Correo"+num);
-        en.setClave("Clave"+num);
-        en.setApellido("Apellido"+num);
-        en.setNombre("Nombre"+num);
+        en.asignarCorreo("Correo"+num);
+        en.asignarClave("Clave"+num);
+        en.asignarApellido("Apellido"+num);
+        en.asignarNombre("Nombre"+num);
     }
     for(int i=0;i<productos.size();i++){
         Producto p=productos.get(i);

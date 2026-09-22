@@ -32,9 +32,9 @@ public class Cliente {
     }
 
     /**
-     * @param correo the correo to set
+     * @param correo the correo to asignar
      */
-    public void setCorreo(String correo) {
+    public void asignarCorreo(String correo) {
         this.correo = correo;
     }
 
@@ -46,9 +46,9 @@ public class Cliente {
     }
 
     /**
-     * @param clave the clave to set
+     * @param clave the clave to asignar
      */
-    public void setClave(String clave) {
+    public void asignarClave(String clave) {
         this.clave = clave;
     }
 
@@ -60,7 +60,7 @@ public class Cliente {
     }
 
     /**
-     * @param apellido the apellido to set
+     * @param apellido the apellido to asignar
      */
     public void asignarApellido(String apellido) {
         this.apellido = apellido;
@@ -74,7 +74,7 @@ public class Cliente {
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param nombre the nombre to asignar
      */
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
