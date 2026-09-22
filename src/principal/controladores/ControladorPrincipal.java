@@ -6,7 +6,7 @@ package principal.controladores;
 
 import java.util.ArrayList;
 import productos.modelos.Producto;
-import usuarios.modelos. *;
+//import usuarios.modelos. *;
 
 /**
  *
