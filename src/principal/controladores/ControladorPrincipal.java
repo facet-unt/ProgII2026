@@ -80,10 +80,43 @@ public class ControladorPrincipal {
         unEncargado3.correo = "cris@gmail.com";
         unEncargado3.clave = "1234";
         
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        ArrayList<Empleado> empleados = new ArrayList<>();
-        ArrayList<Encargado> encargados = new ArrayList<>();
+        ArrayList<Cliente> listaclientes = new ArrayList<>();
+        ArrayList<Empleado> listaempleados = new ArrayList<>();
+        ArrayList<Encargado> listaencargados = new ArrayList<>();
         
+        listaclientes.add(unCliente3);
+        listaclientes.add(unCliente2);
+        listaclientes.add(unCliente1);
+
+        listaempleados.add(unEmpleado1);
+        listaempleados.add(unEmpleado2);
+        listaempleados.add(unEmpleado3);
+        
+        listaencargados.add(unEncargado1);
+        listaencargados.add(unEncargado2);
+        listaencargados.add(unEncargado3);
+        
+        System.out.println("---------- CLIENTES ----------");
+        
+        for(Cliente unCliente : listaclientes){
+            unCliente.mostrar();
+            System.out.println();
+        }
+        
+        System.out.println("---------- EMPLEADOS ---------");
+        
+        for(Empleado unEmpleado : listaempleados){
+            unEmpleado.mostrar();
+            System.out.println();
+        }
+        
+        System.out.println("---------- EMPLEADOS ---------");
+
+        for(Encargado unEncargado : listaencargados){
+            unEncargado.mostrar();
+            System.out.println();
+        }
         
     }
+    
 }
