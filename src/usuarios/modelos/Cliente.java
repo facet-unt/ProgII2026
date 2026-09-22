@@ -10,7 +10,7 @@ public class Cliente {
     public String nombre;
 
     public void mostrar() {
-        System.out.println("Apellido y Nombre: " + apellido + " " + nombre +
-                           " | Correo: " + correo + " | Clave: " + clave);
+        System.out.printf("\n\tCliente <%s %s>: \n||Correo: %s\n||Clave: %s\n", apellido,
+                          nombre, correo, clave);
     }
 }
