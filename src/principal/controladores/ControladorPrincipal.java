@@ -16,13 +16,10 @@ import usuarios.modelos.Encargado;
  */
 public class ControladorPrincipal {
     public static void main(String[] args) {
-        Producto p1 = new Producto();
-        Producto p2 = new Producto();
-        p1.descripcion = "Hamburguesa";
-        p2.descripcion = "Pizza";
-        p1.mostrar();
-        p2.mostrar();
-        
+        Producto unProducto1 = new Producto(1, "Pizza", 45.23f, "Disponible", "Plato Principal");
+        Producto unProducto2 = new Producto(2, "Milanesa", 49.13f, "Disponible", "Plato Principal");
+        Producto unProducto3 = new Producto(3, "Hamburguesa", 10.67f, "Disponible", "Plato Principal");
+               
         Cliente unCliente1 = new Cliente();
         Cliente unCliente2 = new Cliente();
         Cliente unCliente3 = new Cliente();
@@ -83,6 +80,7 @@ public class ControladorPrincipal {
         ArrayList<Cliente> listaclientes = new ArrayList<>();
         ArrayList<Empleado> listaempleados = new ArrayList<>();
         ArrayList<Encargado> listaencargados = new ArrayList<>();
+        ArrayList<Producto> listaproductos = new ArrayList<>();
         
         listaclientes.add(unCliente3);
         listaclientes.add(unCliente2);
@@ -95,6 +93,10 @@ public class ControladorPrincipal {
         listaencargados.add(unEncargado1);
         listaencargados.add(unEncargado2);
         listaencargados.add(unEncargado3);
+        
+        listaproductos.add(unProducto1);
+        listaproductos.add(unProducto2);
+        listaproductos.add(unProducto3);
         
         System.out.println("---------- CLIENTES ----------");
         
@@ -110,13 +112,32 @@ public class ControladorPrincipal {
             System.out.println();
         }
         
-        System.out.println("---------- EMPLEADOS ---------");
+        System.out.println("---------- ENCARGADOS ---------");
 
         for(Encargado unEncargado : listaencargados){
             unEncargado.mostrar();
             System.out.println();
         }
         
+        System.out.println("---------- PRODUCTOS ----------");
+        
+        for(Producto unProducto : listaproductos){
+            unProducto.mostrar();
+            System.out.println();
+        }
+        
+        listaproductos.get(0).asignarPrecio(126.45f);
+        
+        listaproductos.get(1).asignarEstado("No Disponible");
+        
+        listaproductos.get(2).asignarCategoria("Entrada");
+        
+        System.out.println("---------- LISTA ACTUALIZADA DE PRODUCTOS ----------");
+        
+        for(Producto producto : listaproductos){
+            producto.mostrar();
+            System.out.println();
+        }
     }
     
 }
