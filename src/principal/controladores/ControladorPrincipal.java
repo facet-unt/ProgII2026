@@ -69,37 +69,37 @@ public class ControladorPrincipal {
     for(int i=0; i<clientes.size();i++){
         Cliente c=clientes.get(i);
         int num=i+2;
-        c.correo= "Correo"+num;
-        c.clave="Clave"+num;
-        c.apellido="Apellido"+num;
-        c.nombre="Nombre"+num;
+        c.setCorreo("Correo"+num);
+        c.setClave("Clave"+num);
+        c.setApellido("Apellido"+num);
+        c.asignarNombre("Nombre"+num);
         
     }
     for(int i=0;i<empleados.size();i++){
         Empleado e=empleados.get(i);
         int num=i+2;
-        e.correo= "Correo"+num;
-        e.clave="Clave"+num;
-        e.apellido="Apellido"+num;
-        e.nombre="Nombre"+num;
+        e.asignarCorreo("Correo"+num);
+        e.asignarClave("Clave"+num);
+        e.asignarApellido("Apellido"+num);
+        e.asignarNombre("Nombre"+num);
         
     }
     for(int i=0; i<encargados.size();i++){
         Encargado en=encargados.get(i);
         int num=i+2;
-        en.correo= "Correo"+num;
-        en.clave="Clave"+num;
-        en.apellido="Apellido"+num;
-        en.nombre="Nombre"+num;
+        en.setCorreo("Correo"+num);
+        en.setClave("Clave"+num);
+        en.setApellido("Apellido"+num);
+        en.setNombre("Nombre"+num);
     }
     for(int i=0;i<productos.size();i++){
         Producto p=productos.get(i);
         int num=i+2;
-        p.codigo=num;
-        p.descripcion="Descripcion"+num;
-        p.categoria="Categoria"+num;
-        p.estado="Estado"+num;
-        p.precio=num;
+        p.asignarCodigo(num);
+        p.asignarDescripcion("Descripcion"+num);
+        p.asignarCategoria("Categoria"+num);
+        p.asignarEstado("Estado"+num);
+        p.asignarPrecio(num);
     }
     System.out.println("CLIENTES MODIFICADOS");
     for(Cliente c:clientes){
