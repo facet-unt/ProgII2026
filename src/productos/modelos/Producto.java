@@ -6,22 +6,23 @@ package productos.modelos;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class Producto {
     public int codigo;
     public String descripcion;
-    public float precio;
-    public boolean disponible;
     public String categoria;
+    public String estado;
+    public float precio;
     
     public void mostrar() {        
-        System.out.println(descripcion);
-        System.out.println(precio);
-        System.out.println(categoria);
-        System.out.println(disponible);
-        System.out.println(codigo);
+        System.out.println("producto: "+descripcion +" codigo: " +codigo );
+        System.out.println("estado: "+estado +" | precio: " +precio+ "\n");
     }
     
+    @Override
+    public String toString(){
+        return "Producto:" + descripcion;
+    }
     
 }
