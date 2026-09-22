@@ -9,11 +9,19 @@ package productos.modelos;
  * @author luis
  */
 public class Producto {
-    public int codigo;
-    public String descripcion;
-    public String categoria;
-    public String estado;
-    public float precio;
+    private int codigo;
+    private String descripcion;
+    private String categoria;
+    private String estado;
+    private float precio;
+    
+    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
+    }
     
     public void mostrar() {    
         System.out.printf("\n\tProducto <Codigo %d>: \n||Descripcion: %s\n||Categoria: %s\n||Estado: %s\n||Precio: %.2f\n",codigo ,descripcion,categoria, estado, precio);
@@ -25,4 +33,14 @@ public class Producto {
         return "Descripcion del producto " + descripcion;
      
     }
+    public void asignarDescripcion(String descripcion){
+        this.descripcion = descripcion;
+    } 
+    public float verPrecio(){
+        return this.precio;
+    }
+    public void asignarPrecio(float precio){
+        this.precio = precio;
+    } 
 }
+
