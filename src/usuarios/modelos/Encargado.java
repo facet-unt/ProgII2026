@@ -9,12 +9,24 @@ package usuarios.modelos;
  * @author ramayo
  */
 public class Encargado {
-    public String correo;
-    public String clave;
-    public String apellido;
-    public String nombre;
+    private String correo;
+    private String clave;
+    private String nombre;
+    private String apellido;
+    
+    
+    public Encargado(){
+    }
+    
+    
+    public Encargado(String correo, String clave, String nombre, String apellido){
+        this.correo = correo;
+        this.clave = clave;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
     
     public void mostrar(){
-      System.out.println("Usuario encargado: "+apellido+" "+nombre+"\nClave: "+clave+"\nCorreo: "+correo+"\n");
+      System.out.println("Usuario: " + apellido + " " + nombre + "\nClave: " + clave + "\nCorreo: " + correo + "\n");
   }
 }
