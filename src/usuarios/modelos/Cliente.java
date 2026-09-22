@@ -9,7 +9,7 @@ package usuarios.modelos;
  * @author ramayo
  */
 public class Cliente {
- private String correo;
+    private String correo;
     private String clave;
     private String nombre;
     private String apellido;
@@ -28,6 +28,6 @@ public class Cliente {
     
     
     public void mostrar(){
-        System.out.println("Cliente -> Nombre: " + nombre + "" + apellido + "Correo: " + correo);
+        System.out.println("Cliente -> Nombre: " + nombre + "" + apellido + "\nCorreo: " + correo);
     }
 }

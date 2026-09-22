@@ -9,12 +9,25 @@ package usuarios.modelos;
  * @author ramayo
  */
 public class Empleado {
-    public String correo;
-    public String clave;
-    public String apellido;
-    public String nombre;
+    private String correo;
+    private String clave;
+    private String nombre;
+    private String apellido;
+    
+    
+    public Empleado(){
+    }
+    
+    
+    public Empleado(String correo, String clave, String nombre, String apellido){
+        this.correo = correo;
+        this.clave = clave;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        
+    }
     
     public void mostrar(){
-      System.out.println("Usuario: "+apellido+" "+nombre+"\nClave: "+clave+"\nCorreo: "+correo+"\n");
+      System.out.println("Empleado -> Nombre: " + nombre + " " + apellido + "\nClave: " + clave + "\nCorreo: " + correo + "\n");
   }
 }
