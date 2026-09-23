@@ -19,6 +19,5 @@ public class Cliente {
         System.out.println("|Apellido: " + apellido + " | Nombre: " + nombre +"|");
         System.out.println("|Correo: " + correo + " | Clave: " + clave + "|");
         System.out.println();
-        
     }
 }
