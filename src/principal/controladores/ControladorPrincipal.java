@@ -44,7 +44,7 @@ public class ControladorPrincipal {
             System.out.println(p);
         System.out.println("#################### ");
         
-
+/**/
         System.out.println("#################### ");
         System.out.println("CLIENTES");
         Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
@@ -63,9 +63,9 @@ public class ControladorPrincipal {
         System.out.println("EMPLEADOS");
         Empleado e1 = new Empleado("empleado1@mail.com", "123", "ApellidoEmpleado1", "NombreEmpleado1");
         Empleado e2 = new Empleado("empleado2@mail.com", "123", "ApellidoEmpleado2", "NombreEmpleado2");
-       Empleado e3 = new Empleado("empleado3@mail.com", "123", "ApellidoEmpleado3", "NombreEmpleado3");
+        Empleado e3 = new Empleado("empleado3@mail.com", "123", "ApellidoEmpleado3", "NombreEmpleado3");
                
-       listaEmpleados.add(e1);
+        listaEmpleados.add(e1);
         listaEmpleados.add(e2);
         listaEmpleados.add(e3);
 
@@ -73,9 +73,10 @@ public class ControladorPrincipal {
             e.mostrar();
         
         //Realizar algunas modificaciones a algunos de los objetos antes creados
-        e1.asignarApellido("APELLIDOEmpleado11");
-        listaEmpleados.get(1).asignarNombre("NOMBREEMPLEADO11");
-        
+        e1.asignarApellido("ApNUEVO5");
+        listaEmpleados.get(1).asignarNombre("NombreNUEVO");
+        System.out.println("Apellido actualizado de e1: " + e1.verApellido());
+        System.out.println("Nombre actualizado del empleado e2: " + listaEmpleados.get(1).verNombre());
         for (Empleado e: listaEmpleados)
             e.mostrar();
         
@@ -87,10 +88,10 @@ public class ControladorPrincipal {
         
         listaEncargados.add(unEncargado1);
         listaEncargados.add(unEncargado2);
-       listaEncargados.add(unEncargado3);
+        listaEncargados.add(unEncargado3);
         
         for (Encargado e: listaEncargados)
             e.mostrar();
-
+        
     }
 }
