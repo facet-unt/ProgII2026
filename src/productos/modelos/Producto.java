@@ -72,14 +72,8 @@ public class Producto {
         System.out.println("Precio: $" + precio);    
     }
     
-//    public void mostrar() {    
-//        System.out.printf("\n\tProducto <Codigo %d>: \n||Descripcion: %s\n||Categoria: %s\n||Estado: %s\n||Precio: %.2f\n",codigo ,descripcion,categoria, estado, precio);
-//   
-//    }
-    
     @Override
     public String toString(){
         return "Descripcion del producto " + descripcion;
-     
     }
 }
