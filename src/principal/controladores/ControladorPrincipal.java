@@ -22,9 +22,9 @@ public class ControladorPrincipal {
         
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
-        Producto p1 = new Producto(1, "Producto1", "Plato Principal", "Disponible", 1550.8f);
-        Producto p2= new Producto(2, "Producto2", "Postre", "Disponible", 850.8f);
-        Producto p3 = new Producto(3, "Producto3", "Plato Principal", "No Disponible", 1050.0f);
+        Producto p1 = new Producto(1, "Producto1", "Plato Principal", "true", 1550.8f);
+        Producto p2= new Producto(2, "Producto2", "Postre", "True", 850.8f);
+        Producto p3 = new Producto(3, "Producto3", "Plato Principal", "False", 1050.0f);
         
         listaProductos.add(p1);
         listaProductos.add(p2);
@@ -55,7 +55,9 @@ public class ControladorPrincipal {
         listaClientes.add(cliente2);
         listaClientes.add(cliente3);
         
-
+        cliente1.asignarCorreo("Uncliente@hotmail.com.ar");
+        System.out.println("Nuevo email del cliente 1: "+cliente1.verCorreo());
+        
         for (Cliente e: listaClientes)
            e.mostrar();
         
@@ -90,8 +92,11 @@ public class ControladorPrincipal {
         listaEncargados.add(unEncargado2);
         listaEncargados.add(unEncargado3);
         
+        listaEncargados.get(2).asignarClave("12345");
+        System.out.println("Nueva clave para encargado 3: "+listaEncargados.get(2).verClave());
+        
         for (Encargado e: listaEncargados)
             e.mostrar();
-        
+       
     }
 }
