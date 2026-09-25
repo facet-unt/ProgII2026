@@ -45,52 +45,52 @@ public class ControladorPrincipal {
         System.out.println("#################### ");
         
 
-//        System.out.println("#################### ");
-//        System.out.println("CLIENTES");
-//        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
-//        Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
-//        Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
-//        
-//        listaClientes.add(cliente1);
-//        listaClientes.add(cliente2);
-//        listaClientes.add(cliente3);
-//        
-//
-//        for (Cliente e: listaClientes)
-//           e.mostrar();
-//        
-//        System.out.println("#################### ");
-//        System.out.println("EMPLEADOS");
-//        Empleado e1 = new Empleado("empleado1@mail.com", "123", "ApellidoEmpleado1", "NombreEmpleado1");
-//        Empleado e2 = new Empleado("empleado2@mail.com", "123", "ApellidoEmpleado2", "NombreEmpleado2");
-//        Empleado e3 = new Empleado("empleado3@mail.com", "123", "ApellidoEmpleado3", "NombreEmpleado3");
-//               
-//        listaEmpleados.add(e1);
-//        listaEmpleados.add(e2);
-//        listaEmpleados.add(e3);
-//
-//        for (Empleado e: listaEmpleados)
-//            e.mostrar();
-//        
-//        //Realizar algunas modificaciones a algunos de los objetos antes creados
-//        e1.asignarApellido("APELLIDOEmpleado11");
-//        listaEmpleados.get(1).asignarNombre("NOMBREEMPLEADO11");
-//        
-//        for (Empleado e: listaEmpleados)
-//            e.mostrar();
-//        
-//        System.out.println("#################### ");
-//        System.out.println("ENCARGADOS");
-//        Encargado unEncargado1 = new Encargado("encargado1@mail.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
-//        Encargado unEncargado2 = new Encargado("encargado2@mail.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
-//        Encargado unEncargado3 = new Encargado("encargado3@mail.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
-//        
-//        listaEncargados.add(unEncargado1);
-//        listaEncargados.add(unEncargado2);
-//        listaEncargados.add(unEncargado3);
-//        
-//        for (Encargado e: listaEncargados)
-//            e.mostrar();
+        System.out.println("#################### ");
+        System.out.println("CLIENTES");
+        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
+        Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
+        Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
+        
+        listaClientes.add(cliente1);
+        listaClientes.add(cliente2);
+        listaClientes.add(cliente3);
+        
+
+        for (Cliente e: listaClientes)
+           e.mostrar();
+        
+        System.out.println("#################### ");
+        System.out.println("EMPLEADOS");
+        Empleado e1 = new Empleado("empleado1@mail.com", "123", "ApellidoEmpleado1", "NombreEmpleado1");
+        Empleado e2 = new Empleado("empleado2@mail.com", "123", "ApellidoEmpleado2", "NombreEmpleado2");
+       Empleado e3 = new Empleado("empleado3@mail.com", "123", "ApellidoEmpleado3", "NombreEmpleado3");
+               
+       listaEmpleados.add(e1);
+        listaEmpleados.add(e2);
+        listaEmpleados.add(e3);
+
+        for (Empleado e: listaEmpleados)
+            e.mostrar();
+        
+        //Realizar algunas modificaciones a algunos de los objetos antes creados
+        e1.asignarApellido("APELLIDOEmpleado11");
+        listaEmpleados.get(1).asignarNombre("NOMBREEMPLEADO11");
+        
+        for (Empleado e: listaEmpleados)
+            e.mostrar();
+        
+        System.out.println("#################### ");
+        System.out.println("ENCARGADOS");
+        Encargado unEncargado1 = new Encargado("encargado1@mail.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
+        Encargado unEncargado2 = new Encargado("encargado2@mail.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
+        Encargado unEncargado3 = new Encargado("encargado3@mail.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
+        
+        listaEncargados.add(unEncargado1);
+        listaEncargados.add(unEncargado2);
+       listaEncargados.add(unEncargado3);
+        
+        for (Encargado e: listaEncargados)
+            e.mostrar();
 
     }
 }
