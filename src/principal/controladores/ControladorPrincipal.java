@@ -6,92 +6,94 @@ package principal.controladores;
 
 import java.util.ArrayList;
 import productos.modelos.Producto;
-import usuarios.modelos.Cliente;
-import usuarios.modelos.Empleado;
-import usuarios.modelos.Encargado;
+//import usuarios.modelos. *;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class ControladorPrincipal {
     public static void main(String[] args) {
-       ArrayList<Cliente>client=new ArrayList<>();
-       ArrayList<Empleado>emp=new ArrayList<>();
-       ArrayList<Encargado>enc=new ArrayList<>();
-       ArrayList<Producto>product=new ArrayList<>();
-       
-       Cliente unCliente1= new Cliente();
-       Cliente unCliente2= new Cliente();
-       Cliente unCliente3= new Cliente();
-       
-       Empleado unEmpleado1= new Empleado();
-       Empleado unEmpleado2= new Empleado();
-       Empleado unEmpleado3= new Empleado();
-       
-       Producto unProducto1= new Producto();
-       Producto unProducto2= new Producto();
-       Producto unProducto3= new Producto();
-       
-       Encargado unEncargado1= new Encargado();
-       Encargado unEncargado2= new Encargado();
-       Encargado unEncargado3= new Encargado();
-       
-      client.add(unCliente1); 
-      client.add(unCliente2); 
-      client.add(unCliente3);
-      
-      emp.add(unEmpleado1);
-      emp.add(unEmpleado2);
-      emp.add(unEmpleado3);
-      
-      enc.add(unEncargado1);
-      enc.add(unEncargado2);
-      enc.add(unEncargado3);
-      
-      product.add(unProducto1);
-      product.add(unProducto2);
-      product.add(unProducto3);
-      
-      System.out.println("=======================");
-      for (Producto unProducto:product){
-          unProducto.mostrar();
-      }
-      System.out.println("=======================");
-      for (Cliente unCliente:client){
-          unCliente.mostrar();
-      }
-      System.out.println("=======================");
-      for (Empleado unEmpleado:emp){
-          unEmpleado.mostrar();
-      }
-      System.out.println("=======================");
-      for (Encargado unEncargado:enc){
-          unEncargado.mostrar();
-      }
-      System.out.println("=======================");
-      System.out.println("Modificaciones");
-      unProducto1.descripcion="Hamburguesa doble";
-      unCliente2.apellido="Juarez";
-      unEmpleado3.clave="1234";
-      
-      System.out.println("=======================");
-      for (Producto unProducto:product){
-          unProducto.mostrar();
-      }
-      System.out.println("=======================");
-      for (Cliente unCliente:client){
-          unCliente.mostrar();
-      }
-      System.out.println("=======================");
-      for (Empleado unEmpleado:emp){
-          unEmpleado.mostrar();
-      }
-      System.out.println("=======================");
-      for (Encargado unEncargado:enc){
-          unEncargado.mostrar();
-      }
-      
+        
+        
+//        ArrayList<Cliente> clientes = new ArrayList ();
+//        ArrayList<Encargado> encargados = new ArrayList ();
+//        ArrayList<Empleado> empleados = new ArrayList ();
+        ArrayList<Producto> productos = new ArrayList ();
+        
+//         Cliente cliente1 = new Cliente();
+//         Cliente cliente2 = new Cliente();
+//         Cliente cliente3 = new Cliente();
+//         
+//         Encargado encargado1 = new Encargado();
+//         Encargado encargado2 = new Encargado();
+//         Encargado encargado3 = new Encargado();
+//         
+//         Empleado empleado1 = new Empleado();
+//         Empleado empleado2 = new Empleado();
+//         Empleado empleado3 = new Empleado();
+//        
+        
+        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
+        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
+        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
+        
+        
+//        cliente1.apellido = "Varga";
+//        cliente2.apellido = "Molina";
+//        cliente3.apellido = "Gomez";
+//        
+//        encargado1.apellido ="Fernandez";
+//        encargado2.apellido ="Martinez";
+//        encargado3.apellido ="Alvares";
+//        
+//        empleado1.apellido ="Fuentes";
+//        empleado2.apellido ="Lopez";
+//        empleado3.apellido ="Aguilera";
+//        
+        productos.add(hamburguesa);
+        productos.add(pizza);
+        productos.add(papasFritas);
+        
+//        clientes.add(cliente1);
+//        clientes.add(cliente2);
+//        clientes.add(cliente3);
+//        
+//        encargados.add(encargado1);
+//        encargados.add(encargado2);
+//        encargados.add(encargado3);
+//        
+//        empleados.add(empleado1);
+//        empleados.add(empleado2);
+//        empleados.add(empleado3);
+        
+        
+        System.out.println("------Productos------\n");
+        for (Producto p: productos ){
+            p.mostrar();
+        }
+//        System.out.println("------clientes------\n");
+//        for (Cliente c: clientes ){
+//            c.mostrar();
+//        }
+//        System.out.println("------encargados------\n");
+//        for (Encargado e: encargados ){
+//            e.mostrar();
+//        }
+//        System.out.println("------empleados------\n");
+//        for (Empleado e: empleados ){
+//            e.mostrar();
+//        }
+        
+        System.out.println("Cambiando...\n");
+//        
+        productos.get(0).asignarPrecio(12000f);
+        productos.get(1).asignarEstado("No disponible");
+        productos.get(2).asignarCodigo(4567);
+//        
+        for (Producto p: productos ){
+            p.mostrar();
+        }
+        
     }
-    
 }
