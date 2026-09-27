@@ -73,4 +73,12 @@ public class Empleado {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public Empleado(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
+    
 }
