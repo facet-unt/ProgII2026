@@ -4,6 +4,9 @@
  */
 package productos.modelos;
 
+import pedido.estado;
+import productos.Categoria;
+
 /**
  *
  * @author estudiante
@@ -11,51 +14,11 @@ package productos.modelos;
 public class Producto {
     private int codigo;
     private String descripcion;
-    private String categoria;
-    private String estado;
+    private Categoria categoria;
+    private estado estado;
     private float precio;
 
-    public int verCodigo() {
-        return codigo;
-    }
-
-    public String verDescripcion() {
-        return descripcion;
-    }
-
-    public String verCategoria() {
-        return categoria;
-    }
-
-    public String verEstado() {
-        return estado;
-    }
-
-    public float verPrecio() {
-        return precio;
-    }
-
-    public void asignarCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public void asignarDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void asignarCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public void asignarEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void asignarPrecio(float precio) {
-        this.precio = precio;
-    }
-
-    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+    public Producto(int codigo, String descripcion, Categoria categoria, estado estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -66,13 +29,83 @@ public class Producto {
     
     
     public void mostrar() {        
-        System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
+        System.out.println("Producto: "+getDescripcion() +" |Codigo: " +getCodigo() );
+        System.out.println("Estado: "+getEstado() +" | Precio: " +getPrecio()+ "\n");
     }
     
     @Override
     public String toString(){
-        return "Producto: " + descripcion;
+        return "Producto: " + getDescripcion();
+    }
+
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the categoria
+     */
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    /**
+     * @return the estado
+     */
+    public estado getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(estado estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the precio
+     */
+    public float getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
     
 }

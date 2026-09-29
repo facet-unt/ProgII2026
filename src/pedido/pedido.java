@@ -1,0 +1,75 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pedido;
+
+import java.time.LocalDateTime;
+import usuarios.modelos.Cliente;
+
+/**
+ *
+ * @author Home
+ */
+public class pedido {
+    private int numero;
+    private LocalDateTime fechaHora;
+    private estado estado;
+    private Cliente cliente;
+
+    /**
+     * @return the numero
+     */
+    public int getNumero() {
+        return numero;
+    }
+
+    /**
+     * @param numero the numero to set
+     */
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    /**
+     * @return the fechaHora
+     */
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    /**
+     * @param fechaHora the fechaHora to set
+     */
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    /**
+     * @return the estado
+     */
+    public estado getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(estado estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+}
