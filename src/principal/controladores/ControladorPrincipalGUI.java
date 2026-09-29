@@ -6,10 +6,10 @@
 package principal.controladores;
 
 import javax.swing.UIManager;
-import productos.vistas.VentanaAMProducto;
-import usuarios.vistas.VentanaAMCliente;
+//import productos.vistas.VentanaAMProducto;
+//import usuarios.vistas.VentanaAMCliente;
 import usuarios.vistas.VentanaAMEmpleado;
-import usuarios.vistas.VentanaAMEncargado;
+//import usuarios.vistas.VentanaAMEncargado;
 
 /**
  *
@@ -27,28 +27,28 @@ public class ControladorPrincipalGUI {
             * Se hace visible la ventana
         */
         establecerLookAndFeel("Nimbus"); 
-        // PRODUCTO
+         //PRODUCTO
 //        VentanaAMProducto ventana = new VentanaAMProducto(null);
 //        ventana.setLocationRelativeTo(null);
 //        ventana.setTitle("Nuevo producto");
 //        ventana.setVisible(true);
-       //<editor-fold defaultstate="collapsed" desc="Cliente">
+//       <editor-fold defaultstate="collapsed" desc="Cliente">
 //        VentanaAMCliente ventana = new VentanaAMCliente(null);
 //        ventana.setLocationRelativeTo(null);
 //        ventana.setTitle("Nuevo cliente");
 //        ventana.setVisible(true);
-        //</editor-fold>
-       //<editor-fold defaultstate="collapsed" desc="Empleado">
-//        VentanaAMEmpleado ventana = new VentanaAMEmpleado(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo empleado");
-//        ventana.setVisible(true);
-       //</editor-fold>
-       //<editor-fold defaultstate="collapsed" desc="Encargado">
-       VentanaAMEncargado ventana = new VentanaAMEncargado(null);
-       ventana.setLocationRelativeTo(null);
-       ventana.setTitle("Nuevo encargado");
-       ventana.setVisible(true);
+//        </editor-fold>
+//       <editor-fold defaultstate="collapsed" desc="Empleado">
+        VentanaAMEmpleado ventana = new VentanaAMEmpleado(null);
+        ventana.setLocationRelativeTo(null);
+        ventana.setTitle("Nuevo empleado");
+        ventana.setVisible(true);
+//       </editor-fold>
+//       <editor-fold defaultstate="collapsed" desc="Encargado">
+//       VentanaAMEncargado ventana = new VentanaAMEncargado(null);
+//       ventana.setLocationRelativeTo(null);
+//       ventana.setTitle("Nuevo encargado");
+//       ventana.setVisible(true);
 //</editor-fold>
        }
     
