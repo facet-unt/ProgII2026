@@ -1,12 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+///*
+// * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+// * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+// */
 package usuarios.modelos;
 
 /**
  *
- * @author foxeen
+ * @author estudiante
  */
 public class Empleado {
     private String correo;
@@ -20,34 +20,49 @@ public class Empleado {
         this.apellido = apellido;
         this.nombre = nombre;
     }
-    
-    public void mostrar(){
-        System.out.printf("\n\tEmpleado <%s %s>: \n||Correo: %s\n||Clave: %s\n", apellido, nombre, correo, clave);
+
+
+    public String verCorreo() {
+        return correo;
     }
-    
-    public void asignarNombre(String nombre){
-        this.nombre = nombre;
+
+    public String verClave() {
+        return clave;
     }
-    public void asignarApellido(String apellido){
-        this.apellido = apellido;
+
+    public String verApellido() {
+        return apellido;
     }
-    public String mostrarNombre(){
-        return this.nombre;
+
+    public String verNombre() {
+        return nombre;
     }
-    public String mostrarApellido(){
-        return this.apellido;
-    }
-    public void asignarClave(String clave){
-        this.clave = clave;
-    }
-    public String mostrarClave(){
-        return this.clave;
-    }
-    public void asignarCorreo(String correo){
+
+    public void asignarCorreo(String correo) {
         this.correo = correo;
     }
-    public String mostrarCorreo(){
-        return this.correo;
+
+    public void asignarClave(String clave) {
+        this.clave = clave;
+    }
+
+    public void asignarApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void asignarNombre(String nombre) {
+        this.nombre = nombre;
     }
     
+    
+
+    
+    public void mostrar(){
+        System.out.println("Empleado: "+apellido +", " +nombre );
+        System.out.println("clave: "+clave +" | correo: " +correo+"\n");
+    }
+
+    
+    
+
 }

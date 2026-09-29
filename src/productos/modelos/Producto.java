@@ -6,7 +6,7 @@ package productos.modelos;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class Producto {
     private int codigo;
@@ -14,7 +14,47 @@ public class Producto {
     private String categoria;
     private String estado;
     private float precio;
-    
+
+    public int verCodigo() {
+        return codigo;
+    }
+
+    public String verDescripcion() {
+        return descripcion;
+    }
+
+    public String verCategoria() {
+        return categoria;
+    }
+
+    public String verEstado() {
+        return estado;
+    }
+
+    public float verPrecio() {
+        return precio;
+    }
+
+    public void asignarCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void asignarDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void asignarCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public void asignarEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void asignarPrecio(float precio) {
+        this.precio = precio;
+    }
+
     public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -23,24 +63,17 @@ public class Producto {
         this.precio = precio;
     }
     
-    public void mostrar() {    
-        System.out.printf("\n\tProducto <Codigo %d>: \n||Descripcion: %s\n||Categoria: %s\n||Estado: %s\n||Precio: %.2f\n",codigo ,descripcion,categoria, estado, precio);
-   
+    
+    
+    public void mostrar() {        
+        System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
+        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
     }
     
     @Override
     public String toString(){
-        return "Descripcion del producto " + descripcion;
-     
+        return "Producto: " + descripcion;
     }
-    public void asignarDescripcion(String descripcion){
-        this.descripcion = descripcion;
-    } 
-    public float verPrecio(){
-        return this.precio;
-    }
-    public void asignarPrecio(float precio){
-        this.precio = precio;
-    } 
 }
+
 
