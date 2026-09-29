@@ -5,12 +5,12 @@
 package principal.controladores;
 
 import java.util.ArrayList;
-import productos.modelos.*;
-import usuarios.modelos.*;
+import productos.modelos.Producto;
+import usuarios.modelos. *;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class ControladorPrincipal {
     public static void main(String[] args) {
@@ -35,6 +35,13 @@ public class ControladorPrincipal {
         
         listaProductos.get(2).asignarDescripcion("Producto 3");
         System.out.println("\nEl precio del producto es :" +  listaProductos.get(2).verPrecio());
+        
+        
+        ArrayList<Cliente> clientes = new ArrayList <>();
+        ArrayList<Encargado> encargados = new ArrayList <>();
+        ArrayList<Empleado> empleados = new ArrayList <>();
+        ArrayList<Producto> productos = new ArrayList<>();
+        
         listaProductos.get(2).asignarPrecio(1898.98f);
         System.out.println("El nuevo precio del producto es :" +  listaProductos.get(2).verPrecio());
         
@@ -69,25 +76,42 @@ public class ControladorPrincipal {
 
         for (Empleado e: listaEmpleados)
             e.mostrar();
+        }
         
-        //Realizar algunas modificaciones a algunos de los objetos antes creados
-        e1.asignarApellido("APELLIDOEmpleado11");
-        listaEmpleados.get(1).asignarNombre("NOMBREEMPLEADO11");
+        System.out.println("Cambiando...\n");
         
-        for (Empleado e: listaEmpleados)
+        productos.get(0).asignarPrecio(12000f);
+        productos.get(1).asignarEstado("No disponible");
+        productos.get(2).asignarCodigo(4567);
+        
+        clientes.get(2).asignarClave("454647");
+        empleados.get(1).verCorreo();
+        encargados.get(1).asignarApellido("Falcon");
+        encargados.get(0).asignarClave("346789");
+        empleados.get(2).asignarClave("0000");
+        
+        System.out.println("===Productos despues de las modificaciones===");
+        
+        for (Producto p: productos ){
+            p.mostrar();
+        }
+        
+        System.out.println("===Clientes despues de las modificaciones===");
+        
+        for (Cliente c: clientes ){
+            c.mostrar();
+        }
+        
+        System.out.println("===Encargados despues de las modificaciones===");
+        
+        for (Encargado e: encargados ){
             e.mostrar();
+        }
         
-        System.out.println("#################### ");
-        System.out.println("ENCARGADOS");
-        Encargado unEncargado1 = new Encargado("encargado1@mail.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
-        Encargado unEncargado2 = new Encargado("encargado2@mail.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
-        Encargado unEncargado3 = new Encargado("encargado3@mail.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
+        System.out.println("===Empleados despues de las modificaciones===");
         
-        listaEncargados.add(unEncargado1);
-        listaEncargados.add(unEncargado2);
-        listaEncargados.add(unEncargado3);
-        
-        for (Encargado e: listaEncargados)
+        for (Empleado e: empleados ){
             e.mostrar();
+        }
     }
 }

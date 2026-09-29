@@ -6,7 +6,7 @@ package productos.modelos;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class Producto {
     private int codigo;
