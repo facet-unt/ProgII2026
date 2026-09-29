@@ -5,88 +5,113 @@
 package principal.controladores;
 
 import java.util.ArrayList;
-import productos.modelos.*;
-import usuarios.modelos.*;
+import productos.modelos.Producto;
+import usuarios.modelos. *;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class ControladorPrincipal {
     public static void main(String[] args) {
-    
-     ArrayList<Cliente> listaClientes = new ArrayList<>();
-        ArrayList<Encargado> listaEncargados = new ArrayList<>();
-        ArrayList<Empleado> listaEmpleados = new ArrayList<>();
-        ArrayList<Producto> listaProductos = new ArrayList<>();
         
-        System.out.println("#################### ");
-        System.out.println("PRODUCTOS");
-        Producto p1 = new Producto(1, "Producto1", "Plato Principal", "Disponible", 1550.8f);
-        Producto p2= new Producto(2, "Producto2", "Postre", "Disponible", 850.8f);
-        Producto p3 = new Producto(3, "Producto3", "Plato Principal", "No Disponible", 1050.0f);
         
-        listaProductos.add(p1);
-        listaProductos.add(p2);
-        listaProductos.add(p3);
+        ArrayList<Cliente> clientes = new ArrayList <>();
+        ArrayList<Encargado> encargados = new ArrayList <>();
+        ArrayList<Empleado> empleados = new ArrayList <>();
+        ArrayList<Producto> productos = new ArrayList<>();
         
-        System.out.println("PRODUCTOS usando mostrar()");
-        for (Producto p: listaProductos)
+        Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
+        Cliente cliente2 = new Cliente("joseluisM@hotmail.com","4567","Molina","Jose Luis");
+        Cliente cliente3 = new Cliente("juliGz@hotmail.com","9096","Gomez","Julieta");
+         
+        Encargado encargado1 = new Encargado("fernandezjuan@hotmail.com","3334","Fernandez","Juan");
+        Encargado encargado2 = new Encargado("martinezK@hotmail.com","5557","Martinez","Kevin");
+        Encargado encargado3 = new Encargado("alvaresTomas@hotmail.com","88854","Alvares","Tomas");
+         
+        Empleado empleado1 = new Empleado("fuentesmario@hotmail.com","3334","Fuentes","Mario");
+        Empleado empleado2 = new Empleado("lopez@hotmail.com","111111","Lopez","Hector");
+        Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
+      
+        
+        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
+        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
+        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
+        
+        
+        productos.add(hamburguesa);
+        productos.add(pizza);
+        productos.add(papasFritas);
+        
+        clientes.add(cliente1);
+        clientes.add(cliente2);
+        clientes.add(cliente3);
+        
+        encargados.add(encargado1);
+        encargados.add(encargado2);
+        encargados.add(encargado3);
+        
+        empleados.add(empleado1);
+        empleados.add(empleado2);
+        empleados.add(empleado3);
+        
+        
+        System.out.println("------Productos------\n");
+        
+        System.out.println("Con toString:");
+        System.out.println(hamburguesa.toString());
+        
+        System.out.println("Sin toString (metodo mostrar):");
+        for (Producto p: productos ){
             p.mostrar();
-        
-        listaProductos.get(2).asignarDescripcion("Producto 3");
-        System.out.println("\nEl precio del producto es :" +  listaProductos.get(2).verPrecio());
-        listaProductos.get(2).asignarPrecio(1898.98f);
-        System.out.println("El nuevo precio del producto es :" +  listaProductos.get(2).verPrecio());
-        
-        System.out.println("\nPRODUCTOS usando toString()");
-        for (Producto p: listaProductos)
-            System.out.println(p);
-        
-        System.out.println("#################### ");
-        System.out.println("CLIENTES");
-        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
-        Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
-        Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
-        
-        listaClientes.add(cliente1);
-        listaClientes.add(cliente2);
-        listaClientes.add(cliente3);
-        
-        for (Cliente e: listaClientes)
-           e.mostrar();
-        
-        System.out.println("#################### ");
-        System.out.println("EMPLEADOS");
-        Empleado e1 = new Empleado("empleado1@mail.com", "123", "ApellidoEmpleado1", "NombreEmpleado1");
-        Empleado e2 = new Empleado("empleado2@mail.com", "123", "ApellidoEmpleado2", "NombreEmpleado2");
-        Empleado e3 = new Empleado("empleado3@mail.com", "123", "ApellidoEmpleado3", "NombreEmpleado3");
-               
-        listaEmpleados.add(e1);
-        listaEmpleados.add(e2);
-        listaEmpleados.add(e3);
-
-        for (Empleado e: listaEmpleados)
+        }
+        System.out.println("------Clientes------\n");
+        for (Cliente c: clientes ){
+            c.mostrar();
+        }
+        System.out.println("------Encargados------\n");
+        for (Encargado e: encargados ){
             e.mostrar();
-        
-        //Realizar algunas modificaciones a algunos de los objetos antes creados
-        e1.asignarApellido("APELLIDOEmpleado11");
-        listaEmpleados.get(1).asignarNombre("NOMBREEMPLEADO11");
-        
-         for (Empleado e: listaEmpleados)
+        }
+        System.out.println("------Empleados------\n");
+        for (Empleado e: empleados ){
             e.mostrar();
+        }
         
-           System.out.println("#################### ");
-        System.out.println("ENCARGADOS");
-        Encargado unEncargado1 = new Encargado("encargado1@mail.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
-        Encargado unEncargado2 = new Encargado("encargado2@mail.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
-        Encargado unEncargado3 = new Encargado("encargado3@mail.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
+        System.out.println("Cambiando...\n");
         
-         listaEncargados.add(unEncargado1);
-        listaEncargados.add(unEncargado2);
-        listaEncargados.add(unEncargado3);
+        productos.get(0).asignarPrecio(12000f);
+        productos.get(1).asignarEstado("No disponible");
+        productos.get(2).asignarCodigo(4567);
         
-         for (Encargado e: listaEncargados)
+        clientes.get(2).asignarClave("454647");
+        empleados.get(1).verCorreo();
+        encargados.get(1).asignarApellido("Falcon");
+        encargados.get(0).asignarClave("346789");
+        empleados.get(2).asignarClave("0000");
+        
+        System.out.println("===Productos despues de las modificaciones===");
+        
+        for (Producto p: productos ){
+            p.mostrar();
+        }
+        
+        System.out.println("===Clientes despues de las modificaciones===");
+        
+        for (Cliente c: clientes ){
+            c.mostrar();
+        }
+        
+        System.out.println("===Encargados despues de las modificaciones===");
+        
+        for (Encargado e: encargados ){
+            e.mostrar();
+        }
+        
+        System.out.println("===Empleados despues de las modificaciones===");
+        
+        for (Empleado e: empleados ){
             e.mostrar();
         }
     }
+}

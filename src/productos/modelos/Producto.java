@@ -6,7 +6,7 @@ package productos.modelos;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class Producto {
     private int codigo;
@@ -14,50 +14,47 @@ public class Producto {
     private String categoria;
     private String estado;
     private float precio;
-    
-    public void mostrar() {
-        System.out.println("Codigo: "+codigo);
-        System.out.println("Descripcion: "+descripcion);
-        System.out.println("Categoria: "+categoria);
-        System.out.println("Estado: "+estado);
-        System.out.println("Precio: "+precio+"\n");
-    }
-    
-    public String toString(){
-        return "Descripcion: "+descripcion;
-    }
 
     public int verCodigo() {
         return codigo;
     }
+
     public String verDescripcion() {
         return descripcion;
     }
+
     public String verCategoria() {
         return categoria;
     }
-        public String verEstado() {
+
+    public String verEstado() {
         return estado;
     }
-        public float verPrecio() {
+
+    public float verPrecio() {
         return precio;
-    }    
-    
+    }
+
     public void asignarCodigo(int codigo) {
         this.codigo = codigo;
     }
+
     public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
     public void asignarCategoria(String categoria) {
         this.categoria = categoria;
     }
+
     public void asignarEstado(String estado) {
         this.estado = estado;
     }
+
     public void asignarPrecio(float precio) {
         this.precio = precio;
     }
+
     public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -65,4 +62,17 @@ public class Producto {
         this.estado = estado;
         this.precio = precio;
     }
+    
+    
+    
+    public void mostrar() {        
+        System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
+        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
+    }
+    
+    @Override
+    public String toString(){
+        return "Producto: " + descripcion;
+    }
+    
 }
