@@ -1,7 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+///*
+// * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+// * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+// */
 package usuarios.modelos;
 
 
@@ -19,14 +19,7 @@ public class Empleado {
         this.apellido = apellido;
         this.nombre = nombre;
     }
-    
-    public void mostrar(){
-        System.out.println("Correo: " + verCorreo() + "| Clave: " + verClave() + "| Apellido: " + verApellido() + "| Nombre: " + verNombre());
-    }      
 
-    /**
-     * @return the correo
-     */
     public String verCorreo() {
         return correo;
     }
@@ -78,5 +71,12 @@ public class Empleado {
      */
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    
+    
+    public void mostrar(){
+        System.out.println("Empleado: "+apellido +", " +nombre );
+        System.out.println("clave: "+clave +" | correo: " +correo+"\n");
     }
 }
