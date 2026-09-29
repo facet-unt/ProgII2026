@@ -5,6 +5,8 @@
 package principal.controladores;
 
 import java.util.ArrayList;
+import productos.modelos.Categoria;
+import productos.modelos.Estado;
 import productos.modelos.Producto;
 import usuarios.modelos. *;
 
@@ -21,9 +23,9 @@ public class ControladorPrincipal {
         
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
-        Producto p1 = new Producto(1, "Producto1", 1550.8f, "Disponible", "Plato Principal");
-        Producto p2= new Producto(2, "Producto2", 850.8f, "Disponible", "Plato Principal");
-        Producto p3 = new Producto(3, "Producto3", 1050.0f, "No Disponible", "Plato Principal");
+        Producto p1 = new Producto(1, "Producto1", 1550.8f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
+        Producto p2= new Producto(2, "Producto2", 850.8f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
+        Producto p3 = new Producto(3, "Producto3", 1050.0f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
         
         listaProductos.add(p1);
         listaProductos.add(p2);
@@ -74,44 +76,8 @@ public class ControladorPrincipal {
         listaEmpleados.add(e2);
         listaEmpleados.add(e3);
 
-        for (Empleado e: listaEmpleados)
+        for (Empleado e: listaEmpleados){
             e.mostrar();
         }
-        
-        System.out.println("Cambiando...\n");
-        
-        productos.get(0).asignarPrecio(12000f);
-        productos.get(1).asignarEstado("No disponible");
-        productos.get(2).asignarCodigo(4567);
-        
-        clientes.get(2).asignarClave("454647");
-        empleados.get(1).verCorreo();
-        encargados.get(1).asignarApellido("Falcon");
-        encargados.get(0).asignarClave("346789");
-        empleados.get(2).asignarClave("0000");
-        
-        System.out.println("===Productos despues de las modificaciones===");
-        
-        for (Producto p: productos ){
-            p.mostrar();
-        }
-        
-        System.out.println("===Clientes despues de las modificaciones===");
-        
-        for (Cliente c: clientes ){
-            c.mostrar();
-        }
-        
-        System.out.println("===Encargados despues de las modificaciones===");
-        
-        for (Encargado e: encargados ){
-            e.mostrar();
-        }
-        
-        System.out.println("===Empleados despues de las modificaciones===");
-        
-        for (Empleado e: empleados ){
-            e.mostrar();
-        }
-    }
+     }
 }

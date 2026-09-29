@@ -137,7 +137,18 @@ public class VentanaAMEmpleado extends JDialog {
     }//GEN-LAST:event_btnCancelarClic
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
-        //Completar
+        String clave = this.passClave.getPassword().toString();
+        String nombre = this.txtNombre.getText().trim();
+        String apellido = this.txtApellido.getText().trim();
+        String correo = this.txtCorreo.getText().trim();
+        
+        Empleado unEmpleado = new Empleado(correo, clave, apellido, nombre);
+        empleados.add(unEmpleado);
+        
+        for(Empleado emp : empleados){
+            emp.mostrar();
+            System.out.println();
+        }
     }//GEN-LAST:event_btnGuardarClic
 
 

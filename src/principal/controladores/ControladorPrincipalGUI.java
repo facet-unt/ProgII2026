@@ -26,8 +26,7 @@ public class ControladorPrincipalGUI {
             * Se asigna un título a la ventana
             * Se hace visible la ventana
         */
-        establecerLookAndFeel("Nimbus"); 
-        // PRODUCTO
+//        establecerLookAndFeel("Nimbus"); 
 //        VentanaAMProducto ventana = new VentanaAMProducto(null);
 //        ventana.setLocationRelativeTo(null);
 //        ventana.setTitle("Nuevo producto");
@@ -45,10 +44,10 @@ public class ControladorPrincipalGUI {
 //        ventana.setVisible(true);
        //</editor-fold>
        //<editor-fold defaultstate="collapsed" desc="Encargado">
-       VentanaAMEncargado ventana = new VentanaAMEncargado(null);
-       ventana.setLocationRelativeTo(null);
-       ventana.setTitle("Nuevo encargado");
-       ventana.setVisible(true);
+//       VentanaAMEncargado ventana = new VentanaAMEncargado(null);
+//       ventana.setLocationRelativeTo(null);
+//       ventana.setTitle("Nuevo encargado");
+//       ventana.setVisible(true);
 //</editor-fold>
        }
     
