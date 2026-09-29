@@ -5,10 +5,8 @@
 package principal.controladores;
 
 import java.util.ArrayList;
-import productos.modelos.Producto;
-import usuarios.modelos.Cliente;
-import usuarios.modelos.Empleado;
-import usuarios.modelos.Encargado;
+import productos.modelos.*;
+import usuarios.modelos.*;
 
 /**
  *
@@ -17,100 +15,78 @@ import usuarios.modelos.Encargado;
 public class ControladorPrincipal {
     public static void main(String[] args) {
     
-    /*Creación del ArrayList 'listaProductos', inicializar 3 objetos de clase 'Producto'
-    y presentación por pantalla de los mismos*/
-        ArrayList<Producto> listaProductos= new ArrayList<>();
-        Producto Producto1 = new Producto();
-        Producto Producto2 = new Producto();
-        Producto Producto3 = new Producto();
+     ArrayList<Cliente> listaClientes = new ArrayList<>();
+        ArrayList<Encargado> listaEncargados = new ArrayList<>();
+        ArrayList<Empleado> listaEmpleados = new ArrayList<>();
+        ArrayList<Producto> listaProductos = new ArrayList<>();
         
-        listaProductos.add(Producto1);
-        listaProductos.add(Producto2);
-        listaProductos.add(Producto3);
+        System.out.println("#################### ");
+        System.out.println("PRODUCTOS");
+        Producto p1 = new Producto(1, "Producto1", "Plato Principal", "Disponible", 1550.8f);
+        Producto p2= new Producto(2, "Producto2", "Postre", "Disponible", 850.8f);
+        Producto p3 = new Producto(3, "Producto3", "Plato Principal", "No Disponible", 1050.0f);
         
-        System.out.println("Productos: ");
-        for(Producto unProducto: listaProductos){
-            unProducto.mostrar();
-        }
+        listaProductos.add(p1);
+        listaProductos.add(p2);
+        listaProductos.add(p3);
         
-    /*Creación del ArrayList 'listaClientes', inicializar 3 objetos de clase 'Cliente'
-    y presentación por pantalla de los mismos*/
-        ArrayList<Cliente> listaClientes= new ArrayList<>();
-        Cliente Cliente1 = new Cliente();
-        Cliente Cliente2 = new Cliente();
-        Cliente Cliente3 = new Cliente();
+        System.out.println("PRODUCTOS usando mostrar()");
+        for (Producto p: listaProductos)
+            p.mostrar();
         
-        listaClientes.add(Cliente1);
-        listaClientes.add(Cliente2);
-        listaClientes.add(Cliente3);
+        listaProductos.get(2).asignarDescripcion("Producto 3");
+        System.out.println("\nEl precio del producto es :" +  listaProductos.get(2).verPrecio());
+        listaProductos.get(2).asignarPrecio(1898.98f);
+        System.out.println("El nuevo precio del producto es :" +  listaProductos.get(2).verPrecio());
         
-        System.out.println("Clientes: ");
-        for(Cliente unCliente: listaClientes){
-            unCliente.mostrar();
-        }
+        System.out.println("\nPRODUCTOS usando toString()");
+        for (Producto p: listaProductos)
+            System.out.println(p);
         
-    /*Creación del ArrayList 'listaEmpleados', inicializar 3 objetos de clase 'Empleados'
-    y presentación por pantalla de los mismos*/
-        ArrayList<Empleado> listaEmpleados= new ArrayList<>();
-        Empleado Empleado1 = new Empleado();
-        Empleado Empleado2 = new Empleado();
-        Empleado Empleado3 = new Empleado();
+        System.out.println("#################### ");
+        System.out.println("CLIENTES");
+        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
+        Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
+        Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
         
-        listaEmpleados.add(Empleado1);
-        listaEmpleados.add(Empleado2);
-        listaEmpleados.add(Empleado3);
+        listaClientes.add(cliente1);
+        listaClientes.add(cliente2);
+        listaClientes.add(cliente3);
         
-        System.out.println("Empleados: ");
-        for(Empleado unEmpleado: listaEmpleados){
-            unEmpleado.mostrar();
-        }
+        for (Cliente e: listaClientes)
+           e.mostrar();
         
-    /*Creación del ArrayList 'listaEncargados', inicializar 3 objetos de clase 'Encargados'
-    y presentación por pantalla de los mismos*/
-        ArrayList<Encargado> listaEncargados= new ArrayList<>();
-        Encargado Encargado1 = new Encargado();
-        Encargado Encargado3 = new Encargado();
-        Encargado Encargado2 = new Encargado();
+        System.out.println("#################### ");
+        System.out.println("EMPLEADOS");
+        Empleado e1 = new Empleado("empleado1@mail.com", "123", "ApellidoEmpleado1", "NombreEmpleado1");
+        Empleado e2 = new Empleado("empleado2@mail.com", "123", "ApellidoEmpleado2", "NombreEmpleado2");
+        Empleado e3 = new Empleado("empleado3@mail.com", "123", "ApellidoEmpleado3", "NombreEmpleado3");
+               
+        listaEmpleados.add(e1);
+        listaEmpleados.add(e2);
+        listaEmpleados.add(e3);
+
+        for (Empleado e: listaEmpleados)
+            e.mostrar();
         
-        listaEncargados.add(Encargado1);
-        listaEncargados.add(Encargado2);
-        listaEncargados.add(Encargado3);
+        //Realizar algunas modificaciones a algunos de los objetos antes creados
+        e1.asignarApellido("APELLIDOEmpleado11");
+        listaEmpleados.get(1).asignarNombre("NOMBREEMPLEADO11");
         
-        System.out.println("Encargados: ");
-        for(Encargado unEncargado: listaEncargados){
-            unEncargado.mostrar();
-        }
+         for (Empleado e: listaEmpleados)
+            e.mostrar();
         
-    /*Se modifican los objetos de las clases 'Cliente', 'Empleado', 'Encargado'
-    y 'Producto' para darles valores específicos y luego se muestran en pantalla*/
-        for (int i=0;i<listaClientes.size();i++){
-            listaClientes.get(i).nombre="nombre de cliente "+(i+1);
-            listaClientes.get(i).apellido="apellido de cliente ";
-            listaClientes.get(i).correo="correo del cliente "+(i+1);
-            listaClientes.get(i).clave="clave del cliente "+(i+1);
-            listaClientes.get(i).mostrar();
-        }
-        for (int i=0;i<listaEmpleados.size();i++){
-            listaEmpleados.get(i).nombre="nombre de empleado "+(i+1);
-            listaEmpleados.get(i).apellido="apellido de empleado ";
-            listaEmpleados.get(i).correo="correo del empleado "+(i+1);
-            listaEmpleados.get(i).clave="clave del empleado "+(i+1);
-            listaEmpleados.get(i).mostrar();
-        }
-        for (int i=0;i<listaEncargados.size();i++){
-            listaEncargados.get(i).nombre="nombre de encargado "+(i+1);
-            listaEncargados.get(i).apellido="apellido de encargado ";
-            listaEncargados.get(i).correo="correo del encargado "+(i+1);
-            listaEncargados.get(i).clave="clave del encargado "+(i+1);
-            listaEncargados.get(i).mostrar();
-        }
-        for(int i = 0;i<listaProductos.size();i++){
-            listaProductos.get(i).codigo = (i+1);
-            listaProductos.get(i).descripcion = "descripcion"+(i+1);
-            listaProductos.get(i).categoria = "Categoria"+(i+1);
-            listaProductos.get(i).estado = true;
-            listaProductos.get(i).precio = (i+1);
-            listaProductos.get(i).mostrar();
+           System.out.println("#################### ");
+        System.out.println("ENCARGADOS");
+        Encargado unEncargado1 = new Encargado("encargado1@mail.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
+        Encargado unEncargado2 = new Encargado("encargado2@mail.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
+        Encargado unEncargado3 = new Encargado("encargado3@mail.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
+        
+         listaEncargados.add(unEncargado1);
+        listaEncargados.add(unEncargado2);
+        listaEncargados.add(unEncargado3);
+        
+         for (Encargado e: listaEncargados)
+            e.mostrar();
         }
     }
-}
