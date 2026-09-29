@@ -28,27 +28,27 @@ public class ControladorPrincipalGUI {
         */
         establecerLookAndFeel("Nimbus"); 
         // PRODUCTO
-//        VentanaAMProducto ventana = new VentanaAMProducto(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo producto");
-//        ventana.setVisible(true);
+        VentanaAMProducto ventana = new VentanaAMProducto(null);
+        ventana.setLocationRelativeTo(null);
+        ventana.setTitle("Nuevo producto");
+        ventana.setVisible(true);
        //<editor-fold defaultstate="collapsed" desc="Cliente">
-//        VentanaAMCliente ventana = new VentanaAMCliente(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo cliente");
-//        ventana.setVisible(true);
+        VentanaAMCliente ventanaCliente = new VentanaAMCliente(null);
+        ventanaCliente.setLocationRelativeTo(null);
+        ventanaCliente.setTitle("Nuevo cliente");
+        ventanaCliente.setVisible(true);
         //</editor-fold>
        //<editor-fold defaultstate="collapsed" desc="Empleado">
-//        VentanaAMEmpleado ventana = new VentanaAMEmpleado(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo empleado");
-//        ventana.setVisible(true);
+        VentanaAMEmpleado ventanaEmp = new VentanaAMEmpleado(null);
+        ventanaEmp.setLocationRelativeTo(null);
+        ventanaEmp.setTitle("Nuevo empleado");
+        ventanaEmp.setVisible(true);
        //</editor-fold>
        //<editor-fold defaultstate="collapsed" desc="Encargado">
-       VentanaAMEncargado ventana = new VentanaAMEncargado(null);
-       ventana.setLocationRelativeTo(null);
-       ventana.setTitle("Nuevo encargado");
-       ventana.setVisible(true);
+       VentanaAMEncargado ventanaEnc = new VentanaAMEncargado(null);
+       ventanaEnc.setLocationRelativeTo(null);
+       ventanaEnc.setTitle("Nuevo encargado");
+       ventanaEnc.setVisible(true);
 //</editor-fold>
        }
     
