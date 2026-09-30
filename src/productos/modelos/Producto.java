@@ -11,10 +11,10 @@ package productos.modelos;
 public class Producto {
     private int codigo;
     private String descripcion;
-    private String categoria;
-    private String estado;
+    private Categoria categoria;
+    private Estado estado;
     private float precio;
-
+    
     public int verCodigo() {
         return codigo;
     }
@@ -22,13 +22,12 @@ public class Producto {
     public String verDescripcion() {
         return descripcion;
     }
-
-    public String verCategoria() {
-        return categoria;
-    }
-
+    
     public String verEstado() {
-        return estado;
+        return estado.toString();
+    }
+    public String verCategoria() {
+        return categoria.toString();
     }
 
     public float verPrecio() {
@@ -43,31 +42,46 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public void asignarCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
     public void asignarEstado(String estado) {
-        this.estado = estado;
+        switch (estado.toLowerCase()){
+            case "disponible" -> this.estado=Estado.DISPONIBLE;
+            case "no disponible" -> this.estado=Estado.NO_DISPONIBLE;
+            default -> this.estado=Estado.NO_DISPONIBLE;
+        }
+    }
+    
+    public void asignarCategoria(String categoria){
+        switch(categoria.toLowerCase()){
+           case "entrada" -> this.categoria=Categoria.ENTRADA;
+           case "plato principal" -> this.categoria=Categoria.PLATO_PRINCIPAL;
+           case "postre" -> this.categoria=Categoria.POSTRE;
+           default -> this.categoria = Categoria.ENTRADA;
+        }
     }
 
     public void asignarPrecio(float precio) {
         this.precio = precio;
     }
+    
+    
+
 
     public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
         this.precio = precio;
+        this.asignarEstado(estado);
+        this.asignarCategoria(categoria);
+        
+        
     }
     
     
     
     public void mostrar() {        
         System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
+        System.out.println("Estado: "+estado +" | Precio: " +precio);
+        System.out.println("Categoria: "+categoria );
     }
     
     @Override
