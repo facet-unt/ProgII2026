@@ -4,8 +4,6 @@
  */
 package productos.modelos;
 
-import pedido.estado;
-import productos.Categoria;
 
 /**
  *
@@ -15,10 +13,10 @@ public class Producto {
     private int codigo;
     private String descripcion;
     private Categoria categoria;
-    private estado estado;
+    private Estado estado;
     private float precio;
 
-    public Producto(int codigo, String descripcion, Categoria categoria, estado estado, float precio) {
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -83,14 +81,14 @@ public class Producto {
     /**
      * @return the estado
      */
-    public estado getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
     /**
      * @param estado the estado to set
      */
-    public void setEstado(estado estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 

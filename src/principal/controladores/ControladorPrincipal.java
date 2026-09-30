@@ -5,6 +5,8 @@
 package principal.controladores;
 
 import java.util.ArrayList;
+import productos.modelos.Categoria;
+import productos.modelos.Estado;
 import productos.modelos.Producto;
 import usuarios.modelos. *;
 
@@ -34,9 +36,9 @@ public class ControladorPrincipal {
         Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
       
         
-        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
-        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
-        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
+        Producto hamburguesa = new Producto(1234,"Hamburguesa",Categoria.PLATO_PRINCIPAL,Estado.NO_DISPONIBLE,8000f);
+        Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL,Estado.NO_DISPONIBLE,12000f);
+        Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.ENTRADA,Estado.DISPONIBLE,5000f);
         
         
         productos.add(hamburguesa);
@@ -80,9 +82,9 @@ public class ControladorPrincipal {
         
         System.out.println("Cambiando...\n");
         
-        productos.get(0).asignarPrecio(12000f);
-        productos.get(1).asignarEstado("No disponible");
-        productos.get(2).asignarCodigo(4567);
+        productos.get(0).setPrecio(12000f);
+        productos.get(1).setEstado(Estado.NO_DISPONIBLE);
+        productos.get(2).setCodigo(4567);
         
         clientes.get(2).asignarClave("454647");
         empleados.get(1).verCorreo();
