@@ -7,11 +7,12 @@ package productos.modelos;
 
 /**
  *
- * @author luis
+ * @author estudiante
  */
 public class Producto {
     public Producto(int codigo, String descripcion, String categoria, String estado,
                     float precio) {
+
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.categoria = categoria;
