@@ -28,7 +28,7 @@ public class Empleado {
     public void asignarCorreo(String correo) {
         this.correo = correo;
     }
-
+    
     public String verClave() {
         return clave;
     }
@@ -52,9 +52,12 @@ public class Empleado {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-        
+    
     public void mostrar(){
-        System.out.println("Empleado: " + apellido + ", " + nombre);
-        System.out.println("clave: " + clave + " | correo: " + correo + "\n");
+        /*Correo Apellido Nombre y clave*/
+        System.out.println("Correo: " + correo);
+        System.out.println("Nombre/s: " + nombre);
+        System.out.println("Apellido/s: " + apellido);
+        System.out.println("Clave: " + clave);
     }
 }
