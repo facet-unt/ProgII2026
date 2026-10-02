@@ -25,36 +25,36 @@ public class Encargado {
         return correo;
     }
 
-    public String verClave() {
-        return clave;
-    }
-
-    public String verApellido() {
-        return apellido;
-    }
-
-    public String verNombre() {
-        return nombre;
-    }
-
     public void asignarCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String verClave() {
+        return clave;
     }
 
     public void asignarClave(String clave) {
         this.clave = clave;
     }
 
+    public String verApellido() {
+        return apellido;
+    }
+
     public void asignarApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String verNombre() {
+        return nombre;
     }
 
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
     public void mostrar(){
-        System.out.println("Encargado: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
+        System.out.println("Encargado: " + apellido + ", " + nombre);
+        System.out.println("clave: " + clave + " | correo: " + correo + "\n");
     }
 }

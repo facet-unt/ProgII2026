@@ -20,6 +20,28 @@ public class ControladorPrincipal {
         ArrayList<Empleado> empleados = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
         
+        System.out.println("#################### ");
+        System.out.println("PRODUCTOS");
+        Producto p1 = new Producto(1, "Producto1", "Plato Principal", "true", 1550.8f);
+        Producto p2= new Producto(2, "Producto2", "Postre", "True", 850.8f);
+        Producto p3 = new Producto(3, "Producto3", "Plato Principal", "False", 1050.0f);
+        
+        productos.add(p1);
+        productos.add(p2);
+        productos.add(p3);
+        
+        System.out.println("PRODUCTOS usando mostrar()");
+        for (Producto p: productos)
+            p.mostrar();
+        
+        productos.get(2).asignarDescripcion("Producto 3");
+        System.out.println("\nEl precio del producto es :" +  productos.get(2).verPrecio());
+        productos.get(2).asignarPrecio(1898.98f);
+        System.out.println("El nuevo precio del producto es :" +  productos.get(2).verPrecio());
+        
+        System.out.println("\nPRODUCTOS usando toString()");
+        for (Producto p: productos)
+            System.out.println(p);
 
         System.out.println("#################### ");
         System.out.println("CLIENTES");
@@ -31,7 +53,9 @@ public class ControladorPrincipal {
         clientes.add(cliente2);
         clientes.add(cliente3);
         
-
+        cliente1.asignarCorreo("Uncliente@hotmail.com.ar");
+        System.out.println("Nuevo email del cliente 1: "+cliente1.verCorreo());
+        
         for (Cliente e: clientes)
            e.mostrar();
         
@@ -49,9 +73,10 @@ public class ControladorPrincipal {
             e.mostrar();
         
         //Realizar algunas modificaciones a algunos de los objetos antes creados
-        e1.asignarApellido("APELLIDOEmpleado11");
-        empleados.get(1).asignarNombre("NOMBREEMPLEADO11");
-        
+        e1.asignarApellido("ApNUEVO5");
+        empleados.get(1).asignarNombre("NombreNUEVO");
+        System.out.println("Apellido actualizado de e1: " + e1.verApellido());
+        System.out.println("Nombre actualizado del empleado e2: " + empleados.get(1).verNombre());
         for (Empleado e: empleados)
             e.mostrar();
         
@@ -64,6 +89,9 @@ public class ControladorPrincipal {
         encargados.add(unEncargado1);
         encargados.add(unEncargado2);
         encargados.add(unEncargado3);
+        
+        encargados.get(2).asignarClave("12345");
+        System.out.println("Nueva clave para encargado 3: "+encargados.get(2).verClave());
         
         for (Encargado e: encargados)
             e.mostrar();
