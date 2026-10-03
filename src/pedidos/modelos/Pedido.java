@@ -6,6 +6,7 @@ package pedidos.modelos;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import usuarios.modelos.Cliente;
 
 /**
  *
@@ -15,11 +16,17 @@ public class Pedido {
     private int numero;
     private LocalDateTime fechaYHora;
     
-    public Pedido(int numero){
+    //Relacion: Un pedido tiene un cliente
+    private Cliente unCliente;
+    private Estado estado;
+    
+    public Pedido(int numero, Cliente unCliente){
         this.numero = numero;
         this.fechaYHora = LocalDateTime.now();
+        this.unCliente = unCliente;
+        this.estado = Estado.CREADO;
     }
-
+    
     public int verNumero() {
         return numero;
     }
@@ -41,5 +48,10 @@ public class Pedido {
     public void mostrar(){
         System.out.println("Nro: " + numero);
         System.out.println("Fecha: " + verFecha() + "\t\t\t" + "Hora: " + verHora());
+        System.out.println("Cliente: " + unCliente.verApellido() + ", " + unCliente.verNombre());
+        System.out.println("Estado: " + estado.toString());
+        System.out.println("Producto\t\t\t\t\tCantidad");
+        System.out.println("================================================================");
+        
     }
 }

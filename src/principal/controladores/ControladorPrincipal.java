@@ -16,10 +16,10 @@ import usuarios.modelos. *;
  */
 public class ControladorPrincipal {
     public static void main(String[] args) {
-//        ArrayList<Cliente> clientes = new ArrayList<>();
-//        ArrayList<Encargado> encargados = new ArrayList<>();
-//        ArrayList<Empleado> empleados = new ArrayList<>();
-//        ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        ArrayList<Encargado> encargados = new ArrayList<>();
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        ArrayList<Producto> productos = new ArrayList<>();
 //        
 //        System.out.println("#################### ");
 //        System.out.println("PRODUCTOS");
@@ -46,7 +46,7 @@ public class ControladorPrincipal {
 //
 //        System.out.println("#################### ");
 //        System.out.println("CLIENTES");
-//        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
+        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
 //        Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
 //        Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
 //        
@@ -98,8 +98,7 @@ public class ControladorPrincipal {
 //            e.mostrar();
         
         //Pruebas del funcionamiento de producto
-        Pedido pedido1 = new Pedido(1);
-        
+        Pedido pedido1 = new Pedido(1, cliente1);
         pedido1.mostrar();
     }
 }
