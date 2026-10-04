@@ -19,3 +19,4 @@ nb-configuration.xml
 .classpath
 .project
 run.sh
+.clang-format

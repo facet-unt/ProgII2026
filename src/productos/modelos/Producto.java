@@ -10,47 +10,65 @@ package productos.modelos;
  * @author estudiante
  */
 public class Producto {
-    public Producto(int codigo, String descripcion, String categoria, String estado,
-                    float precio) {
+  public Producto(
+      int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
+    this.codigo = codigo;
+    this.descripcion = descripcion;
+    this.categoria = categoria;
+    this.estado = estado;
+    this.precio = precio;
+  }
 
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
-        this.precio = precio;
-    }
+  public void mostrar() {
+    System.out.println("Código: " + this.codigo);
+    System.out.println("Descripción: " + this.descripcion);
+    System.out.println("Categoría: " + this.categoria);
+    System.out.println("Estado: " + this.estado);
+    System.out.println("Precio: $" + this.precio);
+  }
 
-    public void mostrar() {
-        System.out.println(descripcion);
-        System.out.println(precio);
-        System.out.println(categoria);
-        System.out.println(estado);
-        System.out.println(codigo);
-    }
+  // Getters
+  public int verCodigo() {
+    return this.codigo;
+  }
+  public String verDescripcion() {
+    return this.descripcion;
+  }
+  public Categoria verCategoria() {
+    return this.categoria;
+  }
+  public Estado verEstado() {
+    return this.estado;
+  }
+  public float verPrecio() {
+    return this.precio;
+  }
 
-    // Getters
-    public int verCodigo() { return this.codigo; }
-    public String verDescripcion() { return this.descripcion; }
-    public String verCategoria() { return this.categoria; }
-    public String verEstado() { return this.estado; }
-    public float verPrecio() { return this.precio; }
+  // Setters
+  public void asignarCodigo(int nuevoCodigo) {
+    this.codigo = nuevoCodigo;
+  }
+  public void asignarDescripcion(String nuevaDescripcion) {
+    this.descripcion = nuevaDescripcion;
+  }
+  public void asignarCategoria(Categoria nuevaCategoria) {
+    this.categoria = nuevaCategoria;
+  }
+  public void asignarEstado(Estado nuevoEstado) {
+    this.estado = nuevoEstado;
+  }
+  public void asignarPrecio(float nuevoPrecio) {
+    this.precio = nuevoPrecio;
+  }
 
-    // Setters
-    public void asignarCodigo(int nuevoCodigo) { this.codigo = nuevoCodigo; }
-    public void asignarDescripcion(String nuevaDescripcion) {
-        this.descripcion = nuevaDescripcion;
-    }
-    public void asignarCategoria(String nuevaCategoria) {
-        this.categoria = nuevaCategoria;
-    }
-    public void asignarEstado(String nuevoEstado) { this.estado = nuevoEstado; }
-    public void asignarPrecio(float nuevoPrecio) { this.precio = nuevoPrecio; }
+  @Override
+  public String toString() {
+    return this.descripcion;
+  }
 
-    @Override public String toString() { return this.descripcion; }
-
-    private int codigo;
-    private String descripcion;
-    private String categoria;
-    private String estado;
-    private float precio;
+  private int codigo;
+  private String descripcion;
+  private Categoria categoria;
+  private Estado estado;
+  private float precio;
 }
