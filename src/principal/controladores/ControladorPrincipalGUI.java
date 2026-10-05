@@ -28,10 +28,10 @@ public class ControladorPrincipalGUI {
         */
         establecerLookAndFeel("Nimbus"); 
         // PRODUCTO
-//        VentanaAMProducto ventana = new VentanaAMProducto(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo producto");
-//        ventana.setVisible(true);
+        VentanaAMProducto ventanaProducto = new VentanaAMProducto(null);
+        ventanaProducto.setLocationRelativeTo(null);
+        ventanaProducto.setTitle("Nuevo producto");
+ //       ventanaProducto.setVisible(true);
        //<editor-fold defaultstate="collapsed" desc="Cliente">
         VentanaAMCliente ventanaCliente = new VentanaAMCliente(null);
         ventanaCliente.setLocationRelativeTo(null);
@@ -42,7 +42,7 @@ public class ControladorPrincipalGUI {
         VentanaAMEmpleado ventanaEmpleado = new VentanaAMEmpleado(null);
         ventanaEmpleado.setLocationRelativeTo(null);
         ventanaEmpleado.setTitle("Nuevo empleado");
-        ventanaEmpleado.setVisible(true);//decomentar para probar
+        //ventanaEmpleado.setVisible(true);//decomentar para probar
        //</editor-fold>
        //<editor-fold defaultstate="collapsed" desc="Encargado">
        VentanaAMEncargado ventanaEncargado = new VentanaAMEncargado(null);
