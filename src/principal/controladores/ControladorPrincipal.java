@@ -23,6 +23,7 @@ public class ControladorPrincipal {
         
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
+        
         Producto p1 = new Producto(1, "Producto1", 1550.8f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
         Producto p2= new Producto(2, "Producto2", 850.8f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
         Producto p3 = new Producto(3, "Producto3", 1050.0f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
@@ -32,10 +33,14 @@ public class ControladorPrincipal {
         listaProductos.add(p3);
         
         System.out.println("PRODUCTOS usando mostrar()");
-        for (Producto p: listaProductos)
+        
+        for (Producto p: listaProductos){
             p.mostrar();
+            System.out.println();
+        }
         
         listaProductos.get(2).asignarDescripcion("Producto 3");
+        
         System.out.println("\nEl precio del producto es :" +  listaProductos.get(2).verPrecio());
         
         
