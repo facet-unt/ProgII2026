@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package productos.modelos;
 
-/**
- *
- * @author estudiante
- */
+
 public class Producto {
     private int codigo;
     private String descripcion;
@@ -15,6 +8,10 @@ public class Producto {
     private Estado estado;
     private float precio;
     
+    
+    //====================================
+    //      Métodos de Producto
+    //====================================
     public int verCodigo() {
         return codigo;
     }
@@ -42,6 +39,9 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
+    // Arregle un pequeño error que habia en el codigo
+    //Como en el enum las palabras estaban capitalizadas las Descapitalize para que coincida con el codigo de aca
+    //Borra el comentario cuando lo veas
     public void asignarEstado(String estado) {
         switch (estado.toLowerCase()){
             case "disponible" -> this.estado=Estado.DISPONIBLE;
@@ -63,22 +63,7 @@ public class Producto {
         this.precio = precio;
     }
     
-    
-
-
-    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.asignarEstado(estado);
-        this.asignarCategoria(categoria);
-        
-        
-    }
-    
-    
-    
-    public void mostrar() {        
+        public void mostrar() {        
         System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
         System.out.println("Estado: "+estado +" | Precio: " +precio);
         System.out.println("Categoria: "+categoria );
@@ -88,6 +73,22 @@ public class Producto {
     public String toString(){
         return "Producto: " + descripcion;
     }
+    
+    //====================================
+    //      Constructores de Producto
+    //====================================
+
+    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.asignarEstado(estado);
+        this.asignarCategoria(categoria);  
+    }
+    
+    
+    
+
 }
 
 

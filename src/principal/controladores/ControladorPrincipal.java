@@ -5,6 +5,7 @@
 package principal.controladores;
 
 import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 import productos.modelos.Producto;
 import usuarios.modelos.Encargado;
 import usuarios.modelos. *;
@@ -21,6 +22,7 @@ public class ControladorPrincipal {
         ArrayList<Encargado> encargados = new ArrayList <>();
         ArrayList<Empleado> empleados = new ArrayList <>();
         ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Pedido> pedidos = new ArrayList<>();
         
 
         Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");

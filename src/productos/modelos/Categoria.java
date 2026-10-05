@@ -9,7 +9,7 @@ package productos.modelos;
  * @author foxeen
  */
 public enum Categoria {
-    ENTRADA("Entrada"),PLATO_PRINCIPAL("Plato Principal"),POSTRE("Postre");
+    ENTRADA("entrada"),PLATO_PRINCIPAL("plato principal"),POSTRE("postre");
     
     private final String descripcion;
     

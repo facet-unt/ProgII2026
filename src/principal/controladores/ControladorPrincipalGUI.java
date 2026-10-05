@@ -27,11 +27,13 @@ public class ControladorPrincipalGUI {
             * Se hace visible la ventana
         */
         establecerLookAndFeel("Nimbus"); 
-        // PRODUCTO
+        
+        //<editor-fold defaultstate="collapsed" desc="Producto">
         VentanaAMProducto ventana = new VentanaAMProducto(null);
         ventana.setLocationRelativeTo(null);
         ventana.setTitle("Nuevo producto");
         ventana.setVisible(true);
+        //</editor-fold>
        //<editor-fold defaultstate="collapsed" desc="Cliente">
         VentanaAMCliente ventana1 = new VentanaAMCliente(null);
         ventana1.setLocationRelativeTo(null);
@@ -44,7 +46,6 @@ public class ControladorPrincipalGUI {
         ventana2.setTitle("Nuevo empleado");
         ventana2.setVisible(true);
        //</editor-fold>
-       //ENCARGADO
        //<editor-fold defaultstate="collapsed" desc="Encargado">
        
        VentanaAMEncargado ventana3 = new VentanaAMEncargado(null);
