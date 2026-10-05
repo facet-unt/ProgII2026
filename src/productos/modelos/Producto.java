@@ -9,65 +9,72 @@ package productos.modelos;
  * @author estudiante
  */
 public class Producto {
+    private String nombre;
     private int codigo;
     private String descripcion;
-    private String categoria;
-    private String estado;
     private float precio;
+    
+    //Relacion:Un producto tiene una categoria y un estado.
+    private Categoria categoria;
+    private Estado estado;
 
     public int verCodigo() {
         return codigo;
     }
-
-    public String verDescripcion() {
-        return descripcion;
-    }
-
-    public String verCategoria() {
-        return categoria;
-    }
-
-    public String verEstado() {
-        return estado;
-    }
-
-    public float verPrecio() {
-        return precio;
-    }
-
     public void asignarCodigo(int codigo) {
         this.codigo = codigo;
     }
-
+    
+    public String verDescripcion() {
+        return descripcion;
+    }
     public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public void asignarCategoria(String categoria) {
-        this.categoria = categoria;
+    
+    public float verPrecio() {
+        return precio;
     }
-
-    public void asignarEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void asignarPrecio(float precio) {
+        public void asignarPrecio(float precio) {
         this.precio = precio;
     }
+    
+    public Categoria verCategoria() {
+        return categoria;
+    }
+    public void asignarCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+        
+    public Estado verDisponible() {
+        return estado;
+    }
+    public void asignarDisponible(Estado estado) {
+        this.estado = estado;
+    }
+    
+    public void asignarNombre(String nombre){
+        this.nombre=nombre;
+    }
+    public String verNombre(){
+        return nombre;
+    }
 
+    /*Hay un error que sale de este constructor en la ventana(VentanaAMProducto),
+    hay que modificar la ventana para que pueda obtener categoría, nombre y estado*/
     public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
+        this.categoria = Categoria.POSTRE;  //valor por defecto
+        this.estado = Estado.NODISPONIBLE;  //valor por defecto
         this.precio = precio;
+        this.nombre = "ProductoExample";
     }
     
-    
-    
     public void mostrar() {        
-        System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
+        System.out.println("Nombre: "+nombre +" |Descripcion: " +descripcion +"\n");
+        System.out.println("|Estado: "+estado +" | Precio: " +precio+ "\n");
+        System.out.println("Codigo: "+codigo+"| Categoria: "+categoria);
     }
     
     @Override

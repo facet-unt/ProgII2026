@@ -146,8 +146,8 @@ public class VentanaAMEncargado extends JDialog {
         
         System.out.println("Empleado");
         System.out.println("========");
-        for(Encargado enc : this.encargado) {
-            enc.mostrar();
+        for(Encargado en : this.encargado) {
+            en.mostrar();
             System.out.println();
         }
     }//GEN-LAST:event_btnGuardarClic
