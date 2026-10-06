@@ -15,7 +15,6 @@ public class ProductoDelPedido {
     public int verCantidad() {
         return cantidad;
     }
-
     public void asignarCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
@@ -23,7 +22,6 @@ public class ProductoDelPedido {
     public Producto verUnProducto() {
         return unProducto;
     }
-
     public void asignarUnProducto(Producto unProducto) {
         this.unProducto = unProducto;
     }
@@ -36,7 +34,7 @@ public class ProductoDelPedido {
     }
 
     public void mostrar(){
-        System.out.println("["+unProducto.verCodigo()+"]"+unProducto+"\t\t"+cantidad);
+        System.out.println("["+unProducto.verCodigo()+"]"+unProducto+"\t\t\t"+cantidad);
     }
     
 }

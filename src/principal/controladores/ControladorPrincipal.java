@@ -5,8 +5,9 @@
 package principal.controladores;
 
 import java.util.ArrayList;
+import pedidos.modelo.Pedido;
 import productos.modelos.Producto;
-import usuarios.modelos. *;
+import usuarios.modelos.Cliente;
 
 /**
  *
@@ -16,12 +17,13 @@ import usuarios.modelos. *;
 //    public static void main(String[] args) {
 //        
 //        
-//        ArrayList<Cliente> clientes = new ArrayList <>();
+        ArrayList<Cliente> clientes = new ArrayList <>();
 //        ArrayList<Encargado> encargados = new ArrayList <>();
 //        ArrayList<Empleado> empleados = new ArrayList <>();
 //        ArrayList<Producto> productos = new ArrayList<>();
+          ArrayList<Pedido> pedidos= new ArrayList<>();
 //        
-//        Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
+        Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
 //        Cliente cliente2 = new Cliente("joseluisM@hotmail.com","4567","Molina","Jose Luis");
 //        Cliente cliente3 = new Cliente("juliGz@hotmail.com","9096","Gomez","Julieta");
 //         
@@ -34,16 +36,19 @@ import usuarios.modelos. *;
 //        Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
 //      
 //        
-//        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
+        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
 //        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
 //        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
 //        
+          Pedido Pedido1= new Pedido(5, cliente1, "estado");
+          Pedido.mostrar();
+          
 //        
 //        productos.add(hamburguesa);
 //        productos.add(pizza);
 //        productos.add(papasFritas);
 //        
-//        clientes.add(cliente1);
+        clientes.add(cliente1);
 //        clientes.add(cliente2);
 //        clientes.add(cliente3);
 //        

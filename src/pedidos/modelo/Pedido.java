@@ -20,7 +20,7 @@ public class Pedido {
     
     //Relacion: Un pedido tiene un cliente
     private Cliente cliente;
-    private String estado;
+    private Estado estado;
     
     //Relacion: Pedido tiene una cantidad
     private ArrayList<ProductoDelPedido> listaProductos = new ArrayList<>();
@@ -29,7 +29,7 @@ public class Pedido {
         this.numero = numero;
         this.fechaYHora = LocalDateTime.now();
         this.cliente = cliente;
-        this.estado = estado;
+        this.estado = Estado.CREADO;
     }
 
     public int verNumero() {
