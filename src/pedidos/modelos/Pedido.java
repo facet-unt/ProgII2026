@@ -23,15 +23,20 @@ public class Pedido {
         return Numero;
     }
 
-    public void setNumero(int Numero) {
+    public void asignarNumero(int Numero) {
         this.Numero = Numero;
     }
 
-    public LocalDateTime getFechaYHora() {
+    public LocalDateTime verFecha() {
+        this.fechaYHora.toLocalDate();
+        return fechaYHora;
+    }
+    public LocalDateTime VerHora() {
+        this.fechaYHora.toLocalTime();
         return fechaYHora;
     }
 
-    public void setFechaYHora(LocalDateTime fechaYHora) {
+    public void FechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
     }
     
