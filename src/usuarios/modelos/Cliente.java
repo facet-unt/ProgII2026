@@ -4,6 +4,9 @@
 // */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
+
 /**
  *
  * @author estudiante
@@ -13,12 +16,12 @@ public class Cliente {
     private String clave;
     private String apellido;
     private String nombre;
+    private ArrayList<Pedido> listaPedidos;
     
     public void mostrar(){
-        System.out.println("Apellido : " + apellido);
-        System.out.println("Nombre : " + nombre);
-        System.out.println("Clave : " + clave);
-        System.out.println("Correo : " + correo);
+        System.out.println("Cliente <" + this.verApellido() + " " + this.verNombre() + ">");
+        System.out.println("Correo : " + this.verCorreo());
+        System.out.println("Clave : " + this.verClave());
     }
 
     public String verCorreo() {
@@ -58,6 +61,14 @@ public class Cliente {
         this.clave = clave;
         this.apellido = apellido;
         this.nombre = nombre;
+    }
+
+    public ArrayList<Pedido> verListaPedidos() {
+        return listaPedidos;
+    }
+
+    public void asignarListaPedidos(ArrayList<Pedido> listaPedidos) {
+        this.listaPedidos = listaPedidos;
     }
     
     

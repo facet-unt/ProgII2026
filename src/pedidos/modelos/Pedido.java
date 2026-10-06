@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import usuarios.modelos.Cliente;
 
 /**
@@ -17,14 +18,16 @@ import usuarios.modelos.Cliente;
 public class Pedido {
     private int numero;
     private LocalDateTime fechaYHora;
-    private Estado estado;
+    private EstadoPedido estado;
     private Cliente cliente;
+    private ArrayList<ProductoDelPedido> listaProductos;
 
-    public Pedido(int numero, LocalDateTime fechaYHora, Estado estado, Cliente cliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, EstadoPedido estado, Cliente cliente, ArrayList<ProductoDelPedido> listaProductos) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
         this.estado = estado;
         this.cliente = cliente;
+        this.listaProductos = listaProductos;
     }
 
     public int verNumero() {
@@ -35,11 +38,11 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public Estado verEstado() {
+    public EstadoPedido verEstado() {
         return estado;
     }
 
-    public void asignarEstado(Estado estado) {
+    public void asignarEstado(EstadoPedido estado) {
         this.estado = estado;
     }
 
@@ -51,26 +54,37 @@ public class Pedido {
         this.cliente = cliente;
     }
     
-    public String verFecha(){
-        return this.fechaFormateada(fechaYHora);
+    public LocalDate verFecha(){
+        return this.fechaYHora.toLocalDate();
     }
     
-    public String verHora(){
-        return this.horaFormateada(fechaYHora);
+    public LocalTime verHora(){
+        return this.fechaYHora.toLocalTime();
     }
     
     
-    private String horaFormateada(LocalDateTime fechaYHora){
-        LocalTime hora = fechaYHora.toLocalTime();
+    private String horaFormateada(){
         String formato = "hh:mm";
-        String horaEnCadena = hora.format(DateTimeFormatter.ofPattern(formato));
+        String horaEnCadena = this.fechaYHora.format(DateTimeFormatter.ofPattern(formato));
         return horaEnCadena;
     }
         
-    private String fechaFormateada(LocalDateTime fechaYHora){
-        LocalDate fecha = fechaYHora.toLocalDate();
+    private String fechaFormateada(){
         String formato = "dd/mm/yyyy";
-        String fechaEnCadena = fecha.format(DateTimeFormatter.ofPattern(formato));
+        String fechaEnCadena = this.fechaYHora.format(DateTimeFormatter.ofPattern(formato));
         return fechaEnCadena;
+    }
+    
+    public void mostrar(){
+        System.out.println("Nro : " + this.numero);
+        System.out.println("Fecha : " + this.fechaFormateada() + "\t\t" + "Hora : " + this.horaFormateada());
+        System.out.println("Cliente : " + this.cliente.verApellido() + ", " + this.cliente.verNombre());
+        System.out.println("Estado : " + this.estado);
+        System.out.println("\tProducto\t\t\tCantidad");
+        System.out.println("=======================================================");
+        for(int i = 0; i < this.listaProductos.size(); i++){
+            ProductoDelPedido pdp = this.listaProductos.get(i);
+            System.out.println("[" + pdp.verProducto().verCodigo() + "]" + " " + pdp.verProducto().verDescripcion() + "\t " + pdp.verProducto().verPrecio() + "\t\t " + pdp.verCantidad());
+        }
     }
 }

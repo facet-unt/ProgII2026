@@ -8,14 +8,14 @@ package pedidos.modelos;
  *
  * @author tobias150
  */
-public enum Estado {
+public enum EstadoPedido {
     CREADO("Creado"),
     PROCESANDO("Procesando"),
     ENTREGADO("Entregado");
     
     private final String estado;
     
-    private Estado(String estado){
+    private EstadoPedido(String estado){
         this.estado = estado;
     }
 

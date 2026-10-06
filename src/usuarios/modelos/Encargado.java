@@ -15,10 +15,9 @@ public class Encargado {
     private String nombre;
     
     public void mostrar(){
-        System.out.println("Apellido : " + apellido);
-        System.out.println("Nombre : " + nombre);
-        System.out.println("Clave : " + clave);
-        System.out.println("Correo : " + correo);
+        System.out.println("Encargado <" + this.verApellido() + " " + this.verNombre() + ">");
+        System.out.println("Correo : " + this.verCorreo());
+        System.out.println("Clave : " + this.verClave());
     }
 
     public String verCorreo() {

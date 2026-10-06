@@ -16,16 +16,13 @@ public class Producto {
     private Categoria categoria;
     
     public void mostrar() {        
-        System.out.println(descripcion);
-        System.out.println(precio);
-        System.out.println(categoria);
-        System.out.println(estado);
-        System.out.println(codigo);
+        System.out.println("Producto<" + this.verCodigo() + ">" + " " + this.verDescripcion());
+        System.out.println("Categoria : " + this.verCategoria() + "\tEstado : " + this.verEstado() + "\tPrecio : " + this.verPrecio());
     }   
     
     @Override
     public String toString() {
-        return "Producto : " + this.descripcion;
+        return "[" + this.verCodigo() + "]" + " " + this.verDescripcion() + "\t " + this.verPrecio();
     }
 
     public Producto(int codigo, String descripcion, float precio, Estado estado, Categoria categoria) {
