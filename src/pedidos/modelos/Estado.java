@@ -19,7 +19,7 @@ public enum Estado {
         this.descripcion = descripcion;
     }
 
-    public String getDescripcion() {
+    public String verDescripcion() {
         return descripcion;
     }
 

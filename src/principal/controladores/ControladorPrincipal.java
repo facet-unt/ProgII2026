@@ -4,6 +4,7 @@
  */
 package principal.controladores;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
 import productos.modelos.Categoria;
@@ -30,13 +31,13 @@ public class ControladorPrincipal {
         Cliente cliente2 = new Cliente("joseluisM@hotmail.com","4567","Molina","Jose Luis");
         Cliente cliente3 = new Cliente("juliGz@hotmail.com","9096","Gomez","Julieta");
          
-//        Encargado encargado1 = new Encargado("fernandezjuan@hotmail.com","3334","Fernandez","Juan");
-//        Encargado encargado2 = new Encargado("martinezK@hotmail.com","5557","Martinez","Kevin");
-//        Encargado encargado3 = new Encargado("alvaresTomas@hotmail.com","88854","Alvares","Tomas");
-//         
-//        Empleado empleado1 = new Empleado("fuentesmario@hotmail.com","3334","Fuentes","Mario");
-//        Empleado empleado2 = new Empleado("lopez@hotmail.com","111111","Lopez","Hector");
-//        Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
+        Encargado encargado1 = new Encargado("fernandezjuan@hotmail.com","3334","Fernandez","Juan");
+        Encargado encargado2 = new Encargado("martinezK@hotmail.com","5557","Martinez","Kevin");
+        Encargado encargado3 = new Encargado("alvaresTomas@hotmail.com","88854","Alvares","Tomas");
+         
+        Empleado empleado1 = new Empleado("fuentesmario@hotmail.com","3334","Fuentes","Mario");
+        Empleado empleado2 = new Empleado("lopez@hotmail.com","111111","Lopez","Hector");
+        Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
       
         
         Producto hamburguesa = new Producto(1234,"Hamburguesa", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE,8000f);
@@ -52,13 +53,13 @@ public class ControladorPrincipal {
         clientes.add(cliente2);
         clientes.add(cliente3);
         
-//        encargados.add(encargado1);
-//        encargados.add(encargado2);
-//        encargados.add(encargado3);
-//        
-//        empleados.add(empleado1);
-//        empleados.add(empleado2);
-//        empleados.add(empleado3);
+        encargados.add(encargado1);
+        encargados.add(encargado2);
+        encargados.add(encargado3);
+        
+        empleados.add(empleado1);
+        empleados.add(empleado2);
+        empleados.add(empleado3);
         
         
         System.out.println("------Productos------\n");
@@ -119,8 +120,11 @@ public class ControladorPrincipal {
             e.mostrar();
         }
         
+        Pedido pedido1 =new Pedido(1, LocalDateTime.now() );
+        pedidos.add(pedido1);
         for(Pedido p:pedidos){
             p.mostrar();
         }
+        
     }
 }

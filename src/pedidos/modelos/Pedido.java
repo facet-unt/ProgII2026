@@ -5,6 +5,7 @@
 package pedidos.modelos;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import usuarios.modelos.Cliente;
 
 /**
@@ -16,42 +17,47 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private Estado estado;
     private Cliente unCliente;
+    private ArrayList<ProductoDelPedido> productos;
 
-    public int getNumero() {
+    public int verNumero() {
         return numero;
     }
 
-    public LocalDateTime getFechaYHora() {
+    public LocalDateTime verFechaYHora() {
         return fechaYHora;
     }
 
-    public Estado getEstado() {
+    public Estado verEstado() {
         return estado;
     }
 
-    public void setNumero(int numero) {
+    public void asignarNumero(int numero) {
         this.numero = numero;
     }
 
-    public void setFechaYHora(LocalDateTime fechaYHora) {
+    public void asignarFechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
     }
 
-    public void setEstado(Estado estado) {
+    public void asignarEstado(Estado estado) {
         this.estado = estado;
     }
 
-    public Pedido(int numero, LocalDateTime fechaYHora, Estado estado) {
+    public Pedido(int numero, LocalDateTime fechaYHora) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
-        this.estado = estado;
+        this.estado = Estado.CREADO;
     }
     
     public void mostrar(){
-      System.out.println("Nro: "+numero);
+      System.out.println("Nro: "+numero + "\t"+ "Estado: "+estado);
       System.out.println("Fecha: "+fechaYHora.toLocalDate() + "\t" + "Hora: "+ fechaYHora.toLocalTime());
       System.out.println(unCliente.verApellido()+", "+unCliente.verNombre());
-      System.out.println("Estado: "+estado);
+      System.out.println("\t Producto \t\t Cantidad");
+      System.out.println("=======================================");
+      for(ProductoDelPedido p : productos){
+          System.out.println(p.verUnProducto().verCodigo()+ p.verUnProducto().verDescripcion()+"\t"+p.verUnProducto().verPrecio()+"\t"+p.verCantidad());
+      }
     }
     
 }
