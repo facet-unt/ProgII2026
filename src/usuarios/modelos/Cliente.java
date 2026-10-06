@@ -4,6 +4,8 @@
 // */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author estudiante
@@ -13,6 +15,8 @@ public class Cliente {
     private String clave;
     private String apellido;
     private String nombre;
+    
+    private ArrayList<Pedidos> pedidos; 
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
