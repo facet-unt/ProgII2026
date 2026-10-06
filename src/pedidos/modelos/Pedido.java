@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import usuarios.modelos.Cliente;
+import pedidos.modelos.ProductoDelPedido;
+import productos.modelos.Producto;
 
 public class Pedido {
     private int numero;
@@ -65,19 +67,21 @@ public class Pedido {
         return ProductoDelPedido;
     }
 
-    public void asignarProductoDelPedido(ArrayList<ProductoDelPedido> ProductoDelPedido) {
-        this.ProductoDelPedido = ProductoDelPedido;
+    public void asignarProductoDelPedido(int cantidad, Producto p) {
+        ProductoDelPedido pdp = new ProductoDelPedido(cantidad, p);
+        this.ProductoDelPedido.add(pdp);
     }
     
     //====================================
     //      Constructores de Producto
     //====================================
 
-    public Pedido(int numero, Estado estado, Cliente cliente) {
+    public Pedido(int numero, Cliente cliente) {
         this.numero = numero;
         this.cliente = cliente;
         this.fechaYHora = LocalDateTime.now();
         this.estado = Estado.CREADO;
+        
     }
     
     
