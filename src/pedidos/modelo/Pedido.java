@@ -6,7 +6,9 @@ package pedidos.modelo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import usuarios.modelos.Cliente;
+
 
 /**
  *
@@ -19,6 +21,9 @@ public class Pedido {
     //Relacion: Un pedido tiene un cliente
     private Cliente cliente;
     private String estado;
+    
+    //Relacion: Pedido tiene una cantidad
+    private ArrayList<ProductoDelPedido> listaProductos = new ArrayList<>();
 
     public Pedido(int numero, Cliente cliente, String estado) {
         this.numero = numero;
@@ -49,7 +54,9 @@ public class Pedido {
         System.out.println("Cliente: "+cliente+"\nEstado: "+estado.toString());
         System.out.println("Producto\t\t\tCantidad");
         System.out.println("================================================");
-        System.out.println("(lista de objetos comprados con sus cantidades)");
+        for(ProductoDelPedido unProducto: listaProductos){
+            unProducto.mostrar();
+        }
         
     }
 }

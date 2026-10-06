@@ -60,8 +60,7 @@ public class Producto {
         return nombre;
     }
 
-    /*Hay un error que sale de este constructor en la ventana(VentanaAMProducto),
-    hay que modificar la ventana para que pueda obtener categoría, nombre y estado*/
+    
     public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
