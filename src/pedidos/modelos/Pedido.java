@@ -3,6 +3,7 @@ package pedidos.modelos;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import usuarios.modelos.Cliente;
 
 public class Pedido {
@@ -10,16 +11,22 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private Estado estado;
     private Cliente cliente;
+    private ArrayList<ProductoDelPedido> ProductoDelPedido = new ArrayList<>();
     
     //====================================
     //      Métodos de Pedido
     //====================================
     public void mostrar(){
-        System.out.println("||Informacion del cliente:");
+        System.out.printf("Nro: %d                      Estado: %s",numero,estado);
+        System.out.printf("Fecha: %tF , Hora: %tR ", fechaYHora, fechaYHora );
         System.out.println("Cliente: "+ this.cliente.verApellido() +", " + this.cliente.verNombre() );
         System.out.println("clave: "+ this.cliente.verClave() +" | correo: " + this.cliente.verCorreo()+ "\n");
-        System.out.println("||Informacion del pedido:");
-        System.out.printf("Numero: %d, Fecha: %tF , Hora: %tR, Estado: %s", numero, fechaYHora, fechaYHora, estado);
+        System.out.println("         Producto                                                                   Cantidad");
+        System.out.println("==============================================================================================");
+        for(ProductoDelPedido pido: ProductoDelPedido){
+            pido.mostrar();
+        }
+        
     }
 
     public int verNumero() {
@@ -52,6 +59,14 @@ public class Pedido {
 
     public void asignarCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public ArrayList<ProductoDelPedido> verProductoDelPedido() {
+        return ProductoDelPedido;
+    }
+
+    public void asignarProductoDelPedido(ArrayList<ProductoDelPedido> ProductoDelPedido) {
+        this.ProductoDelPedido = ProductoDelPedido;
     }
     
     //====================================
