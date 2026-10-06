@@ -12,7 +12,7 @@ public enum Estado {
     DISPONIBLE("Disponible"),
     NO_DISPONIBLE("No disponible");
     
-    private String estado;
+    private final String estado;
 
     private Estado(String est) {
         this.estado = est;

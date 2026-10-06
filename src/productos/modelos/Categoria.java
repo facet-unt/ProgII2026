@@ -13,7 +13,7 @@ public enum Categoria {
     PLATO_PRINCIPAL("Plato Principal"),
     POSTRE("Postre");
     
-    private String categ;
+    private final String categ;
 
     private Categoria(String categoria) {
         this.categ = categoria;
