@@ -5,6 +5,8 @@
 package pedidos.modelos;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import usuarios.modelos.Cliente;
 
 /**
  *
@@ -13,6 +15,8 @@ import java.time.LocalDateTime;
 public class Pedido {
     int Numero;
     LocalDateTime fechaYHora;
+    private Cliente unCliente;
+    private Estado unEstado;
 
     public Pedido(int Numero, LocalDateTime fechaYHora) {
         this.Numero = Numero;
@@ -31,13 +35,37 @@ public class Pedido {
         this.fechaYHora.toLocalDate();
         return fechaYHora;
     }
-    public LocalDateTime VerHora() {
+    public LocalDateTime verHora() {
         this.fechaYHora.toLocalTime();
         return fechaYHora;
     }
 
     public void FechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
+    }
+    
+    private String FechaACadena (LocalDateTime fecha){
+        String patron = "dd/MM/yyyy";
+        String fechaEnCadena = fecha.format(DateTimeFormatter.ofPattern(patron));
+        return fechaEnCadena;
+        
+    }
+    
+    private String HoraACadena (LocalDateTime hora){
+        String patron = "hh:mm";
+        String horaEnCadena = hora.format(DateTimeFormatter.ofPattern(patron));
+        return horaEnCadena;
+        
+    }
+    
+    public void mostrar() {        
+        System.out.println("Nro:"+ Numero+"\n"+"Fecha: "+ FechaACadena(verFecha())+ "\t"+"Hora: "+ HoraACadena(verHora()));
+        System.out.println("Cliente: "+ unCliente.verApellido() +"," +unCliente.verNombre());
+        System.out.println("Estado: "+ unEstado);
+        System.out.println("");
+        System.out.println("====================================");
+        System.out.println("");
+        System.out.println("");
     }
     
 }
