@@ -6,8 +6,26 @@ package productos.modelos;
 
 /**
  *
- * @author LUCRECIA
+ * @author estudiante
  */
 public enum Estado {
+    DISPONIBLE("Disponible"),
+    NO_DISPONIBLE("No disponible");
+    
+    private final String descripcion;
+    
+    Estado(String descripcion){
+        this.descripcion = descripcion;
+    }
+
+    public String verDescripcion() {
+        return descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return descripcion;
+    }
+    
     
 }
