@@ -7,7 +7,7 @@ package pedidos.modelos;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Cliente;
-
+import java.util.ArrayList;
 /**
  *
  * @author Usuario
@@ -19,6 +19,9 @@ public class Pedido {
     //Relacion: Un pedido tiene un cliente
     private Cliente unCliente;
     private Estado estado;
+    //relacion pedido con el prodcto del pedido
+    ArrayList<ProductoDelPedido> ListaProductoDelPedido=new ArrayList<>();
+     
     
     public Pedido(int numero, Cliente unCliente){
         this.numero = numero;
