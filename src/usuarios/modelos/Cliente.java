@@ -18,13 +18,12 @@ public class Cliente {
     private String nombre;
     private ArrayList<Pedido> pedidos;
 
-    public Cliente(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
-    }
-
+    
+    
+    //====================================
+    //      Metodos de Cliente
+    //====================================
+    
     public String verCorreo() {
         return correo;
     }
@@ -56,12 +55,21 @@ public class Cliente {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
 
     public void mostrar(){
         System.out.println("Cliente: "+apellido +", " +nombre );
         System.out.println("clave: "+clave +" | correo: " +correo+ "\n");
+    }
+    
+    //====================================
+    //      Constructor de Cliente
+    //====================================
+    
+    public Cliente(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
     }
 
 }

@@ -21,6 +21,10 @@ public class Encargado {
         this.nombre = nombre;
     }
 
+    //====================================
+    //      Metodos de Encargado
+    //====================================
+    
     public String verCorreo() {
         return correo;
     }
@@ -59,4 +63,8 @@ public class Encargado {
         System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
     }
 
+    //====================================
+    //      Constructor de Encargado
+    //====================================
+    
 }

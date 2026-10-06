@@ -14,14 +14,10 @@ public class Empleado {
     private String apellido;
     private String nombre;
 
-    public Empleado(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
-    }
-
-
+    //====================================
+    //      Metodos de Cliente
+    //====================================
+    
     public String verCorreo() {
         return correo;
     }
@@ -54,15 +50,19 @@ public class Empleado {
         this.nombre = nombre;
     }
     
-    
-
-    
     public void mostrar(){
         System.out.println("Empleado: "+apellido +", " +nombre );
         System.out.println("clave: "+clave +" | correo: " +correo+"\n");
     }
 
+    //====================================
+    //      Constructor de Empleado
+    //====================================
     
-    
-
+    public Empleado(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
 }

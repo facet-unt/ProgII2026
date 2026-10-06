@@ -13,13 +13,21 @@ public enum Estado {
     
     private final String descripcion;
     
-    Estado(String descripcion){
-        this.descripcion = descripcion;
-    }
+    
+    //====================================
+    //      Metodos de Estado
+    //====================================
     
 @Override
     public String toString(){
         return descripcion;
+    }
+    //====================================
+    //      Constructor de Estado
+    //====================================
+    
+    Estado(String descripcion){
+        this.descripcion = descripcion;
     }
 }
 

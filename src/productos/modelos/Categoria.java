@@ -13,12 +13,19 @@ public enum Categoria {
     
     private final String descripcion;
     
-    Categoria(String descripcion){
-        this.descripcion = descripcion;
-    }
+    //====================================
+    //      Métodos de Categoria
+    //====================================
     
 @Override
     public String toString(){
         return descripcion;
+    }
+    //====================================
+    //      Constructor de Categoria
+    //====================================
+    
+    Categoria(String descripcion){
+        this.descripcion = descripcion;
     }
 }
