@@ -13,11 +13,13 @@ import productos.modelos.Producto;
  */
 public class ProductoDelPedido {
     private int cantidad;
-    //private Pedido unPedido;
+    //Relacion con Producto
+    private Producto unProducto;
 
-    ArrayList<Producto> productos = new ArrayList<>();
-
-     
+    public ProductoDelPedido(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
     public int getCantidad() {
         return cantidad;
     }
@@ -25,11 +27,4 @@ public class ProductoDelPedido {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    private static final System.Logger LOG = System.getLogger(ProductoDelPedido.class.getName());
-
-    public ProductoDelPedido(int cantidad) {
-        this.cantidad = cantidad;
-    }
-    
-     
 }

@@ -20,7 +20,7 @@ public class ControladorPrincipal {
         ArrayList<Encargado> encargados = new ArrayList<>();
         ArrayList<Empleado> empleados = new ArrayList<>();
         ArrayList<Producto> productos = new ArrayList<>();
-//        
+        
 //        System.out.println("#################### ");
 //        System.out.println("PRODUCTOS");
 //        Producto p1 = new Producto(1, "Producto1", "Plato Principal", "true", 1550.8f);
@@ -46,7 +46,7 @@ public class ControladorPrincipal {
 //
 //        System.out.println("#################### ");
 //        System.out.println("CLIENTES");
-        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
+//        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
 //        Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
 //        Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
 //        
@@ -98,7 +98,7 @@ public class ControladorPrincipal {
 //            e.mostrar();
         
         //Pruebas del funcionamiento de producto
-        Pedido pedido1 = new Pedido(1, cliente1);
-        pedido1.mostrar();
+//        Pedido pedido1 = new Pedido(1, cliente1);
+//        pedido1.mostrar();
     }
 }

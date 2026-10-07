@@ -19,8 +19,8 @@ public class Pedido {
     //Relacion: Un pedido tiene un cliente
     private Cliente unCliente;
     private Estado estado;
-    //relacion pedido con el prodcto del pedido
-    ArrayList<ProductoDelPedido> ListaProductoDelPedido=new ArrayList<>();
+    //Relacion con ProductoDelPedido
+    ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
      
     
     public Pedido(int numero, Cliente unCliente){
@@ -28,6 +28,8 @@ public class Pedido {
         this.fechaYHora = LocalDateTime.now();
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;
+        this.productosDelPedido = new ArrayList<>();
+        
     }
     
     public int verNumero() {
