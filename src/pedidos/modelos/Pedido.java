@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Cliente;
 import java.util.ArrayList;
+import productos.modelos.Producto;
 /**
  *
  * @author Usuario
@@ -28,8 +29,7 @@ public class Pedido {
         this.fechaYHora = LocalDateTime.now();
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;
-        this.productosDelPedido = new ArrayList<>();
-        
+        this.productosDelPedido = new ArrayList<>();    
     }
     
     public int verNumero() {
@@ -50,6 +50,11 @@ public class Pedido {
         return this.fechaYHora.format(horaConFormato);
     }
     
+    public void agregarProducto(Producto unProducto, int cantidad){
+        ProductoDelPedido detallePedido = new ProductoDelPedido(unProducto, cantidad);
+        productosDelPedido.add(detallePedido);
+    }
+    
     public void mostrar(){
         System.out.println("Nro: " + numero);
         System.out.println("Fecha: " + verFecha() + "\t\t\t" + "Hora: " + verHora());
@@ -57,6 +62,8 @@ public class Pedido {
         System.out.println("Estado: " + estado.toString());
         System.out.println("Producto\t\t\t\t\tCantidad");
         System.out.println("================================================================");
-        
+        for (ProductoDelPedido pDP : productosDelPedido) {
+            System.out.println(pDP);
+        }
     }
 }

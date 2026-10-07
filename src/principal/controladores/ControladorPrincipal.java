@@ -6,6 +6,8 @@ package principal.controladores;
 
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
+import productos.modelos.Categoria;
+import productos.modelos.Estado;
 import productos.modelos.Producto;
 import usuarios.modelos. *;
 
@@ -23,9 +25,9 @@ public class ControladorPrincipal {
         
 //        System.out.println("#################### ");
 //        System.out.println("PRODUCTOS");
-//        Producto p1 = new Producto(1, "Producto1", "Plato Principal", "true", 1550.8f);
-//        Producto p2= new Producto(2, "Producto2", "Postre", "True", 850.8f);
-//        Producto p3 = new Producto(3, "Producto3", "Plato Principal", "False", 1050.0f);
+        Producto p1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1550.8f);
+        Producto p2= new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE, 850.8f);
+        Producto p3 = new Producto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 1050.0f);
 //        
 //        productos.add(p1);
 //        productos.add(p2);
@@ -46,7 +48,7 @@ public class ControladorPrincipal {
 //
 //        System.out.println("#################### ");
 //        System.out.println("CLIENTES");
-//        Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
+          Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
 //        Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
 //        Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
 //        
@@ -98,7 +100,10 @@ public class ControladorPrincipal {
 //            e.mostrar();
         
         //Pruebas del funcionamiento de producto
-//        Pedido pedido1 = new Pedido(1, cliente1);
-//        pedido1.mostrar();
+        Pedido pedido1 = new Pedido(1, cliente1);
+        pedido1.agregarProducto(p1, 5);
+        pedido1.agregarProducto(p2, 3);
+        pedido1.agregarProducto(p3, 0);
+        pedido1.mostrar();
     }
 }

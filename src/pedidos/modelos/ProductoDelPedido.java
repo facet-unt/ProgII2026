@@ -4,7 +4,6 @@
  */
 package pedidos.modelos;
 
-import java.util.ArrayList;
 import productos.modelos.Producto;
 
 /**
@@ -16,15 +15,23 @@ public class ProductoDelPedido {
     //Relacion con Producto
     private Producto unProducto;
 
-    public ProductoDelPedido(int cantidad) {
+    public ProductoDelPedido(Producto unProducto, int cantidad) {
+        this.unProducto = unProducto;
         this.cantidad = cantidad;
     }
     
-    public int getCantidad() {
+    public int verCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public Producto verProducto(){
+        return unProducto;
     }
+
+    @Override
+    public String toString() {
+        return unProducto.toString() + cantidad;
+    }
+    
+    
 }
