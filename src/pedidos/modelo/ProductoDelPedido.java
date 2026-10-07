@@ -22,7 +22,7 @@ public class ProductoDelPedido {
     public Producto verUnProducto() {
         return unProducto;
     }
-    public void asignarUnProducto(Producto unProducto) {
+    public void asignarProducto(Producto unProducto) {
         this.unProducto = unProducto;
     }
     

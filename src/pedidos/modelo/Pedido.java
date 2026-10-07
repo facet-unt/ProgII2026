@@ -7,6 +7,7 @@ package pedidos.modelo;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
 
@@ -25,7 +26,7 @@ public class Pedido {
     //Relacion: Pedido tiene una cantidad
     private ArrayList<ProductoDelPedido> listaProductos = new ArrayList<>();
 
-    public Pedido(int numero, Cliente cliente, String estado) {
+    public Pedido(int numero, Cliente cliente) {
         this.numero = numero;
         this.fechaYHora = LocalDateTime.now();
         this.cliente = cliente;
@@ -49,11 +50,17 @@ public class Pedido {
         return this.fechaYHora.format(horaConFormato);
     }
     
+    public void asignarProductoDelPedido(int cantidad, Producto p) {
+        ProductoDelPedido pdp = new ProductoDelPedido(cantidad, p);
+        this.listaProductos.add(pdp);
+    }
+    
     public void mostrar(){
         System.out.println("Pedido: "+numero+"\nFecha: "+ verFecha()+"\t Hora: "+verHora());
         System.out.println("Cliente: "+cliente+"\nEstado: "+estado.toString());
         System.out.println("Producto\t\t\tCantidad");
         System.out.println("================================================");
+        System.out.println("hola");
         for(ProductoDelPedido unProducto: listaProductos){
             unProducto.mostrar();
         }
