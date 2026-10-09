@@ -86,7 +86,7 @@ public class ControladorPrincipal {
         productos.get(1).setEstado(Estado.NO_DISPONIBLE);
         productos.get(2).setCodigo(4567);
         
-        clientes.get(2).asignarClave("454647");
+        clientes.get(2).setClave("454647");
         empleados.get(1).verCorreo();
         encargados.get(1).asignarApellido("Falcon");
         encargados.get(0).asignarClave("346789");

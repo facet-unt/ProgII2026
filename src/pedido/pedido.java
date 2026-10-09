@@ -5,13 +5,14 @@
 package pedido;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Cliente;
 
 /**
  *
  * @author Home
  */
-public class pedido {
+public class Pedido {
     private int numero;
     private LocalDateTime fechaHora;
     private estado estado;
@@ -71,5 +72,18 @@ public class pedido {
      */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    
+    public void mostrar(){
+        DateTimeFormatter fechaFormato = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+        DateTimeFormatter horaFormato = DateTimeFormatter.ofPattern("HH:mm");
+        
+        System.out.println("Nro:" + this.getNumero());
+        System.out.println("Fecha: " + this.getFechaHora().toLocalDate().format(fechaFormato) + "\t\tHora: " + this.getFechaHora().toLocalDate().format(horaFormato));
+        System.out.println("Cliente: " + this.cliente.getApellido() + this.cliente.getNombre());
+        System.out.println("Estado: " + this.getEstado());
+        System.out.println("         Producto                                                                   Cantidad");
+        System.out.println("==============================================================================================");
+       
     }
 }

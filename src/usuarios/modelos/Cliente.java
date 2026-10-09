@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package usuarios.modelos;
-
+import java.util.ArrayList;
+import pedido.Pedido;
 
 
 public class Cliente {
@@ -12,6 +13,7 @@ public class Cliente {
     private String clave;
     private String apellido;
     private String nombre;
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
 //Contructor
     public Cliente(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
@@ -21,7 +23,7 @@ public class Cliente {
     }
     
     public void mostrar(){
-        System.out.println("Correo: " + getCorreo() + "| Clave: " + getClave() + "| Apellido: " + verApellido() + "| Nombre: " + verNombre());
+        System.out.println("Correo: " + getCorreo() + "| Clave: " + getClave() + "| Apellido: " + getApellido() + "| Nombre: " + getNombre());
     }    
 
     /**
@@ -32,9 +34,9 @@ public class Cliente {
     }
 
     /**
-     * @param correo the correo to asignar
+     * @param correo the correo to set
      */
-    public void asignarCorreo(String correo) {
+    public void setCorreo(String correo) {
         this.correo = correo;
     }
 
@@ -46,37 +48,55 @@ public class Cliente {
     }
 
     /**
-     * @param clave the clave to asignar
+     * @param clave the clave to set
      */
-    public void asignarClave(String clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
 
     /**
      * @return the apellido
      */
-    public String verApellido() {
+    public String getApellido() {
         return apellido;
     }
 
     /**
-     * @param apellido the apellido to asignar
+     * @param apellido the apellido to set
      */
-    public void asignarApellido(String apellido) {
+    public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
     /**
      * @return the nombre
      */
-    public String verNombre() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to asignar
+     * @param nombre the nombre to set
      */
-    public void asignarNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    /**
+     * @return the pedidos
+     */
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    /**
+     * @param pedidos the pedidos to set
+     */
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    /**
+     * @return the correo
+     */
 }
