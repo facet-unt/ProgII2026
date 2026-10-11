@@ -56,7 +56,7 @@ public class Empleado {
     
     
     public void mostrar(){
-        System.out.println("Empleado: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+"\n");
+        System.out.println("\tEmpleado: "+apellido +", " +nombre );
+        System.out.println("\tclave: "+clave +" | correo: " +correo+"\n");
     }
 }

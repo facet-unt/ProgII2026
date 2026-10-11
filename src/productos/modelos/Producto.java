@@ -66,13 +66,13 @@ public class Producto {
     
     
     public void mostrar() {        
-        System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
+        System.out.println("\tProducto: "+descripcion +" |Codigo: " +codigo );
+        System.out.println("\tEstado: "+estado +" | Precio: " +precio+ "\n");
     }
     
     @Override
     public String toString(){
-        return "Producto: " + descripcion;
+        return "[" + codigo + "] " + descripcion + "\t $" + precio;
     }
     
 }

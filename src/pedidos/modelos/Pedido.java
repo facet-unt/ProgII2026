@@ -5,6 +5,7 @@
 package pedidos.modelos;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import usuarios.modelos.Cliente;
 
@@ -48,15 +49,34 @@ public class Pedido {
         this.fechaYHora = fechaYHora;
         this.estado = Estado.CREADO;
     }
+
+    public Cliente getUnCliente() {
+        return unCliente;
+    }
+
+    public void setUnCliente(Cliente unCliente) {
+        this.unCliente = unCliente;
+    }
+
+    public ArrayList<ProductoDelPedido> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<ProductoDelPedido> productos) {
+        this.productos = productos;
+    }
+    
     
     public void mostrar(){
-      System.out.println("Nro: "+numero + "\t"+ "Estado: "+estado);
-      System.out.println("Fecha: "+fechaYHora.toLocalDate() + "\t" + "Hora: "+ fechaYHora.toLocalTime());
+      DateTimeFormatter formatoFecha= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+      DateTimeFormatter formatoHora= DateTimeFormatter.ofPattern("HH:mm");
+      System.out.println("Nro: "+numero + "\t\t" +estado);
+      System.out.println("Fecha: "+fechaYHora.format(formatoFecha) + "\t" + "Hora: "+ fechaYHora.format(formatoHora));
       System.out.println(unCliente.verApellido()+", "+unCliente.verNombre());
-      System.out.println("\t Producto \t\t Cantidad");
-      System.out.println("=======================================");
+      System.out.println("\t Producto \t\t\t\t\t\t\t Cantidad");
+      System.out.println("\t=====================================================================");
       for(ProductoDelPedido p : productos){
-          System.out.println(p.verUnProducto().verCodigo()+ p.verUnProducto().verDescripcion()+"\t"+p.verUnProducto().verPrecio()+"\t"+p.verCantidad());
+          System.out.println("\t"+p.verUnProducto().verCodigo() + " " + p.verUnProducto().verDescripcion()+" \t\t\t "+p.verUnProducto().verPrecio()+" \t\t\t "+p.verCantidad());
       }
     }
     

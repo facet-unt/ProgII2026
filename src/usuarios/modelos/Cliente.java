@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Cliente {
     private String apellido;
     private String nombre;
     
-    private ArrayList<Pedidos> pedidos; 
+    private ArrayList<Pedido> pedidos; 
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
@@ -60,7 +61,7 @@ public class Cliente {
     
     
     public void mostrar(){
-        System.out.println("Cliente: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n");
+        System.out.println("\tCliente: "+apellido +", " +nombre );
+        System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n");
     }
 }

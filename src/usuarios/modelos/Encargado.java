@@ -54,7 +54,7 @@ public class Encargado {
     }
 
     public void mostrar(){
-        System.out.println("Encargado: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
+        System.out.println("\tEncargado: "+apellido +", " +nombre );
+        System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n" );
     }
 }
