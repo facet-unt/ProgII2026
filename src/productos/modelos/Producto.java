@@ -16,93 +16,102 @@ public class Producto {
     private Estado estado;
     private float precio;
 
-    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
+    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
         this.precio = precio;
+        this.asignarEstado(estado);
+        this.asignarCategoria(categoria);  
     }
     
     
     
     public void mostrar() {        
-        System.out.println("Producto: "+getDescripcion() +" |Codigo: " +getCodigo() );
-        System.out.println("Estado: "+getEstado() +" | Precio: " +getPrecio()+ "\n");
+        System.out.println("Producto: "+verDescripcion() +" |Codigo: " +verCodigo() );
+        System.out.println("Estado: "+verEstado() +" | Precio: " +verPrecio()+ "\n");
     }
     
     @Override
     public String toString(){
-        return "Producto: " + getDescripcion();
+        return "Producto: " + verDescripcion();
     }
 
     /**
      * @return the codigo
      */
-    public int getCodigo() {
+    public int verCodigo() {
         return codigo;
     }
 
     /**
-     * @param codigo the codigo to set
+     * @param codigo the codigo to asignar
      */
-    public void setCodigo(int codigo) {
+    public void asignarCodigo(int codigo) {
         this.codigo = codigo;
     }
 
     /**
      * @return the descripcion
      */
-    public String getDescripcion() {
+    public String verDescripcion() {
         return descripcion;
     }
 
     /**
-     * @param descripcion the descripcion to set
+     * @param descripcion the descripcion to asignar
      */
-    public void setDescripcion(String descripcion) {
+    public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
     /**
      * @return the categoria
      */
-    public Categoria getCategoria() {
-        return categoria;
+    public String verCategoria() {
+        return categoria.toString();
     }
 
     /**
-     * @param categoria the categoria to set
+     * @param categoria the categoria to asignar
      */
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void asignarCategoria(String categoria){
+        switch(categoria.toLowerCase()){
+           case "Entrada" -> this.categoria=Categoria.ENTRADA;
+           case "Plato principal" -> this.categoria=Categoria.PLATO_PRINCIPAL;
+           case "Postre" -> this.categoria=Categoria.POSTRE;
+           default -> this.categoria = Categoria.ENTRADA;
+        }
     }
 
     /**
      * @return the estado
      */
-    public Estado getEstado() {
-        return estado;
+    public String verEstado() {
+        return estado.toString();
     }
 
     /**
-     * @param estado the estado to set
+     * @param estado the estado to asignar
      */
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public void asignarEstado(String estado) {
+        switch (estado.toLowerCase()){
+            case "Disponible" -> this.estado=Estado.DISPONIBLE;
+            case "No disponible" -> this.estado=Estado.NO_DISPONIBLE;
+            default -> this.estado=Estado.NO_DISPONIBLE;
+        }
     }
 
     /**
      * @return the precio
      */
-    public float getPrecio() {
+    public float verPrecio() {
         return precio;
     }
 
     /**
-     * @param precio the precio to set
+     * @param precio the precio to asignar
      */
-    public void setPrecio(float precio) {
+    public void asignarPrecio(float precio) {
         this.precio = precio;
     }
     

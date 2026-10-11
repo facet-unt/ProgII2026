@@ -4,9 +4,11 @@
  */
 package principal.controladores;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import productos.modelos.Categoria;
-import productos.modelos.Estado;
+import pedidos.modelos.Estado;
+import pedidos.modelos.Pedido;
+import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Producto;
 import usuarios.modelos. *;
 
@@ -21,7 +23,8 @@ public class ControladorPrincipal {
         ArrayList<Cliente> clientes = new ArrayList <>();
         ArrayList<Encargado> encargados = new ArrayList <>();
         ArrayList<Empleado> empleados = new ArrayList <>();
-        ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Producto> productos = new ArrayList <>();
+        
         
         Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
         Cliente cliente2 = new Cliente("joseluisM@hotmail.com","4567","Molina","Jose Luis");
@@ -36,9 +39,9 @@ public class ControladorPrincipal {
         Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
       
         
-        Producto hamburguesa = new Producto(1234,"Hamburguesa",Categoria.PLATO_PRINCIPAL,Estado.NO_DISPONIBLE,8000f);
-        Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL,Estado.NO_DISPONIBLE,12000f);
-        Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.ENTRADA,Estado.DISPONIBLE,5000f);
+        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
+        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
+        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
         
         
         productos.add(hamburguesa);
@@ -82,11 +85,11 @@ public class ControladorPrincipal {
         
         System.out.println("Cambiando...\n");
         
-        productos.get(0).setPrecio(12000f);
-        productos.get(1).setEstado(Estado.NO_DISPONIBLE);
-        productos.get(2).setCodigo(4567);
+        productos.get(0).asignarPrecio(12000f);
+        productos.get(1).asignarEstado("No disponible");
+        productos.get(2).asignarCodigo(4567);
         
-        clientes.get(2).setClave("454647");
+        clientes.get(2).asignarClave("454647");
         empleados.get(1).verCorreo();
         encargados.get(1).asignarApellido("Falcon");
         encargados.get(0).asignarClave("346789");
@@ -115,5 +118,18 @@ public class ControladorPrincipal {
         for (Empleado e: empleados ){
             e.mostrar();
         }
+        Pedido pedido1 = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
+        Pedido pedido2 = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
+        Pedido pedido3 = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
+        ArrayList<Pedido> listaPedidos = new ArrayList<>();
+        listaPedidos.add(pedido1);
+        listaPedidos.add(pedido2);
+        listaPedidos.add(pedido3);
+        System.out.println("===Lista de pedidos===");
+        for (Pedido p : listaPedidos) {
+            p.mostrar();
+            System.out.println(); // Espacio entre pedidos
+        }
     }
+
 }
