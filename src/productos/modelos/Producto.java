@@ -11,7 +11,7 @@ package productos.modelos;
 public class Producto {
     private int codigo;
     private String descripcion;
-    private String categoria;
+    private Categoria categoria;
     private String estado;
     private float precio;
 
@@ -23,7 +23,7 @@ public class Producto {
         return descripcion;
     }
 
-    public String verCategoria() {
+    public Categoria verCategoria() {
         return categoria;
     }
 
@@ -43,7 +43,7 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public void asignarCategoria(String categoria) {
+    public void asignarCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
@@ -55,7 +55,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+    public Producto(int codigo, String descripcion, Categoria categoria, String estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -67,7 +67,8 @@ public class Producto {
     
     public void mostrar() {        
         System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
+        System.out.println("Estado: "+estado +" | Precio: " +precio);
+        System.out.println("Categoria: " + categoria +"\n");
     }
     
     @Override

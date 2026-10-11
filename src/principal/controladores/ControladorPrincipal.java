@@ -5,6 +5,7 @@
 package principal.controladores;
 
 import java.util.ArrayList;
+import productos.modelos.Categoria;
 import productos.modelos.Producto;
 import usuarios.modelos. *;
 
@@ -34,9 +35,9 @@ public class ControladorPrincipal {
         Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
       
         
-        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
-        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
-        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
+        Producto hamburguesa = new Producto(1234,"Hamburguesa",Categoria.PLATO_PRINCIPAL,"Disponible",8000f);
+        Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL,"No disponible",12000f);
+        Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.ENTRADA,"Disponible",5000f);
         
         
         productos.add(hamburguesa);
@@ -59,7 +60,7 @@ public class ControladorPrincipal {
         System.out.println("------Productos------\n");
         
         System.out.println("Con toString:");
-        System.out.println(hamburguesa.toString());
+        System.out.println(hamburguesa);
         
         System.out.println("Sin toString (metodo mostrar):");
         for (Producto p: productos ){
