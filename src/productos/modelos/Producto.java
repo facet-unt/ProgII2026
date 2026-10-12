@@ -4,15 +4,17 @@
  */
 package productos.modelos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author estudiante
  */
-public class Producto {
+public class Producto {  
     private int codigo;
     private String descripcion;
     private Categoria categoria;
-    private String estado;
+    private Estado estado;
     private float precio;
 
     public int verCodigo() {
@@ -27,7 +29,7 @@ public class Producto {
         return categoria;
     }
 
-    public String verEstado() {
+    public Estado verEstado() {
         return estado;
     }
 
@@ -43,19 +45,29 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public void asignarCategoria(Categoria categoria) {
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
-    public void asignarEstado(String estado) {
-        this.estado = estado;
-    }
+    
 
     public void asignarPrecio(float precio) {
         this.precio = precio;
     }
 
-    public Producto(int codigo, String descripcion, Categoria categoria, String estado, float precio) {
+    public Producto(int codigo, String descripcion,Categoria categoria, Estado estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.categoria = categoria;
