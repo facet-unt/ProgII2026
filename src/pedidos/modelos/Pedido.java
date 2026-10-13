@@ -20,6 +20,16 @@ public class Pedido {
     private Cliente unCliente;
     private ArrayList<ProductoDelPedido> productos;
 
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productos,Cliente unCliente) {
+        this.numero = numero;
+        this.fechaYHora = fechaYHora;
+        this.unCliente = unCliente;
+        this.productos = productos;
+        this.estado=estado.CREADO;
+    }
+    
+      
+
     public int verNumero() {
         return numero;
     }
@@ -28,26 +38,12 @@ public class Pedido {
         return fechaYHora;
     }
 
-    public Estado verEstado() {
-        return estado;
-    }
-
     public void asignarNumero(int numero) {
         this.numero = numero;
     }
 
     public void asignarFechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
-    }
-
-    public void asignarEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public Pedido(int numero, LocalDateTime fechaYHora) {
-        this.numero = numero;
-        this.fechaYHora = fechaYHora;
-        this.estado = Estado.CREADO;
     }
 
     public Cliente getUnCliente() {
@@ -76,8 +72,33 @@ public class Pedido {
       System.out.println("\t Producto \t\t\t\t\t\t\t Cantidad");
       System.out.println("\t=====================================================================");
       for(ProductoDelPedido p : productos){
-          System.out.println("\t"+p.verUnProducto().verCodigo() + " " + p.verUnProducto().verDescripcion()+" \t\t\t "+p.verUnProducto().verPrecio()+" \t\t\t "+p.verCantidad());
+          System.out.println("\t"+p.verUnProducto().verCodigo() + " " + p.verUnProducto().verDescripcion()+" \t\t\t"+p.verUnProducto().verPrecio()+" \t\t\t\t "+p.verCantidad());
       }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.numero == other.numero;
+    }
+
+   
+    
     
 }
