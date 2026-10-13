@@ -12,6 +12,7 @@ import usuarios.modelos.Encargado;
 
 public class VentanaAMEncargado extends JDialog {
     private ArrayList<Encargado> encargados = new ArrayList<>();
+    private ArrayList<Encargado> encargado = new ArrayList<>();
     
     /**
      * Constructor
@@ -137,6 +138,7 @@ public class VentanaAMEncargado extends JDialog {
     }//GEN-LAST:event_btnCancelarClic
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
+
         String correo = this.txtCorreo.getText().trim();
         String apellido = this.txtApellido.getText().trim();
         String nombre = this.txtNombre.getText().trim();
@@ -150,6 +152,7 @@ public class VentanaAMEncargado extends JDialog {
             c.mostrar();
             System.out.println();
         }
+        //Completar
     }//GEN-LAST:event_btnGuardarClic
 
 

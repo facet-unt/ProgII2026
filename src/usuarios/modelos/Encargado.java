@@ -14,12 +14,7 @@ public class Encargado {
     private String apellido;
     private String nombre;
 
-    public Encargado(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
-    }
+    
 
     //====================================
     //      Metodos de Encargado
@@ -57,7 +52,6 @@ public class Encargado {
         this.nombre = nombre;
     }
 
-
     public void mostrar(){
         System.out.println("Encargado: "+apellido +", " +nombre );
         System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
@@ -67,4 +61,10 @@ public class Encargado {
     //      Constructor de Encargado
     //====================================
     
+    public Encargado(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
 }

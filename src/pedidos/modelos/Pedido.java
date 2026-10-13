@@ -68,19 +68,42 @@ public class Pedido {
     }
 
     public void asignarProductoDelPedido(int cantidad, Producto p) {
-        ProductoDelPedido pdp = new ProductoDelPedido(cantidad, p);
+        ProductoDelPedido pdp = new ProductoDelPedido(p, cantidad);
         this.ProductoDelPedido.add(pdp);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.numero == other.numero;
     }
     
     //====================================
     //      Constructores de Producto
     //====================================
 
-    public Pedido(int numero, Cliente cliente) {
+    public Pedido(int numero,LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> pdp, Cliente cliente) {
         this.numero = numero;
         this.cliente = cliente;
-        this.fechaYHora = LocalDateTime.now();
+        this.fechaYHora = fechaYHora;
         this.estado = Estado.CREADO;
+        this.ProductoDelPedido = pdp;
         
     }
     

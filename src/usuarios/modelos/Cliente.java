@@ -17,8 +17,6 @@ public class Cliente {
     private String apellido;
     private String nombre;
     private ArrayList<Pedido> pedidos;
-
-    
     
     //====================================
     //      Metodos de Cliente

@@ -15,7 +15,7 @@ public class Empleado {
     private String nombre;
 
     //====================================
-    //      Metodos de Cliente
+    //      Metodos de Empleado
     //====================================
     
     public String verCorreo() {

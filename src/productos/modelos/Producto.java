@@ -1,6 +1,5 @@
 package productos.modelos;
 
-
 public class Producto {
     private int codigo;
     private String descripcion;
@@ -12,6 +11,7 @@ public class Producto {
     //====================================
     //      Métodos de Producto
     //====================================
+
     public int verCodigo() {
         return codigo;
     }
@@ -39,22 +39,19 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    // Arregle un pequeño error que habia en el codigo
-    //Como en el enum las palabras estaban capitalizadas las Descapitalize para que coincida con el codigo de aca
-    //Borra el comentario cuando lo veas
-    public void asignarEstado(String estado) {
-        switch (estado.toLowerCase()){
-            case "disponible" -> this.estado=Estado.DISPONIBLE;
-            case "no disponible" -> this.estado=Estado.NO_DISPONIBLE;
+    public void asignarEstado(Estado estado) {
+        switch (estado){
+            case Estado.DISPONIBLE -> this.estado=Estado.DISPONIBLE;
+            case Estado.NO_DISPONIBLE -> this.estado=Estado.NO_DISPONIBLE;
             default -> this.estado=Estado.NO_DISPONIBLE;
         }
     }
     
-    public void asignarCategoria(String categoria){
-        switch(categoria.toLowerCase()){
-           case "entrada" -> this.categoria=Categoria.ENTRADA;
-           case "plato principal" -> this.categoria=Categoria.PLATO_PRINCIPAL;
-           case "postre" -> this.categoria=Categoria.POSTRE;
+    public void asignarCategoria(Categoria categoria){
+        switch(categoria){
+           case Categoria.ENTRADA -> this.categoria=Categoria.ENTRADA;
+           case Categoria.PLATO_PRINCIPAL -> this.categoria=Categoria.PLATO_PRINCIPAL;
+           case Categoria.POSTRE -> this.categoria=Categoria.POSTRE;
            default -> this.categoria = Categoria.ENTRADA;
         }
     }
@@ -63,7 +60,7 @@ public class Producto {
         this.precio = precio;
     }
     
-        public void mostrar() {        
+    public void mostrar() {        
         System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
         System.out.println("Estado: "+estado +" | Precio: " +precio);
         System.out.println("Categoria: "+categoria );
@@ -73,12 +70,35 @@ public class Producto {
     public String toString(){
         return "Producto: " + descripcion;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return this.codigo == other.codigo;
+    }
+    
     
     //====================================
     //      Constructores de Producto
     //====================================
 
-    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -86,9 +106,6 @@ public class Producto {
         this.asignarCategoria(categoria);  
     }
     
-    
-    
-
 }
 
 

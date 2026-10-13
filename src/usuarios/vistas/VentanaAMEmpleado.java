@@ -137,6 +137,7 @@ public class VentanaAMEmpleado extends JDialog {
     }//GEN-LAST:event_btnCancelarClic
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
+
         String correo = this.txtCorreo.getText().trim();
         String apellido = this.txtApellido.getText().trim();
         String nombre = this.txtNombre.getText().trim();
@@ -150,6 +151,8 @@ public class VentanaAMEmpleado extends JDialog {
             c.mostrar();
             System.out.println();
         }
+
+        //Completar
     }//GEN-LAST:event_btnGuardarClic
 
 
