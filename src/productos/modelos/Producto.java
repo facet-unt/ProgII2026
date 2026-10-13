@@ -61,6 +61,31 @@ public class Producto {
     this.precio = nuevoPrecio;
   }
 
+  public boolean equals(Object o) {
+    // Retornar falso si: El objecto es nulo, es este mismo
+    // objecto o es de una clase distinta a esta.
+    if (o == null) {
+      return false;
+    }
+    if (o == this) {
+      return false;
+    }
+    if (getClass() != o.getClass()) {
+      return false;
+    }
+    // Si hasta este punto no se volvio, el objeto es correcto y se
+    // lo convierte a la clase a comparar.
+    Producto unProducto = (Producto) o;
+    // Comparacion
+    return this.codigo == unProducto.codigo;
+  }
+
+  public int hashCode() {
+    int hash = 5;
+    hash = 67 * hash + this.codigo;
+    return hash;
+  }
+
   @Override
   public String toString() {
     return this.descripcion;

@@ -39,11 +39,11 @@ public class ControladorPrincipal {
     Empleado empleado3 = new Empleado("alguileraC@hotmail.com", "2026", "Aguilera", "Cristina");
 
     Producto hamburguesa =
-        new Producto(1234, "Hamburguesa", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 8000f);
+        new Producto(1, "Hamburguesa", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 8000f);
     Producto pizza =
-        new Producto(5678, "Pizza", Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE, 12000f);
+        new Producto(2, "Pizza", Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE, 12000f);
     Producto papasFritas =
-        new Producto(91011, "Papas Fritas", Categoria.ENTRADA, Estado.DISPONIBLE, 5000f);
+        new Producto(3, "Papas Fritas", Categoria.ENTRADA, Estado.DISPONIBLE, 5000f);
 
     Pedido pedido1 = new Pedido(1, cliente1);
     pedido1.agregarProducto(hamburguesa, 2);
@@ -112,7 +112,7 @@ public class ControladorPrincipal {
 
     productos.get(0).asignarPrecio(12000f);
     productos.get(1).asignarEstado(Estado.NO_DISPONIBLE);
-    productos.get(2).asignarCodigo(4567);
+    productos.get(2).asignarCodigo(45);
 
     clientes.get(2).asignarClave("454647");
     empleados.get(1).verCorreo();
