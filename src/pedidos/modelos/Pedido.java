@@ -44,11 +44,15 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Pedido(int numero, LocalDateTime fechaYHora) {
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productos, Cliente unCliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
-        this.estado = Estado.CREADO;
+        this.unCliente = unCliente;
+        this.productos = productos;
+        this.estado=estado.CREADO;
     }
+
+    
 
     public Cliente getUnCliente() {
         return unCliente;
@@ -79,5 +83,29 @@ public class Pedido {
           System.out.println("\t"+p.verUnProducto().verCodigo() + " " + p.verUnProducto().verDescripcion()+" \t\t\t "+p.verUnProducto().verPrecio()+" \t\t\t "+p.verCantidad());
       }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.numero == other.numero;
+    }
+    
+    
     
 }
