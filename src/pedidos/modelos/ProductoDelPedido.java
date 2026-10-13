@@ -4,6 +4,7 @@
  */
 package pedidos.modelos;
 
+import java.util.Objects;
 import productos.modelos.Producto;
 
 /**
@@ -11,28 +12,55 @@ import productos.modelos.Producto;
  * @author estudiante
  */
 public class ProductoDelPedido {
-    private int cantidad;
-    private Producto producto;
+     private int cantidad;
+     private Producto producto;
 
     public ProductoDelPedido(int cantidad, Producto producto) {
         this.cantidad = cantidad;
         this.producto = producto;
-    }
+     }
 
-    public int verCantidad() {
+     public int verCantidad() {
         return cantidad;
-    }
+     }
 
-    public void asignarCantidad(int cantidad) {
+     public void asignarCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
+     }
 
-    public Producto verProducto() {
+     public Producto verProducto() {
         return producto;
-    }
+     }
 
-    public void asignarProducto(Producto producto) {
+     public void asignarProducto(Producto producto) {
         this.producto = producto;
-    }
-    
+     }
+
+    @Override
+     public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.producto);
+        return hash;
+     }
+
+     @Override
+     public boolean equals(Object obj) {
+         if (this == obj) {
+            return true;
+         }
+         if (obj == null) {
+            return false;
+         }
+         if (getClass() != obj.getClass()) {
+             return false;
+         }
+         ProductoDelPedido other = (ProductoDelPedido) obj;
+         return Objects.equals(this.producto, other.producto);
+     }
+
+     @Override
+     public String toString() {
+         return "Producto : " + this.producto.verDescripcion() + " - Cant : " + this.cantidad;
+     }
+             
 }
