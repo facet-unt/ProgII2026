@@ -6,6 +6,7 @@ package pedidos.modelos;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import usuarios.modelos.Cliente;
 
 /**
@@ -17,6 +18,7 @@ public class Pedido {
     LocalDateTime fechaYHora;
     private Cliente unCliente;
     private Estado unEstado;
+    private ArrayList<ProductoDelPedido> CantidadProducto;
 
     public Pedido(int Numero, LocalDateTime fechaYHora) {
         this.Numero = Numero;

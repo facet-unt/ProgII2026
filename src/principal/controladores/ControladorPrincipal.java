@@ -4,7 +4,10 @@
  */
 package principal.controladores;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 import productos.modelos.Estado;
 import productos.modelos.Categoria;
 import productos.modelos.Producto;
@@ -22,6 +25,7 @@ public class ControladorPrincipal {
         ArrayList<Encargado> encargados = new ArrayList <>();
         ArrayList<Empleado> empleados = new ArrayList <>();
         ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Pedido> pedidos = new ArrayList<> ();
         
         Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
         Cliente cliente2 = new Cliente("joseluisM@hotmail.com","4567","Molina","Jose Luis");
@@ -40,6 +44,10 @@ public class ControladorPrincipal {
         Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE,12000f);
         Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE,5000f);
         
+        Pedido pedido1 = new Pedido(1 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23));
+        Pedido pedido2 = new Pedido(2 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23));
+        Pedido pedido3 = new Pedido(3 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23));
+        
         
         productos.add(hamburguesa);
         productos.add(pizza);
@@ -56,6 +64,10 @@ public class ControladorPrincipal {
         empleados.add(empleado1);
         empleados.add(empleado2);
         empleados.add(empleado3);
+        
+        pedidos.add(pedido1);
+        pedidos.add(pedido2);
+        pedidos.add(pedido3);
         
         
         System.out.println("------Productos------\n");
@@ -78,6 +90,10 @@ public class ControladorPrincipal {
         System.out.println("------Empleados------\n");
         for (Empleado e: empleados ){
             e.mostrar();
+        }
+        System.out.println("------Pedidos------\n");
+        for (Pedido pe: pedidos ){
+            pe.mostrar();
         }
         
         System.out.println("Cambiando...\n");
