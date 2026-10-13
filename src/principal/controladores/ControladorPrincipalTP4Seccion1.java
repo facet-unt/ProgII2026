@@ -36,22 +36,14 @@ public class ControladorPrincipalTP4Seccion1 {
     Producto p3 = new Producto(3, "Producto 3", Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);
     Producto p4 = new Producto(4, "Producto 4", Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);
     Producto p5 = new Producto(3, "Producto 5", Categoria.POSTRE, Estado.NO_DISPONIBLE, 7580.0f);
-    // no debe agregar a p5
+    // no debe agregar a p5 <--|
+    listaProductos.add(p1); // |
+    listaProductos.add(p2); // |
+    listaProductos.add(p3); // |
+    listaProductos.add(p4); // |
+    // no p5 segun instruccion:|
 
-    /***************************************************
-     * AGREGAR aqui las sentencias para completar el llenado de
-     * la lista de productos
-     ***************************************************/
-    listaProductos.add(p1);
-    listaProductos.add(p2);
-    listaProductos.add(p3);
-    listaProductos.add(p4);
-    listaProductos.add(p5);
-
-    /***************************************************
-     * AGREGAR aqui las sentencias para mostrar la lista
-     * de productos, deberían listarse 4
-     ***************************************************/
+    for (Producto p : listaProductos) p.mostrar();
 
     System.out.println("\n#################### ");
     System.out.println("CLIENTES");
@@ -115,17 +107,15 @@ public class ControladorPrincipalTP4Seccion1 {
 
     if (!listaPedidos.contains(unPedido1))
       listaPedidos.add(unPedido1);
-    //***********************************************
-    // AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
-    //*************************************************
+    if (!listaPedidos.contains(unPedido2))
+      listaPedidos.add(unPedido2);
+    if (!listaPedidos.contains(unPedido3)) // Repetido
+      listaPedidos.add(unPedido3);
 
     System.out.println("\n\nLos pedidos son: ");
     System.out.println("=======");
-    /*
-    *************************************************
-    AGREGAR aqui la sentencia para mostrar la lista de pedidos
-    *************************************************
-    */
+
+    for (Pedido p : listaPedidos) p.mostrar();
 
     System.out.println();
 

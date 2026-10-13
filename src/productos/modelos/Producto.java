@@ -25,6 +25,7 @@ public class Producto {
     System.out.println("Categoría: " + this.categoria);
     System.out.println("Estado: " + this.estado);
     System.out.println("Precio: $" + this.precio);
+    System.out.print("\n");
   }
 
   // Getters
