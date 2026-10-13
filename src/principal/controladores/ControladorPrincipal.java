@@ -44,9 +44,9 @@ public class ControladorPrincipal {
         Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE,12000f);
         Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE,5000f);
         
-        Pedido pedido1 = new Pedido(1 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23));
-        Pedido pedido2 = new Pedido(2 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23));
-        Pedido pedido3 = new Pedido(3 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23));
+        Pedido pedido1 = new Pedido(1 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23), cliente1);
+        Pedido pedido2 = new Pedido(2 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23), cliente2);
+        Pedido pedido3 = new Pedido(3 , LocalDateTime.of(2026, Month.JUNE, 20, 10, 23), cliente3);
         
         
         productos.add(hamburguesa);

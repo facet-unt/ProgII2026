@@ -20,9 +20,10 @@ public class Pedido {
     private Estado unEstado;
     private ArrayList<ProductoDelPedido> CantidadProducto;
 
-    public Pedido(int Numero, LocalDateTime fechaYHora) {
+    public Pedido(int Numero, LocalDateTime fechaYHora, Cliente unCliente) {
         this.Numero = Numero;
         this.fechaYHora = fechaYHora;
+        this.unCliente = unCliente;
     }
 
     public int verNumero() {
@@ -65,9 +66,13 @@ public class Pedido {
         System.out.println("Cliente: "+ unCliente.verApellido() +"," +unCliente.verNombre());
         System.out.println("Estado: "+ unEstado);
         System.out.println("");
-        System.out.println("====================================");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("\tProducto                      Cantidad");
+        System.out.println("\t====================================");
+        if (CantidadProducto.isEmpty())
+            return;
+        for (ProductoDelPedido p: CantidadProducto){
+            System.out.println(p.verCodigo() + p.verProducto() + "\t" + p.verPrecio() + "\t" + p.verCantidad());
+        }
     }
     
 }

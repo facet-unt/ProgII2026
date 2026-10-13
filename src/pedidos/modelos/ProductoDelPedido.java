@@ -17,6 +17,16 @@ public class ProductoDelPedido {
     public ProductoDelPedido(int cantidad){
         this.cantidad = cantidad;
     }
+    
+    public String verProducto(){
+        return unProducto.verDescripcion();
+    }
+    public int verCodigo(){
+        return unProducto.verCodigo();
+    }
+    public float verPrecio(){
+        return unProducto.verPrecio();
+    }
     /**
      * @return the cantidad
      */
