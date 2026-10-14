@@ -12,47 +12,17 @@ import pedidos.modelos.Pedido;
 /**
  * @author barti
  */
-public class Cliente {
+public class Cliente extends Usuario {
   // Constructor
   public Cliente(String correo, String clave, String apellido, String nombre) {
-    this.correo = correo;
-    this.clave = clave;
-    this.nombre = nombre;
-    this.apellido = apellido;
+    super(correo, clave, apellido, nombre);
     this.pedidos = new ArrayList<>();
-  }
-
-  // Getters
-  public String verCorreo() {
-    return this.correo;
-  }
-  public String verClave() {
-    return this.clave;
-  }
-  public String verApellido() {
-    return this.apellido;
-  }
-  public String verNombre() {
-    return this.nombre;
   }
 
   public ArrayList<Pedido> verListaPedidos() {
     return this.pedidos;
   }
 
-  // Setters
-  public void asignarCorreo(String nuevoCorreo) {
-    this.correo = nuevoCorreo;
-  }
-  public void asignarClave(String nuevaClave) {
-    this.clave = nuevaClave;
-  }
-  public void asignarApellido(String nuevoApellido) {
-    this.apellido = nuevoApellido;
-  }
-  public void asignarNombre(String nuevoNombre) {
-    this.nombre = nuevoNombre;
-  }
   public void asignarListaPedidos(ArrayList<Pedido> nuevosPedidos) {
     this.pedidos = nuevosPedidos;
   }
@@ -67,15 +37,9 @@ public class Cliente {
     this.pedidos.remove(unPedido);
   }
 
-  public void mostrar() {
-    System.out.println("\nCliente <" + this.apellido + " " + this.nombre + ">");
-    System.out.println("Correo: " + this.correo);
-    System.out.println("Clave: " + this.clave);
+  protected String verTipoUsuario() {
+    return "Cliente";
   }
 
-  private String correo;
-  private String clave;
-  private String apellido;
-  private String nombre;
   private ArrayList<Pedido> pedidos;
 }
