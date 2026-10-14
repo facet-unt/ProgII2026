@@ -20,12 +20,9 @@ public class Producto {
   }
 
   public void mostrar() {
-    System.out.println("Código: " + this.codigo);
-    System.out.println("Descripción: " + this.descripcion);
-    System.out.println("Categoría: " + this.categoria);
-    System.out.println("Estado: " + this.estado);
-    System.out.println("Precio: $" + this.precio);
-    System.out.print("\n");
+    System.out.println("\nProducto <Codigo " + this.codigo + "> " + this.descripcion);
+    System.out.println(
+        "Categoria: " + this.categoria + "  Estado: " + this.estado + "  Precio: " + this.precio);
   }
 
   // Getters

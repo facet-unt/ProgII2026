@@ -55,6 +55,6 @@ public class ProductoDelPedido {
 
   @Override
   public String toString() {
-    return "Producto: " + producto.verDescripcion() + " | Cant: " + cantidad;
+    return "Producto: " + producto.verDescripcion() + " - Cant: " + cantidad;
   }
 }

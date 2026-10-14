@@ -173,20 +173,21 @@ public class Pedido {
 
   public void mostrar() {
     // 12 Espacios
-    System.out.println("Nro: " + this.numero + "                Estado: " + this.estado);
-    System.out.println("Fecha: " + verFecha() + "\tHora: " + verHora());
+    System.out.println("Nro: " + this.numero + "              Estado: " + this.estado);
+    System.out.println("Fecha: " + verFecha() + "        Hora: " + verHora());
 
     System.out.println("Cliente: " + this.cliente.verApellido() + ", " + this.cliente.verNombre());
 
     // Se muestra la lista si tiene productos
     if (this.productos != null && !this.productos.isEmpty()) {
-      System.out.println("Producto                Cantidad"); // 16 espacios
-      System.out.println("================================");
+      System.out.println("       Producto                Cantidad");
+      System.out.println("       ================================================================");
       for (ProductoDelPedido item : this.productos) {
-        System.out.println("[" + item.verProducto().verCodigo() + "]"
+        System.out.println("       [" + item.verProducto().verCodigo() + "]"
             + item.verProducto().verDescripcion() + "  $" + item.verProducto().verPrecio()
             + "        " + +item.verCantidad());
       }
     }
+    System.out.print("\n");
   }
 }

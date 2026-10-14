@@ -114,7 +114,6 @@ public class ControladorPrincipalTP4Seccion1 {
 
     System.out.println("\n\nLos pedidos son: ");
     System.out.println("=======");
-
     for (Pedido p : listaPedidos) p.mostrar();
 
     System.out.println();

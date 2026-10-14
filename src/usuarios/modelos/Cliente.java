@@ -68,8 +68,9 @@ public class Cliente {
   }
 
   public void mostrar() {
-    System.out.printf("\nCliente %s, %s: \nCorreo: %s\nClave: %s\nTotal Pedidos: %d\n", apellido,
-        nombre, correo, clave, pedidos.size());
+    System.out.println("\nCliente <" + this.apellido + " " + this.nombre + ">");
+    System.out.println("Correo: " + this.correo);
+    System.out.println("Clave: " + this.clave);
   }
 
   private String correo;
