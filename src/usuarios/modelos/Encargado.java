@@ -6,6 +6,9 @@
 // */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
+
 /**
  * @author barti
  */
@@ -13,6 +16,10 @@ public class Encargado extends Usuario {
   // Constructor
   public Encargado(String correo, String clave, String apellido, String nombre) {
     super(correo, clave, apellido, nombre);
+  }
+
+  public ArrayList<Pedido> verPedidos() {
+    return new ArrayList<>();
   }
 
   protected String verTipoUsuario() {

@@ -59,14 +59,15 @@ public class Producto {
     this.precio = nuevoPrecio;
   }
 
+  @Override
   public boolean equals(Object o) {
-    // Retornar falso si: El objecto es nulo, es este mismo
+    // Retornar falso si el objecto es nulo, es este mismo
     // objecto o es de una clase distinta a esta.
     if (o == null) {
       return false;
     }
     if (o == this) {
-      return false;
+      return true;
     }
     if (getClass() != o.getClass()) {
       return false;
@@ -78,6 +79,7 @@ public class Producto {
     return this.codigo == unProducto.codigo;
   }
 
+  @Override
   public int hashCode() {
     int hash = 5;
     hash = 67 * hash + this.codigo;

@@ -39,9 +39,9 @@ public class ControladorPrincipal {
     Empleado empleado3 = new Empleado("alguileraC@hotmail.com", "2026", "Aguilera", "Cristina");
 
     Producto hamburguesa =
-        new Producto(1, "Hamburguesa", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 8000f);
+        new Producto(1, "Hamburguesa", Categoria.PLATOPRINCIPAL, Estado.DISPONIBLE, 8000f);
     Producto pizza =
-        new Producto(2, "Pizza", Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE, 12000f);
+        new Producto(2, "Pizza", Categoria.PLATOPRINCIPAL, Estado.NO_DISPONIBLE, 12000f);
     Producto papasFritas =
         new Producto(3, "Papas Fritas", Categoria.ENTRADA, Estado.DISPONIBLE, 5000f);
 

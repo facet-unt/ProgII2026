@@ -75,8 +75,8 @@ public class ControladorPrincipalTP4Seccion2 {
     System.out.println("Clientes");
     System.out.println("=========");
 
-    // En todos los casos, para mostrar un tipo de usuario
-    // especifico, se compara con ese tipo usando instanceof
+    // Para mostrar un tipo de usuario especifico, se itera
+    // sobre todos los usuarios con ese tipo usando instanceof
     for (Usuario u : usuarios) {
       if (u instanceof Cliente) {
         u.mostrar();

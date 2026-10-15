@@ -37,7 +37,7 @@ public class ProductoDelPedido {
       return false;
     }
     if (o == this) {
-      return false;
+      return true;
     }
     if (getClass() != o.getClass()) {
       return false;

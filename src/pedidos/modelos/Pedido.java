@@ -146,6 +146,7 @@ public class Pedido {
     }
   }
 
+  @Override
   public boolean equals(Object o) {
     // Retornar falso si: El objecto es nulo, es este mismo
     // objecto o es de una clase distinta a esta.
@@ -153,7 +154,7 @@ public class Pedido {
       return false;
     }
     if (o == this) {
-      return false;
+      return true;
     }
     if (getClass() != o.getClass()) {
       return false;
@@ -165,6 +166,7 @@ public class Pedido {
     return this.numero == unPedido.numero;
   }
 
+  @Override
   public int hashCode() {
     int hash = 5;
     hash = 67 * hash + this.numero;
@@ -172,22 +174,20 @@ public class Pedido {
   }
 
   public void mostrar() {
-    // 12 Espacios
-    System.out.println("Nro: " + this.numero + "              Estado: " + this.estado);
+    System.out.println("Nro: " + this.numero);
     System.out.println("Fecha: " + verFecha() + "        Hora: " + verHora());
-
     System.out.println("Cliente: " + this.cliente.verApellido() + ", " + this.cliente.verNombre());
+    System.out.println("Estado: " + this.estado);
 
     // Se muestra la lista si tiene productos
     if (this.productos != null && !this.productos.isEmpty()) {
       System.out.println("       Producto                Cantidad");
-      System.out.println("       ================================================================");
+      System.out.println("       ==========================");
       for (ProductoDelPedido item : this.productos) {
-        System.out.println("       [" + item.verProducto().verCodigo() + "]"
-            + item.verProducto().verDescripcion() + "  $" + item.verProducto().verPrecio()
-            + "        " + +item.verCantidad());
+        System.out.println("       Producto: " + item.verProducto().verCodigo() + " - "
+            + item.verProducto().verDescripcion() + " Precio $:" + item.verProducto().verPrecio()
+            + " " + item.verCantidad());
       }
     }
-    System.out.print("\n");
   }
 }

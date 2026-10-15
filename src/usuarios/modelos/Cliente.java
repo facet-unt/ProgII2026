@@ -19,7 +19,7 @@ public class Cliente extends Usuario {
     this.pedidos = new ArrayList<>();
   }
 
-  public ArrayList<Pedido> verListaPedidos() {
+  public ArrayList<Pedido> verPedidos() {
     return this.pedidos;
   }
 
@@ -27,13 +27,28 @@ public class Cliente extends Usuario {
     this.pedidos = nuevosPedidos;
   }
 
+  /**
+   * Al agregar un pedido, revisar si dicho pedido no es nulo
+   * o si el mismo se encuentra dentro de la lista de pedidos.
+   * En caso que el pedido a agregar ya este en la lista,
+   * reemplazar el pedido que esta en la lista con el nuevo pedido.
+   */
   public void agregarPedido(Pedido unPedido) {
-    if (unPedido != null) {
-      this.pedidos.add(unPedido);
+    if (unPedido == null) {
+      return;
     }
+
+    for (int i = 0; i < this.pedidos.size(); ++i) {
+      if (this.pedidos.get(i).equals(unPedido)) {
+        this.pedidos.set(i, unPedido);
+        return;
+      }
+    }
+
+    this.pedidos.add(unPedido);
   }
 
-  public void quitarPedido(Pedido unPedido) {
+  public void cancelarPedido(Pedido unPedido) {
     this.pedidos.remove(unPedido);
   }
 

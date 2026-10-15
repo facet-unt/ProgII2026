@@ -1,6 +1,8 @@
 package usuarios.modelos;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import pedidos.modelos.Pedido;
 
 public abstract class Usuario {
   // Constructor
@@ -81,6 +83,8 @@ public abstract class Usuario {
     mostrarEspecificos();
   }
 
+  public abstract ArrayList<Pedido> verPedidos();
+
   /**
    * Metodo utilizado para que el metodo mostrar() sea generico.
    * Cada clase hija de la superclase Usuario debe implementarla
@@ -100,4 +104,10 @@ public abstract class Usuario {
   private String clave;
   private String apellido;
   private String nombre;
+  /**
+   * Pese a que todo usuario puede "ver" su lista de pedidos, solo el
+   * cliente tiene una lista de pedidos real, ya que los empleados y
+   * encargados no pueden realizar pedidos. Por este motivo, deje la
+   * implementacion del ArrayList de Pedido solo para Cliente.
+   */
 }
