@@ -43,14 +43,29 @@ public class ControladorPrincipalTP4Seccion1 {
          * AGREGAR aqui las sentencias para completar el llenado de 
          * la lista de productos
         ***************************************************/
+        listaProductos.add(p1);
         
+        if (!listaProductos.contains(p2))
+            listaProductos.add(p2);
 
-             
+        if (!listaProductos.contains(p3))
+            listaProductos.add(p3);
+
+        if (!listaProductos.contains(p4))
+            listaProductos.add(p4);
+
+        if (!listaProductos.contains(p5))
+            listaProductos.add(p5);
+
         /***************************************************
          * AGREGAR aqui las sentencias para mostrar la lista
          * de productos, deberían listarse 4
         ***************************************************/
-           
+        System.out.println("\n###########################");
+        for (Producto prod: listaProductos){
+            prod.mostrar();
+            System.out.println();
+        }
         
         System.out.println("\n#################### ");
         System.out.println("CLIENTES");
@@ -115,7 +130,11 @@ public class ControladorPrincipalTP4Seccion1 {
         //***********************************************
         //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
         //*************************************************
+        if(!listaPedidos.contains(unPedido2))
+            listaPedidos.add(unPedido2);
         
+        if(!listaPedidos.contains(unPedido3))
+            listaPedidos.add(unPedido3);
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
         /*
@@ -123,6 +142,9 @@ public class ControladorPrincipalTP4Seccion1 {
         AGREGAR aqui la sentencia para mostrar la lista de pedidos
         *************************************************
         */
+        for (Pedido pdp: listaPedidos){
+            pdp.mostrar();
+        }
          
         System.out.println();        
     
