@@ -27,5 +27,4 @@ public enum Estado {
         return descripcion;
     }
     
-    
 }

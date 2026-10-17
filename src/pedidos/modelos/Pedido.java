@@ -52,8 +52,6 @@ public class Pedido {
         this.estado=estado.CREADO;
     }
 
-    
-
     public Cliente getUnCliente() {
         return unCliente;
     }
@@ -70,17 +68,20 @@ public class Pedido {
         this.productos = productos;
     }
     
-    
     public void mostrar(){
       DateTimeFormatter formatoFecha= DateTimeFormatter.ofPattern("dd/MM/yyyy");
       DateTimeFormatter formatoHora= DateTimeFormatter.ofPattern("HH:mm");
-      System.out.println("Nro: "+numero + "\t\t" +estado);
-      System.out.println("Fecha: "+fechaYHora.format(formatoFecha) + "\t" + "Hora: "+ fechaYHora.format(formatoHora));
-      System.out.println(unCliente.verApellido()+", "+unCliente.verNombre());
-      System.out.println("\t Producto \t\t\t\t\t\t\t Cantidad");
-      System.out.println("\t=====================================================================");
+      System.out.printf("Nro: %d \t\t\t\tEstado: %s%n", numero, estado);
+      System.out.printf("Fecha: %s \t\tHora: %s%n", fechaYHora.format(formatoFecha), fechaYHora.format(formatoHora));
+      System.out.printf("Cliente: %s, %s%n", unCliente.verApellido(), unCliente.verNombre());
+      System.out.printf("%-35s %s%n", "Producto", "\t\tCantidad");
+      System.out.println("================================================================");
       for(ProductoDelPedido p : productos){
-          System.out.println("\t"+p.verUnProducto().verCodigo() + " " + p.verUnProducto().verDescripcion()+" \t\t\t "+p.verUnProducto().verPrecio()+" \t\t\t "+p.verCantidad());
+          System.out.printf("[%d] %-20s $%.2f \t\t %d%n",
+                p.verUnProducto().verCodigo(),
+                p.verUnProducto().verDescripcion(),
+                p.verUnProducto().verPrecio(),
+                p.verCantidad());
       }
     }
 
@@ -105,7 +106,5 @@ public class Pedido {
         final Pedido other = (Pedido) obj;
         return this.numero == other.numero;
     }
-    
-    
     
 }

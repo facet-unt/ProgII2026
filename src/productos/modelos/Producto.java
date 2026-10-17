@@ -63,8 +63,6 @@ public class Producto {
         this.precio = precio;
     }
     
-    
-    
     public void mostrar() {        
         System.out.println("\tProducto: "+descripcion +" |Codigo: " +codigo );
         System.out.println("\tEstado: "+estado +" | Precio: " +precio+ "\n");
@@ -96,7 +94,5 @@ public class Producto {
         final Producto other = (Producto) obj;
         return this.codigo == other.codigo;
     }
-    
-    
     
 }

@@ -47,9 +47,9 @@ public class ControladorPrincipal {
         Producto pizza = new Producto(2,"Pizza", Categoria.PLATO_PRINCIPAL ,Estado.NO_DISPONIBLE,12000f);
         Producto papasFritas = new Producto(3,"Papas Fritas", Categoria.ENTRADA,Estado.DISPONIBLE,5000f);
         
-        Pedido pedido1=new Pedido(1,LocalDateTime.now());
-        Pedido pedido2=new Pedido(2,LocalDateTime.now());
-        Pedido pedido3=new Pedido(3,LocalDateTime.now());
+        Pedido pedido1=new Pedido(1,LocalDateTime.now(),productosp1,cliente1);
+        Pedido pedido2=new Pedido(2,LocalDateTime.now(),productosp2,cliente2);
+        Pedido pedido3=new Pedido(3,LocalDateTime.now(),productosp3,cliente3);
         
         productos.add(hamburguesa);
         productos.add(pizza);
@@ -140,39 +140,24 @@ public class ControladorPrincipal {
         pedidos.add(pedido2);
         pedidos.add(pedido3);
         
-        pedido1.setUnCliente(cliente1);
-        pedido2.setUnCliente(cliente2);
-        pedido3.setUnCliente(cliente3);
-        
-        ProductoDelPedido prodp1=new ProductoDelPedido(3);
-        prodp1.asignarUnProducto(papasFritas);
-        
-        ProductoDelPedido prodp2=new ProductoDelPedido(5);
-        prodp2.asignarUnProducto(hamburguesa);
+        ProductoDelPedido prodp1=new ProductoDelPedido(papasFritas,3);
+        ProductoDelPedido prodp2=new ProductoDelPedido(pizza,5);
         
         productosp1.add(prodp1);
         productosp1.add(prodp2);
         
-        ProductoDelPedido prodp3=new ProductoDelPedido(4);
-        prodp3.asignarUnProducto(hamburguesa);
-        ProductoDelPedido prodp4=new ProductoDelPedido(4);
-        prodp4.asignarUnProducto(pizza);
+        ProductoDelPedido prodp3=new ProductoDelPedido(hamburguesa,4);
+        ProductoDelPedido prodp4=new ProductoDelPedido(papasFritas,4);
         
         productosp2.add(prodp3);
         productosp2.add(prodp4);
         
-        ProductoDelPedido prodp5=new ProductoDelPedido(1);
-        prodp5.asignarUnProducto(papasFritas);
-        ProductoDelPedido prodp6=new ProductoDelPedido(2);
-        prodp6.asignarUnProducto(hamburguesa);
+        ProductoDelPedido prodp5=new ProductoDelPedido(pizza,1);
+        ProductoDelPedido prodp6=new ProductoDelPedido(hamburguesa,2);
         
         productosp3.add(prodp5);
         productosp3.add(prodp6);
-        
-        pedido1.setProductos(productosp1);
-        pedido2.setProductos(productosp2);
-        pedido3.setProductos(productosp3);
-        
+       
         for(Pedido p:pedidos){
             p.mostrar();
         }

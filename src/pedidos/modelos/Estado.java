@@ -28,6 +28,4 @@ public enum Estado {
         return "Estado: "+descripcion;
     }
     
-    
-    
 }

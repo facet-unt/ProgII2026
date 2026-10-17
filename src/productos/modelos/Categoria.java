@@ -27,6 +27,5 @@ public enum Categoria {
     public String toString() {
         return "Categoria: " + descripcion;
     }
-    
-    
+   
 }

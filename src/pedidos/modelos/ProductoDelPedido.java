@@ -20,12 +20,10 @@ public class ProductoDelPedido {
         this.unProducto = unProducto;
     }
 
-
     public int verCantidad() {
         return cantidad;
     }
     
-
     public void asginarCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
@@ -64,7 +62,5 @@ public class ProductoDelPedido {
     public String toString() {
         return unProducto.verDescripcion() + "- Cantidad: " + cantidad;
     }
-    
-    
     
 }
