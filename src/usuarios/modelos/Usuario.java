@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package usuarios.modelos;
+import java.util.ArrayList;
 import java.util.Objects;
+import pedidos.modelos.Pedido;
 
 /**
  *
@@ -59,6 +61,8 @@ public abstract class Usuario {
         System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n" );
     }
 
+    public abstract ArrayList<Pedido> verPedidos();
+    
     @Override
     public int hashCode() {
         int hash = 5;
