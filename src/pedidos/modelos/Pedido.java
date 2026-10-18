@@ -23,13 +23,21 @@ public class Pedido {
     //Relacion con ProductoDelPedido
     ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
      
-    
-    public Pedido(int numero, Cliente unCliente){
+    //sobrecarga de constructor
+    public Pedido(int numero,LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> productosDelPedido, Cliente unCliente){
         this.numero = numero;
         this.fechaYHora = LocalDateTime.now();
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;
         this.productosDelPedido = new ArrayList<>();    
+    }
+    
+    public Pedido(int numero, Cliente unCliente) {
+    this.numero = numero;
+    this.fechaYHora = LocalDateTime.now();
+    this.unCliente = unCliente;
+    this.estado = Estado.CREADO;
+    this.productosDelPedido = new ArrayList<>();
     }
     
     public int verNumero() {
@@ -53,6 +61,28 @@ public class Pedido {
     public void agregarProducto(Producto unProducto, int cantidad){
         ProductoDelPedido detallePedido = new ProductoDelPedido(unProducto, cantidad);
         productosDelPedido.add(detallePedido);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + this.numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido pedido = (Pedido) obj;
+        return this.numero == pedido.numero;
     }
     
     public void mostrar(){
