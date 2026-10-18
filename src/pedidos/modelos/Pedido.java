@@ -24,6 +24,7 @@ public class Pedido {
         this.Numero = Numero;
         this.fechaYHora = fechaYHora;
         this.unCliente = unCliente;
+        this.CantidadProducto = new ArrayList<>();
     }
 
     public int verNumero() {
@@ -55,7 +56,7 @@ public class Pedido {
     }
     
     private String HoraACadena (LocalDateTime hora){
-        String patron = "hh:mm";
+        String patron = "HH:mm";
         String horaEnCadena = hora.format(DateTimeFormatter.ofPattern(patron));
         return horaEnCadena;
         
@@ -64,15 +65,19 @@ public class Pedido {
     public void mostrar() {        
         System.out.println("Nro:"+ Numero+"\n"+"Fecha: "+ FechaACadena(verFecha())+ "\t"+"Hora: "+ HoraACadena(verHora()));
         System.out.println("Cliente: "+ unCliente.verApellido() +"," +unCliente.verNombre());
-        System.out.println("Estado: "+ unEstado);
         System.out.println("");
         System.out.println("\tProducto                      Cantidad");
         System.out.println("\t====================================");
-        if (CantidadProducto.isEmpty())
+        if (CantidadProducto == null || CantidadProducto.isEmpty()) {
+            System.out.println("\t(Sin productos)");
+            System.out.println("");
             return;
-        for (ProductoDelPedido p: CantidadProducto){
-            System.out.println(p.verCodigo() + p.verProducto() + "\t" + p.verPrecio() + "\t" + p.verCantidad());
         }
+        
+        for (ProductoDelPedido p : CantidadProducto){
+            // Formato similar al de la imagen: [Codigo] Descripcion     $Precio     Cantidad
+            System.out.println("\t[" + p.verCodigo() + "] " + p.verProducto() + "\t\t\t\t$" + p.verPrecio() + "\t\t " + p.verCantidad());
+        }
+        System.out.println("");
     }
-    
 }
