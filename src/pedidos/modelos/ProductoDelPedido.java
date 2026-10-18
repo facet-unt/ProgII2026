@@ -4,17 +4,49 @@
  */
 package pedidos.modelos;
 
+import java.util.Objects;
 import productos.modelos.Producto;
 
 /**
  *
- * @author Cubanox
+ * @author estudiante
  */
 public class ProductoDelPedido {
     private Producto unProducto;
     private int cantidad;
+
     
-    public ProductoDelPedido(int cantidad){
+    @Override
+    public String toString() {
+        return "Producto: " + this.verProducto() + " - Cant: " + this.cantidad;
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.unProducto);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProductoDelPedido other = (ProductoDelPedido) obj;
+        return Objects.equals(this.unProducto, other.unProducto);
+    }
+    
+    
+    
+    public ProductoDelPedido(Producto unProducto, int cantidad){
+        this.unProducto = unProducto;
         this.cantidad = cantidad;
     }
     

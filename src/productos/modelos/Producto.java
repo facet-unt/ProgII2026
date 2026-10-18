@@ -14,6 +14,29 @@ public class Producto {
     private Categoria categoria;
     private Estado estado;
     private float precio;
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return this.codigo == other.codigo;
+    }
+    
     
 
     public int verCodigo() {

@@ -20,6 +20,30 @@ public class Pedido {
     private Estado unEstado;
     private ArrayList<ProductoDelPedido> CantidadProducto;
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.Numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.Numero == other.Numero;
+    }
+    
+    
+
     public Pedido(int Numero, LocalDateTime fechaYHora, Cliente unCliente) {
         this.Numero = Numero;
         this.fechaYHora = fechaYHora;
@@ -68,14 +92,12 @@ public class Pedido {
         System.out.println("");
         System.out.println("\tProducto                      Cantidad");
         System.out.println("\t====================================");
-        if (CantidadProducto == null || CantidadProducto.isEmpty()) {
-            System.out.println("\t(Sin productos)");
+        if (CantidadProducto.isEmpty()) {
             System.out.println("");
             return;
         }
         
         for (ProductoDelPedido p : CantidadProducto){
-            // Formato similar al de la imagen: [Codigo] Descripcion     $Precio     Cantidad
             System.out.println("\t[" + p.verCodigo() + "] " + p.verProducto() + "\t\t\t\t$" + p.verPrecio() + "\t\t " + p.verCantidad());
         }
         System.out.println("");
