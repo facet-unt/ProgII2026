@@ -63,6 +63,28 @@ public class Producto {
         this.precio = precio;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto p1 = (Producto) obj;
+        return this.codigo == p1.codigo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.codigo;
+        return hash;
+    }
+    
     public void mostrar() {        
         System.out.println("Producto: " + descripcion + " |Codigo: " + codigo);
         System.out.println("Estado: " + estado + " | Precio: $" + precio + "\n");
