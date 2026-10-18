@@ -53,7 +53,7 @@ public class ProductoDelPedido {
     }
     //</editor-fold>
     
-    public ProductoDelPedido(int cantidad, Producto unProducto){
+    public ProductoDelPedido(Producto unProducto, int cantidad){
         this.cantidad = cantidad;
         this.unProducto = unProducto;
     }
@@ -66,7 +66,7 @@ public class ProductoDelPedido {
     }
     
     public void mostrar(){
-        System.out.println("["+unProducto.verCodigo()+"]"+unProducto+"\t\t\t"+cantidad);
+        System.out.println("\t["+unProducto.verCodigo()+"] "+unProducto.verDescripcion()+"\t$"+unProducto.verPrecio()+"\t\t"+cantidad);
     }
     
 }

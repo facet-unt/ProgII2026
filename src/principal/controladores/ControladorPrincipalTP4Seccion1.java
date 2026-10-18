@@ -46,19 +46,19 @@ public class ControladorPrincipalTP4Seccion1 {
         
         if(!listaProductos.contains(p2)){
             listaProductos.add(p2);
-        } else System.out.println("El producto ya se encuentra en su lista de compra");
+        }
         
         if(!listaProductos.contains(p3)){
             listaProductos.add(p3);
-        } else System.out.println("El producto ya se encuentra en su lista de compra");
+        }
         
         if(!listaProductos.contains(p4)){
             listaProductos.add(p4);
-        } else System.out.println("El producto ya se encuentra en su lista de compra");
+        }
         
         if(!listaProductos.contains(p5)){
             listaProductos.add(p5);
-        } else System.out.println("El producto ya se encuentra en su lista de compra");
+        }
 
         
         /***************************************************
@@ -66,8 +66,8 @@ public class ControladorPrincipalTP4Seccion1 {
          * de productos, deberían listarse 4
         ***************************************************/
         for(Producto unProducto: listaProductos){
-            System.out.println("Producto "+unProducto.verCodigo()+" "+unProducto.verDescripcion());
-            System.out.println("Categoria: "+unProducto.verCategoria()+" Estado: "+unProducto.verEstado()+" Precio: "+unProducto.verPrecio()+"\n");
+            unProducto.mostrar();
+            System.out.println();
         }
         
         
@@ -83,7 +83,6 @@ public class ControladorPrincipalTP4Seccion1 {
         /*
         Clientes, se crean 3 para crear los pedidos
         */
-        
         for (Cliente e: listaClientes)
             e.mostrar();
                 
@@ -135,6 +134,13 @@ public class ControladorPrincipalTP4Seccion1 {
         //***********************************************
         //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
         //*************************************************
+        if(!listaPedidos.contains(unPedido2)){
+            listaPedidos.add(unPedido2);
+        }
+        if(!listaPedidos.contains(unPedido3)){
+            listaPedidos.add(unPedido3);
+        }
+        
         
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
@@ -143,7 +149,11 @@ public class ControladorPrincipalTP4Seccion1 {
         AGREGAR aqui la sentencia para mostrar la lista de pedidos
         *************************************************
         */
-         
+        for(Pedido unPedido:listaPedidos){
+            unPedido.mostrar();
+            System.out.println();
+        }
+        
         System.out.println();        
     
     /*

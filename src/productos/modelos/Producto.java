@@ -91,9 +91,8 @@ public class Producto {
     }
     
     public void mostrar() {        
-        System.out.println("Descripcion: " +descripcion +"\n");
-        System.out.println("|Estado: "+estado +" | Precio: " +precio+ "\n");
-        System.out.println("Codigo: "+codigo+"| Categoria: "+categoria);
+        System.out.println("Producto "+verCodigo()+" "+verDescripcion());
+            System.out.println("Categoria: "+verCategoria()+" Estado: "+verEstado()+" Precio: "+verPrecio());
     }
     
     @Override

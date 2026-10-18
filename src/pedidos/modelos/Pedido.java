@@ -35,7 +35,7 @@ public class Pedido {
     }
 
     public String verFecha(){
-        DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+        DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return this.fechaYHora.format(fechaConFormato);
     }
     
@@ -44,8 +44,8 @@ public class Pedido {
         return this.fechaYHora.format(horaConFormato);
     }
     
-    public void asignarProductoDelPedido(int cantidad, Producto p) {
-        ProductoDelPedido pdp = new ProductoDelPedido(cantidad, p);
+    public void asignarProductoDelPedido(Producto p,int cantidad) {
+        ProductoDelPedido pdp = new ProductoDelPedido(p,cantidad);
         this.listaProductos.add(pdp);
     }
     //</editor-fold>
@@ -74,19 +74,20 @@ public class Pedido {
     }
     //</editor-fold>
     
-    public Pedido(int numero, Cliente cliente) {
+    public Pedido(int numero,LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> listaProductos, Cliente cliente) {
         this.numero = numero;
-        this.fechaYHora = LocalDateTime.now();
+        this.fechaYHora = fechaYHora;
+        this.listaProductos=listaProductos;
         this.cliente = cliente;
         this.estado = Estado.CREADO;
     }
     
     public void mostrar(){
-        System.out.println("Pedido: "+numero+"\nFecha: "+ verFecha()+"\t Hora: "+verHora());
-        System.out.println("Cliente: "+cliente+"\nEstado: "+estado.toString());
-        System.out.println("Producto\t\t\tCantidad");
-        System.out.println("================================================");
-        System.out.println("hola");
+        System.out.println("Nro: "+numero+"\t\tEstado:"+estado.toString());
+        System.out.println("Fecha: "+ verFecha()+"\t Hora: "+verHora());
+        System.out.println("Cliente: "+cliente.verApellido()+", "+cliente.verNombre());
+        System.out.println("\tProducto\t\t\tCantidad");
+        System.out.println("\t================================================");
         for(ProductoDelPedido unProducto: listaProductos){
             unProducto.mostrar();
         }
