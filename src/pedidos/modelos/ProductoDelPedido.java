@@ -4,22 +4,49 @@
  */
 package pedidos.modelos;
 
+import productos.modelos.Producto;
+
 /**
  *
  * @author Arebalo
  */
 public class ProductoDelPedido {
+    private Producto producto;
     private int cantidad;
 
-    public int getCantidad() {
+    public Producto verProducto() {
+        return producto;
+    }
+
+    
+    public String verDescripcion() {
+        return producto.verDescripcion();
+    }
+
+    public int verCodigo() {
+        return producto.verCodigo();
+    }
+
+    public float verPrecio() {
+        return producto.verPrecio();
+    }
+
+    public void asignarProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public int verCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void asignarCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
-    public ProductoDelPedido(int cantidad) {
+    
+
+    public ProductoDelPedido(Producto producto, int cantidad) {
+        this.producto = producto;
         this.cantidad = cantidad;
     }
 }

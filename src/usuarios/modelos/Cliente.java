@@ -23,6 +23,19 @@ public class Cliente {
         this.clave = clave;
         this.apellido = apellido;
         this.nombre = nombre;
+        this.pedidos = new ArrayList<>();
+    }
+    public void agregarPedido(Pedido pedido){
+        this.pedidos.add(pedido);
+        pedido.asignarCliente(this);
+    }
+
+    public ArrayList<Pedido> verPedidos() {
+        return pedidos;
+    }
+
+    public void asignarPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public String verCorreo() {

@@ -4,9 +4,10 @@
  */
 package pedidos.modelos;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
 /**
@@ -15,30 +16,41 @@ import usuarios.modelos.Cliente;
  */
 public class Pedido { 
     private Cliente cliente;
+    private Estado estado;
+    private ArrayList<ProductoDelPedido> productos = new ArrayList<>();
     private int numero;
     private LocalDateTime fechaYHora;
 //    fechaYHora = LocalDateTime.now();
-    private String fechaACadena(LocalDate fecha){
-        String patron = "dd/MM/yyyy";
-        String fechaEnCadena = fecha.format(DateTimeFormatter.ofPattern(patron));
-        return fechaEnCadena;
+   
+    public Pedido(Cliente cliente, Estado estado, int numero, LocalDateTime fechaYHora) {
+        this.cliente = cliente;
+        this.estado = estado;
+        this.numero = numero;
+        this.fechaYHora = fechaYHora;
     }
-    private String fechaEnCadena;
+
+    public Cliente verCliente() {
+        return cliente;
+    }
+
+    public void asignarCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     
 
-    public int getNumero() {
+    public int verNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void asignarNumero(int numero) {
         this.numero = numero;
     }
 
-    public LocalDateTime getFechaYHora() {
+    public LocalDateTime verFechaYHora() {
         return fechaYHora;
     }
 
-    public void setFechaYHora(LocalDateTime fechaYHora) {
+    public void asignarFechaYHora(LocalDateTime fechaYHora) {
         this.fechaYHora = fechaYHora;
     }
 
@@ -47,12 +59,39 @@ public class Pedido {
         this.fechaYHora = fechaYHora;
     }
     public void mostrar(){
-        System.out.println("Nro: " + numero);
-        System.out.println("Fecha:" + fechaEnCadena);
-//        System.out.println("Cliente: " + cliente);
-//        System.out.println("Estado: " + estado);
-        System.out.println("Producto\t\t\t\tCantidad\n=====================");
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm");
+
+        String fechaFormateada = fechaYHora != null ? fechaYHora.format(formatoFecha) : "";
+        String horaFormateada = fechaYHora != null ? fechaYHora.format(formatoHora) : "";
         
+     System.out.println("Nro: " + numero);
+        System.out.println("Fecha: " + fechaFormateada + " \t\tHora: " + horaFormateada);
         
+        if (cliente != null) {
+            System.out.println("Cliente: " + cliente.verApellido() + ", " + cliente.verNombre());
+        } else {
+            System.out.println("Cliente: Sin asignar");
+        }
+        
+        System.out.println("Estado: " + estado);
+
+        if (productos != null && !productos.isEmpty()) {
+            System.out.println("\tProducto\t\t\t\tCantidad");
+            System.out.println("=================================================================");
+            
+            for (ProductoDelPedido prod : productos) {
+                Producto p = prod.verProducto();
+                int cantidad = prod.verCantidad();
+                
+                System.out.printf("\t[%d] %-20s \t$%.2f \t%d%n", 
+                        p.verCodigo(), 
+                        p.verDescripcion(), 
+                        p.verPrecio(), 
+                        cantidad);
+            }
+        
+        }
     }
 }
+
