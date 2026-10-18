@@ -20,39 +20,37 @@ public class Encargado {
         this.apellido = apellido;
         this.nombre = nombre;
     }
-
+    
+    //<editor-fold defaultstate="collapsed" desc="Metodos 'Ver/Asignar'">
     public String verCorreo() {
         return correo;
+    }
+    public void asignarCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String verClave() {
         return clave;
     }
+    public void asignarClave(String clave) {
+        this.clave = clave;
+    }
 
     public String verApellido() {
         return apellido;
+    }
+    public void asignarApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String verNombre() {
         return nombre;
     }
-
-    public void asignarCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public void asignarClave(String clave) {
-        this.clave = clave;
-    }
-
-    public void asignarApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    //</editor-fold>
+    
     public void mostrar(){
         System.out.println("Encargado: "+apellido +", " +nombre );
         System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );

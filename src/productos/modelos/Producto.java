@@ -9,7 +9,6 @@ package productos.modelos;
  * @author estudiante
  */
 public class Producto {
-    private String nombre;
     private int codigo;
     private String descripcion;
     private float precio;
@@ -18,12 +17,14 @@ public class Producto {
     private Categoria categoria;
     private Estado estado;
 
+    //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/mostrar'">
     public int verCodigo() {
         return codigo;
     }
     public void asignarCodigo(int codigo) {
         this.codigo = codigo;
     }
+    
     
     public String verDescripcion() {
         return descripcion;
@@ -32,6 +33,7 @@ public class Producto {
         this.descripcion = descripcion;
     }
     
+    
     public float verPrecio() {
         return precio;
     }
@@ -39,39 +41,57 @@ public class Producto {
         this.precio = precio;
     }
     
+        
     public Categoria verCategoria() {
         return categoria;
     }
     public void asignarCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-        
-    public Estado verDisponible() {
+    
+    
+    public Estado verEstado() {
         return estado;
     }
-    public void asignarDisponible(Estado estado) {
+    public void asignarEstado(Estado estado) {
         this.estado = estado;
     }
+    //</editor-fold>
     
-    public void asignarNombre(String nombre){
-        this.nombre=nombre;
+    //<editor-fold defaultstate="collapsed" desc="Metodos 'equals' y 'hashCode'">
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.codigo;
+        return hash;
     }
-    public String verNombre(){
-        return nombre;
-    }
-
     
-    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
+    @Override    
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return this.codigo == other.codigo;
+    }
+    //</editor-fold>
+    
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.categoria = Categoria.POSTRE;  //valor por defecto
-        this.estado = Estado.NODISPONIBLE;  //valor por defecto
+        this.categoria = categoria;
+        this.estado = estado;
         this.precio = precio;
-        this.nombre = "ProductoExample";
     }
     
     public void mostrar() {        
-        System.out.println("Nombre: "+nombre +" |Descripcion: " +descripcion +"\n");
+        System.out.println("Descripcion: " +descripcion +"\n");
         System.out.println("|Estado: "+estado +" | Precio: " +precio+ "\n");
         System.out.println("Codigo: "+codigo+"| Categoria: "+categoria);
     }

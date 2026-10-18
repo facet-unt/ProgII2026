@@ -9,7 +9,7 @@ package productos.modelos;
  * @author ramayo
  */
 public enum Estado {
-    DISPONIBLE, NODISPONIBLE;
+    DISPONIBLE, NO_DISPONIBLE;
 
     @Override
     public String toString() {

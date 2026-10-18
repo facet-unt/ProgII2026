@@ -36,19 +36,40 @@ public class ControladorPrincipalTP4Seccion1 {
         Producto p3 = new  Producto(3, "Producto 3",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
         Producto p4 = new  Producto(4, "Producto 4",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
         Producto p5 = new  Producto(3, "Producto 5",Categoria.POSTRE, Estado.NO_DISPONIBLE, 7580.0f);         
-        //no debe agregar a p5
-        
              
         /***************************************************
          * AGREGAR aqui las sentencias para completar el llenado de 
          * la lista de productos
         ***************************************************/
-             
+        
+        listaProductos.add(p1);
+        
+        if(!listaProductos.contains(p2)){
+            listaProductos.add(p2);
+        } else System.out.println("El producto ya se encuentra en su lista de compra");
+        
+        if(!listaProductos.contains(p3)){
+            listaProductos.add(p3);
+        } else System.out.println("El producto ya se encuentra en su lista de compra");
+        
+        if(!listaProductos.contains(p4)){
+            listaProductos.add(p4);
+        } else System.out.println("El producto ya se encuentra en su lista de compra");
+        
+        if(!listaProductos.contains(p5)){
+            listaProductos.add(p5);
+        } else System.out.println("El producto ya se encuentra en su lista de compra");
+
+        
         /***************************************************
          * AGREGAR aqui las sentencias para mostrar la lista
          * de productos, deberían listarse 4
         ***************************************************/
-           
+        for(Producto unProducto: listaProductos){
+            System.out.println("Producto "+unProducto.verCodigo()+" "+unProducto.verDescripcion());
+            System.out.println("Categoria: "+unProducto.verCategoria()+" Estado: "+unProducto.verEstado()+" Precio: "+unProducto.verPrecio()+"\n");
+        }
+        
         
         System.out.println("\n#################### ");
         System.out.println("CLIENTES");
@@ -62,6 +83,7 @@ public class ControladorPrincipalTP4Seccion1 {
         /*
         Clientes, se crean 3 para crear los pedidos
         */
+        
         for (Cliente e: listaClientes)
             e.mostrar();
                 
