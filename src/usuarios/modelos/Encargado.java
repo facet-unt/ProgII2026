@@ -8,56 +8,18 @@ package usuarios.modelos;
  *
  * @author estudiante
  */
-public class Encargado {
-    private String correo;
-    private String clave;
-    private String apellido;
-    private String nombre;
+public class Encargado extends Usuario{
     
-    public void mostrar(){
-        System.out.println("Encargado <" + this.verApellido() + " " + this.verNombre() + ">");
-        System.out.println("Correo : " + this.verCorreo());
-        System.out.println("Clave : " + this.verClave());
-    }
-
-    public String verCorreo() {
-        return correo;
-    }
-
-    public void asignarCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String verClave() {
-        return clave;
-    }
-
-    public void asignarClave(String clave) {
-        this.clave = clave;
-    }
-
-    public String verApellido() {
-        return apellido;
-    }
-
-    public void asignarApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String verNombre() {
-        return nombre;
-    }
-
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Encargado(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
+        super(correo, clave, apellido, nombre);
     }
-    
+
+    @Override
+    public void mostrar() {
+       System.out.println("Encargado : <" + super.verApellido() + " " + super.verNombre() + ">");
+       System.out.println("Correo : " + super.verCorreo());
+       System.out.println("Clave : " + super.verClave());
+    }
+     
     
 }

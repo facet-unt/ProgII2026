@@ -4,28 +4,83 @@
  */
 package usuarios.modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author estudiante
  */
 public abstract class Usuario {
-     private String correo;
-     private String clave;
-     private String apellido;
-     private String nombre;
+    private String correo;
+    private String clave;
+    private String apellido;
+    private String nombre;
      
-     public void mostrar(){
-        System.out.println("Cliente <" + this.apellido + " " + this.nombre + ">");
-        System.out.println("Correo : " + this.correo);
-        System.out.println("Clave : " + this.clave);
-     }
+    public void mostrar(){
+       System.out.println("Usuario : <" + this.apellido + " " + this.nombre + ">");
+       System.out.println("Correo : " + this.correo);
+       System.out.println("Clave : " + this.clave);
+    }
      
-     public Usuario(String correo, String clave, String apellido, String nombre){
-         this.apellido = apellido;
-         this.clave = clave;
-         this.nombre = nombre;
-         this.correo = correo;
-     }
+    public Usuario(String correo, String clave, String apellido, String nombre){
+        this.apellido = apellido;
+        this.clave = clave;
+        this.nombre = nombre;
+        this.correo = correo;
+    }
+
+    public String verCorreo() {
+        return correo;
+    }
+
+    public void asignarCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String verClave() {
+        return clave;
+    }
+
+    public void asignarClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String verApellido() {
+        return apellido;
+    }
+
+    public void asignarApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String verNombre() {
+        return nombre;
+    }
+
+    public void asignarNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.correo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || !(obj instanceof Usuario)) {
+            return false;
+        }
+//        if (getClass() != obj.getClass()) {
+//            return false;       
+        final Usuario other = (Usuario) obj;
+        return Objects.equals(this.correo, other.correo);
+    }
      
-     
+    
 }
