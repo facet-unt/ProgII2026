@@ -4,11 +4,15 @@
 // */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
+
 /**
  *
  * @author estudiante
  */
 public class Cliente {
+    private ArrayList<Pedido> pedidos;
     private String correo;
     private String clave;
     private String apellido;

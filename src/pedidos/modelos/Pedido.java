@@ -7,12 +7,14 @@ package pedidos.modelos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import usuarios.modelos.Cliente;
 
 /**
  *
  * @author Arebalo
  */
-public class Pedido {
+public class Pedido { 
+    private Cliente cliente;
     private int numero;
     private LocalDateTime fechaYHora;
 //    fechaYHora = LocalDateTime.now();
