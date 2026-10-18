@@ -19,36 +19,13 @@ public class Pedido {
     private Cliente unCliente;
     private Estado unEstado;
     private ArrayList<ProductoDelPedido> CantidadProducto;
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.Numero;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Pedido other = (Pedido) obj;
-        return this.Numero == other.Numero;
-    }
     
     
-
-    public Pedido(int Numero, LocalDateTime fechaYHora, Cliente unCliente) {
+    public Pedido(int Numero, LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> CantidadProducto, Cliente unCliente) {
         this.Numero = Numero;
         this.fechaYHora = fechaYHora;
+        this.CantidadProducto = CantidadProducto;
         this.unCliente = unCliente;
-        this.CantidadProducto = new ArrayList<>();
     }
 
     public int verNumero() {
@@ -98,8 +75,31 @@ public class Pedido {
         }
         
         for (ProductoDelPedido p : CantidadProducto){
-            System.out.println("\t[" + p.verCodigo() + "] " + p.verProducto() + "\t\t\t\t$" + p.verPrecio() + "\t\t " + p.verCantidad());
+            p.mostrar();
         }
         System.out.println("");
     }
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.Numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.Numero == other.Numero;
+    }
+    
 }

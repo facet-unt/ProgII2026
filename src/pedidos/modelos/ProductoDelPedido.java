@@ -14,7 +14,6 @@ import productos.modelos.Producto;
 public class ProductoDelPedido {
     private Producto unProducto;
     private int cantidad;
-
     
     @Override
     public String toString() {
@@ -71,5 +70,9 @@ public class ProductoDelPedido {
      */
     public void asignarCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+    
+    public void mostrar(){
+        System.out.println("["+ unProducto.verCodigo() + "] "+unProducto.verDescripcion()+ "    $"+ String.format("%.2f",unProducto.verPrecio()) + "             " +  this.cantidad);
     }
 }
