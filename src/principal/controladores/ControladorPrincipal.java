@@ -4,9 +4,12 @@
  */
 package principal.controladores;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import pedidos.modelos.Pedido;
+import pedidos.modelos.EstadoPedido;
 import productos.modelos.Categoria;
-import productos.modelos.Estado;
+import productos.modelos.EstadoProducto;
 import productos.modelos.Producto;
 import usuarios.modelos. *;
 
@@ -22,6 +25,7 @@ public class ControladorPrincipal {
         ArrayList<Encargado> encargados = new ArrayList <>();
         ArrayList<Empleado> empleados = new ArrayList <>();
         ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Pedido> pedidos = new ArrayList<>();
         
         Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
         Cliente cliente2 = new Cliente("joseluisM@hotmail.com","4567","Molina","Jose Luis");
@@ -36,9 +40,9 @@ public class ControladorPrincipal {
         Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
       
         
-        Producto hamburguesa = new Producto(1234,"Hamburguesa",Categoria.PLATO_PRINCIPAL,Estado.DISPONIBLE,8000f);
-        Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL,Estado.DISPONIBLE,12000f);
-        Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.ENTRADA,Estado.DISPONIBLE,5000f);
+        Producto hamburguesa = new Producto(1234,"Hamburguesa",Categoria.PLATO_PRINCIPAL,EstadoProducto.DISPONIBLE,8000f);
+        Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL,EstadoProducto.DISPONIBLE,12000f);
+        Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.ENTRADA,EstadoProducto.DISPONIBLE,5000f);
         
         
         productos.add(hamburguesa);
@@ -114,6 +118,18 @@ public class ControladorPrincipal {
         
         for (Empleado e: empleados ){
             e.mostrar();
+            
         }
+        Pedido p1 = new Pedido(1,LocalDateTime.of(2026, 9, 27, 9, 41),EstadoPedido.CREADO,cliente1);
+        Pedido p2 = new Pedido(2,LocalDateTime.now(),EstadoPedido.CREADO,cliente2);
+        
+        p1.agregarProducto(pizza, 3);
+        p1.agregarProducto(hamburguesa, 1);
+        
+        pedidos.add(p1);
+        pedidos.add(p2);
+        
+        p1.mostrar();
+        p2.mostrar();
     }
 }

@@ -14,7 +14,7 @@ public class Producto {
     private int codigo;
     private String descripcion;
     private Categoria categoria;
-    private Estado estado;
+    private EstadoProducto estado;
     private float precio;
 
     public int verCodigo() {
@@ -29,7 +29,7 @@ public class Producto {
         return categoria;
     }
 
-    public Estado verEstado() {
+    public EstadoProducto verEstado() {
         return estado;
     }
 
@@ -45,11 +45,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Estado getEstado() {
+    public EstadoProducto getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(EstadoProducto estado) {
         this.estado = estado;
     }
 
@@ -67,7 +67,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Producto(int codigo, String descripcion,Categoria categoria, Estado estado, float precio) {
+    public Producto(int codigo, String descripcion,Categoria categoria, EstadoProducto estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.categoria = categoria;

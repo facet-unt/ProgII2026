@@ -15,19 +15,25 @@ import usuarios.modelos.Cliente;
  * @author Arebalo
  */
 public class Pedido { 
-    private Cliente cliente;
-    private Estado estado;
-    private ArrayList<ProductoDelPedido> productos = new ArrayList<>();
     private int numero;
     private LocalDateTime fechaYHora;
+    private EstadoPedido estado;
+    private Cliente cliente;
+    private ArrayList<ProductoDelPedido> productos = new ArrayList<>();
 //    fechaYHora = LocalDateTime.now();
-   
-    public Pedido(Cliente cliente, Estado estado, int numero, LocalDateTime fechaYHora) {
-        this.cliente = cliente;
-        this.estado = estado;
+
+    public Pedido(int numero, LocalDateTime fechaYHora, EstadoPedido estado, Cliente cliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.productos = new ArrayList<>();
     }
+    
+    public void agregarProducto(Producto producto, int cantidad){
+        this.productos.add(new ProductoDelPedido(producto,cantidad));
+    }
+   
 
     public Cliente verCliente() {
         return cliente;
@@ -82,13 +88,12 @@ public class Pedido {
             
             for (ProductoDelPedido prod : productos) {
                 Producto p = prod.verProducto();
-                int cantidad = prod.verCantidad();
                 
                 System.out.printf("\t[%d] %-20s \t$%.2f \t%d%n", 
                         p.verCodigo(), 
                         p.verDescripcion(), 
                         p.verPrecio(), 
-                        cantidad);
+                        prod.verCantidad());
             }
         
         }
