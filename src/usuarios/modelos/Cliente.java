@@ -59,4 +59,10 @@ public class Cliente {
         System.out.println("Cliente: "+apellido +", " +nombre );
         System.out.println("clave: "+clave +" | correo: " +correo+ "\n");
     }
+    
+    @Override
+    public String toString() {
+        return apellido + ", " + nombre;
+    }
+
 }

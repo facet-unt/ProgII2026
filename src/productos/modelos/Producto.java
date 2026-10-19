@@ -11,8 +11,8 @@ package productos.modelos;
 public class Producto {
     private int codigo;
     private String descripcion;
-    private String categoria;
-    private String estado;
+    private Categoria categoria;
+private Estado estado;
     private float precio;
 
     public int verCodigo() {
@@ -23,13 +23,13 @@ public class Producto {
         return descripcion;
     }
 
-    public String verCategoria() {
-        return categoria;
-    }
+    public Categoria verCategoria() {
+    return categoria;
+}
 
-    public String verEstado() {
-        return estado;
-    }
+public Estado verEstado() {
+    return estado;
+}
 
     public float verPrecio() {
         return precio;
@@ -43,26 +43,26 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public void asignarCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+    public void asignarCategoria(Categoria categoria) {
+    this.categoria = categoria;
+}
 
-    public void asignarEstado(String estado) {
-        this.estado = estado;
-    }
+public void asignarEstado(Estado estado) {
+    this.estado = estado;
+}
 
     public void asignarPrecio(float precio) {
         this.precio = precio;
     }
 
-    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
-        this.precio = precio;
-    }
-    
+    public Producto(int codigo, String descripcion,
+                Categoria categoria, Estado estado, float precio) {
+    this.codigo = codigo;
+    this.descripcion = descripcion;
+    this.categoria = categoria;
+    this.estado = estado;
+    this.precio = precio;
+} 
     
     
     public void mostrar() {        
@@ -71,8 +71,21 @@ public class Producto {
     }
     
     @Override
-    public String toString(){
-        return "Producto: " + descripcion;
-    }
-    
+public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+
+    Producto otro = (Producto) obj;
+    return codigo == otro.codigo;
+}
+
+@Override
+public int hashCode() {
+    return Integer.hashCode(codigo);
+}
+   @Override
+public String toString() {
+    return "Producto: " + descripcion
+            + " | Codigo: " + codigo;
+} 
 }

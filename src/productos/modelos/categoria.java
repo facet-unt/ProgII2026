@@ -8,7 +8,7 @@ package productos.modelos;
  *
  * @author 54381
  */
-public enum categoria {
+public enum Categoria {
     ENTRADA,
     PLATO_PRINCIPAL,
     POSTRE;
