@@ -17,6 +17,23 @@ public class Cliente extends Usuario {
     //====================================
     //      Metodos de Cliente
     //====================================
+    public void agregarPedido(Pedido unPedido) {
+        if(!pedidos.contains(unPedido))
+            pedidos.add(unPedido);
+        
+    }
+    
+    public void cancelarPedido(Pedido unPedido) {
+        if(pedidos.contains(unPedido)){
+            pedidos.remove(unPedido);
+            System.out.println("Pedido cancelado! ");
+        }
+    }
+    
+    @Override
+    public ArrayList<Pedido> verPedidos(){
+        return pedidos;
+    }
     
     //====================================
     //      Constructor de Cliente
@@ -24,8 +41,10 @@ public class Cliente extends Usuario {
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
-        
+        this.pedidos = new ArrayList<>();
     }
+
+    
     
     
 

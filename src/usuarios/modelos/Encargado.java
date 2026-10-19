@@ -4,6 +4,8 @@
 // */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author estudiante
@@ -15,6 +17,11 @@ public class Encargado extends Usuario{
     //====================================
     //      Metodos de Encargado
     //====================================
+    
+    @Override
+       public  ArrayList verPedidos(){
+           return null;
+       }
     
     //====================================
     //      Constructor de Encargado

@@ -5,12 +5,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import usuarios.modelos.Cliente;
-import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Producto;
 
 public class Pedido {
     private int numero;
-    private LocalDateTime fechaYHora;
+    private final LocalDateTime fechaYHora;
     private Estado estado;
     private Cliente cliente;
     private ArrayList<ProductoDelPedido> ProductoDelPedido = new ArrayList<>();
@@ -19,8 +18,8 @@ public class Pedido {
     //      Métodos de Pedido
     //====================================
     public void mostrar(){
-        System.out.printf("Nro: %d                      Estado: %s",numero,estado);
-        System.out.printf("Fecha: %tF , Hora: %tR ", fechaYHora, fechaYHora );
+        System.out.printf("\nNro: %d                      Estado: %s",numero,estado);
+        System.out.printf(" Fecha: %tF , Hora: %tR \n", fechaYHora, fechaYHora );
         System.out.println("Cliente: "+ this.cliente.verApellido() +", " + this.cliente.verNombre() );
         System.out.println("clave: "+ this.cliente.verClave() +" | correo: " + this.cliente.verCorreo()+ "\n");
         System.out.println("         Producto                                                                   Cantidad");
@@ -28,7 +27,7 @@ public class Pedido {
         for(ProductoDelPedido pido: ProductoDelPedido){
             pido.mostrar();
         }
-        
+        System.out.printf("\n\n");
     }
 
     public int verNumero() {

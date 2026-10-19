@@ -40,8 +40,7 @@ public class ControladorPrincipalTP4Seccion1 {
         
              
         /***************************************************
-         * AGREGAR aqui las sentencias para completar el llenado de 
-         * la lista de productos
+          SENTENCIAS PARA LLENAR LA LISTA DE PRODUCTOS
         ***************************************************/
         listaProductos.add(p1);
         
@@ -58,8 +57,7 @@ public class ControladorPrincipalTP4Seccion1 {
             listaProductos.add(p5);
 
         /***************************************************
-         * AGREGAR aqui las sentencias para mostrar la lista
-         * de productos, deberían listarse 4
+          SENTENCIAS PARA LISTAR LOS PRODUCTOS
         ***************************************************/
         System.out.println("\n###########################");
         for (Producto prod: listaProductos){
@@ -128,7 +126,7 @@ public class ControladorPrincipalTP4Seccion1 {
         if(!listaPedidos.contains(unPedido1))
             listaPedidos.add(unPedido1);
         //***********************************************
-        //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
+        //    AGREGADO DE PEDIDOS SIN REPETIR
         //*************************************************
         if(!listaPedidos.contains(unPedido2))
             listaPedidos.add(unPedido2);
@@ -139,7 +137,7 @@ public class ControladorPrincipalTP4Seccion1 {
         System.out.println("=======");
         /*
         *************************************************
-        AGREGAR aqui la sentencia para mostrar la lista de pedidos
+                 MOSTRAR LOS PEDIDOS
         *************************************************
         */
         for (Pedido pdp: listaPedidos){

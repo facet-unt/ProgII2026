@@ -4,6 +4,8 @@
 // */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author estudiante
@@ -16,7 +18,12 @@ public class Empleado extends Usuario {
     //====================================
     //      Metodos de Empleado
     //====================================
-    
+    @Override
+       public  ArrayList verPedidos(){
+//           ArrayList vacio = new ArrayList<>();
+//           return vacio;
+            return null;
+       }
     
 
     //====================================
@@ -26,4 +33,8 @@ public class Empleado extends Usuario {
     public Empleado(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
+    
+    
+
+
 }

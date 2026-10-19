@@ -4,6 +4,7 @@
  */
 package usuarios.modelos;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -48,6 +49,8 @@ public abstract class Usuario {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    public abstract ArrayList verPedidos();
 
     @Override
     public int hashCode() {

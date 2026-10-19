@@ -30,8 +30,7 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuario unCliente4 = new Cliente("cliente3@bar.com", "claveCliente4", "ApellidoCliente4", "NombreCliente4"); 
         //unCliente4 repetido con unCliente3
         
-        if (!usuarios.contains(unCliente1))
-            usuarios.add(unCliente1);
+        
         /*
         *************************************************
         AGREGAR aqui las sentencias para sumar a la lista los 
@@ -39,6 +38,9 @@ public class ControladorPrincipalTP4Seccion2 {
         visualizar mejor
         *************************************************
         */
+        
+        if (!usuarios.contains(unCliente1))
+            usuarios.add(unCliente1);
         
         if (!usuarios.contains(unCliente2))
             usuarios.add(unCliente2);
@@ -143,7 +145,7 @@ public class ControladorPrincipalTP4Seccion2 {
         if (!usuarios.contains(unEncargado5))
             usuarios.add(unEncargado5);
         
-        Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
+        Usuario unCliente5 = new Cliente("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //mismo correo que un empleado, no debe agregarse
         /*
         Agregar aquí la sentencia para agregar unCliente5 a la lista de usuarios,
