@@ -20,6 +20,32 @@ public class Pedido {
     private Cliente unCliente;
     private ArrayList<ProductoDelPedido> productos;
 
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productos, Cliente unCliente) {
+        this.numero = numero;
+        this.fechaYHora = fechaYHora;
+        this.unCliente = unCliente;
+        this.productos = productos;
+        this.estado=estado.CREADO;
+    }
+    
+    //metodo mostrar para Pedido
+    public void mostrar(){
+      DateTimeFormatter formatoFecha= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+      DateTimeFormatter formatoHora= DateTimeFormatter.ofPattern("HH:mm");
+      System.out.printf("Nro: %d \t\t\t\tEstado: %s%n", numero, estado);
+      System.out.printf("Fecha: %s \t\tHora: %s%n", fechaYHora.format(formatoFecha), fechaYHora.format(formatoHora));
+      System.out.printf("Cliente: %s, %s%n", unCliente.verApellido(), unCliente.verNombre());
+      System.out.printf("%-35s %s%n", "Producto", "\t\tCantidad");
+      System.out.println("================================================================");
+      for(ProductoDelPedido p : productos){
+          System.out.printf("[%d] %-25s $%.2f \t\t %d%n",
+                p.verUnProducto().verCodigo(),
+                p.verUnProducto().verDescripcion(),
+                p.verUnProducto().verPrecio(),
+                p.verCantidad());
+      }
+    }
+    
     public int verNumero() {
         return numero;
     }
@@ -44,14 +70,6 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productos, Cliente unCliente) {
-        this.numero = numero;
-        this.fechaYHora = fechaYHora;
-        this.unCliente = unCliente;
-        this.productos = productos;
-        this.estado=estado.CREADO;
-    }
-
     public Cliente getUnCliente() {
         return unCliente;
     }
@@ -67,24 +85,8 @@ public class Pedido {
     public void setProductos(ArrayList<ProductoDelPedido> productos) {
         this.productos = productos;
     }
-    
-    public void mostrar(){
-      DateTimeFormatter formatoFecha= DateTimeFormatter.ofPattern("dd/MM/yyyy");
-      DateTimeFormatter formatoHora= DateTimeFormatter.ofPattern("HH:mm");
-      System.out.printf("Nro: %d \t\t\t\tEstado: %s%n", numero, estado);
-      System.out.printf("Fecha: %s \t\tHora: %s%n", fechaYHora.format(formatoFecha), fechaYHora.format(formatoHora));
-      System.out.printf("Cliente: %s, %s%n", unCliente.verApellido(), unCliente.verNombre());
-      System.out.printf("%-35s %s%n", "Producto", "\t\tCantidad");
-      System.out.println("================================================================");
-      for(ProductoDelPedido p : productos){
-          System.out.printf("[%d] %-20s $%.2f \t\t %d%n",
-                p.verUnProducto().verCodigo(),
-                p.verUnProducto().verDescripcion(),
-                p.verUnProducto().verPrecio(),
-                p.verCantidad());
-      }
-    }
 
+    //equals y hashcode. Dos pedidos son iguales si tienen el mismo numero de pedido
     @Override
     public int hashCode() {
         int hash = 7;

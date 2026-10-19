@@ -86,13 +86,13 @@ public class ControladorPrincipalTP4Seccion3 {
         Producto unProducto4 = new Producto(3, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f);
         //producto repetido
         
-        if(listaProductos.contains(unProducto1))
+        if(!listaProductos.contains(unProducto1))
             listaProductos.add(unProducto1);
-        if(listaProductos.contains(unProducto2))
+        if(!listaProductos.contains(unProducto2))
             listaProductos.add(unProducto2);
-        if(listaProductos.contains(unProducto3))
+        if(!listaProductos.contains(unProducto3))
             listaProductos.add(unProducto3);
-        if(listaProductos.contains(unProducto4))
+        if(!listaProductos.contains(unProducto4))
             listaProductos.add(unProducto4);
         
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();

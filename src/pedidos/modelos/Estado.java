@@ -11,7 +11,7 @@ package pedidos.modelos;
 public enum Estado {
     CREADO("Creado"),
     PROCESADO("Procesado"),
-    ENTREGADO("Entegrado");
+    ENTREGADO("Entregado");
     
     private final String descripcion;
 
@@ -25,7 +25,7 @@ public enum Estado {
 
     @Override
     public String toString() {
-        return "Estado: "+descripcion;
+        return descripcion;
     }
     
 }

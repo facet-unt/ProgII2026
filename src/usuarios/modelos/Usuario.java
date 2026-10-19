@@ -23,7 +23,15 @@ public abstract class Usuario {
         this.apellido = apellido;
         this.nombre = nombre;
     }
+    
+    public void mostrar(){
+        System.out.println("\t: "+apellido +", " +nombre );
+        System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n" );
+    }
 
+    public abstract ArrayList<Pedido> verPedidos();
+    
+    
     public String verCorreo() {
         return correo;
     }
@@ -56,13 +64,7 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
     
-    public void mostrar(){
-        System.out.println("\t: "+apellido +", " +nombre );
-        System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n" );
-    }
-
-    public abstract ArrayList<Pedido> verPedidos();
-    
+    //equals y hashcode. Dos usuarios son iguales si comparten el mismo correo
     @Override
     public int hashCode() {
         int hash = 5;

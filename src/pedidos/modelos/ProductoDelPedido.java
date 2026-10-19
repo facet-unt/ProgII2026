@@ -37,6 +37,12 @@ public class ProductoDelPedido {
     }
 
     @Override
+    public String toString() {
+        return unProducto.verDescripcion() + "- Cantidad: " + cantidad;
+    }
+    
+    //equals y hashcode. Dos ProductoDelPedido son iguales si contienen el mismo producto
+    @Override
     public int hashCode() {
         int hash = 5;
         hash = 41 * hash + Objects.hashCode(this.unProducto);
@@ -57,10 +63,4 @@ public class ProductoDelPedido {
         final ProductoDelPedido other = (ProductoDelPedido) obj;
         return Objects.equals(this.unProducto, other.unProducto);
     }
-
-    @Override
-    public String toString() {
-        return unProducto.verDescripcion() + "- Cantidad: " + cantidad;
-    }
-    
 }
