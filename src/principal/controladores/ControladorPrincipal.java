@@ -13,17 +13,17 @@ import usuarios.modelos.*;
  *
  * @author estudiante
  */
-public class ControladorPrincipal {
-    public static void main(String[] args) {
-        
-        
-        ArrayList<Cliente> clientes = new ArrayList <>();
+//public class ControladorPrincipal {
+//    public static void main(String[] args) {
+//        
+//        
+//        ArrayList<Cliente> clientes = new ArrayList <>();
 //        ArrayList<Encargado> encargados = new ArrayList <>();
 //        ArrayList<Empleado> empleados = new ArrayList <>();
-        ArrayList<Producto> productos = new ArrayList<>();
-        Pedido pedido;
-        
-        Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
+//        ArrayList<Producto> productos = new ArrayList<>();
+//        Pedido pedido;
+//        
+//        Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
 //        Cliente cliente2 = new Cliente("joseluisM@hotmail.com","4567","Molina","Jose Luis");
 //        Cliente cliente3 = new Cliente("juliGz@hotmail.com","9096","Gomez","Julieta");
 //         
@@ -34,21 +34,21 @@ public class ControladorPrincipal {
 //        Empleado empleado1 = new Empleado("fuentesmario@hotmail.com","3334","Fuentes","Mario");
 //        Empleado empleado2 = new Empleado("lopez@hotmail.com","111111","Lopez","Hector");
 //        Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
-        
-        Producto hamburguesa = new Producto(1234,"Hamburguesa",Categoria.ENTRADA,Estado.DISPONIBLE,8000f);
-        Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL,Estado.NO_DISPONIBLE,12000f);
-        Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.ENTRADA,Estado.DISPONIBLE,5000f);
-        
-        pedido = new Pedido(1, cliente1);
-        pedido.asignarProductoDelPedido(5, pizza);
-        pedido.asignarProductoDelPedido(2, hamburguesa);
-        pedido.asignarProductoDelPedido(18, papasFritas);
-        
-        productos.add(hamburguesa);
-        productos.add(pizza);
-        productos.add(papasFritas);
-        
-        clientes.add(cliente1);
+//        
+//        Producto hamburguesa = new Producto(1234,"Hamburguesa",Categoria.ENTRADA,Estado.DISPONIBLE,8000f);
+//        Producto pizza = new Producto(5678,"Pizza",Categoria.PLATO_PRINCIPAL,Estado.NO_DISPONIBLE,12000f);
+//        Producto papasFritas = new Producto(91011,"Papas Fritas",Categoria.ENTRADA,Estado.DISPONIBLE,5000f);
+//        
+//        pedido = new Pedido(1, cliente1);
+//        pedido.asignarProductoDelPedido(5, pizza);
+//        pedido.asignarProductoDelPedido(2, hamburguesa);
+//        pedido.asignarProductoDelPedido(18, papasFritas);
+//        
+//        productos.add(hamburguesa);
+//        productos.add(pizza);
+//        productos.add(papasFritas);
+//        
+//        clientes.add(cliente1);
 //        clientes.add(cliente2);
 //        clientes.add(cliente3);
 //        
@@ -59,8 +59,8 @@ public class ControladorPrincipal {
 //        empleados.add(empleado1);
 //        empleados.add(empleado2);
 //        empleados.add(empleado3);
-        
-        pedido.mostrar();
+//        
+//        pedido.mostrar();
 //        
 //        System.out.println("------Productos------\n");
 //        
@@ -119,5 +119,5 @@ public class ControladorPrincipal {
 //        for (Empleado e: empleados ){
 //            e.mostrar();
 //        }
-    }
-}
+//    }
+//}
