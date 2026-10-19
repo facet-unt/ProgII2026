@@ -19,7 +19,7 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private EstadoPedido estado;
     private Cliente cliente;
-    private ArrayList<ProductoDelPedido> productos = new ArrayList<>();
+    private ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
 //    fechaYHora = LocalDateTime.now();
 
     public Pedido(int numero, LocalDateTime fechaYHora, EstadoPedido estado, Cliente cliente) {
@@ -27,11 +27,19 @@ public class Pedido {
         this.fechaYHora = fechaYHora;
         this.estado = estado;
         this.cliente = cliente;
-        this.productos = new ArrayList<>();
+        this.productosDelPedido = new ArrayList<>();
     }
     
     public void agregarProducto(Producto producto, int cantidad){
-        this.productos.add(new ProductoDelPedido(producto,cantidad));
+        this.productosDelPedido.add(new ProductoDelPedido(producto,cantidad));
+    }
+
+    public ArrayList<ProductoDelPedido> verProductosDelPedido() {
+        return productosDelPedido;
+    }
+
+    public void asignarProductosDelPedido(ArrayList<ProductoDelPedido> productosDelPedido) {
+        this.productosDelPedido = productosDelPedido;
     }
    
 
@@ -82,11 +90,11 @@ public class Pedido {
         
         System.out.println("Estado: " + estado);
 
-        if (productos != null && !productos.isEmpty()) {
+        if (productosDelPedido != null && !productosDelPedido.isEmpty()) {
             System.out.println("\tProducto\t\t\t\tCantidad");
             System.out.println("=================================================================");
             
-            for (ProductoDelPedido prod : productos) {
+            for (ProductoDelPedido prod : productosDelPedido) {
                 Producto p = prod.verProducto();
                 
                 System.out.printf("\t[%d] %-20s \t$%.2f \t%d%n", 
@@ -97,6 +105,29 @@ public class Pedido {
             }
         
         }
+        
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + this.numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.numero == other.numero;
     }
 }
 
