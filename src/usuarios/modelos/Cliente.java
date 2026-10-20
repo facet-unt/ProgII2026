@@ -11,19 +11,13 @@ import pedidos.modelos.Pedido;
  *
  * @author estudiante
  */
-public class Cliente {
+public class Cliente extends Usuario {
     private ArrayList<Pedido> pedidos;
-    private String correo;
-    private String clave;
-    private String apellido;
-    private String nombre;
+    
 
-    public Cliente(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.pedidos = new ArrayList<>();
+    public Cliente(String correo,String clave,String apellido,String nombre){
+        super(correo,clave,apellido,nombre);
+        
     }
     public void agregarPedido(Pedido pedido){
         this.pedidos.add(pedido);
@@ -37,43 +31,9 @@ public class Cliente {
     public void asignarPedidos(ArrayList<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-
-    public String verCorreo() {
-        return correo;
-    }
-
-    public String verClave() {
-        return clave;
-    }
-
-    public String verApellido() {
-        return apellido;
-    }
-
-    public String verNombre() {
-        return nombre;
-    }
-
-    public void asignarCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public void asignarClave(String clave) {
-        this.clave = clave;
-    }
-
-    public void asignarApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    
-    
+    @Override
     public void mostrar(){
-        System.out.println("Cliente: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n");
+        System.out.println("Pedidos:" + pedidos);
+        
     }
 }
