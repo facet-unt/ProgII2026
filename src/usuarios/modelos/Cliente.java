@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import pedidos.modelos.Pedido;
 
 /**
@@ -29,8 +30,24 @@ public class Cliente extends Usuario
     
     @Override
     public ArrayList<Pedido> verPedidos(){
-        for(Pedido p: pedidos) {
-            p.mostrar();
+        return pedidos;
+    }
+    
+    public void agregarPedido(Pedido p)
+    {
+        if(pedidos.contains(p))
+        {
+            pedidos.set(pedidos.indexOf(p), p);
         }
+        else
+        {
+            pedidos.add(p);
+        }
+    }
+    
+    public void cancelarPedido(Pedido p)
+    {
+        if(pedidos.contains(p))
+            pedidos.remove(p);
     }
 }
