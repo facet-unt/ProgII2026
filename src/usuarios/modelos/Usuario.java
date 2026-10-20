@@ -4,6 +4,8 @@
  */
 package usuarios.modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author leand
@@ -57,18 +59,16 @@ public abstract class Usuario {
         System.out.println(" "+apellido +", " +nombre );
         System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
     }
-    
+
     @Override
-    public int hashCode() 
-    {
-        int hash = 5;
-        hash = 53 * hash + this.correo;
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.correo);
         return hash;
     }
-    
+
     @Override
-    public boolean equals(Object obj) 
-    {
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -79,6 +79,8 @@ public abstract class Usuario {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        return this.corre other.codigo;
+        return Objects.equals(this.correo, other.correo);
     }
+    
+    
 }

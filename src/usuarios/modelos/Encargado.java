@@ -18,7 +18,5 @@ public class Encargado extends Usuario{
     public void mostrar(){
         System.out.printf("Encargado:");
         super.mostrar();
-        System.out.println("Encargado: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
     }
 }
