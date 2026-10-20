@@ -134,16 +134,6 @@ public class ControladorPrincipalTP4Seccion1 {
             System.out.println("El pedido se agrego correctamente a la lista.");
         }else System.out.println("El pedido ya se encuentra agregado.");
         
-        if (!listaPedidos.contains(unPedido2)) {
-            listaPedidos.add(unPedido2);
-            System.out.println("El pedido se agrego correctamente a la lista.");
-        }else System.out.println("El pedido ya se encuentra agregado.");
-        
-        if (!listaPedidos.contains(unPedido3)) {
-            listaPedidos.add(unPedido3);
-            System.out.println("El pedido se agrego correctamente a la lista.");
-        }else System.out.println("El pedido ya se encuentra agregado.");
-        
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
         /*
