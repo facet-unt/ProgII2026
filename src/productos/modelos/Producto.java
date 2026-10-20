@@ -61,8 +61,8 @@ public class Producto {
 
   @Override
   public boolean equals(Object o) {
-    // Retornar falso si el objecto es nulo, es este mismo
-    // objecto o es de una clase distinta a esta.
+    // Retornar falso si el objeto es nulo o es de una clase distinta a esta.
+    // Retornar verdadero si es este mismo objeto.
     if (o == null) {
       return false;
     }
@@ -72,7 +72,7 @@ public class Producto {
     if (getClass() != o.getClass()) {
       return false;
     }
-    // Si hasta este punto no se volvio, el objeto es correcto y se
+    // Si hasta este punto no se volvio, el objeto es comparable y se
     // lo convierte a la clase a comparar.
     Producto unProducto = (Producto) o;
     // Comparacion
