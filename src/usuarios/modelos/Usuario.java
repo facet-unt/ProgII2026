@@ -54,7 +54,29 @@ public abstract class  Usuario {
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.correo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        
+        //compara si el objeto recibido es de cualquier subclase
+        if (!(obj instanceof Usuario)) {
+            return false;
+        }
+        
+        final Usuario other = (Usuario) obj;
+        return Objects.equals(this.correo, other.correo);
+    }
+
     public void mostrar(){
         System.out.println(""+apellido+" "+nombre);
         System.out.println("Correo: "+correo+" clave: "+clave);
