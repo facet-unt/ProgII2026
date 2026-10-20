@@ -56,5 +56,8 @@ public class ProductoDelPedido {
         return "Producto: "+unProducto.verDescripcion()+" - Cant: " + cantidad;
     }
     
+    public void mostrarPDP(){
+        System.out.println("[" + unProducto.verCodigo() + "] " + unProducto.verDescripcion() + "\t\t\t\t" + cantidad);
+    }
     
 }

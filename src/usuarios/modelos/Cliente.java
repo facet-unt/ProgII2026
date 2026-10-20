@@ -19,6 +19,12 @@ public class Cliente extends Usuario {
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
+    
+    @Override
+    public void mostrar(){
+        System.out.println("Cliente <" + super.verApellido() + " " + super.verNombre() + ">");
+        super.mostrar();
+    }
 
     @Override
     public ArrayList<Pedido> verPedidos() {

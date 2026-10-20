@@ -80,8 +80,9 @@ public abstract class  Usuario {
     }
 
     public void mostrar(){
-        System.out.println(""+apellido+" "+nombre);
-        System.out.println("Correo: "+correo+" clave: "+clave);
+        System.out.println("Correo: " + correo);
+        System.out.println("Clave: " + clave);
+        System.out.println("");
     }
     
     public abstract ArrayList<Pedido> verPedidos();

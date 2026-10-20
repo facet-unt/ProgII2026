@@ -29,8 +29,8 @@ public class ControladorPrincipalTP4Seccion1 {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         
         
-//        System.out.println("#################### ");
-//        System.out.println("PRODUCTOS");
+        System.out.println("#################### ");
+        System.out.println("PRODUCTOS");
         Producto p1 = new  Producto(1, "Producto 1", Categoria.ENTRADA ,Estado.DISPONIBLE, 200.0f);        
         Producto p2 = new  Producto(2, "Producto 2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 1950.0f);        
         Producto p3 = new  Producto(3, "Producto 3",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
@@ -63,7 +63,7 @@ public class ControladorPrincipalTP4Seccion1 {
          * AGREGAR aqui las sentencias para mostrar la lista
          * de productos, deberían listarse 4
         ***************************************************/
-        for (Producto p : listaProductos) {
+        for (Producto p : listaProductos) {                                                                                                                                                                                                     
             p.mostrar();
         }
            
@@ -75,13 +75,13 @@ public class ControladorPrincipalTP4Seccion1 {
         Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
         
         listaClientes.add(cliente1);
-        listaClientes.add(cliente2);
+        listaClientes.add(cliente2);                                                      
         listaClientes.add(cliente3);
         /*
-        Clientes, se crean 3 para crear los pedidos
+        Clientes, se crean 3 para crear los pedidos                   
         */
         for (Cliente e: listaClientes)
-            e.mostrar();
+            e.mostrar();                       
                 
         System.out.println("#################### ");
         System.out.println("PEDIDOS");
@@ -134,8 +134,7 @@ public class ControladorPrincipalTP4Seccion1 {
         //*************************************************
         if (!listaPedidos.contains(unPedido1)) {
             listaPedidos.add(unPedido1);
-            System.out.println("El pedido se agrego correctamente a la lista.");
-        }else System.out.println("El pedido ya se encuentra agregado.");
+        }
         
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");

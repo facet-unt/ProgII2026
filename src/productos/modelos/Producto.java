@@ -86,8 +86,9 @@ public class Producto {
     }
     
     public void mostrar() {        
-        System.out.println("Producto: " + descripcion + " |Codigo: " + codigo);
-        System.out.println("Estado: " + estado + " | Precio: $" + precio + "\n");
+        System.out.println("Producto <Codigo " + codigo + "> " + descripcion);
+        System.out.println("Categoria: " + categoria + "  Estado: " + estado + "   Precio: " + precio);
+        System.out.println("");
     }
     
     @Override

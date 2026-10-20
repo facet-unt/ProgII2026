@@ -86,14 +86,13 @@ public class Pedido {
     }
     
     public void mostrar(){
-        System.out.println("Nro: " + numero);
-        System.out.println("Fecha: " + verFecha() + "\t\t\t" + "Hora: " + verHora());
+        System.out.println("Nro: " + numero + "\t\t\t" + "Estado: " + estado.toString());
+        System.out.println("Fecha: " + verFecha() + "\t" + "Hora: " + verHora());
         System.out.println("Cliente: " + unCliente.verApellido() + ", " + unCliente.verNombre());
-        System.out.println("Estado: " + estado.toString());
-        System.out.println("Producto\t\t\t\t\tCantidad");
+        System.out.println("Producto\t\t\t\tCantidad");
         System.out.println("================================================================");
         for (ProductoDelPedido pDP : productosDelPedido) {
-            System.out.println(pDP);
+            pDP.mostrarPDP();
         }
     }
 }
