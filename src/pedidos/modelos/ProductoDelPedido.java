@@ -15,17 +15,15 @@ public class ProductoDelPedido {
     private int cantidad;
     private Producto unProducto;
 
-    public ProductoDelPedido(Producto unProducto,int cantidad) {
+    public ProductoDelPedido(Producto unProducto, int cantidad) {
         this.cantidad = cantidad;
         this.unProducto = unProducto;
     }
-    
-    
+
     public int verCantidad() {
         return cantidad;
     }
     
-
     public void asginarCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
@@ -38,6 +36,12 @@ public class ProductoDelPedido {
         this.unProducto = unProducto;
     }
 
+    @Override
+    public String toString() {
+        return unProducto.verDescripcion() + "- Cantidad: " + cantidad;
+    }
+    
+    //equals y hashcode. Dos ProductoDelPedido son iguales si contienen el mismo producto
     @Override
     public int hashCode() {
         int hash = 5;
@@ -59,11 +63,4 @@ public class ProductoDelPedido {
         final ProductoDelPedido other = (ProductoDelPedido) obj;
         return Objects.equals(this.unProducto, other.unProducto);
     }
-
-    @Override
-    public String toString() {
-        return unProducto.verDescripcion()+" -Cant: " + cantidad;
-    }
-    
-    
 }

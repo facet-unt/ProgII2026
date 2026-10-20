@@ -140,27 +140,24 @@ public class ControladorPrincipal {
         pedidos.add(pedido2);
         pedidos.add(pedido3);
         
-  
-        
         ProductoDelPedido prodp1=new ProductoDelPedido(papasFritas,3);
-        ProductoDelPedido prodp2=new ProductoDelPedido(hamburguesa,5);
-       
+        ProductoDelPedido prodp2=new ProductoDelPedido(pizza,5);
         
         productosp1.add(prodp1);
         productosp1.add(prodp2);
         
         ProductoDelPedido prodp3=new ProductoDelPedido(hamburguesa,4);
-        ProductoDelPedido prodp4=new ProductoDelPedido(pizza,4);
+        ProductoDelPedido prodp4=new ProductoDelPedido(papasFritas,4);
         
         productosp2.add(prodp3);
         productosp2.add(prodp4);
         
-        ProductoDelPedido prodp5=new ProductoDelPedido(papasFritas,1);  
+        ProductoDelPedido prodp5=new ProductoDelPedido(pizza,1);
         ProductoDelPedido prodp6=new ProductoDelPedido(hamburguesa,2);
         
         productosp3.add(prodp5);
         productosp3.add(prodp6);
-        
+       
         for(Pedido p:pedidos){
             p.mostrar();
         }

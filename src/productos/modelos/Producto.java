@@ -15,6 +15,19 @@ public class Producto {
     private Estado estado;
     private float precio;
     
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
+    }
+    
+    public void mostrar() {        
+        System.out.println("\tProducto: "+descripcion +" |Codigo: " +codigo );
+        System.out.println("\tEstado: "+estado +" | Precio: " +precio+ "\n");
+    }
+    
     public int verCodigo() {
         return codigo;
     }
@@ -55,30 +68,16 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
-        this.precio = precio;
-    }
-    
-    
-    
-    public void mostrar() {        
-        System.out.println("\tProducto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("\tEstado: "+estado +" | Precio: " +precio+ "\n");
-    }
-    
     @Override
     public String toString(){
         return "[" + codigo + "] " + descripcion + "\t $" + precio;
     }
 
+    //equals y hashcode. Dos productos son iguales si tienen el mismo codigo
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 41 * hash + this.codigo;
+        hash = 59 * hash + this.codigo;
         return hash;
     }
 
@@ -96,6 +95,5 @@ public class Producto {
         final Producto other = (Producto) obj;
         return this.codigo == other.codigo;
     }
-    
     
 }

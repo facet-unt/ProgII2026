@@ -28,7 +28,6 @@ public class ControladorPrincipalTP4Seccion1 {
         ArrayList<Pedido> listaPedidos = new ArrayList<>();
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         
-        
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
         Producto p1 = new  Producto(1, "Producto 1", Categoria.ENTRADA ,Estado.DISPONIBLE, 200.0f);        
@@ -48,12 +47,11 @@ public class ControladorPrincipalTP4Seccion1 {
             listaProductos.add(p4);
         if(!listaProductos.contains(p5))
             listaProductos.add(p5);
-        
-       for(Producto p: listaProductos){
-           p.mostrar();
-       }
-        
-        
+
+        for(Producto p: listaProductos ){
+            p.mostrar();
+        }
+           
         System.out.println("\n#################### ");
         System.out.println("CLIENTES");
         Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
@@ -76,16 +74,16 @@ public class ControladorPrincipalTP4Seccion1 {
         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(1), 8);
         if (!listapdp1.contains(pdp1)){
-            System.out.println("Se agregará al pedido: " + pdp1);
+            System.out.println("Se agrega al pedido:" + pdp1);
             listapdp1.add(pdp1);
         }
         if (!listapdp1.contains(pdp2)){
             listapdp1.add(pdp2);
-            System.out.println("Se agregará al pedido: " + pdp2);
+            System.out.println("Se agrega al pedido:" + pdp2);
         }
         if (!listapdp1.contains(pdp3)){
             listapdp1.add(pdp3);
-            System.out.println("Se agregará al pedido: " + pdp3);
+            System.out.println("Se agrega al pedido:" + pdp3);
         }
         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, cliente1);        
         
@@ -100,6 +98,7 @@ public class ControladorPrincipalTP4Seccion1 {
             productosDelPedido2.add(pdp5);
         if (!productosDelPedido2.contains(pdp6))
             productosDelPedido2.add(pdp6);
+        
         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), productosDelPedido2, cliente2);        
         
         ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
@@ -109,6 +108,7 @@ public class ControladorPrincipalTP4Seccion1 {
             productosDelPedido3.add(pdp7);
         if (!productosDelPedido3.contains(pdp8))
             productosDelPedido3.add(pdp8);
+        
         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, cliente3);        
         //pedido repetido no debe agregarse a la lista
 
@@ -122,16 +122,10 @@ public class ControladorPrincipalTP4Seccion1 {
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
         
-        for(Pedido t: listaPedidos){
-            t.mostrar();
+        for(Pedido p: listaPedidos){
+            p.mostrar();
         }
          
         System.out.println();        
-    
-    /*
-    *************************************************
-     FIN Primera parte - comparación de objetos
-    ***************************************************
-    */
       }
   }

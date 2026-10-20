@@ -3,7 +3,6 @@
 // * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
 // */
 package usuarios.modelos;
-
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
 
@@ -11,57 +10,46 @@ import pedidos.modelos.Pedido;
  *
  * @author estudiante
  */
-public class Cliente {
-    private String correo;
-    private String clave;
-    private String apellido;
-    private String nombre;
-    
-    private ArrayList<Pedido> pedidos; 
+public class Cliente extends Usuario {
+    private ArrayList<Pedido> pedidos = new ArrayList<>(); 
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
-    }
-
-    public String verCorreo() {
-        return correo;
-    }
-
-    public String verClave() {
-        return clave;
-    }
-
-    public String verApellido() {
-        return apellido;
-    }
-
-    public String verNombre() {
-        return nombre;
-    }
-
-    public void asignarCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public void asignarClave(String clave) {
-        this.clave = clave;
-    }
-
-    public void asignarApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
+        super(correo,clave,apellido,nombre);
     }
     
+    //Metodo que agrega un pedido a la lista de pedidos si este aun no pertenece a ella
+    //y lo modifica si ya se encuentra en ella
+    public void agregarPedido (Pedido p){
+        if(this.pedidos.isEmpty()){
+          pedidos.add(p);
+          return;
+        }
+        if(!this.pedidos.contains(p)){
+            System.out.println("Se ha agregado su pedido.");
+            pedidos.add(p);
+        }else{
+            pedidos.set(pedidos.indexOf(p), p);
+            System.out.println("Se ha modificado su pedido.");
+        }
+    }
     
+    //Metodo que elimina un elemento de la lista pedidos
+    public void cancelarPedido(Pedido p){
+        if(pedidos.contains(p)){
+            pedidos.remove(p);
+            System.out.println("Se ha cancelado su pedido.");
+        }
+    }
+    //Se redefine el metodo verPedidos de la clase Usuario para que retorne un ArrayList de pedidos
+    @Override
+    public ArrayList<Pedido> verPedidos(){
+        return pedidos;
+    }
     
+    @Override
     public void mostrar(){
-        System.out.println("\tCliente: "+apellido +", " +nombre );
-        System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n");
+        System.out.println("\tCliente: "+verApellido() +", " +verNombre() );
+        System.out.println("\tclave: "+verClave() +" | correo: " +verCorreo()+ "\n");
     }
+
 }
