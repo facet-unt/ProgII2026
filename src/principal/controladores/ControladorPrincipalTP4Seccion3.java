@@ -24,14 +24,13 @@ import usuarios.modelos.Usuario;
  */
 public class ControladorPrincipalTP4Seccion3 {
     public static void main(String[] args) {
-//     
 //    /*
 //    ***************************************************
 //    ***************************************************
 //    ***************************************************
 //    INICIO Tercera parte - herencia
 //    **************************************************
-
+        
         ArrayList<Usuario> usuarios = new ArrayList<>();
         ArrayList<Producto> listaProductos = new ArrayList<>();
         ArrayList<Pedido> listaPedidos = new ArrayList<>();
