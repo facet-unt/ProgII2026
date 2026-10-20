@@ -63,10 +63,13 @@ public class ControladorPrincipalTP4Seccion1 {
          * AGREGAR aqui las sentencias para mostrar la lista
          * de productos, deberían listarse 4
         ***************************************************/
+        for (Producto p : listaProductos) {
+            p.mostrar();
+        }
            
         
-//        System.out.println("\n#################### ");
-//        System.out.println("CLIENTES");
+        System.out.println("\n#################### ");
+        System.out.println("CLIENTES");
         Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
         Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
@@ -77,8 +80,8 @@ public class ControladorPrincipalTP4Seccion1 {
         /*
         Clientes, se crean 3 para crear los pedidos
         */
-//        for (Cliente e: listaClientes)
-//            e.mostrar();
+        for (Cliente e: listaClientes)
+            e.mostrar();
                 
         System.out.println("#################### ");
         System.out.println("PEDIDOS");
@@ -141,6 +144,9 @@ public class ControladorPrincipalTP4Seccion1 {
         AGREGAR aqui la sentencia para mostrar la lista de pedidos
         *************************************************
         */
+        for (Pedido p : listaPedidos) {
+            p.mostrar();
+        }
          
         System.out.println();        
     

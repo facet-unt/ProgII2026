@@ -29,7 +29,7 @@ public class Pedido {
         this.fechaYHora = LocalDateTime.now();
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;
-        this.productosDelPedido = new ArrayList<>();    
+        this.productosDelPedido = productosDelPedido;    
     }
     
     public Pedido(int numero, Cliente unCliente) {
