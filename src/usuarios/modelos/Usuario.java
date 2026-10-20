@@ -8,7 +8,7 @@ package usuarios.modelos;
  *
  * @author leand
  */
-public class Usuario {
+public abstract class Usuario {
     private String correo;
     private String clave;
     private String apellido;
@@ -53,5 +53,8 @@ public class Usuario {
         this.nombre = nombre;
     }
     
-    
+    public void mostrar(){
+        System.out.println("Usuario: "+apellido +", " +nombre );
+        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
+    }
 }
