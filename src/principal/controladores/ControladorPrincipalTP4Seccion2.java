@@ -13,6 +13,7 @@ import usuarios.modelos.Usuario;
 /**
  *
  * @author Mariana
+ * @author Peralta
  */
 public class ControladorPrincipalTP4Seccion2 {
     public static void main(String[] args) {
@@ -21,11 +22,11 @@ public class ControladorPrincipalTP4Seccion2 {
     ***************************************************
     ***************************************************
     INICIO Segunda parte - herencia
-//    */
+//  */
         ArrayList<Usuario> usuarios = new ArrayList<>();
         
         Usuario unCliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
-        Usuario unCliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
+        Usuario unCliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");        
         Usuario unCliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
         Usuario unCliente4 = new Cliente("cliente3@bar.com", "claveCliente4", "ApellidoCliente4", "NombreCliente4"); 
         //unCliente4 repetido con unCliente3
@@ -39,6 +40,13 @@ public class ControladorPrincipalTP4Seccion2 {
         visualizar mejor
         *************************************************
         */
+        if (!usuarios.contains(unCliente2)) usuarios.add(unCliente2);
+        if (!usuarios.contains(unCliente3)) usuarios.add(unCliente3);
+        if (!usuarios.contains(unCliente4)) {
+            usuarios.add(unCliente4);
+        } else {
+            System.out.println("No se agrego unCliente4 por correo duplicado: " + unCliente4.verCorreo());
+        }
         
         System.out.println();        
                 
@@ -55,7 +63,14 @@ public class ControladorPrincipalTP4Seccion2 {
         visualizar mejor
         *************************************************
         */
-       
+        if (!usuarios.contains(unEmpleado1)) usuarios.add(unEmpleado1);
+        if (!usuarios.contains(unEmpleado2)) usuarios.add(unEmpleado2);
+        if (!usuarios.contains(unEmpleado3)) usuarios.add(unEmpleado3);
+        if (!usuarios.contains(unEmpleado4)) {
+            usuarios.add(unEmpleado4);
+        } else {
+            System.out.println("No se agrego unEmpleado4 por correo duplicado: " + unEmpleado4.verCorreo());
+        }
        
         System.out.println("Clientes");
         System.out.println("=========");
@@ -65,6 +80,11 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuarios de la lista que son Clientes
         *************************************************
         */
+        for (Usuario u : usuarios) {
+            if (u instanceof Cliente) {
+                u.mostrar();
+            }
+        }
         
         System.out.println("Empleados");
         System.out.println("=========");
@@ -74,6 +94,11 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuarios de la lista que son Empleados
         *************************************************
         */
+        for (Usuario u : usuarios) {
+            if (u instanceof Empleado) {
+                u.mostrar();
+            }
+        }
         
         System.out.println();
 
@@ -90,6 +115,15 @@ public class ControladorPrincipalTP4Seccion2 {
         visualizar mejor
         *************************************************
         */
+        if (!usuarios.contains(unEncargado1)) usuarios.add(unEncargado1);
+        if (!usuarios.contains(unEncargado2)) usuarios.add(unEncargado2);
+        if (!usuarios.contains(unEncargado3)) usuarios.add(unEncargado3);
+        if (!usuarios.contains(unEncargado4)) {
+            usuarios.add(unEncargado4);
+        } else {
+            System.out.println("No se agrego unEncargado4 por correo duplicado: " + unEncargado4.verCorreo());
+        }
+
         System.out.println();   
         
         Usuario unEncargado5 = new Encargado("cliente1@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
@@ -98,6 +132,11 @@ public class ControladorPrincipalTP4Seccion2 {
         Agregar aquí la sentencia para agregar unEncargado5 a la lista de usuarios,
         siempre que no se repita
         */
+        if (!usuarios.contains(unEncargado5)) {
+            usuarios.add(unEncargado5);
+        } else {
+            System.out.println("No se agrego unEncargado5 por repetir correo de cliente: " + unEncargado5.verCorreo());
+        }
         
         Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //mismo correo que un empleado, no debe agregarse
@@ -105,7 +144,11 @@ public class ControladorPrincipalTP4Seccion2 {
         Agregar aquí la sentencia para agregar unCliente5 a la lista de usuarios,
         siempre que no se repita
         */
-        
+        if (!usuarios.contains(unCliente5)) {
+            usuarios.add(unCliente5);
+        } else {
+            System.out.println("No se agrego unCliente5 por repetir correo de empleado: " + unCliente5.verCorreo());
+        }
         
         System.out.println("Todos");
         System.out.println("=====");
@@ -121,4 +164,4 @@ public class ControladorPrincipalTP4Seccion2 {
     ***************************************************
     */
     }
-  }
+}

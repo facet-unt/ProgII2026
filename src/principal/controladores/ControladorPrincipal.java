@@ -11,11 +11,12 @@ import pedidos.modelos.EstadoPedido;
 import productos.modelos.Categoria;
 import productos.modelos.EstadoProducto;
 import productos.modelos.Producto;
-import usuarios.modelos. *;
+import usuarios.modelos.*;
 
 /**
  *
- * @author estudiante
+ * @author Arebalo
+ * @author Peralta
  */
 public class ControladorPrincipal {
     public static void main(String[] args) {
@@ -92,7 +93,7 @@ public class ControladorPrincipal {
         
         clientes.get(2).asignarClave("454647");
         empleados.get(1).verCorreo();
-        encargados.get(1).asignarApellido("Falcon");
+        encargados.get(1).setApellido("Falcon");
         encargados.get(0).asignarClave("346789");
         empleados.get(2).asignarClave("0000");
         

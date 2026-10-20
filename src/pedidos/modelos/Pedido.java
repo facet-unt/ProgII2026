@@ -13,6 +13,7 @@ import usuarios.modelos.Cliente;
 /**
  *
  * @author Arebalo
+ * @author Peralta
  */
 public class Pedido { 
     private int numero;
@@ -20,7 +21,6 @@ public class Pedido {
     private EstadoPedido estado;
     private Cliente cliente;
     private ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
-//    fechaYHora = LocalDateTime.now();
 
     public Pedido(int numero, LocalDateTime fechaYHora, EstadoPedido estado, Cliente cliente) {
         this.numero = numero;
@@ -41,7 +41,6 @@ public class Pedido {
     public void asignarProductosDelPedido(ArrayList<ProductoDelPedido> productosDelPedido) {
         this.productosDelPedido = productosDelPedido;
     }
-   
 
     public Cliente verCliente() {
         return cliente;
@@ -50,7 +49,6 @@ public class Pedido {
     public void asignarCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
 
     public int verNumero() {
         return numero;
@@ -72,6 +70,7 @@ public class Pedido {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
     }
+
     public void mostrar(){
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm");
@@ -79,11 +78,11 @@ public class Pedido {
         String fechaFormateada = fechaYHora != null ? fechaYHora.format(formatoFecha) : "";
         String horaFormateada = fechaYHora != null ? fechaYHora.format(formatoHora) : "";
         
-     System.out.println("Nro: " + numero);
+        System.out.println("Nro: " + numero);
         System.out.println("Fecha: " + fechaFormateada + " \t\tHora: " + horaFormateada);
         
         if (cliente != null) {
-            System.out.println("Cliente: " + cliente.verApellido() + ", " + cliente.verNombre());
+            System.out.println("Cliente: " + cliente.getApellido() + ", " + cliente.verNombre());
         } else {
             System.out.println("Cliente: Sin asignar");
         }
@@ -103,9 +102,7 @@ public class Pedido {
                         p.verPrecio(), 
                         prod.verCantidad());
             }
-        
         }
-        
     }
 
     @Override
@@ -130,4 +127,3 @@ public class Pedido {
         return this.numero == other.numero;
     }
 }
-
