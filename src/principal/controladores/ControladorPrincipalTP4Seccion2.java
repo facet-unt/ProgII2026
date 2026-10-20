@@ -36,8 +36,19 @@ public class ControladorPrincipalTP4Seccion2 {
         *************************************************
         AGREGAR aqui las sentencias para sumar a la lista los 
         unCliente2, unCliente3, unCliente4 mostrando en output el resultado para
-        visualizar mejor
-        *************************************************
+        visualizar mejor*/
+        if (!usuarios.contains(unCliente2))
+            usuarios.add(unCliente2);
+        
+        if (!usuarios.contains(unCliente3))
+            usuarios.add(unCliente3);
+        
+        if (!usuarios.contains(unCliente4))
+            usuarios.add(unCliente4);
+        
+//        for (Usuario aux: usuarios)
+//            aux.mostrar();
+        /**************************************************
         */
         
         System.out.println();        
@@ -52,8 +63,22 @@ public class ControladorPrincipalTP4Seccion2 {
         *************************************************
         AGREGAR aqui las sentencias para sumar a la lista los 
         Empleados que corresponda mostrando en output el resultado para
-        visualizar mejor
-        *************************************************
+        visualizar mejor´*/
+        if (!usuarios.contains(unEmpleado1))
+            usuarios.add(unEmpleado1);
+        
+        if (!usuarios.contains(unEmpleado2))
+            usuarios.add(unEmpleado2);
+        
+        if (!usuarios.contains(unEmpleado2))
+            usuarios.add(unEmpleado2);
+        
+        if (!usuarios.contains(unEmpleado2))
+            usuarios.add(unEmpleado2);
+        
+//        for (Usuario aux: usuarios)
+//            aux.mostrar();
+        /**************************************************
         */
        
        
