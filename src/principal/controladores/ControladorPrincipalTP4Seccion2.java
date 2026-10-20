@@ -30,15 +30,20 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuario unCliente4 = new Cliente("cliente3@bar.com", "claveCliente4", "ApellidoCliente4", "NombreCliente4"); 
         //unCliente4 repetido con unCliente3
         
-        if (!usuarios.contains(unCliente1))
+        if (!usuarios.contains(unCliente1)){
             usuarios.add(unCliente1);
-        /*
-        *************************************************
-        AGREGAR aqui las sentencias para sumar a la lista los 
-        unCliente2, unCliente3, unCliente4 mostrando en output el resultado para
-        visualizar mejor
-        *************************************************
-        */
+        }
+        if (!usuarios.contains(unCliente2)) {
+            usuarios.add(unCliente2);
+        }
+        if (!usuarios.contains(unCliente3)) {
+            usuarios.add(unCliente3);
+        }
+        if (!usuarios.contains(unCliente4)) {
+            usuarios.add(unCliente4);
+        }
+       
+        
         
         System.out.println();        
                 
@@ -48,32 +53,38 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuario unEmpleado4 = new Empleado("empleado3@bar.com", "claveEmpleado4", "ApellidoEmpleado4", "NombreEmpleado4");
         //empleado repetido
         
-         /*
-        *************************************************
-        AGREGAR aqui las sentencias para sumar a la lista los 
-        Empleados que corresponda mostrando en output el resultado para
-        visualizar mejor
-        *************************************************
-        */
+        if (!usuarios.contains(unEmpleado1)) {
+            usuarios.add(unEmpleado1);
+        }
+        if (!usuarios.contains(unEmpleado2)) {
+            usuarios.add(unEmpleado2);
+        }
+        if (!usuarios.contains(unEmpleado3)) {
+            usuarios.add(unEmpleado3);
+        }
+        if (!usuarios.contains(unEmpleado4)) {
+            usuarios.add(unEmpleado4);
+        }
        
        
         System.out.println("Clientes");
         System.out.println("=========");
-         /*
-        *************************************************
-        AGREGAR aqui las sentencias para mostrar UNICAMENTE los
-        Usuarios de la lista que son Clientes
-        *************************************************
-        */
+        
+        System.out.println("Lista de clientes:");
+        for (Usuario u : usuarios) {
+            if(u instanceof Cliente){
+                u.mostrar();
+            }
+        }
         
         System.out.println("Empleados");
         System.out.println("=========");
-         /*
-        *************************************************
-        AGREGAR aqui las sentencias para mostrar UNICAMENTE los
-        Usuarios de la lista que son Empleados
-        *************************************************
-        */
+       System.out.println("Lista de empleados:");
+        for (Usuario u : usuarios) {
+            if(u instanceof Empleado){
+                u.mostrar();
+            }
+        }
         
         System.out.println();
 
@@ -83,13 +94,30 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuario unEncargado4 = new Encargado("encargado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //encargado repetido mismo correo que otro encargado
 
-        /*
-        *************************************************
-        AGREGAR aqui las sentencias para sumar a la lista los 
-        Encargados del al 4 mostrando en output el resultado para
-        visualizar mejor
-        *************************************************
-        */
+       if (!usuarios.contains(unEncargado1)) {
+            usuarios.add(unEncargado1);
+        }
+       if (!usuarios.contains(unEncargado2)) {
+            usuarios.add(unEncargado2);
+        }
+       if (!usuarios.contains(unEncargado3)) {
+            usuarios.add(unEncargado3);
+        }
+       if (!usuarios.contains(unEncargado4)) {
+            usuarios.add(unEncargado4);
+        }
+       
+       
+       System.out.println("Encargados");
+        System.out.println("=========");
+       System.out.println("Lista de encargados:");
+        for (Usuario u : usuarios) {
+            if(u instanceof Encargado){
+                u.mostrar();
+            }
+        }
+       
+       
         System.out.println();   
         
         Usuario unEncargado5 = new Encargado("cliente1@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
