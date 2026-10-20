@@ -122,17 +122,17 @@ public class ControladorPrincipalTP4Seccion2 {
         
         Usuario unEncargado5 = new Encargado("cliente1@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //mismo correo que un cliente, no debe agregarse
-        /*
-        Agregar aquí la sentencia para agregar unEncargado5 a la lista de usuarios,
-        siempre que no se repita
-        */
+        
+        if (!usuarios.contains(unEncargado5)) {
+            usuarios.add(unEncargado5);
+        }
         
         Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //mismo correo que un empleado, no debe agregarse
-        /*
-        Agregar aquí la sentencia para agregar unCliente5 a la lista de usuarios,
-        siempre que no se repita
-        */
+        
+         if (!usuarios.contains(unCliente5)) {
+            usuarios.add(unCliente5);
+        }
         
         
         System.out.println("Todos");
