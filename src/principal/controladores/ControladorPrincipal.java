@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import pedidos.modelos.Estado;
 import pedidos.modelos.Pedido;
-import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Producto;
 import usuarios.modelos. *;
 

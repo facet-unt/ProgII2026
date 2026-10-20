@@ -4,79 +4,22 @@
 // */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 
+public class Empleado extends Usuario {
 
-public class Empleado {
-    //Atributos
-    private String correo;
-    private String clave;
-    private String apellido;
-    private String nombre;
-    //Constructor
     public Empleado(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
+        super(correo, clave, apellido, nombre);
+    }
+    @Override
+    public ArrayList<Pedido> verPedidos() {
+        return new ArrayList<Pedido>();
     }
 
-    public String verCorreo() {
-        return correo;
-    }
-
-    /**
-     * @param correo the correo to set
-     */
-    public void asignarCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    /**
-     * @return the clave
-     */
-    public String verClave() {
-        return clave;
-    }
-
-    /**
-     * @param clave the clave to set
-     */
-    public void asignarClave(String clave) {
-        this.clave = clave;
-    }
-
-    /**
-     * @return the apellido
-     */
-    public String verApellido() {
-        return apellido;
-    }
-
-    /**
-     * @param apellido the apellido to set
-     */
-    public void asignarApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    /**
-     * @return the nombre
-     */
-    public String verNombre() {
-        return nombre;
-    }
-
-    /**
-     * @param nombre the nombre to set
-     */
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    
-    
-    public void mostrar(){
-        System.out.println("Empleado: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+"\n");
+    @Override
+    public void mostrar() {
+        System.out.println("DATOS DEL EMPLEADO");
+        super.mostrar();
     }
 }

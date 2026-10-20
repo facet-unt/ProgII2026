@@ -13,16 +13,45 @@ public class Producto {
     private int codigo;
     private String descripcion;
     private Categoria categoria;
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return this.codigo == other.codigo;
+    }
     private Estado estado;
     private float precio;
 
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
+    this.codigo = codigo;
+    this.descripcion = descripcion;
+    this.categoria = categoria;
+    this.estado = estado;
+    this.precio = precio;
+}
     public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.asignarEstado(estado);
-        this.asignarCategoria(categoria);  
-    }
+    this.codigo = codigo;
+    this.descripcion = descripcion;
+    this.precio = precio;
+    this.asignarEstado(estado);
+    this.asignarCategoria(categoria);
+}
     
     
     
