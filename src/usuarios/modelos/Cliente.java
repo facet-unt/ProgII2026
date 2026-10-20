@@ -1,21 +1,49 @@
-///*
+ ///*
 // * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 // * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
 // */
 package usuarios.modelos;
 
 import java.util.ArrayList;
-import productos.modelos.Producto;
+import pedidos.modelos.Pedido;
 
 /**
  *
  * @author estudiante
  */
-public class Cliente extends Usuario{
+public class Cliente extends Usuario {
+
     //Relacion: un cliente tiene muchos pedidos
-    private ArrayList<Producto> productos;
-    
+    private ArrayList<Pedido> pedidos;
+
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
+    }
+
+    @Override
+    public ArrayList<Pedido> verPedidos() {
+        if (pedidos.isEmpty()) {
+            System.out.println("Aun no hay pedidos realizados.");
+        }
+        return pedidos;
+    }
+
+    public void agregarPedido(Pedido unPedido) {
+        if (!pedidos.contains(unPedido)) {
+            pedidos.add(unPedido);
+        } else {
+            for (int i = 0; i < pedidos.size(); i++) {
+                if (pedidos.get(i).equals(unPedido)) {
+                    pedidos.set(i, unPedido);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void cancelarPedido(Pedido unPedido) {
+        if (pedidos.contains(unPedido)) {
+            pedidos.remove(unPedido);
+        }
     }
 }

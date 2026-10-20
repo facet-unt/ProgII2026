@@ -4,7 +4,9 @@
  */
 package usuarios.modelos;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import pedidos.modelos.Pedido;
 
 /**
  *
@@ -81,4 +83,6 @@ public abstract class  Usuario {
         System.out.println(""+apellido+" "+nombre);
         System.out.println("Correo: "+correo+" clave: "+clave);
     }
+    
+    public abstract ArrayList<Pedido> verPedidos();
 }
