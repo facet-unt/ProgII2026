@@ -13,4 +13,45 @@ public class Usuario {
     private String clave;
     private String apellido;
     private String nombre;
+
+    public Usuario(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
+
+    public String verCorreo() {
+        return correo;
+    }
+
+    public void verCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String verClave() {
+        return clave;
+    }
+
+    public void verClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String verApellido() {
+        return apellido;
+    }
+
+    public void asignarApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String asignarNombre() {
+        return nombre;
+    }
+
+    public void asignarNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 }
