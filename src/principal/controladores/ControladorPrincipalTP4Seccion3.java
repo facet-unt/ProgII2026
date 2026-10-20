@@ -63,12 +63,9 @@ public class ControladorPrincipalTP4Seccion3 {
         Usuario unEmpleado4 = new Empleado("empleado3@bar.com", "claveEmpleado4", "ApellidoEmpleado4", "NombreEmpleado4");
         //empleado repetido
         
-        if (!usuarios.contains(unEmpleado1))
-            usuarios.add(unEmpleado1);
         /*
         Completar con el agregado de Empleados
         */
-        
         if (!usuarios.contains(unEmpleado1))
             usuarios.add(unEmpleado1);
         
@@ -90,20 +87,15 @@ public class ControladorPrincipalTP4Seccion3 {
         /*
         Completar con el agregado de Encargados
         */
-        
-        
         if (!usuarios.contains(unEncargado1))
             usuarios.add(unEncargado1);
         
-        
         if (!usuarios.contains(unEncargado2))
             usuarios.add(unEncargado2);
-        
-        
+              
         if (!usuarios.contains(unEncargado3))
             usuarios.add(unEncargado3);
-        
-        
+              
         if (!usuarios.contains(unEncargado4))
             usuarios.add(unEncargado4);
 
@@ -116,19 +108,14 @@ public class ControladorPrincipalTP4Seccion3 {
         /*
         Completar con el agregado de Productos
         */
-        
-        
         if (!listaProductos.contains(unProducto1))
-            listaProductos.add(unProducto1);
-        
+            listaProductos.add(unProducto1);      
         
         if (!listaProductos.contains(unProducto2))
-            listaProductos.add(unProducto2);
-        
+            listaProductos.add(unProducto2);      
         
         if (!listaProductos.contains(unProducto3))
-            listaProductos.add(unProducto3);
-        
+            listaProductos.add(unProducto3);      
         
         if (!listaProductos.contains(unProducto4))
             listaProductos.add(unProducto4);
@@ -149,6 +136,7 @@ public class ControladorPrincipalTP4Seccion3 {
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(2), 10);
         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(0), 20);
         ProductoDelPedido pdp5 = new ProductoDelPedido(listaProductos.get(2), 30);
+        
         //producto repetido        
         if (!productosDelPedido2.contains(pdp3))
             productosDelPedido2.add(pdp3);
@@ -166,8 +154,8 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!productosDelPedido3.contains(pdp7))
             productosDelPedido3.add(pdp7);
         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, (Cliente)usuarios.get(2));        
+        
         //pedido repetido
-
         if(!listaPedidos.contains(unPedido1))
             listaPedidos.add(unPedido1);
         if(!listaPedidos.contains(unPedido2))

@@ -127,13 +127,14 @@ public class ControladorPrincipalTP4Seccion1 {
         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, cliente3);        
         //pedido repetido no debe agregarse a la lista
 
-        if(!listaPedidos.contains(unPedido1))
-            listaPedidos.add(unPedido1);
         //***********************************************
         //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
         //*************************************************
         if (!listaPedidos.contains(unPedido1)) {
             listaPedidos.add(unPedido1);
+        }
+        if (!listaPedidos.contains(unPedido2)) {
+            listaPedidos.add(unPedido2);
         }
         
         System.out.println("\n\nLos pedidos son: ");
@@ -145,6 +146,7 @@ public class ControladorPrincipalTP4Seccion1 {
         */
         for (Pedido p : listaPedidos) {
             p.mostrar();
+            System.out.println("");
         }
     
         System.out.println();        

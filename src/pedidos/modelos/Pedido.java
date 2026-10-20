@@ -89,7 +89,7 @@ public class Pedido {
         System.out.println("Nro: " + numero + "\t\t\t" + "Estado: " + estado.toString());
         System.out.println("Fecha: " + verFecha() + "\t" + "Hora: " + verHora());
         System.out.println("Cliente: " + unCliente.verApellido() + ", " + unCliente.verNombre());
-        System.out.println("Producto\t\t\t\tCantidad");
+        System.out.println("Producto\t\t\t\t\tCantidad");
         System.out.println("================================================================");
         for (ProductoDelPedido pDP : productosDelPedido) {
             pDP.mostrarPDP();
