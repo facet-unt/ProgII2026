@@ -27,4 +27,10 @@ public class Cliente extends Usuario
         super.mostrar();
     }
     
+    @Override
+    public ArrayList<Pedido> verPedidos(){
+        for(Pedido p: pedidos) {
+            p.mostrar();
+        }
+    }
 }
