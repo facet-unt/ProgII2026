@@ -29,8 +29,8 @@ public class ControladorPrincipalTP4Seccion1 {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         
         
-        System.out.println("#################### ");
-        System.out.println("PRODUCTOS");
+//        System.out.println("#################### ");
+//        System.out.println("PRODUCTOS");
         Producto p1 = new  Producto(1, "Producto 1", Categoria.ENTRADA ,Estado.DISPONIBLE, 200.0f);        
         Producto p2 = new  Producto(2, "Producto 2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 1950.0f);        
         Producto p3 = new  Producto(3, "Producto 3",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
@@ -65,8 +65,8 @@ public class ControladorPrincipalTP4Seccion1 {
         ***************************************************/
            
         
-        System.out.println("\n#################### ");
-        System.out.println("CLIENTES");
+//        System.out.println("\n#################### ");
+//        System.out.println("CLIENTES");
         Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
         Cliente cliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
@@ -77,8 +77,8 @@ public class ControladorPrincipalTP4Seccion1 {
         /*
         Clientes, se crean 3 para crear los pedidos
         */
-        for (Cliente e: listaClientes)
-            e.mostrar();
+//        for (Cliente e: listaClientes)
+//            e.mostrar();
                 
         System.out.println("#################### ");
         System.out.println("PEDIDOS");
@@ -86,6 +86,7 @@ public class ControladorPrincipalTP4Seccion1 {
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(1), 8);
+        
         if (!listapdp1.contains(pdp1)){
             System.out.println("Se agregará al pedido:" + pdp1);
             listapdp1.add(pdp1);
@@ -128,6 +129,20 @@ public class ControladorPrincipalTP4Seccion1 {
         //***********************************************
         //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
         //*************************************************
+        if (!listaPedidos.contains(unPedido1)) {
+            listaPedidos.add(unPedido1);
+            System.out.println("El pedido se agrego correctamente a la lista.");
+        }else System.out.println("El pedido ya se encuentra agregado.");
+        
+        if (!listaPedidos.contains(unPedido2)) {
+            listaPedidos.add(unPedido2);
+            System.out.println("El pedido se agrego correctamente a la lista.");
+        }else System.out.println("El pedido ya se encuentra agregado.");
+        
+        if (!listaPedidos.contains(unPedido3)) {
+            listaPedidos.add(unPedido3);
+            System.out.println("El pedido se agrego correctamente a la lista.");
+        }else System.out.println("El pedido ya se encuentra agregado.");
         
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
