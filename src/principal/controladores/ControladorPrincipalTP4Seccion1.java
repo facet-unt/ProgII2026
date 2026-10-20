@@ -38,17 +38,28 @@ public class ControladorPrincipalTP4Seccion1 {
         Producto p5 = new  Producto(3, "Producto 5",Categoria.POSTRE, Estado.NO_DISPONIBLE, 7580.0f);         
         //no debe agregar a p5
         
-             
+        
         /***************************************************
          * AGREGAR aqui las sentencias para completar el llenado de 
          * la lista de productos
         ***************************************************/
-             
+        if (!listaProductos.contains(p1)) 
+            listaProductos.add(p1);
+        if (!listaProductos.contains(p2)) 
+            listaProductos.add(p2);
+        if (!listaProductos.contains(p3)) 
+            listaProductos.add(p3);
+        if (!listaProductos.contains(p4)) 
+            listaProductos.add(p4);
+        if (!listaProductos.contains(p5)) 
+            listaProductos.add(p5);
         /***************************************************
          * AGREGAR aqui las sentencias para mostrar la lista
          * de productos, deberían listarse 4
         ***************************************************/
-           
+           for (Producto p : listaProductos) {
+            p.mostrar();
+        }
         
         System.out.println("\n#################### ");
         System.out.println("CLIENTES");
@@ -107,15 +118,24 @@ public class ControladorPrincipalTP4Seccion1 {
             productosDelPedido3.add(pdp8);
         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, cliente3);        
         //pedido repetido no debe agregarse a la lista
-
-        if(!listaPedidos.contains(unPedido1))
+ 
+        if(!listaPedidos.contains(unPedido1)){
             listaPedidos.add(unPedido1);
+        if(!listaPedidos.contains(unPedido2))
+            listaPedidos.add(unPedido2);
+        if(!listaPedidos.contains(unPedido3))
+            listaPedidos.add(unPedido3);
+            
         //***********************************************
         //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
         //*************************************************
         
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
+        for (Pedido p: listaPedidos)
+        {
+            p.mostrar();
+        }
         /*
         *************************************************
         AGREGAR aqui la sentencia para mostrar la lista de pedidos
@@ -131,3 +151,4 @@ public class ControladorPrincipalTP4Seccion1 {
     */
       }
   }
+}

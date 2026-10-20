@@ -87,8 +87,6 @@ public class Producto {
         this.precio = precio;
     }
     
-    
-    
     public void mostrar() {        
         System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
         System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
