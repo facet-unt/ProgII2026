@@ -5,16 +5,20 @@
 package usuarios.modelos;
 
 import java.util.Objects;
-
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 /**
  *
  * @author estudiante
  */
+
 public abstract class Usuario {
     private String correo;
     private String clave;
     private String apellido;
     private String nombre;
+    
+    public abstract ArrayList<Pedido> verPedidos();
     
     public Usuario(String correo, String clave,String apellido, String nombre){
         this.correo=correo;
