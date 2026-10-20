@@ -6,8 +6,8 @@ package principal.controladores;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import pedido.modelos.Pedido;
-import pedido.modelos.ProductoDelPedido;
+import pedidos.modelos.Pedido;
+import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Categoria;
 import productos.modelos.Estado;
 import productos.modelos.Producto;
@@ -108,7 +108,7 @@ public class ControladorPrincipalTP4Seccion3 {
             usuarios.add(unEncargado4);
 
         Producto unProducto1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f);        
-        Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATOPRINCIPAL, Estado.DISPONIBLE, 2.0f);
+        Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f);
         Producto unProducto3 = new Producto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 3.0f);
         Producto unProducto4 = new Producto(3, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f);
         //producto repetido
