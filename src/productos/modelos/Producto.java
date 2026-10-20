@@ -47,7 +47,7 @@ public class Producto {
         return estado;
     }
 
-    public void setEstado(EstadoProducto estado) {
+    public void asignarEstado(EstadoProducto estado) {
         this.estado = estado;
     }
 
@@ -98,9 +98,8 @@ public class Producto {
     
     
     public void mostrar() {        
-        System.out.println("Producto: " + descripcion + " |Codigo: " + codigo );
-        System.out.println("Estado: " + estado + " | Precio: " + precio);
-        System.out.println("Categoria: " + categoria +"\n");
+        System.out.println("Producto " + codigo + " " + descripcion );
+        System.out.println("Categoria:" + categoria + "\tEstado: " + estado + "\tPrecio: " + precio);
     }
     
     @Override
