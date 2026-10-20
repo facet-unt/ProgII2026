@@ -22,6 +22,7 @@ public class Encargado extends Usuario{
        public  ArrayList verPedidos(){
            return null;
        }
+       
     
     //====================================
     //      Constructor de Encargado

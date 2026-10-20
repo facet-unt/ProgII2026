@@ -24,7 +24,7 @@ public class Empleado extends Usuario {
 //           return vacio;
             return null;
        }
-    
+       
 
     //====================================
     //      Constructor de Empleado

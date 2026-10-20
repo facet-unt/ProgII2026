@@ -77,8 +77,9 @@ public abstract class Usuario {
     
     
     public void mostrar(){
-        System.out.println("Usuario: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+"\n");
+        System.out.println("Usuario: <"+ this.verApellido() +" " +this.verNombre()+">" );
+        System.out.println("Correo: " +this.verCorreo());
+        System.out.println("Clave: "+this.verClave()+"\n");
     }
     
     public Usuario(String correo, String clave, String apellido, String nombre) {

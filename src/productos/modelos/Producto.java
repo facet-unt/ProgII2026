@@ -61,14 +61,14 @@ public class Producto {
     }
     
     public void mostrar() {        
-        System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("Estado: "+estado +" | Precio: " +precio);
-        System.out.println("Categoria: "+categoria );
+        System.out.println("Producto "+"<Codigo "+codigo+"> "+descripcion);
+        System.out.println("Categoria: "+categoria + " Estado: "+estado +"  Precio: " +precio);
     }
     
     @Override
     public String toString(){
-        return "Producto: " + descripcion;
+//        return "Producto: " + descripcion;
+          return descripcion;
     }
 
     @Override

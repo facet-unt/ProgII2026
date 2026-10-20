@@ -36,7 +36,7 @@ public class ProductoDelPedido {
 
     @Override
     public String toString() {
-        return "Producto: " + producto +" -Cant: " + cantidad;
+        return "Producto: " + producto +" - Cant: " + cantidad;
     }
 
     
