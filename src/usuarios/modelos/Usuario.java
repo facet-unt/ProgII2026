@@ -29,7 +29,7 @@ public abstract class Usuario {
         return correo;
     }
 
-    public void verCorreo(String correo) {
+    public void asignarCorreo(String correo) {
         this.correo = correo;
     }
 
@@ -37,7 +37,7 @@ public abstract class Usuario {
         return clave;
     }
 
-    public void verClave(String clave) {
+    public void asignarClave(String clave) {
         this.clave = clave;
     }
 
@@ -49,7 +49,7 @@ public abstract class Usuario {
         this.apellido = apellido;
     }
 
-    public String asignarNombre() {
+    public String verNombre() {
         return nombre;
     }
 
