@@ -29,7 +29,6 @@ public class Cliente extends Usuario {
     @Override
     public ArrayList<Pedido> verPedidos() {
         if (pedidos.isEmpty()) {
-            System.out.println("Aun no hay pedidos realizados.");
         }
         return pedidos;
     }
