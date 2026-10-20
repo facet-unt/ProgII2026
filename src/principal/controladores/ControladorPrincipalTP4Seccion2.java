@@ -46,8 +46,9 @@ public class ControladorPrincipalTP4Seccion2 {
         if (!usuarios.contains(unCliente4))
             usuarios.add(unCliente4);
         
-//        for (Usuario aux: usuarios)
-//            aux.mostrar();
+        for (Usuario aux: usuarios)
+            if(aux instanceof Cliente)
+            aux.mostrar();
         /**************************************************
         */
         
@@ -76,8 +77,9 @@ public class ControladorPrincipalTP4Seccion2 {
         if (!usuarios.contains(unEmpleado2))
             usuarios.add(unEmpleado2);
         
-//        for (Usuario aux: usuarios)
-//            aux.mostrar();
+        for (Usuario aux: usuarios)
+            if(aux instanceof Empleado)
+            aux.mostrar();
         /**************************************************
         */
        
@@ -136,12 +138,18 @@ public class ControladorPrincipalTP4Seccion2 {
         siempre que no se repita
         */
         
+         if (!usuarios.contains(unEncargado5)) {
+            usuarios.add(unEncargado5);
+        
         Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //mismo correo que un empleado, no debe agregarse
         /*
         Agregar aquí la sentencia para agregar unCliente5 a la lista de usuarios,
         siempre que no se repita
         */
+        
+         if (!usuarios.contains(unCliente5)) {
+            usuarios.add(unCliente5);
         
         
         System.out.println("Todos");
