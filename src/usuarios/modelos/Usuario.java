@@ -54,7 +54,7 @@ public abstract class Usuario {
     }
     
     public void mostrar(){
-        System.out.println("Usuario: "+apellido +", " +nombre );
+        System.out.println(" "+apellido +", " +nombre );
         System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
     }
 }
