@@ -100,6 +100,7 @@ public class Producto {
     public void mostrar() {        
         System.out.println("Producto " + codigo + " " + descripcion );
         System.out.println("Categoria:" + categoria + "\tEstado: " + estado + "\tPrecio: " + precio);
+        System.out.println("\n");
     }
     
     @Override

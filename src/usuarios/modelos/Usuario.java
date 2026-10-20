@@ -60,7 +60,9 @@ public abstract class Usuario {
         this.clave = clave;
     }
     public void mostrar(){
-        System.out.println("Nombre: " + nombre + " | Correo: " + correo);
+        System.out.println("Cliente " + apellido + " " + nombre);
+        System.out.println("Correo: " + correo);
+        System.out.println("Clave: " + clave);
     }
     
     @Override
