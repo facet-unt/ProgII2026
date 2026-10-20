@@ -134,12 +134,15 @@ public class ControladorPrincipalTP4Seccion3 {
             listaProductos.add(unProducto4);
         
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
+        
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
+        
         if (!listapdp1.contains(pdp1))
             listapdp1.add(pdp1);
         if (!listapdp1.contains(pdp2))
             listapdp1.add(pdp2);
+
         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, usuarios.get(0));        
         
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();

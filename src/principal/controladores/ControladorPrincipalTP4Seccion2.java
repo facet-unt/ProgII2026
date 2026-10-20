@@ -46,9 +46,7 @@ public class ControladorPrincipalTP4Seccion2 {
         if (!usuarios.contains(unCliente4))
             usuarios.add(unCliente4);
         
-        for (Usuario aux: usuarios)
-            if(aux instanceof Cliente)
-            aux.mostrar();
+    
         /**************************************************
         */
         
@@ -71,15 +69,13 @@ public class ControladorPrincipalTP4Seccion2 {
         if (!usuarios.contains(unEmpleado2))
             usuarios.add(unEmpleado2);
         
-        if (!usuarios.contains(unEmpleado2))
-            usuarios.add(unEmpleado2);
+        if (!usuarios.contains(unEmpleado3))
+            usuarios.add(unEmpleado3);
         
-        if (!usuarios.contains(unEmpleado2))
-            usuarios.add(unEmpleado2);
+        if (!usuarios.contains(unEmpleado4))
+            usuarios.add(unEmpleado4);
         
-        for (Usuario aux: usuarios)
-            if(aux instanceof Empleado)
-            aux.mostrar();
+       
         /**************************************************
         */
        
@@ -92,6 +88,9 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuarios de la lista que son Clientes
         *************************************************
         */
+         for (Usuario aux: usuarios)
+            if(aux instanceof Cliente)
+            aux.mostrar();
         
         System.out.println("Empleados");
         System.out.println("=========");
@@ -101,6 +100,9 @@ public class ControladorPrincipalTP4Seccion2 {
         Usuarios de la lista que son Empleados
         *************************************************
         */
+        for (Usuario aux: usuarios)
+            if(aux instanceof Empleado)
+            aux.mostrar();
         
         System.out.println();
 
@@ -138,7 +140,7 @@ public class ControladorPrincipalTP4Seccion2 {
         siempre que no se repita
         */
         
-         if (!usuarios.contains(unEncargado5)) {
+         if (!usuarios.contains(unEncargado5)){
             usuarios.add(unEncargado5);
         
         Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
@@ -159,11 +161,12 @@ public class ControladorPrincipalTP4Seccion2 {
             System.out.println();
         }
         System.out.println();
+        
         /*
     FIN Segunda parte - herencia
     ***************************************************
     ***************************************************
     ***************************************************
     */
-    }
-  }
+  }   
+}
