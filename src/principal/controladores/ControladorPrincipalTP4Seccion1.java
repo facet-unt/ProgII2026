@@ -115,6 +115,10 @@ public class ControladorPrincipalTP4Seccion1 {
 
         if(!listaPedidos.contains(unPedido1))
             listaPedidos.add(unPedido1);
+        if(!listaPedidos.contains(unPedido2))
+            listaPedidos.add(unPedido2);
+        if(!listaPedidos.contains(unPedido3))
+            listaPedidos.add(unPedido3);
         //***********************************************
         //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
         //*************************************************

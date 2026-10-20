@@ -57,7 +57,7 @@ public class Producto {
     
     public void mostrar() {        
         System.out.println("Producto: "+verDescripcion() +" |Codigo: " +verCodigo() );
-        System.out.println("Estado: "+verEstado() +" | Precio: " +verPrecio()+ "\n");
+        System.out.println("Categoria: " + verCategoria() + " |Estado: "+verEstado() + " |Precio: " +verPrecio()+ "\n");
     }
     
     @Override

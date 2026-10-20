@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import pedidos.modelos.Pedido;
 
 /**
@@ -60,13 +61,14 @@ public abstract class Usuario {
     }
     @Override
     public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (!(obj instanceof Usuario)) return false;
-    return this.correo.equals(((Usuario) obj).correo);
-}
-
+        if (this == obj) return true;
+        if (!(obj instanceof Usuario)) return false;
+        return this.correo.equals(((Usuario) obj).correo);
+    }
     @Override
     public int hashCode() {
-    return correo.hashCode();
-}
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.correo);
+        return hash;
+    }   
 }

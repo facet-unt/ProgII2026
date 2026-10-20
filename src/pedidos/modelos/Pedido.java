@@ -134,7 +134,7 @@ public class Pedido {
         System.out.println("         Producto                                                                   Cantidad");
         System.out.println("==============================================================================================");
         for(ProductoDelPedido p : productos){
-        System.out.println(" "+p.verProducto().verCodigo() + " " + p.verProducto().verDescripcion()+" "+p.verProducto().verPrecio()+" "+p.verCantidad());
+        System.out.println("Producto:  "+p.verProducto().verCodigo() + " - " + p.verProducto().verDescripcion()+ " Precio: $"  +p.verProducto().verPrecio()+ " "+p.verCantidad());
       }
     }
     
