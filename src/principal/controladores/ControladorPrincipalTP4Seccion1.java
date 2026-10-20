@@ -147,7 +147,7 @@ public class ControladorPrincipalTP4Seccion1 {
         for (Pedido p : listaPedidos) {
             p.mostrar();
         }
-         
+    
         System.out.println();        
     
     /*
