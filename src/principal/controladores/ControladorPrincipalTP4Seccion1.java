@@ -56,6 +56,7 @@ public class ControladorPrincipalTP4Seccion1 {
          
          for(Producto unProducto : listaProductos){
              unProducto.mostrar();
+             System.out.println();
          }
         
          System.out.println("\n#################### ");
@@ -74,6 +75,7 @@ public class ControladorPrincipalTP4Seccion1 {
          
          for (Cliente e: listaClientes){
             e.mostrar();
+             System.out.println();
          }
                 
          System.out.println("#################### ");

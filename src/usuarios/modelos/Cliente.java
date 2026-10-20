@@ -12,19 +12,11 @@ import pedidos.modelos.Pedido;
  * @author estudiante
  */
 public class Cliente extends Usuario{
-    private ArrayList<Pedido> listaPedidos;  
+    private ArrayList<Pedido> listaPedidos = new ArrayList<>();  
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
-
-    public ArrayList<Pedido> verListaPedidos() {
-        return listaPedidos;
-    }
-
-    public void asignarListaPedidos(ArrayList<Pedido> listaPedidos) {
-        this.listaPedidos = listaPedidos;
-    }   
 
     @Override
     public void mostrar() {
@@ -32,6 +24,24 @@ public class Cliente extends Usuario{
        System.out.println("Correo : " + super.verCorreo());
        System.out.println("Clave : " + super.verClave());
     }
+
+    @Override
+    public ArrayList<Pedido> verPedidos() {
+        return this.listaPedidos;
+    }
     
+    public void agregarPedido(Pedido pedido){
+        if(!listaPedidos.contains(pedido)){
+            listaPedidos.add(pedido);
+        }
+    }
     
+    public void cancelarPedido(Pedido pedido){
+        if(this.listaPedidos.contains(pedido)){
+            this.listaPedidos.remove(pedido);
+        }
+        else{
+            System.out.println("El Cliente no tiene este pedido");
+        }
+    }
 }
