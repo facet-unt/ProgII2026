@@ -59,13 +59,13 @@ public class ControladorPrincipalTP4Seccion1 {
         /***************************************************
           SENTENCIAS PARA LISTAR LOS PRODUCTOS
         ***************************************************/
-        System.out.println("\n###########################");
+        
         for (Producto prod: listaProductos){
             prod.mostrar();
             System.out.println();
         }
         
-        System.out.println("\n#################### ");
+        System.out.println("\n###########################");
         System.out.println("CLIENTES");
         Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
@@ -80,7 +80,7 @@ public class ControladorPrincipalTP4Seccion1 {
         for (Cliente e: listaClientes)
             e.mostrar();
                 
-        System.out.println("#################### ");
+        System.out.println("\n###########################");
         System.out.println("PEDIDOS");
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);

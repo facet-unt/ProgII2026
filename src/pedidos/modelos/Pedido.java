@@ -19,7 +19,7 @@ public class Pedido {
     //====================================
     public void mostrar(){
         System.out.printf("\nNro: %d                      Estado: %s",numero,estado);
-        System.out.printf(" Fecha: %tF , Hora: %tR \n", fechaYHora, fechaYHora );
+        System.out.printf("\nFecha: %tF       \tHora: %tR \n", fechaYHora, fechaYHora );
         System.out.println("Cliente: "+ this.cliente.verApellido() +", " + this.cliente.verNombre() );
         System.out.println("clave: "+ this.cliente.verClave() +" | correo: " + this.cliente.verCorreo()+ "\n");
         System.out.println("         Producto                                                                   Cantidad");
