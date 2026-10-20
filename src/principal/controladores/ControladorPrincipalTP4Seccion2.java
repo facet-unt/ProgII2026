@@ -115,6 +115,18 @@ public class ControladorPrincipalTP4Seccion2 {
         visualizar mejor
         *************************************************
         */
+        if (!usuarios.contains(unEncargado1)) {
+            usuarios.add(unEncargado1);
+        }
+        if (!usuarios.contains(unEncargado2)) {
+            usuarios.add(unEncargado2);
+        }
+        if (!usuarios.contains(unEncargado3)) {
+            usuarios.add(unEncargado3);
+        }
+        if (!usuarios.contains(unEncargado4)) {
+            usuarios.add(unEncargado4);
+        }
         System.out.println();   
         
         Usuario unEncargado5 = new Encargado("cliente1@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
