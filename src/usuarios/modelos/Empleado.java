@@ -24,4 +24,9 @@ public class Empleado extends Usuario {
     public String toString() {
         return verApellido() + ", " + verNombre();
     }
+    
+    @Override
+public ArrayList<Pedido> verPedidos() {
+    return new ArrayList<>();
+}
 }

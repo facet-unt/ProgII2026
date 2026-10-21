@@ -34,9 +34,9 @@ public class ControladorPrincipal {
         Empleado empleado3 = new Empleado("alguileraC@hotmail.com","2026","Aguilera","Cristina");
       
         
-        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
-        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
-        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
+//        Producto hamburguesa = new Producto(1234,"Hamburguesa","Comida","Disponible",8000f);
+//        Producto pizza = new Producto(5678,"Pizza","Comida","No disponible",12000f);
+//        Producto papasFritas = new Producto(91011,"Papas Fritas","Comida","Disponible",5000f);
         
         
         productos.add(hamburguesa);

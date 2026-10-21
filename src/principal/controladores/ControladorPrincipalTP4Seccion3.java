@@ -41,8 +41,14 @@ public class ControladorPrincipalTP4Seccion3 {
         Usuario unCliente4 = new Cliente("cliente3@bar.com", "claveCliente4", "ApellidoCliente4", "NombreCliente4"); 
         //cliente repetido
         
-        if (!usuarios.contains(unCliente1))
-            usuarios.add(unCliente1);
+         if (!usuarios.contains(unCliente1))
+                usuarios.add(unCliente1);
+         if (!usuarios.contains(unCliente2))
+                usuarios.add(unCliente2);
+         if (!usuarios.contains(unCliente3))
+               usuarios.add(unCliente3);
+         if (!usuarios.contains(unCliente4))
+               usuarios.add(unCliente4);
             
        /*
         Completar con el agregado de clientes
@@ -54,8 +60,14 @@ public class ControladorPrincipalTP4Seccion3 {
         Usuario unEmpleado4 = new Empleado("empleado3@bar.com", "claveEmpleado4", "ApellidoEmpleado4", "NombreEmpleado4");
         //empleado repetido
         
-        if (!usuarios.contains(unEmpleado1))
-            usuarios.add(unEmpleado1);
+         if (!usuarios.contains(unEmpleado1))
+              usuarios.add(unEmpleado1);
+         if (!usuarios.contains(unEmpleado2))
+               usuarios.add(unEmpleado2);
+         if (!usuarios.contains(unEmpleado3))
+             usuarios.add(unEmpleado3);
+         if (!usuarios.contains(unEmpleado4))
+             usuarios.add(unEmpleado4);
         /*
         Completar con el agregado de Empleados
         */
@@ -66,9 +78,14 @@ public class ControladorPrincipalTP4Seccion3 {
         Usuario unEncargado4 = new Encargado("encargado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //encargado repetido
 
-        /*
-        Completar con el agregado de Encargados
-        */
+         if (!usuarios.contains(unEncargado1))
+                  usuarios.add(unEncargado1);
+         if (!usuarios.contains(unEncargado2))
+                  usuarios.add(unEncargado2);
+         if (!usuarios.contains(unEncargado3))
+                  usuarios.add(unEncargado3);
+         if (!usuarios.contains(unEncargado4))
+                  usuarios.add(unEncargado4);
 
         Producto unProducto1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f);        
         Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATOPRINCIPAL, Estado.DISPONIBLE, 2.0f);
@@ -76,9 +93,14 @@ public class ControladorPrincipalTP4Seccion3 {
         Producto unProducto4 = new Producto(3, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f);
         //producto repetido
         
-        /*
-        Completar con el agregado de Productos
-        */
+         if (!listaProductos.contains(unProducto1))
+                  listaProductos.add(unProducto1);
+         if (!listaProductos.contains(unProducto2))
+                  listaProductos.add(unProducto2);
+         if (!listaProductos.contains(unProducto3))
+                  listaProductos.add(unProducto3);
+         if (!listaProductos.contains(unProducto4))
+                  listaProductos.add(unProducto4);
         
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
