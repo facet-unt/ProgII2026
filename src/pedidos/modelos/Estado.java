@@ -9,11 +9,18 @@ package pedidos.modelos;
  * @author leand
  */
 public enum Estado {
-    CREADO, PROCESANDO, ENTREGADO;
+    CREADO("Creado"), PROCESANDO("Procesando"), ENTREGADO("Entregado");
+    
+    private String name;
     
     @Override
     public String toString(){
-        return name();
+        return name;
+    }
+    
+    Estado(String name)
+    {
+        this.name = name;
     }
 }
 

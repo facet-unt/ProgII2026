@@ -26,6 +26,7 @@ public class Pedido {
         this.fechaYHora = fechaYHora;
         this.CantidadProducto = CantidadProducto;
         this.unCliente = unCliente;
+        this.unEstado = Estado.CREADO;
     }
 
     public int verNumero() {

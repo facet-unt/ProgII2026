@@ -15,4 +15,5 @@ public enum Categoria {
     public String toString(){
         return name();
     }
+    
 }
