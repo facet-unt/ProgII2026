@@ -79,7 +79,7 @@ public class Pedido {
         String horaFormateada = fechaYHora != null ? fechaYHora.format(formatoHora) : "";
         
         System.out.println("Nro: " + numero);
-        System.out.println("Fecha: " + fechaFormateada + " \t\tHora: " + horaFormateada);
+        System.out.println("Fecha: " + fechaFormateada + " Hora: " + horaFormateada);
         
         if (cliente != null) {
             System.out.println("Cliente: " + cliente.getApellido() + ", " + cliente.verNombre());
@@ -90,17 +90,11 @@ public class Pedido {
         System.out.println("Estado: " + estado);
 
         if (productosDelPedido != null && !productosDelPedido.isEmpty()) {
-            System.out.println("\tProducto\t\t\t\tCantidad");
-            System.out.println("=================================================================");
+            System.out.println("Producto Cantidad");
+            System.out.println("==========================");
             
             for (ProductoDelPedido prod : productosDelPedido) {
-                Producto p = prod.verProducto();
-                
-                System.out.printf("\t[%d] %-20s \t$%.2f \t%d%n", 
-                        p.verCodigo(), 
-                        p.verDescripcion(), 
-                        p.verPrecio(), 
-                        prod.verCantidad());
+                prod.mostrar();
             }
         }
     }

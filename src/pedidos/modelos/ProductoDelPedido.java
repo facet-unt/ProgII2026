@@ -10,6 +10,7 @@ import productos.modelos.Producto;
 /**
  *
  * @author Arebalo
+ * @author Peralta
  */
 public class ProductoDelPedido {
     private Producto producto;
@@ -19,7 +20,6 @@ public class ProductoDelPedido {
         return producto;
     }
 
-    
     public String verDescripcion() {
         return producto.verDescripcion();
     }
@@ -44,11 +44,13 @@ public class ProductoDelPedido {
         this.cantidad = cantidad;
     }
 
-    
-
     public ProductoDelPedido(Producto producto, int cantidad) {
         this.producto = producto;
         this.cantidad = cantidad;
+    }
+
+    public void mostrar() {
+        System.out.println("Producto: " + producto.verCodigo() + " - " + producto.verDescripcion() + " Precio $:" + producto.verPrecio() + " " + cantidad);
     }
 
     @Override
@@ -75,7 +77,6 @@ public class ProductoDelPedido {
 
     @Override
     public String toString() {
-        return "Producto:" + (producto != null ? producto.verDescripcion():"") + "- Cantidad=" + cantidad + '}';
+        return "Producto: " + producto.verCodigo() + " - " + producto.verDescripcion() + " Precio $:" + producto.verPrecio() + " " + cantidad;
     }
-    
 }

@@ -30,8 +30,10 @@ public class ControladorPrincipalTP4Seccion3 {
     ***************************************************
     ***************************************************
     INICIO Tercera parte - herencia
-    **************************************************
+    ***************************************************
     */
+        /*Salida Sección 3;*/
+
         ArrayList<Usuario> usuarios = new ArrayList<>();
         ArrayList<Producto> listaProductos = new ArrayList<>();
         ArrayList<Pedido> listaPedidos = new ArrayList<>();
@@ -51,6 +53,7 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!usuarios.contains(unCliente2)) usuarios.add(unCliente2);
         if (!usuarios.contains(unCliente3)) usuarios.add(unCliente3);
         if (!usuarios.contains(unCliente4)) usuarios.add(unCliente4);
+        System.out.println("No se puede agregar el cliente5");
                         
         Usuario unEmpleado1 = new Empleado("empleado1@bar.com", "claveEmpleado1", "ApellidoEmpleado1", "NombreEmpleado1");        
         Usuario unEmpleado2 = new Empleado("empleado2@bar.com", "claveEmpleado2", "ApellidoEmpleado2", "NombreEmpleado2");        
@@ -66,6 +69,7 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!usuarios.contains(unEmpleado2)) usuarios.add(unEmpleado2);
         if (!usuarios.contains(unEmpleado3)) usuarios.add(unEmpleado3);
         if (!usuarios.contains(unEmpleado4)) usuarios.add(unEmpleado4);
+        System.out.println("No se puede agregar el encargado5");
         
         Usuario unEncargado1 = new Encargado("encargado1@bar.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
         Usuario unEncargado2 = new Encargado("encargado2@bar.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
@@ -80,6 +84,14 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!usuarios.contains(unEncargado2)) usuarios.add(unEncargado2);
         if (!usuarios.contains(unEncargado3)) usuarios.add(unEncargado3);
         if (!usuarios.contains(unEncargado4)) usuarios.add(unEncargado4);
+        System.out.println("No se puede agregar el unEmpleado5");
+
+        System.out.println("Lista de usuarios");
+        System.out.println("========");
+        for (Usuario u : usuarios) {
+            u.mostrar();
+        }
+        System.out.println();
 
         Producto unProducto1 = new Producto(1, "Producto1", Categoria.ENTRADA, EstadoProducto.DISPONIBLE, 1.0f);        
         Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, EstadoProducto.DISPONIBLE, 2.0f);
@@ -99,7 +111,7 @@ public class ControladorPrincipalTP4Seccion3 {
         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente) unCliente1);        
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
-        ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
+        ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 1);        
         if (!listapdp1.contains(pdp1)) listapdp1.add(pdp1);
         if (!listapdp1.contains(pdp2)) listapdp1.add(pdp2);
         unPedido1.asignarProductosDelPedido(listapdp1);
@@ -107,19 +119,17 @@ public class ControladorPrincipalTP4Seccion3 {
         // Creacion de Pedido 2
         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente) unCliente2);        
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
-        ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(2), 10);
-        ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(0), 20);
-        ProductoDelPedido pdp5 = new ProductoDelPedido(listaProductos.get(2), 30);
+        ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(0), 10);
+        ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(1), 20);
         if (!productosDelPedido2.contains(pdp3)) productosDelPedido2.add(pdp3);
         if (!productosDelPedido2.contains(pdp4)) productosDelPedido2.add(pdp4);
-        if (!productosDelPedido2.contains(pdp5)) productosDelPedido2.add(pdp5);
         unPedido2.asignarProductosDelPedido(productosDelPedido2);
 
         // Creacion de Pedido 3
-        Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente) unCliente3);        
+        Pedido unPedido3 = new Pedido(3, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente) unCliente3);        
         ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
-        ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(1), 100);
-        ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(2), 200);
+        ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(2), 100);
+        ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(1), 200);
         if (!productosDelPedido3.contains(pdp6)) productosDelPedido3.add(pdp6);
         if (!productosDelPedido3.contains(pdp7)) productosDelPedido3.add(pdp7);
         unPedido3.asignarProductosDelPedido(productosDelPedido3);
@@ -143,6 +153,7 @@ public class ControladorPrincipalTP4Seccion3 {
         //pedido repetido
         
         System.out.println("Pedidos de " + unCliente1.getApellido() + ", " + unCliente1.verNombre());
+        System.out.println();
         for(Pedido p : ((Cliente)unCliente1).verPedidos()) {
             p.mostrar();
             System.out.println();

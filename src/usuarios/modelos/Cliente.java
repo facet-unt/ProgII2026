@@ -46,7 +46,7 @@ public class Cliente extends Usuario {
 
     @Override
     public void mostrar() {
+        System.out.println("Datos del cliente");
         super.mostrar();
-        System.out.println("Pedidos:" + pedidos);
     }
 }

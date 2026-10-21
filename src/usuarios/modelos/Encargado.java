@@ -20,4 +20,10 @@ public class Encargado extends Usuario {
     public ArrayList<Pedido> verPedidos() {
         return new ArrayList<>();
     }
+
+    @Override
+    public void mostrar() {
+        System.out.println("Datos del encargado");
+        super.mostrar();
+    }
 }

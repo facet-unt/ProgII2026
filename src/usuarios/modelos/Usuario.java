@@ -9,6 +9,7 @@ import java.util.Objects;
 /**
  *
  * @author Arebalo
+ * @author Peralta
  */
 public abstract class Usuario {
     private String correo;
@@ -16,15 +17,12 @@ public abstract class Usuario {
     private String apellido;
     private String nombre;
 
-        public Usuario(String correo, String clave, String apellido, String nombre) {
-            this.correo = correo;
-            this.clave = clave;
-            this.apellido = apellido;
-            this.nombre = nombre;
-        }
-
-    
-    
+    public Usuario(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
 
     public String getApellido() {
         return apellido;
@@ -33,8 +31,6 @@ public abstract class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-    
 
     public String verCorreo() {
         return correo;
@@ -59,8 +55,9 @@ public abstract class Usuario {
     public void asignarClave(String clave) {
         this.clave = clave;
     }
+
     public void mostrar(){
-        System.out.println("Cliente " + apellido + " " + nombre);
+        System.out.println("Usuario: " + apellido + ", " + nombre);
         System.out.println("Correo: " + correo);
         System.out.println("Clave: " + clave);
     }
@@ -80,5 +77,4 @@ public abstract class Usuario {
     public int hashCode() {
         return Objects.hash(correo);
     }
-   
 }

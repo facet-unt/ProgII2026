@@ -20,4 +20,10 @@ public class Empleado extends Usuario {
     public ArrayList<Pedido> verPedidos() {
         return new ArrayList<>();
     }
+
+    @Override
+    public void mostrar() {
+        System.out.println("Datos del empleado");
+        super.mostrar();
+    }
 }
