@@ -66,7 +66,7 @@ public class Pedido {
     public void mostrar() {        
         System.out.println("Nro:"+ Numero+"\n"+"Fecha: "+ FechaACadena(verFecha())+ "\t"+"Hora: "+ HoraACadena(verHora()));
         System.out.println("Cliente: "+ unCliente.verApellido() +"," +unCliente.verNombre());
-        System.out.println("");
+        System.out.println("Estado: "+ unEstado);
         System.out.println("\tProducto                      Cantidad");
         System.out.println("\t====================================");
         if (CantidadProducto.isEmpty()) {

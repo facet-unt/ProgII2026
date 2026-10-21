@@ -5,7 +5,6 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import pedidos.modelos.Pedido;
 
 /**
@@ -19,6 +18,7 @@ public class Cliente extends Usuario
     public Cliente(String correo, String clave, String apellido, String nombre) 
     {
         super(correo, clave, apellido, nombre);
+        this.pedidos =  new ArrayList<>();
     }
     
     @Override
