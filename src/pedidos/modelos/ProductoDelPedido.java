@@ -12,6 +12,7 @@ import productos.modelos.Producto;
  * @author estudiante
  */
 public class ProductoDelPedido {
+
     private int cantidad;
     //Relacion con Producto
     private Producto unProducto;
@@ -20,12 +21,12 @@ public class ProductoDelPedido {
         this.unProducto = unProducto;
         this.cantidad = cantidad;
     }
-    
+
     public int verCantidad() {
         return cantidad;
     }
 
-    public Producto verProducto(){
+    public Producto verProducto() {
         return unProducto;
     }
 
@@ -53,11 +54,11 @@ public class ProductoDelPedido {
 
     @Override
     public String toString() {
-        return "Producto: "+unProducto.verDescripcion()+" - Cant: " + cantidad;
+        return "Producto: " + unProducto.verDescripcion() + " - Cant: " + cantidad;
     }
-    
-    public void mostrarPDP(){
+
+    public void mostrarPDP() {
         System.out.println("[" + unProducto.verCodigo() + "] " + unProducto.verDescripcion() + "\t\t$" + unProducto.verPrecio() + "\t\t\t" + cantidad);
     }
-    
+
 }

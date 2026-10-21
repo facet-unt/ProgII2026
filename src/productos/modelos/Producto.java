@@ -9,12 +9,13 @@ package productos.modelos;
  * @author estudiante
  */
 public class Producto {
+
     private int codigo;
     private String descripcion;
     private Categoria categoria;
     private Estado estado;
     private float precio;
-    
+
     public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -84,15 +85,15 @@ public class Producto {
         hash = 17 * hash + this.codigo;
         return hash;
     }
-    
-    public void mostrar() {        
+
+    public void mostrar() {
         System.out.println("Producto <Codigo " + codigo + "> " + descripcion);
         System.out.println("Categoria: " + categoria + "  Estado: " + estado + "   Precio: " + precio);
         System.out.println("");
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "[" + codigo + "] " + descripcion + "\t\t\t" + "$" + precio + "\t\t\t\t";
     }
 }

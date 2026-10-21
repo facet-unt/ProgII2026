@@ -12,7 +12,8 @@ import pedidos.modelos.Pedido;
  *
  * @author Usuario
  */
-public abstract class  Usuario {
+public abstract class Usuario {
+
     private String correo;
     private String clave;
     private String apellido;
@@ -69,21 +70,22 @@ public abstract class  Usuario {
         if (this == obj) {
             return true;
         }
-        
+
         //compara si el objeto recibido es de cualquier subclase
         if (!(obj instanceof Usuario)) {
             return false;
         }
-        
+
         final Usuario other = (Usuario) obj;
         return Objects.equals(this.correo, other.correo);
     }
 
-    public void mostrar(){
+    public void mostrar() {
+        System.out.println("Usuario: " + apellido + ", " + nombre);
         System.out.println("Correo: " + correo);
         System.out.println("Clave: " + clave);
         System.out.println("");
     }
-    
+
     public abstract ArrayList<Pedido> verPedidos();
 }

@@ -9,37 +9,39 @@ import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Cliente;
 import java.util.ArrayList;
 import productos.modelos.Producto;
+
 /**
  *
  * @author Usuario
  */
 public class Pedido {
+
     private int numero;
     private LocalDateTime fechaYHora;
-    
+
     //Relacion: Un pedido tiene un cliente
     private Cliente unCliente;
     private Estado estado;
     //Relacion con ProductoDelPedido
     ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
-     
+
     //sobrecarga de constructor
-    public Pedido(int numero,LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> productosDelPedido, Cliente unCliente){
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente unCliente) {
         this.numero = numero;
         this.fechaYHora = LocalDateTime.now();
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;
-        this.productosDelPedido = productosDelPedido;    
+        this.productosDelPedido = productosDelPedido;
     }
-    
+
     public Pedido(int numero, Cliente unCliente) {
-    this.numero = numero;
-    this.fechaYHora = LocalDateTime.now();
-    this.unCliente = unCliente;
-    this.estado = Estado.CREADO;
-    this.productosDelPedido = new ArrayList<>();
+        this.numero = numero;
+        this.fechaYHora = LocalDateTime.now();
+        this.unCliente = unCliente;
+        this.estado = Estado.CREADO;
+        this.productosDelPedido = new ArrayList<>();
     }
-    
+
     public int verNumero() {
         return numero;
     }
@@ -52,13 +54,13 @@ public class Pedido {
         DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return this.fechaYHora.format(fechaConFormato);
     }
-    
+
     public String verHora() {
         DateTimeFormatter horaConFormato = DateTimeFormatter.ofPattern("HH:mm");
         return this.fechaYHora.format(horaConFormato);
     }
-    
-    public void agregarProducto(Producto unProducto, int cantidad){
+
+    public void agregarProducto(Producto unProducto, int cantidad) {
         ProductoDelPedido detallePedido = new ProductoDelPedido(unProducto, cantidad);
         productosDelPedido.add(detallePedido);
     }
@@ -84,8 +86,8 @@ public class Pedido {
         final Pedido pedido = (Pedido) obj;
         return this.numero == pedido.numero;
     }
-    
-    public void mostrar(){
+
+    public void mostrar() {
         System.out.println("Nro: " + numero + "\t\t\t" + "Estado: " + estado.toString());
         System.out.println("Fecha: " + verFecha() + "\t" + "Hora: " + verHora());
         System.out.println("Cliente: " + unCliente.verApellido() + ", " + unCliente.verNombre());

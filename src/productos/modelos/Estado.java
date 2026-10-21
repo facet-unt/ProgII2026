@@ -11,7 +11,7 @@ package productos.modelos;
 public enum Estado {
     DISPONIBLE("Disponible"),
     NO_DISPONIBLE("No disponible");
-    
+
     private final String estado;
 
     private Estado(String est) {
@@ -22,6 +22,5 @@ public enum Estado {
     public String toString() {
         return estado;
     }
-    
-    
+
 }

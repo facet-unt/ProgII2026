@@ -12,7 +12,7 @@ public enum Categoria {
     ENTRADA("Entrada"),
     PLATO_PRINCIPAL("Plato Principal"),
     POSTRE("Postre");
-    
+
     private final String categ;
 
     private Categoria(String categoria) {
@@ -23,6 +23,5 @@ public enum Categoria {
     public String toString() {
         return categ;
     }
-    
-    
+
 }
