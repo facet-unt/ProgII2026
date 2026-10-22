@@ -31,26 +31,41 @@ public class ControladorPrincipalTP4Seccion1 {
         
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
-        Producto p1 = new  Producto(1, "Producto 1", Categoria.ENTRADA ,Estado.DISPONIBLE, 200.0f);        
+        Producto p1 = new  Producto(1, "Producto 1", Categoria.ENTRADA,Estado.DISPONIBLE, 200.0f);        
         Producto p2 = new  Producto(2, "Producto 2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 1950.0f);        
-        Producto p3 = new  Producto(3, "Producto 3",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
-        Producto p4 = new  Producto(4, "Producto 4",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
-        Producto p5 = new  Producto(3, "Producto 5",Categoria.POSTRE, Estado.NO_DISPONIBLE, 7580.0f);         
+        Producto p3 = new  Producto(3, "Producto 3", Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
+        Producto p4 = new  Producto(4, "Producto 4", Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
+        Producto p5 = new  Producto(3, "Producto 5", Categoria.POSTRE, Estado.NO_DISPONIBLE, 7580.0f);         
         //no debe agregar a p5
         
              
         /***************************************************
-         * AGREGAR aqui las sentencias para completar el llenado de 
-         * la lista de productos
+          SENTENCIAS PARA LLENAR LA LISTA DE PRODUCTOS
         ***************************************************/
-             
-        /***************************************************
-         * AGREGAR aqui las sentencias para mostrar la lista
-         * de productos, deberían listarse 4
-        ***************************************************/
-           
+        listaProductos.add(p1);
         
-        System.out.println("\n#################### ");
+        if (!listaProductos.contains(p2))
+            listaProductos.add(p2);
+
+        if (!listaProductos.contains(p3))
+            listaProductos.add(p3);
+
+        if (!listaProductos.contains(p4))
+            listaProductos.add(p4);
+
+        if (!listaProductos.contains(p5))
+            listaProductos.add(p5);
+
+        /***************************************************
+          SENTENCIAS PARA LISTAR LOS PRODUCTOS
+        ***************************************************/
+        
+        for (Producto prod: listaProductos){
+            prod.mostrar();
+            System.out.println();
+        }
+        
+        System.out.println("\n###########################");
         System.out.println("CLIENTES");
         Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
@@ -65,7 +80,7 @@ public class ControladorPrincipalTP4Seccion1 {
         for (Cliente e: listaClientes)
             e.mostrar();
                 
-        System.out.println("#################### ");
+        System.out.println("\n###########################");
         System.out.println("PEDIDOS");
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
@@ -111,16 +126,23 @@ public class ControladorPrincipalTP4Seccion1 {
         if(!listaPedidos.contains(unPedido1))
             listaPedidos.add(unPedido1);
         //***********************************************
-        //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
+        //    AGREGADO DE PEDIDOS SIN REPETIR
         //*************************************************
+        if(!listaPedidos.contains(unPedido2))
+            listaPedidos.add(unPedido2);
         
+        if(!listaPedidos.contains(unPedido3))
+            listaPedidos.add(unPedido3);
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
         /*
         *************************************************
-        AGREGAR aqui la sentencia para mostrar la lista de pedidos
+                 MOSTRAR LOS PEDIDOS
         *************************************************
         */
+        for (Pedido pdp: listaPedidos){
+            pdp.mostrar();
+        }
          
         System.out.println();        
     
