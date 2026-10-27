@@ -25,7 +25,7 @@ public class Producto {
         return "[" + this.verCodigo() + "]" + " " + this.verDescripcion() + "\t " + this.verPrecio();
      }
 
-     public Producto(int codigo, String descripcion, float precio, Estado estado, Categoria categoria) {
+     public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;

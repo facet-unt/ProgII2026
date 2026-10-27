@@ -21,7 +21,6 @@ public enum Categoria {
 
     @Override
     public String toString() {
-        return "Categoria : " + categoria;
-    }
-        
+        return categoria;
+    }        
 }

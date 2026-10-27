@@ -34,14 +34,19 @@ public class Cliente extends Usuario{
         if(!listaPedidos.contains(pedido)){
             listaPedidos.add(pedido);
         }
+        else{
+            for(int i = 0; i < listaPedidos.size(); i++){
+                Pedido auxiliar = listaPedidos.get(i);
+                if(auxiliar.equals(pedido)){
+                    listaPedidos.set(i, pedido);
+                }
+            }
+        }
     }
     
     public void cancelarPedido(Pedido pedido){
         if(this.listaPedidos.contains(pedido)){
             this.listaPedidos.remove(pedido);
-        }
-        else{
-            System.out.println("El Cliente no tiene este pedido");
         }
     }
 }

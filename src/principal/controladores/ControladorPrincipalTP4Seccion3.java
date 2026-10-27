@@ -128,10 +128,10 @@ public class ControladorPrincipalTP4Seccion3 {
             }
         }
         
-        Producto unProducto1 = new Producto(1, "Producto1", 1.0f, Estado.DISPONIBLE, Categoria.ENTRADA);        
-        Producto unProducto2 = new Producto(2, "Producto2", 2.0f, Estado.DISPONIBLE, Categoria.PLATO_PRINCIPAL);
-        Producto unProducto3 = new Producto(3, "Producto3", 3.0f, Estado.DISPONIBLE, Categoria.POSTRE);
-        Producto unProducto4 = new Producto(3, "Producto4", 4.0f, Estado.DISPONIBLE, Categoria.POSTRE);
+        Producto unProducto1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f);        
+        Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f);
+        Producto unProducto3 = new Producto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 3.0f);
+        Producto unProducto4 = new Producto(3, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f);
         //producto repetido
         
         if(!listaProductos.contains(unProducto1))
@@ -144,18 +144,18 @@ public class ControladorPrincipalTP4Seccion3 {
             listaProductos.add(unProducto4);
         
          ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
-         ProductoDelPedido pdp1 = new ProductoDelPedido(1, listaProductos.get(0));
-         ProductoDelPedido pdp2 = new ProductoDelPedido(2, listaProductos.get(1));        
+         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
+         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
          if (!listapdp1.contains(pdp1))
             listapdp1.add(pdp1);
          if (!listapdp1.contains(pdp2))
             listapdp1.add(pdp2);
-         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), EstadoPedido.PROCESANDO, (Cliente)usuarios.get(0), listapdp1);        
+         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, (Cliente)usuarios.get(0));        
         
          ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
-         ProductoDelPedido pdp3 = new ProductoDelPedido(10, listaProductos.get(2));
-         ProductoDelPedido pdp4 = new ProductoDelPedido(20, listaProductos.get(0));
-         ProductoDelPedido pdp5 = new ProductoDelPedido(30, listaProductos.get(2));
+         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(2), 10);
+         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(0), 20);
+         ProductoDelPedido pdp5 = new ProductoDelPedido(listaProductos.get(2), 30);
          //producto repetido        
          if (!productosDelPedido2.contains(pdp3))
             productosDelPedido2.add(pdp3);
@@ -163,16 +163,16 @@ public class ControladorPrincipalTP4Seccion3 {
             productosDelPedido2.add(pdp4);
          if (!productosDelPedido2.contains(pdp5))
             productosDelPedido2.add(pdp5);
-         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente)usuarios.get(1), productosDelPedido2);        
+         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), productosDelPedido2, (Cliente)usuarios.get(1));        
         
          ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
-         ProductoDelPedido pdp6 = new ProductoDelPedido(100, listaProductos.get(1));
-         ProductoDelPedido pdp7 = new ProductoDelPedido(200, listaProductos.get(2));
+         ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(1), 100);
+         ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(2), 200);
          if (!productosDelPedido3.contains(pdp6))
             productosDelPedido3.add(pdp6);
          if (!productosDelPedido3.contains(pdp7))
             productosDelPedido3.add(pdp7);
-         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), EstadoPedido.ENTREGADO, (Cliente)usuarios.get(2), productosDelPedido3);        
+         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, (Cliente)usuarios.get(2));        
          //pedido repetido
 
          if(!listaPedidos.contains(unPedido1))

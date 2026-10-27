@@ -30,6 +30,7 @@ public class VentanaAMProducto extends JDialog {
         this.comboEstado.setModel(mce);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.setTitle("Productos");
     }
     
       

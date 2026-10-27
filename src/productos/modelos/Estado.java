@@ -20,7 +20,7 @@ public enum Estado {
 
     @Override
     public String toString() {
-        return "Estado : " + estado ;
+        return estado ;
     }
     
     

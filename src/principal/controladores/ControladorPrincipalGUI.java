@@ -15,25 +15,25 @@ import usuarios.vistas.VentanaAMEncargado;
  *
  * @author mariana
  */
-//public class ControladorPrincipalGUI {
-//    public static void main(String[] args) {
-//        //Trabajar con una ventana por vez
-//        //Para todas las ventanas lo pasos son:
-//        /*
-//            * Asigna el look and feel "Nimbus" a la ventana
-//            * Se crea la ventana
-//            * Se centra la ventana
-//            * Se asigna un título a la ventana
-//            * Se hace visible la ventana
-//        */
+public class ControladorPrincipalGUI {
+    public static void main(String[] args) {
+        //Trabajar con una ventana por vez
+        //Para todas las ventanas lo pasos son:
+        /*
+            * Asigna el look and feel "Nimbus" a la ventana
+            * Se crea la ventana
+            * Se centra la ventana
+            * Se asigna un título a la ventana
+            * Se hace visible la ventana
+        */
 //        establecerLookAndFeel("Nimbus"); 
-//        
-//        //<editor-fold defaultstate="collapsed" desc="Producto">
-//        VentanaAMProducto ventana = new VentanaAMProducto(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo producto");
-//        ventana.setVisible(true);
-//        //</editor-fold>
+        
+        //<editor-fold defaultstate="collapsed" desc="Producto">
+        VentanaAMProducto ventana = new VentanaAMProducto(null);
+        ventana.setLocationRelativeTo(null);
+        ventana.setTitle("Nuevo producto");
+        ventana.setVisible(true);
+        //</editor-fold>
 //       //<editor-fold defaultstate="collapsed" desc="Cliente">
 //        VentanaAMCliente ventana1 = new VentanaAMCliente(null);
 //        ventana1.setLocationRelativeTo(null);
@@ -83,6 +83,11 @@ import usuarios.vistas.VentanaAMEncargado;
 //     * Asigna el look and feel especificado a la ventana
 //     * @param laf cadena con el nombre del look and feel
 //     */
+
+    /**
+     * /</editor-fold>
+//     * @param laf
+//     */
 //    public static void establecerLookAndFeel(String laf) {
 //        try {
 //            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -97,5 +102,5 @@ import usuarios.vistas.VentanaAMEncargado;
 //            catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e2) {
 //            }
 //        }
-//    }
-//}
+    }
+}

@@ -22,10 +22,10 @@ public class Pedido {
      private Cliente cliente;
      private ArrayList<ProductoDelPedido> listaProductos;
 
-     public Pedido(int numero, LocalDateTime fechaYHora, EstadoPedido estado, Cliente cliente, ArrayList<ProductoDelPedido> listaProductos) {
+     public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> listaProductos, Cliente cliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
-        this.estado = estado;
+        this.estado = EstadoPedido.CREADO;
         this.cliente = cliente;
         this.listaProductos = listaProductos;
      }
