@@ -4,7 +4,9 @@
  */
 package pedidos.modelos;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import usuarios.modelos.Cliente;
@@ -13,15 +15,16 @@ import usuarios.modelos.Cliente;
  *
  * @author leand
  */
-public class Pedido {
+public class Pedido 
+{
     int Numero;
     LocalDateTime fechaYHora;
     private Cliente unCliente;
     private Estado unEstado;
     private ArrayList<ProductoDelPedido> CantidadProducto;
     
-    
-    public Pedido(int Numero, LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> CantidadProducto, Cliente unCliente) {
+    public Pedido(int Numero, LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> CantidadProducto, Cliente unCliente) 
+    {
         this.Numero = Numero;
         this.fechaYHora = fechaYHora;
         this.CantidadProducto = CantidadProducto;
@@ -29,42 +32,42 @@ public class Pedido {
         this.unEstado = Estado.CREADO;
     }
 
-    public int verNumero() {
+    public int verNumero() 
+    {
         return Numero;
     }
 
-    public void asignarNumero(int Numero) {
+    public void asignarNumero(int Numero) 
+    {
         this.Numero = Numero;
     }
 
-    public LocalDateTime verFecha() {
-        this.fechaYHora.toLocalDate();
-        return fechaYHora;
+    public LocalDate verFecha() {
+        return this.fechaYHora.toLocalDate();
     }
-    public LocalDateTime verHora() {
-        this.fechaYHora.toLocalTime();
-        return fechaYHora;
-    }
-
-    public void FechaYHora(LocalDateTime fechaYHora) {
-        this.fechaYHora = fechaYHora;
+    public LocalTime verHora() 
+    {
+        return this.fechaYHora.toLocalTime();
     }
     
-    private String FechaACadena (LocalDateTime fecha){
+    private String FechaACadena (LocalDate fecha)
+    {
         String patron = "dd/MM/yyyy";
         String fechaEnCadena = fecha.format(DateTimeFormatter.ofPattern(patron));
         return fechaEnCadena;
         
     }
     
-    private String HoraACadena (LocalDateTime hora){
+    private String HoraACadena (LocalTime hora)
+    {
         String patron = "HH:mm";
         String horaEnCadena = hora.format(DateTimeFormatter.ofPattern(patron));
         return horaEnCadena;
         
     }
     
-    public void mostrar() {        
+    public void mostrar() 
+    {        
         System.out.println("Nro:"+ Numero+"\n"+"Fecha: "+ FechaACadena(verFecha())+ "\t"+"Hora: "+ HoraACadena(verHora()));
         System.out.println("Cliente: "+ unCliente.verApellido() +"," +unCliente.verNombre());
         System.out.println("Estado: "+ unEstado);
