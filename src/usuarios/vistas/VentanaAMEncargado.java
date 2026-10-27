@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import usuarios.modelos.Encargado;
 
 public class VentanaAMEncargado extends JDialog {
+    private ArrayList<Encargado> encargados = new ArrayList<>();
     private ArrayList<Encargado> encargado = new ArrayList<>();
     
     /**
@@ -137,6 +138,20 @@ public class VentanaAMEncargado extends JDialog {
     }//GEN-LAST:event_btnCancelarClic
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
+
+        String correo = this.txtCorreo.getText().trim();
+        String apellido = this.txtApellido.getText().trim();
+        String nombre = this.txtNombre.getText().trim();
+        String clave = new String(this.passClave.getPassword());
+        Encargado unEncargado = new Encargado(correo, clave, apellido, nombre);
+        this.encargados.add(unEncargado);
+        
+        System.out.println("Encargados");
+        System.out.println("========");
+        for(Encargado c : this.encargados) {
+            c.mostrar();
+            System.out.println();
+        }
         //Completar
         String correo = this.txtCorreo.getText().trim();
         String apellido = this.txtApellido.getText().trim();
