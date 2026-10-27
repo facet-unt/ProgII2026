@@ -146,7 +146,9 @@ public class ControladorPrincipalTP4Seccion2 {
         siempre que no se repita
         */
         if(!usuarios.contains(unEncargado5))
+        {
             usuarios.add(unEncargado5);
+        }
         Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //mismo correo que un empleado, no debe agregarse
         /*
@@ -154,7 +156,9 @@ public class ControladorPrincipalTP4Seccion2 {
         siempre que no se repita
         */
         if(!usuarios.contains(unCliente5))
+        {
             usuarios.add(unCliente5);
+        }
         
         System.out.println("Todos");
         System.out.println("=====");
