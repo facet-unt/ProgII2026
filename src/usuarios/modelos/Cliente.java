@@ -22,12 +22,11 @@ public class Cliente extends Usuario {
 
     @Override
     public ArrayList<Pedido> verPedidos() {
-        if (pedidos.isEmpty()) {
-        }
         return pedidos;
     }
 
     public void agregarPedido(Pedido unPedido) {
+        //Controlan pedidos distinto de null y si isEmpty es false
         if (!pedidos.contains(unPedido)) {
             pedidos.add(unPedido);
         } else {

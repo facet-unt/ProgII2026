@@ -70,7 +70,8 @@ public abstract class Usuario {
         if (this == obj) {
             return true;
         }
-
+        
+        //ESTO SE DEBE CAMBIAR
         //compara si el objeto recibido es de cualquier subclase
         if (!(obj instanceof Usuario)) {
             return false;

@@ -160,7 +160,7 @@ public class ControladorPrincipalTP4Seccion2 {
         siempre que no se repita
              */
 
-        if (!usuarios.contains(unCliente5)) {
+        if (!usuarios.contains(unCliente5))
             usuarios.add(unCliente5);
 
         System.out.println("Todos");
@@ -177,7 +177,7 @@ public class ControladorPrincipalTP4Seccion2 {
     ***************************************************
     ***************************************************
                  */
-            }
+            
         }
     }
 }

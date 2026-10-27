@@ -4,7 +4,9 @@
  */
 package pedidos.modelos;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Cliente;
 import java.util.ArrayList;
@@ -50,16 +52,28 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public String verFecha() {
-        DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return this.fechaYHora.format(fechaConFormato);
+    public LocalDate verFecha() {
+        LocalDate fecha = this.fechaYHora.toLocalDate();
+        return fecha;
     }
 
-    public String verHora() {
-        DateTimeFormatter horaConFormato = DateTimeFormatter.ofPattern("HH:mm");
-        return this.fechaYHora.format(horaConFormato);
+    public LocalTime verHora() {
+        LocalTime hora = this.fechaYHora.toLocalTime();
+        return hora;
     }
-
+    
+    //Metodos auxiliares para mostrar la fecha y la hora con el formato solicitado
+    public String verFechaFormateada() {
+       LocalDate fecha = this.fechaYHora.toLocalDate();
+       DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+       return fecha.format(fechaConFormato);
+    }
+    
+//    public String verHoraFormateada() {
+//        
+//    }
+     
+    //NO VA - SACAR
     public void agregarProducto(Producto unProducto, int cantidad) {
         ProductoDelPedido detallePedido = new ProductoDelPedido(unProducto, cantidad);
         productosDelPedido.add(detallePedido);
@@ -89,7 +103,7 @@ public class Pedido {
 
     public void mostrar() {
         System.out.println("Nro: " + numero + "\t\t\t" + "Estado: " + estado.toString());
-        System.out.println("Fecha: " + verFecha() + "\t" + "Hora: " + verHora());
+        System.out.println("Fecha: " + verFechaFormateada() + "\t" + "Hora: " + verHora());
         System.out.println("Cliente: " + unCliente.verApellido() + ", " + unCliente.verNombre());
         System.out.println("Producto\t\t\t\t\tCantidad");
         System.out.println("================================================================");
