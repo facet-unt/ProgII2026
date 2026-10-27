@@ -22,7 +22,8 @@ public class Encargado extends Usuario {
     //Se redefine el metodo verPedidos de la clase Usuario para que retorne null
     @Override
     public ArrayList<Pedido> verPedidos(){
-        return null;
+        ArrayList<Pedido> clear = new ArrayList<>();
+        return clear;
     }
 
     @Override

@@ -33,13 +33,8 @@ public class ProductoDelPedido {
     }
 
     public void asignarUnProducto(Producto unProducto) {
-        this.unProducto = unProducto;
-    }
-
-    @Override
-    public String toString() {
-        return unProducto.verDescripcion() + "- Cantidad: " + cantidad;
-    }
+        this.unProducto = unProducto;    
+        }
     
     //equals y hashcode. Dos ProductoDelPedido son iguales si contienen el mismo producto
     @Override
@@ -63,4 +58,10 @@ public class ProductoDelPedido {
         final ProductoDelPedido other = (ProductoDelPedido) obj;
         return Objects.equals(this.unProducto, other.unProducto);
     }
+    
+    @Override
+    public String toString() {
+        return unProducto.verDescripcion() + "- Cantidad: " + cantidad;
+    }
+    
 }

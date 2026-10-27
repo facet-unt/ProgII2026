@@ -23,15 +23,7 @@ public abstract class Usuario {
         this.apellido = apellido;
         this.nombre = nombre;
     }
-    
-    public void mostrar(){
-        System.out.println("\t: "+apellido +", " +nombre );
-        System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n" );
-    }
 
-    public abstract ArrayList<Pedido> verPedidos();
-    
-    
     public String verCorreo() {
         return correo;
     }
@@ -82,6 +74,13 @@ public abstract class Usuario {
         }
         final Usuario other = (Usuario) obj;
         return Objects.equals(this.correo, other.correo);
+    }
+    
+    public abstract ArrayList<Pedido> verPedidos();
+    
+    public void mostrar(){
+        System.out.println("\t: "+apellido +", " +nombre );
+        System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n" );
     }
     
 }

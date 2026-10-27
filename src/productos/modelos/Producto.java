@@ -23,11 +23,6 @@ public class Producto {
         this.precio = precio;
     }
     
-    public void mostrar() {        
-        System.out.println("\tProducto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("\tEstado: "+estado +" | Precio: " +precio+ "\n");
-    }
-    
     public int verCodigo() {
         return codigo;
     }
@@ -68,11 +63,6 @@ public class Producto {
         this.precio = precio;
     }
 
-    @Override
-    public String toString(){
-        return "[" + codigo + "] " + descripcion + "\t $" + precio;
-    }
-
     //equals y hashcode. Dos productos son iguales si tienen el mismo codigo
     @Override
     public int hashCode() {
@@ -96,4 +86,14 @@ public class Producto {
         return this.codigo == other.codigo;
     }
     
+      public void mostrar() {        
+        System.out.println("\tProducto: "+descripcion +" |Codigo: " +codigo );
+        System.out.println("\tEstado: "+estado +" | Precio: " +precio+ "\n");
+    }
+    
+    @Override
+    public String toString(){
+        return "[" + codigo + "] " + descripcion + "\t $" + precio;
+    }  
+      
 }
