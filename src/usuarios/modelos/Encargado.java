@@ -3,6 +3,8 @@
 // * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
 // */
 package usuarios.modelos;
+import java.util.ArrayList;
+import pedidos.modelos.Pedido;
 
 /**
  *
