@@ -9,11 +9,17 @@ package productos.modelos;
  * @author estudiante
  */
 public enum Categoria {
-    ENTRADA, PLATO_PRINCIPAL, POSTRE;
+    ENTRADA("Entrada"), PLATO_PRINCIPAL("Plato principal"), POSTRE("Postre");
+    private String name;
     
     @Override
     public String toString(){
         return name();
+    }
+    
+    Categoria(String name)
+    {
+        this.name = name;
     }
     
 }

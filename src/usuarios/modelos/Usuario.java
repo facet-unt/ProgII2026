@@ -77,11 +77,8 @@ public abstract class Usuario {
         if (obj == null) {
             return false;
         }
-        if (obj instanceof Usuario)
+        if (!(obj instanceof Usuario))
         {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
             return false;
         }
         final Usuario other = (Usuario) obj;
