@@ -13,6 +13,7 @@ public enum Categoria {
     PLATO_PRINCIPAL,
     POSTRE;
 
+    
     @Override
     public String toString() {
         switch (this) {
@@ -23,7 +24,7 @@ public enum Categoria {
             case POSTRE:
                 return "Postre";
             default:
-                return "";
+                return " ";
         }
     }
 }
