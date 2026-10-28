@@ -9,6 +9,7 @@ import pedidos.modelos.Pedido;
 
 /**
  *
+ * Hereda de la clase Usuario
  * @author estudiante
  */
 public class Encargado extends Usuario {
@@ -17,6 +18,12 @@ public class Encargado extends Usuario {
         super(correo, clave, apellido, nombre);
     }
 
+    /**
+     * metodo heredado de Usuario 
+     * Muestra la lista de pedidos realizados
+     * En Encargado devuelve una lista vacia
+     * @return pedidos un ArrayList vacio
+     */
     @Override
     public ArrayList<Pedido> verPedidos() {
         return new ArrayList<Pedido>();

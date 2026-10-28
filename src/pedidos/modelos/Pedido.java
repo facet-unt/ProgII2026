@@ -10,10 +10,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Cliente;
 import java.util.ArrayList;
-import productos.modelos.Producto;
 
 /**
- *
+ *Representa un pedido realizado en el sistema
  * @author Usuario
  */
 public class Pedido {
@@ -62,6 +61,10 @@ public class Pedido {
         return hora;
     }
     
+    /**
+     * Devuelve la fecha en formato String
+     * @return un objeto con la fecha formateada del tipo "dd/MM/yyyy"
+     */
     //Metodos auxiliares para mostrar la fecha y la hora con el formato solicitado
     public String verFechaFormateada() {
        LocalDate fecha = this.fechaYHora.toLocalDate();
@@ -69,14 +72,14 @@ public class Pedido {
        return fecha.format(fechaConFormato);
     }
     
-//    public String verHoraFormateada() {
-//        
-//    }
-     
-    //NO VA - SACAR
-    public void agregarProducto(Producto unProducto, int cantidad) {
-        ProductoDelPedido detallePedido = new ProductoDelPedido(unProducto, cantidad);
-        productosDelPedido.add(detallePedido);
+    /**
+     *Devuelve la hora en formato String
+     * @return un objeto con la hora formateada del tipo "HH:mm"
+     */
+    public String verHoraFormateada() {
+        LocalTime hora=this.fechaYHora.toLocalTime();
+        DateTimeFormatter horaConFormato = DateTimeFormatter.ofPattern("HH:mm");
+        return hora.format(horaConFormato);
     }
 
     @Override
@@ -86,6 +89,11 @@ public class Pedido {
         return hash;
     }
 
+    /**
+     * compara este pedido con otro para verificar su igualdad segun el número.
+     * @param obj a comparar con el pedido
+     * @return true si ambos objetos son de la misma clase y tienen el mismo número,si no devuelve false
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -101,9 +109,12 @@ public class Pedido {
         return this.numero == pedido.numero;
     }
 
+    /**
+     * Muestra por pantalla los datos del pedido
+     */
     public void mostrar() {
         System.out.println("Nro: " + numero + "\t\t\t" + "Estado: " + estado.toString());
-        System.out.println("Fecha: " + verFechaFormateada() + "\t" + "Hora: " + verHora());
+        System.out.println("Fecha: " + verFechaFormateada() + "\t" + "Hora: " + verHoraFormateada());
         System.out.println("Cliente: " + unCliente.verApellido() + ", " + unCliente.verNombre());
         System.out.println("Producto\t\t\t\t\tCantidad");
         System.out.println("================================================================");

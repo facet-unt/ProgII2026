@@ -9,7 +9,7 @@ import java.util.Objects;
 import pedidos.modelos.Pedido;
 
 /**
- *
+ *Es la super clase de Cliente,Empleado y Encargado
  * @author Usuario
  */
 public abstract class Usuario {
@@ -65,22 +65,29 @@ public abstract class Usuario {
         return hash;
     }
 
+    /**
+     *compara el usuario ingresado con otro para verificar su igualdad segun el correo.
+     * @param obj a comparar con otro usuario
+     * @return true si ambos objetos son de la misma clase y tienen el mismo correo,si no devuelve false.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
-        
-        //ESTO SE DEBE CAMBIAR
-        //compara si el objeto recibido es de cualquier subclase
-        if (!(obj instanceof Usuario)) {
+        if (obj == null) {
             return false;
         }
-
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
         final Usuario other = (Usuario) obj;
         return Objects.equals(this.correo, other.correo);
     }
 
+    /**
+     * Metodo para mostrar por pantalla los datos del usuario
+     */
     public void mostrar() {
         System.out.println("Usuario: " + apellido + ", " + nombre);
         System.out.println("Correo: " + correo);
@@ -88,5 +95,9 @@ public abstract class Usuario {
         System.out.println("");
     }
 
+    /**
+     * Metodo para obtener la lista de pedidos
+     * @return ArrayList de pedidos de un usuario
+     */
     public abstract ArrayList<Pedido> verPedidos();
 }

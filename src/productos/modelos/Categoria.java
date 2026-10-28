@@ -5,7 +5,7 @@
 package productos.modelos;
 
 /**
- *
+ * *Enumeracion que representa las categorias posibles de un producto
  * @author Usuario
  */
 public enum Categoria {

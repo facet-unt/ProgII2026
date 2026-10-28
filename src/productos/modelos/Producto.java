@@ -64,6 +64,12 @@ public class Producto {
         this.precio = precio;
     }
 
+    /**
+     * compara un objeto del tipo producto con otro para verificar su igualdad segun el codigo.
+     * @param obj a comparar con un producto
+     * @return true si ambos objetos son de la misma clase y tienen el mismo codigo,si no devuelve false
+     */
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -86,12 +92,19 @@ public class Producto {
         return hash;
     }
 
+    /**
+     * metodo que muestra por pantalla los detalles de un producto
+     */
     public void mostrar() {
         System.out.println("Producto <Codigo " + codigo + "> " + descripcion);
         System.out.println("Categoria: " + categoria + "  Estado: " + estado + "   Precio: " + precio);
         System.out.println("");
     }
 
+    /**
+     * 
+     * @return String con formato solicitado para codigo,descripcion y precio
+     */
     @Override
     public String toString() {
         return "[" + codigo + "] " + descripcion + "\t\t\t" + "$" + precio + "\t\t\t\t";

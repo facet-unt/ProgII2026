@@ -132,15 +132,19 @@ public class ControladorPrincipalTP4Seccion2 {
         if (!usuarios.contains(unEncargado1)) {
             usuarios.add(unEncargado1);
         }
+        
         if (!usuarios.contains(unEncargado2)) {
             usuarios.add(unEncargado2);
         }
+        
         if (!usuarios.contains(unEncargado3)) {
             usuarios.add(unEncargado3);
         }
+        
         if (!usuarios.contains(unEncargado4)) {
             usuarios.add(unEncargado4);
         }
+        
         System.out.println();
 
         Usuario unEncargado5 = new Encargado("cliente1@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
@@ -152,16 +156,18 @@ public class ControladorPrincipalTP4Seccion2 {
 
         if (!usuarios.contains(unEncargado5)) {
             usuarios.add(unEncargado5);
-
-            Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
-            //mismo correo que un empleado, no debe agregarse
-            /*
+        }
+        
+        Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
+        //mismo correo que un empleado, no debe agregarse
+        /*
         Agregar aquí la sentencia para agregar unCliente5 a la lista de usuarios,
         siempre que no se repita
-             */
+        */
 
-        if (!usuarios.contains(unCliente5))
+        if (!usuarios.contains(unCliente5)){
             usuarios.add(unCliente5);
+        }
 
         System.out.println("Todos");
         System.out.println("=====");
@@ -178,6 +184,6 @@ public class ControladorPrincipalTP4Seccion2 {
     ***************************************************
                  */
             
-        }
     }
+    
 }

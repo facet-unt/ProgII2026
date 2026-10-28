@@ -99,11 +99,13 @@ public class ControladorPrincipal {
 //        for (Encargado e: encargados)
 //            e.mostrar();
         
-        //Pruebas del funcionamiento de producto
-        Pedido pedido1 = new Pedido(1, cliente1);
-        pedido1.agregarProducto(p1, 5);
-        pedido1.agregarProducto(p2, 3);
-        pedido1.agregarProducto(p3, 0);
-        pedido1.mostrar();
+//        Pruebas del funcionamiento de producto
+//        Pedido pedido1 = new Pedido(1, cliente1);
+//        pedido1.agregarProducto(p1, 5);
+//        pedido1.agregarProducto(p2, 3);
+//        pedido1.agregarProducto(p3, 0);
+//        pedido1.mostrar();
+
+//ya no hay un metodo en pedido llamado agregarProducto 
     }
 }
