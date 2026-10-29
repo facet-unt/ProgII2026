@@ -35,8 +35,6 @@ public class ControladorPrincipalTP4Seccion3 {
         ArrayList<Producto> listaProductos = new ArrayList<>();
         ArrayList<Pedido> listaPedidos = new ArrayList<>();
         
-        //Se agregan objetos a las clases CLiente, Encargado y Empleado
-        
         Usuario unCliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Usuario unCliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
         Usuario unCliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
@@ -140,8 +138,6 @@ public class ControladorPrincipalTP4Seccion3 {
         if(!listaPedidos.contains(unPedido3))
             listaPedidos.add(unPedido3);
         
-        //A continuaciónn se muestra la lista de pedidos
-        
         System.out.println("Pedidos");
         System.out.println("=======");
         for(Pedido p : listaPedidos) {
@@ -159,8 +155,6 @@ public class ControladorPrincipalTP4Seccion3 {
             System.out.println();
         }
         System.out.println();
-        
-        //Se cancela un pedido y se muestra nuevamente por pantalla
         
         ((Cliente)unCliente1).cancelarPedido(unPedido1);
         System.out.println("Pedidos de " + unCliente1.verApellido() + ", " + unCliente1.verNombre());
