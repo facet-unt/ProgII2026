@@ -17,6 +17,19 @@ public class Producto {
     private Categoria categoria;
     private Estado estado;
 
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
+    }
+    
+    public void mostrar() {        
+        System.out.println("Producto "+verCodigo()+" "+verDescripcion());
+            System.out.println("Categoria: "+verCategoria()+" Estado: "+verEstado()+" Precio: "+verPrecio());
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/mostrar'">
     public int verCodigo() {
         return codigo;
@@ -58,6 +71,11 @@ public class Producto {
     }
     //</editor-fold>
     
+    @Override
+    public String toString(){
+        return "Producto: " + descripcion;
+    }
+
     //<editor-fold defaultstate="collapsed" desc="Metodos 'equals' y 'hashCode'">
     @Override
     public int hashCode() {
@@ -81,23 +99,5 @@ public class Producto {
         return this.codigo == other.codigo;
     }
     //</editor-fold>
-    
-    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.estado = estado;
-        this.precio = precio;
-    }
-    
-    public void mostrar() {        
-        System.out.println("Producto "+verCodigo()+" "+verDescripcion());
-            System.out.println("Categoria: "+verCategoria()+" Estado: "+verEstado()+" Precio: "+verPrecio());
-    }
-    
-    @Override
-    public String toString(){
-        return "Producto: " + descripcion;
-    }
     
 }

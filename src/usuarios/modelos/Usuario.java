@@ -27,6 +27,11 @@ public abstract class Usuario {
         this.nombre=nombre;
     }
     
+    public void mostrar(){
+        System.out.println("Usuario: "+apellido +", " +nombre );
+        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/asginar">
     public String verCorreo() {
         return correo;
@@ -84,8 +89,4 @@ public abstract class Usuario {
     }
     //</editor-fold>
 
-    public void mostrar(){
-        System.out.println("Usuario: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
-    }
 }

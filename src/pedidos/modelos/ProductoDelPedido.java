@@ -13,6 +13,19 @@ public class ProductoDelPedido {
     private int cantidad;
     private Producto unProducto;
 
+
+    
+    public ProductoDelPedido(Producto unProducto, int cantidad){
+        this.cantidad = cantidad;
+        this.unProducto = unProducto;
+    }
+    
+    public ProductoDelPedido(){}
+    
+    public void mostrar(){
+        System.out.println("\t["+unProducto.verCodigo()+"] "+unProducto.verDescripcion()+"\t$"+unProducto.verPrecio()+"\t\t"+cantidad);
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/mostrar'">
     public int verCantidad() {
         return cantidad;
@@ -29,6 +42,11 @@ public class ProductoDelPedido {
     }
     //</editor-fold>
     
+    @Override
+    public String toString(){
+        return "Producto:"+unProducto.verDescripcion()+" - Cant:"+cantidad;
+    }
+
     //<editor-fold defaultstate="collapsed" desc="Metodos 'equals' y 'hashCode'">
     @Override
     public int hashCode() {
@@ -52,21 +70,4 @@ public class ProductoDelPedido {
         return Objects.equals(this.unProducto, other.unProducto);
     }
     //</editor-fold>
-    
-    public ProductoDelPedido(Producto unProducto, int cantidad){
-        this.cantidad = cantidad;
-        this.unProducto = unProducto;
-    }
-    
-    public ProductoDelPedido(){}
-    
-    @Override
-    public String toString(){
-        return "Producto:"+unProducto.verDescripcion()+" - Cant:"+cantidad;
-    }
-    
-    public void mostrar(){
-        System.out.println("\t["+unProducto.verCodigo()+"] "+unProducto.verDescripcion()+"\t$"+unProducto.verPrecio()+"\t\t"+cantidad);
-    }
-    
 }

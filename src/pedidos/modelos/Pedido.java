@@ -28,6 +28,25 @@ public class Pedido {
     //Relacion: Pedido tiene una cantidad
     private ArrayList<ProductoDelPedido> listaProductos = new ArrayList<>();
 
+    public Pedido(int numero,LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> listaProductos, Cliente cliente) {
+        this.numero = numero;
+        this.fechaYHora = fechaYHora;
+        this.listaProductos=listaProductos;
+        this.cliente = cliente;
+        this.estado = Estado.CREADO;
+    }
+    
+    public void mostrar(){
+        System.out.println("Nro: "+numero+"\t\tEstado:"+estado.toString());
+        System.out.println("Fecha: "+ verFecha()+"\t Hora: "+verHora());
+        System.out.println("Cliente: "+cliente.verApellido()+", "+cliente.verNombre());
+        System.out.println("\tProducto\t\t\tCantidad");
+        System.out.println("\t================================================");
+        for(ProductoDelPedido unProducto: listaProductos){
+            unProducto.mostrar();
+        }
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/asignar'">
     public int verNumero() {
         return numero;
@@ -84,23 +103,4 @@ public class Pedido {
     }
     //</editor-fold>
     
-    public Pedido(int numero,LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> listaProductos, Cliente cliente) {
-        this.numero = numero;
-        this.fechaYHora = fechaYHora;
-        this.listaProductos=listaProductos;
-        this.cliente = cliente;
-        this.estado = Estado.CREADO;
-    }
-    
-    public void mostrar(){
-        System.out.println("Nro: "+numero+"\t\tEstado:"+estado.toString());
-        System.out.println("Fecha: "+ verFecha()+"\t Hora: "+verHora());
-        System.out.println("Cliente: "+cliente.verApellido()+", "+cliente.verNombre());
-        System.out.println("\tProducto\t\t\tCantidad");
-        System.out.println("\t================================================");
-        for(ProductoDelPedido unProducto: listaProductos){
-            unProducto.mostrar();
-        }
-        
-    }
 }

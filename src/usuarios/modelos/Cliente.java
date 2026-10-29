@@ -20,11 +20,6 @@ public class Cliente extends Usuario {
         super(correo, clave, apellido, nombre);
         this.listaPedidos = new ArrayList<>();
     }  
-    
-    @Override
-    public ArrayList<Pedido> verPedidos() {
-        return this.listaPedidos;
-    }
 
     public void asignarPedidos(ArrayList<Pedido> pedidos) {
         this.listaPedidos = pedidos;
@@ -48,5 +43,8 @@ public class Cliente extends Usuario {
             System.out.println("Pedido no encontrado");
     }
 
-    
+    @Override
+    public ArrayList<Pedido> verPedidos() {
+        return this.listaPedidos;
+    }    
 }
