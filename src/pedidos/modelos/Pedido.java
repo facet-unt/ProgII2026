@@ -4,7 +4,9 @@
  */
 package pedidos.modelos;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import productos.modelos.Producto;
@@ -34,14 +36,22 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public String verFecha(){
+    public String convertirFecha(){
         DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return this.fechaYHora.format(fechaConFormato);
     }
     
-    public String verHora(){
+    public String convertirHora(){
         DateTimeFormatter horaConFormato = DateTimeFormatter.ofPattern("hh:mm");
         return this.fechaYHora.format(horaConFormato);
+    }
+
+    public LocalDate verFecha() {
+        return fechaYHora.toLocalDate();
+    }
+    
+    public LocalTime verHora() {
+        return fechaYHora.toLocalTime();
     }
     
     public void asignarProductoDelPedido(Producto p,int cantidad) {
