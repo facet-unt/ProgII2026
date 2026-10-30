@@ -21,5 +21,5 @@ public class ModeloComboCategorias extends DefaultComboBoxModel {
     public Categoria obtenerCategoria() {
         return (Categoria)this.getSelectedItem();
     }
-    
+
 }
