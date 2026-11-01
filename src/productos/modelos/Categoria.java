@@ -10,10 +10,24 @@ package productos.modelos;
  */
 
 public enum Categoria {
-    ENTRADA, PLATO_PRINCIPAL, POSTRE;
+    ENTRADA("Entrada"),
+    PLATO_PRINCIPAL("Plato principal"),
+    POSTRE("Postre");
+    
+    //Lo siguiente permite que se muestre lo que está entre '()', porque queda feo usar '_' y todas las letras en mayusculas.
+    private final String descripcion;
 
+    // constructor
+    private Categoria(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String verDescripcion() {
+        return descripcion;
+    }
+    
     @Override
-    public String toString() {
-        return name();
+    public String toString(){
+        return descripcion;
     }
 }

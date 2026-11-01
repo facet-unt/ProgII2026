@@ -85,10 +85,10 @@ public class ControladorPrincipalTP4Seccion3 {
             usuarios.add(unEncargado4);
      
 
-        Producto unProducto1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f);        
-        Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f);
-        Producto unProducto3 = new Producto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 3.0f);
-        Producto unProducto4 = new Producto(3, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f);
+        Producto unProducto1 = new Producto(1, "Producto1", 1.0f, Categoria.ENTRADA, Estado.DISPONIBLE);        
+        Producto unProducto2 = new Producto(2, "Producto2", 2.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE);
+        Producto unProducto3 = new Producto(3, "Producto3", 3.0f, Categoria.POSTRE, Estado.DISPONIBLE);
+        Producto unProducto4 = new Producto(3, "Producto4", 4.0f, Categoria.POSTRE, Estado.DISPONIBLE);
         //producto repetido
         
         if (!listaProductos.contains(unProducto1))

@@ -31,11 +31,11 @@ public class ControladorPrincipalTP4Seccion1 {
         
         System.out.println("#################### ");
         System.out.println("PRODUCTOS");
-        Producto p1 = new  Producto(1, "Producto 1", Categoria.ENTRADA ,Estado.DISPONIBLE, 200.0f);        
-        Producto p2 = new  Producto(2, "Producto 2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 1950.0f);        
-        Producto p3 = new  Producto(3, "Producto 3",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
-        Producto p4 = new  Producto(4, "Producto 4",Categoria.POSTRE, Estado.NO_DISPONIBLE, 580.0f);        
-        Producto p5 = new  Producto(3, "Producto 5",Categoria.POSTRE, Estado.NO_DISPONIBLE, 7580.0f);         
+        Producto p1 = new  Producto(1, "Producto 1",200.0f, Categoria.ENTRADA ,Estado.DISPONIBLE);        
+        Producto p2 = new  Producto(2, "Producto 2", 1950.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE);        
+        Producto p3 = new  Producto(3, "Producto 3", 580.0f,Categoria.POSTRE, Estado.NO_DISPONIBLE);        
+        Producto p4 = new  Producto(4, "Producto 4", 580.0f,Categoria.POSTRE, Estado.NO_DISPONIBLE);        
+        Producto p5 = new  Producto(3, "Producto 5", 7580.0f,Categoria.POSTRE, Estado.NO_DISPONIBLE);         
              
         /***************************************************
          * AGREGAR aqui las sentencias para completar el llenado de 

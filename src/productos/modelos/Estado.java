@@ -9,11 +9,23 @@ package productos.modelos;
  * @author ramayo
  */
 public enum Estado {
-    DISPONIBLE, NO_DISPONIBLE;
+    DISPONIBLE("Disponible"),
+    NO_DISPONIBLE("No disponible");
 
+    private final String descripcion;
+
+    // constructor
+    private Estado(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String verDescripcion() {
+        return descripcion;
+    }
+    
     @Override
-    public String toString() {
-        return name();
+    public String toString(){
+        return descripcion;
     }
 }
     

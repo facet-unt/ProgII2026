@@ -7,7 +7,7 @@ package productos.modelos;
 import javax.swing.DefaultComboBoxModel;
 /**
  *
- * @author ramir
+ * @author ramayo
  */
 public class ModeloComboEstados extends DefaultComboBoxModel{
     public ModeloComboEstados() {
