@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 
 /**
@@ -20,8 +21,8 @@ public class Empleado extends Usuario {
     //Se redefine el metodo verPedidos de la clase Usuario para que retorne null
     @Override
     public ArrayList<Pedido> verPedidos(){
-        ArrayList<Pedido> clear = new ArrayList<>();
-        return clear;
+        ArrayList<Pedido> pedidos = GestorPedidos.gestor.verPedidos();
+        return pedidos;
     }
 
     @Override
