@@ -108,7 +108,7 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!listaProductos.contains(unProducto4)) listaProductos.add(unProducto4);
         
         // Creacion de Pedido 1
-        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente) unCliente1);        
+        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), (Cliente) unCliente1);        
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 1);        
@@ -117,7 +117,7 @@ public class ControladorPrincipalTP4Seccion3 {
         unPedido1.asignarProductosDelPedido(listapdp1);
 
         // Creacion de Pedido 2
-        Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente) unCliente2);        
+        Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), (Cliente) unCliente2);        
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(0), 10);
         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(1), 20);
@@ -126,7 +126,7 @@ public class ControladorPrincipalTP4Seccion3 {
         unPedido2.asignarProductosDelPedido(productosDelPedido2);
 
         // Creacion de Pedido 3
-        Pedido unPedido3 = new Pedido(3, LocalDateTime.now(), EstadoPedido.CREADO, (Cliente) unCliente3);        
+        Pedido unPedido3 = new Pedido(3, LocalDateTime.now(), (Cliente) unCliente3);        
         ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(2), 100);
         ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(1), 200);

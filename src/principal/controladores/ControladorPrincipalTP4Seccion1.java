@@ -92,7 +92,7 @@ public class ControladorPrincipalTP4Seccion1 {
             listapdp1.add(pdp3);
             System.out.println("Se agregará al pedido:" + pdp3);
         }
-        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(),EstadoPedido.CREADO, cliente1);        
+        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), cliente1);        
         unPedido1.asignarProductosDelPedido(listapdp1);
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(2), 10);
@@ -105,7 +105,7 @@ public class ControladorPrincipalTP4Seccion1 {
             productosDelPedido2.add(pdp5);
         if (!productosDelPedido2.contains(pdp6))
             productosDelPedido2.add(pdp6);
-        Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), EstadoPedido.CREADO, cliente2);        
+        Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), cliente2);        
         unPedido2.asignarProductosDelPedido(productosDelPedido2);
         ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(1), 100);
@@ -114,7 +114,7 @@ public class ControladorPrincipalTP4Seccion1 {
             productosDelPedido3.add(pdp7);
         if (!productosDelPedido3.contains(pdp8))
             productosDelPedido3.add(pdp8);
-        Pedido unPedido3 = new Pedido(2, LocalDateTime.now(),EstadoPedido.CREADO, cliente3);        
+        Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), cliente3);        
         //pedido repetido no debe agregarse a la lista
 
         if(!listaPedidos.contains(unPedido1))

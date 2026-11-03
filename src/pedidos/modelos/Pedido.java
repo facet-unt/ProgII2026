@@ -22,16 +22,19 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private EstadoPedido estado;
     private Cliente cliente;
-    private ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
+    private ArrayList<ProductoDelPedido> productosDelPedido;
 
-    public Pedido(int numero, LocalDateTime fechaYHora, EstadoPedido estado, Cliente cliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, Cliente cliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
-        this.estado = estado;
+        this.estado = EstadoPedido.CREADO;
         this.cliente = cliente;
-        this.productosDelPedido = new ArrayList<>();
+        this.productosDelPedido = productosDelPedido;
+        if (cliente != null && cliente.verPedidos() != null){
+    cliente.verPedidos().add(this);
     }
-    
+   
+}
     public void agregarProducto(Producto producto, int cantidad){
         this.productosDelPedido.add(new ProductoDelPedido(producto,cantidad));
     }
