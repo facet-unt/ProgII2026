@@ -4,7 +4,9 @@
  */
 package pedidos.modelos;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import productos.modelos.Producto;
@@ -41,7 +43,16 @@ public class Pedido {
     public void asignarProductosDelPedido(ArrayList<ProductoDelPedido> productosDelPedido) {
         this.productosDelPedido = productosDelPedido;
     }
+// Getter que retorna solo la fecha (año-mes-día)
+    public LocalDate verFecha() {
+        return fechaYHora != null ? fechaYHora.toLocalDate() : null;
+    }
 
+    // Getter que retorna solo la hora (hora:minuto:segundo)
+    public LocalTime verHora() {
+        return fechaYHora != null ? fechaYHora.toLocalTime() : null;
+    }
+    
     public Cliente verCliente() {
         return cliente;
     }
@@ -82,7 +93,7 @@ public class Pedido {
         System.out.println("Fecha: " + fechaFormateada + " Hora: " + horaFormateada);
         
         if (cliente != null) {
-            System.out.println("Cliente: " + cliente.getApellido() + ", " + cliente.verNombre());
+            System.out.println("Cliente: " + cliente.verApellido() + ", " + cliente.verNombre());
         } else {
             System.out.println("Cliente: Sin asignar");
         }

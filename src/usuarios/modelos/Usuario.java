@@ -24,11 +24,11 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
+    public String verApellido() {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
+    public void asignarApellido(String apellido) {
         this.apellido = apellido;
     }
 

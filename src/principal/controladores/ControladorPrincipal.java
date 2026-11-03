@@ -93,7 +93,7 @@ public class ControladorPrincipal {
         
         clientes.get(2).asignarClave("454647");
         empleados.get(1).verCorreo();
-        encargados.get(1).setApellido("Falcon");
+        encargados.get(1).asignarApellido("Falcon");
         encargados.get(0).asignarClave("346789");
         empleados.get(2).asignarClave("0000");
         
