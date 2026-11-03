@@ -4,7 +4,6 @@
  */
 package pedidos.modelos;
 import productos.modelos.Producto;
-
 /**
  *
  * @author lourdes

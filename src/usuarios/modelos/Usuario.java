@@ -64,6 +64,8 @@ public void mostrar(){
     }
 
        // Control de correos 
+ public abstract ArrayList<Pedido> verPedidos();
+ 
 @Override
 public boolean equals(Object obj) {
     if (this == obj) {
@@ -83,5 +85,4 @@ public int hashCode() {
     return correo.hashCode();
 }
 
-public abstract ArrayList<Pedido> verPedidos();
 }

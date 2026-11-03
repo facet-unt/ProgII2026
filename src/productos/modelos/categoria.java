@@ -13,9 +13,9 @@ public enum Categoria {
     PLATO_PRINCIPAL,
     POSTRE;
 
-    
     @Override
     public String toString() {
+        
         switch (this) {
             case ENTRADA:
                 return "Entrada";

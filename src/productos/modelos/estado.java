@@ -9,7 +9,7 @@ package productos.modelos;
  * @author lourdes
  */
 public enum Estado {
-        DISPONIBLE,
+    DISPONIBLE,
     NO_DISPONIBLE;
     
 @Override
