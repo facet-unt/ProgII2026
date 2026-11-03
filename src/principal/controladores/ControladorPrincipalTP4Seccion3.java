@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package principal.controladores;
 
 import java.time.LocalDateTime;
@@ -31,10 +27,16 @@ public class ControladorPrincipalTP4Seccion3 {
 //    INICIO Tercera parte - herencia
 //    **************************************************
         
+        // =========================================================================
+        // 1. Inicialización de listas principales
+        // =========================================================================
         ArrayList<Usuario> usuarios = new ArrayList<>();
         ArrayList<Producto> listaProductos = new ArrayList<>();
         ArrayList<Pedido> listaPedidos = new ArrayList<>();
         
+        // =========================================================================
+        // 2. Creación y agregado de Clientes (control de duplicados por correo)
+        // =========================================================================
         Usuario unCliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Usuario unCliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
         Usuario unCliente3 = new Cliente("cliente3@bar.com", "claveCliente3", "ApellidoCliente3", "NombreCliente3");
@@ -47,6 +49,7 @@ public class ControladorPrincipalTP4Seccion3 {
        /*
         Completar con el agregado de clientes
         */
+       
        if (!usuarios.contains(unCliente2))
             usuarios.add(unCliente2);
        if (!usuarios.contains(unCliente3))
@@ -56,7 +59,10 @@ public class ControladorPrincipalTP4Seccion3 {
        }else{
             System.out.println("No se puede agregar el unCliente4");
         }
-                        
+        
+        // =========================================================================
+        // 3. Creación y agregado de Empleados (control de duplicados por correo)
+        // =========================================================================
         Usuario unEmpleado1 = new Empleado("empleado1@bar.com", "claveEmpleado1", "ApellidoEmpleado1", "NombreEmpleado1");        
         Usuario unEmpleado2 = new Empleado("empleado2@bar.com", "claveEmpleado2", "ApellidoEmpleado2", "NombreEmpleado2");        
         Usuario unEmpleado3 = new Empleado("empleado3@bar.com", "claveEmpleado3", "ApellidoEmpleado3", "NombreEmpleado3");
@@ -78,6 +84,9 @@ public class ControladorPrincipalTP4Seccion3 {
             System.out.println("No se puede agregar el unEmpleado4");
         }
         
+        // =========================================================================
+        // 4. Creación y agregado de Encargados (control de duplicados por correo)
+        // =========================================================================
         Usuario unEncargado1 = new Encargado("encargado1@bar.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
         Usuario unEncargado2 = new Encargado("encargado2@bar.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
         Usuario unEncargado3 = new Encargado("encargado3@bar.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
@@ -98,7 +107,10 @@ public class ControladorPrincipalTP4Seccion3 {
         }else{
             System.out.println("No se puede agregar el unEncargado4");
         }
-
+        
+        // =========================================================================
+        // 5. Creación y agregado de Productos (control de duplicados por código)
+        // =========================================================================
         Producto unProducto1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f);        
         Producto unProducto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f);
         Producto unProducto3 = new Producto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 3.0f);
@@ -120,6 +132,11 @@ public class ControladorPrincipalTP4Seccion3 {
             System.out.println("No se puede agregar el unProducto4");
         }
         
+        // =========================================================================
+        // 6. Armado de renglones y pedidos
+        // =========================================================================
+        
+        // Pedido 1: asignado al primer cliente registrado
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
@@ -130,6 +147,8 @@ public class ControladorPrincipalTP4Seccion3 {
         
         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, (Cliente) usuarios.get(0));        
         
+        
+        // Pedido 2: con verificación de renglón repetido (pdp5 repite producto con pdp3)
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(2), 10);
         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(0), 20);
@@ -143,16 +162,23 @@ public class ControladorPrincipalTP4Seccion3 {
             productosDelPedido2.add(pdp5);
         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), productosDelPedido2, (Cliente) usuarios.get(1));        
         
+        
+        // Pedido 3: intento de pedido repetido (mismo número identificador que unPedido2)
         ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(1), 100);
         ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(2), 200);
+       
         if (!productosDelPedido3.contains(pdp6))
             productosDelPedido3.add(pdp6);
         if (!productosDelPedido3.contains(pdp7))
             productosDelPedido3.add(pdp7);
+        
         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, (Cliente) usuarios.get(2));        
         //pedido repetido
-
+        
+        // =========================================================================
+        // 7. Agregado de pedidos a la lista general (control por número de pedido)
+        // =========================================================================
         if(!listaPedidos.contains(unPedido1))
             listaPedidos.add(unPedido1);
         if(!listaPedidos.contains(unPedido2))
@@ -160,6 +186,9 @@ public class ControladorPrincipalTP4Seccion3 {
         if(!listaPedidos.contains(unPedido3))
             listaPedidos.add(unPedido3);
         
+        // =========================================================================
+        // 8. Visualización polimórfica clasificada por el rol del usuario
+        // =========================================================================
         System.out.println("\nLista de Usuarios");
         System.out.println("====================");
         
