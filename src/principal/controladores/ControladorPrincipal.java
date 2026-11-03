@@ -124,8 +124,7 @@ public class ControladorPrincipal {
         Pedido p1 = new Pedido(1,LocalDateTime.of(2026, 9, 27, 9, 41),cliente1);
         Pedido p2 = new Pedido(2,LocalDateTime.now(),cliente2);
         
-        p1.agregarProducto(pizza, 3);
-        p1.agregarProducto(hamburguesa, 1);
+     
         
         pedidos.add(p1);
         pedidos.add(p2);

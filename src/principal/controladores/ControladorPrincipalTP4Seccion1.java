@@ -92,8 +92,7 @@ public class ControladorPrincipalTP4Seccion1 {
             listapdp1.add(pdp3);
             System.out.println("Se agregará al pedido:" + pdp3);
         }
-        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), cliente1);        
-        unPedido1.asignarProductosDelPedido(listapdp1);
+        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), cliente1);            
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(2), 10);
         ProductoDelPedido pdp5 = new ProductoDelPedido(listaProductos.get(0), 20);
@@ -106,7 +105,6 @@ public class ControladorPrincipalTP4Seccion1 {
         if (!productosDelPedido2.contains(pdp6))
             productosDelPedido2.add(pdp6);
         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), cliente2);        
-        unPedido2.asignarProductosDelPedido(productosDelPedido2);
         ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(1), 100);
         ProductoDelPedido pdp8 = new ProductoDelPedido(listaProductos.get(2), 200);
