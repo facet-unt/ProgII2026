@@ -107,45 +107,6 @@ public class Pedido {
     this.estado = nuevoEstado;
   }
 
-  public void agregarProducto(Producto p, int cantidad) {
-    if (p == null || cantidad <= 0) {
-      return;
-    }
-
-    for (ProductoDelPedido item : this.productos) {
-      // Comparar por codigo
-      if (item.verProducto().verCodigo() == p.verCodigo()) {
-        // Acumular la cantidad si ya estaba
-        item.asignarCantidad(item.verCantidad() + cantidad);
-        return; // Finalizar porque no hace falta agregar mas
-      }
-    }
-
-    // Si ningun codigo es comparable(nuevo producto), simplemente se lo agrega con su cantidad
-    this.productos.add(new ProductoDelPedido(p, cantidad));
-  }
-
-  public void quitarProducto(Producto p, int cantidad) {
-    if (p == null || cantidad <= 0) {
-      return;
-    }
-
-    for (ProductoDelPedido item : this.productos) {
-      // Comparar codigos
-      if (item.verProducto().verCodigo() == p.verCodigo()) {
-        int restante = item.verCantidad() - cantidad;
-        if (restante > 0) {
-          // Si ya estaba se disminuye la canitdad
-          item.asignarCantidad(restante);
-        } else {
-          // Si es 0 (o de alguna forma es menor que 0) eliminarlo
-          this.productos.remove(item);
-        }
-        return;
-      }
-    }
-  }
-
   @Override
   public boolean equals(Object o) {
     // Retornar falso si El objeto es nulo o es de una clase distinta a esta.

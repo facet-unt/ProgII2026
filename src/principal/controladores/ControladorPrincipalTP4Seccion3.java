@@ -193,8 +193,10 @@ public class ControladorPrincipalTP4Seccion3 {
       System.out.println();
     }
     System.out.println();
+
     ((Cliente) unCliente1).cancelarPedido(unPedido1);
     System.out.println("Pedidos de " + unCliente1.verApellido() + ", " + unCliente1.verNombre());
+
     for (Pedido p : unCliente1.verPedidos()) {
       p.mostrar();
       System.out.println();

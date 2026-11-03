@@ -49,7 +49,9 @@ public class Cliente extends Usuario {
   }
 
   public void cancelarPedido(Pedido unPedido) {
-    this.pedidos.remove(unPedido);
+    if (this.pedidos.contains(unPedido)) {
+      this.pedidos.remove(unPedido);
+    }
   }
 
   protected String verTipoUsuario() {
