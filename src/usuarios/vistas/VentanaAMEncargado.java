@@ -137,7 +137,8 @@ public class VentanaAMEncargado extends JDialog {
     }//GEN-LAST:event_btnCancelarClic
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
-        String correo=this.txtCorreo.getText().trim();
+
+        String correo = this.txtCorreo.getText().trim();
         String apellido = this.txtApellido.getText().trim();
         String nombre = this.txtNombre.getText().trim();
         String clave = new String(this.passClave.getPassword());
@@ -147,10 +148,11 @@ public class VentanaAMEncargado extends JDialog {
         
         System.out.println("Encargados");
         System.out.println("========");
-        for(Encargado j : this.encargados) {
-            j.mostrar();
+        for(Encargado c : this.encargados) {
+            c.mostrar();
             System.out.println();
         }
+        //Completar
     }//GEN-LAST:event_btnGuardarClic
 
 
