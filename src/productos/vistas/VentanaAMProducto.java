@@ -28,8 +28,6 @@ public class VentanaAMProducto extends JDialog {
     this.comboCategorias.setModel(mcc);
     ModeloComboEstados mce = new ModeloComboEstados();
     this.comboEstado.setModel(mce);
-    this.setLocationRelativeTo(null);
-    this.setVisible(true);
   }
 
   /**
@@ -58,8 +56,7 @@ public class VentanaAMProducto extends JDialog {
     setTitle("Nuevo Producto");
     setResizable(false);
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setResizable(false);
+    jLabel1.setText("Descripción:");
 
     txtDescripcion.setToolTipText("Apellidos del profesor");
     txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
@@ -68,16 +65,7 @@ public class VentanaAMProducto extends JDialog {
       }
     });
 
-    txtDescripcion.setToolTipText("Apellidos del profesor");
-
-    btnGuardar.setMnemonic('G');
-    btnGuardar.setText("Guardar");
-    btnGuardar.setToolTipText("Guarda el profesor");
-    btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnGuardarClic(evt);
-      }
-    });
+    jLabel2.setText("Precio:");
 
     btnGuardar.setMnemonic('G');
     btnGuardar.setText("Guardar");
@@ -102,6 +90,8 @@ public class VentanaAMProducto extends JDialog {
     txtCodigo.setToolTipText("Documento del profesor");
 
     jLabel6.setText("Estado:");
+
+    jLabel3.setText("Categoría");
 
     comboCategorias.setModel(new javax.swing.DefaultComboBoxModel<>(
         new String[] {"Item 1", "Item 2", "Item 3", "Item 4"}));
@@ -207,6 +197,7 @@ public class VentanaAMProducto extends JDialog {
     Producto unProducto = new Producto(codigo, descripcion, c, e, precio);
     this.productos.add(unProducto);
 
+    System.out.println("cant prod: " + productos.size());
     System.out.println("Productos");
     System.out.println("=========");
     for (Producto p : this.productos) {
