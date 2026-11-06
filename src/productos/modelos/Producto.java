@@ -5,10 +5,6 @@
  */
 package productos.modelos;
 
-/**
- *
- * @author estudiante
- */
 public class Producto {
   public Producto(
       int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {

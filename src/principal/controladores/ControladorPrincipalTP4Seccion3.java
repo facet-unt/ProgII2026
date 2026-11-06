@@ -15,6 +15,8 @@ import usuarios.modelos.Cliente;
 import usuarios.modelos.Empleado;
 import usuarios.modelos.Encargado;
 import usuarios.modelos.Usuario;
+// import usuarios.modelos.Usuario;
+
 /**
  *
  * @author Mariana

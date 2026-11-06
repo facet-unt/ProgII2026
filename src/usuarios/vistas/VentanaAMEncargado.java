@@ -12,7 +12,12 @@ import usuarios.modelos.Encargado;
 
 public class VentanaAMEncargado extends JDialog {
     private ArrayList<Encargado> encargados = new ArrayList<>();
+<<<<<<< HEAD
 
+=======
+    private ArrayList<Encargado> encargado = new ArrayList<>();
+    
+>>>>>>> bdd7557dd629056cfc75865aca9b890257466385
     /**
      * Constructor
      * @param ventanaPadre ventana padre
@@ -185,6 +190,7 @@ btnCancelar.setToolTipText("Cancela la operación");
             this.dispose();
         } // GEN-LAST:event_btnCancelarClic
 
+<<<<<<< HEAD
         private void
         btnGuardarClic(java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnGuardarClic
             String correo = this.txtCorreo.getText().trim();
@@ -193,6 +199,25 @@ btnCancelar.setToolTipText("Cancela la operación");
             String clave = new String(this.passClave.getPassword());
             Encargado unEncargado = new Encargado(correo, clave, apellido, nombre);
             this.encargados.add(unEncargado);
+=======
+    private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
+
+        String correo = this.txtCorreo.getText().trim();
+        String apellido = this.txtApellido.getText().trim();
+        String nombre = this.txtNombre.getText().trim();
+        String clave = new String(this.passClave.getPassword());
+        Encargado unEncargado = new Encargado(correo, clave, apellido, nombre);
+        this.encargados.add(unEncargado);
+        
+        System.out.println("Encargados");
+        System.out.println("========");
+        for(Encargado c : this.encargados) {
+            c.mostrar();
+            System.out.println();
+        }
+        //Completar
+    }//GEN-LAST:event_btnGuardarClic
+>>>>>>> bdd7557dd629056cfc75865aca9b890257466385
 
             System.out.println("Encargados");
             System.out.println("========");
