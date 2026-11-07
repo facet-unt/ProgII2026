@@ -70,7 +70,7 @@ public class ControladorPrincipalTP5 {
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
         ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
-        System.out.println("Productos filtrados por categoría");
+        System.out.println("Productos filtrados por categoria");
         System.out.println("===================");
         for(Producto p : productosBuscados) {
             p.mostrar();
@@ -298,11 +298,7 @@ public class ControladorPrincipalTP5 {
         System.out.println("Hay pedidos con un cliente");
         System.out.println(gPed.hayPedidosConEsteCliente((Cliente)unCliente1));
         System.out.println("=======");
-        
-        //BORRAR!!!!!!!!!!!!!
-        System.out.println("aaaaaaaa borrar borrar hasta aqui me quede");
-        //BORRAR!!!!!!!!!!!!!
-        
+       
         System.out.println("Obtener el pedido y agregarle al cliente 1");        
         Pedido unPedido1=gPed.obtenerPedido(1);
         ((Cliente)unCliente1).agregarPedido(unPedido1);

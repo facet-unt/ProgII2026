@@ -20,7 +20,7 @@ public class Encargado extends Usuario {
         super(correo,clave,apellido,nombre);
     }
     
-    //Se redefine el metodo verPedidos de la clase Usuario para que retorne null
+    //El método verPedidos devuelve todos los pedidos gracias a GestorPedidos.
     @Override
     public ArrayList<Pedido> verPedidos(){
         ArrayList<Pedido> pedidos = GestorPedidos.gestor.verPedidos();
