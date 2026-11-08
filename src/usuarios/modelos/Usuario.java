@@ -15,15 +15,15 @@ import pedidos.modelos.Pedido;
 public abstract class Usuario {
 
     private String correo;
-    private String clave;
     private String apellido;
     private String nombre;
+    private String clave;
 
-    public Usuario(String correo, String clave, String apellido, String nombre) {
+    public Usuario(String correo, String apellido, String nombre, String clave) {
         this.correo = correo;
-        this.clave = clave;
         this.apellido = apellido;
         this.nombre = nombre;
+        this.clave = clave;
     }
 
     public String verCorreo() {

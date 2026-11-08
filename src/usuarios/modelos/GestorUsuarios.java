@@ -14,7 +14,7 @@ public class GestorUsuarios {
     /**
      * Constantes con sus respectivos mensajes de texto
      */
-    public static final String EXITO = "Usuario creado/modificado con éxito";
+    public static final String EXITO = "Usuario creado/modificado con exito";
     public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
     public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
     public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
@@ -33,11 +33,7 @@ public class GestorUsuarios {
     private GestorUsuarios() {
         this.listaUsuarios = new ArrayList<>();
     }
-    
-    /**
-     * Método estático instanciar()
-     * @return el objeto unico
-     */
+  
     public static GestorUsuarios instanciar() {
         if (instancia == null) {
             instancia = new GestorUsuarios();
@@ -55,6 +51,9 @@ public class GestorUsuarios {
         
         if(nombre==null || nombre.trim().isEmpty())
             return ERROR_NOMBRE;
+        
+        if (perfil == null) 
+            return ERROR_PERFIL; 
             
         if(clave==null || clave.trim().isEmpty() || claveRepetida==null || !clave.equals(claveRepetida))
             return ERROR_CLAVES;
@@ -92,15 +91,18 @@ public class GestorUsuarios {
      * @param Apellido a buscar
      * @return lista de usuarios que coincidan total o parcialmente con el ingresado
      */
-//    public ArrayList<Usuario> buscarUsuarios(String Apellido){
-//    
-//        ArrayList<Usuario> usuariosEncontrados = new ArrayList<>();
-//        
-//        for(Usuario u : listaUsuarios){
-//            if(u.verApellido())
-//        }
-//    }
-//    
+    public ArrayList<Usuario> buscarUsuarios(String Apellido){
+    
+       ArrayList<Usuario> encontrados = new ArrayList<>();
+       
+        for (Usuario u : listaUsuarios) {
+            if (u.verApellido().toLowerCase().contains(Apellido.toLowerCase())) {
+                encontrados.add(u);
+            }
+        }
+        return encontrados;
+    }
+    
     /**
      * 
      * @param usuario que se busca
