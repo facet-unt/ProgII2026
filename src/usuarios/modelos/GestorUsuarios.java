@@ -106,7 +106,7 @@ public class GestorUsuarios {
      * @param usuario que se busca
      * @return true si existe el usuario,false en caso contrario
      */
-     public boolean existeUsuario(Usuario usuario){
+     public boolean existeEsteUsuario(Usuario usuario){
         //
          if(usuario==null){
             return false;

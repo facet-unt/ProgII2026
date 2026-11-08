@@ -4,6 +4,7 @@
  */
 package pedidos.modelos;
 
+import java.util.ArrayList;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -20,7 +21,8 @@ public class GestorPedidos {
     public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
     public static final String VALIDACION_EXITO = "El pedido tiene datos correctos";
     
-    
+    //temp
+    ArrayList<Pedido> pedidos = new ArrayList<>();
     
     public boolean hayPedidosConEsteCliente(Cliente cliente){
        
@@ -30,5 +32,20 @@ public class GestorPedidos {
         return !cliente.verPedidos().isEmpty(); 
     }
     
+    public boolean hayPedidosConEsteProducto(Producto producto){
+        if(producto==null)
+            return false;
+
+        //completar con el nombre del arraylist de pedidos
+        for(Pedido p : pedidos){
+            for(ProductoDelPedido pdp : p.productosDelPedido){
+                if(pdp.verProducto().equals(pdp)){
+                   return true; 
+                }
+            }
+        }
+        return false;
+    }
     
+   
 }
