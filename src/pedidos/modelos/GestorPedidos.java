@@ -47,5 +47,13 @@ public class GestorPedidos {
         return false;
     }
     
-   
+    public boolean existeEstePedido(Pedido pedido){
+       
+        if(pedidos.contains(pedido)){
+            return true;
+        }
+        
+        return false;
+    }
+ 
 }
