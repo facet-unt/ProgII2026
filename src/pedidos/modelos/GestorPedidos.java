@@ -21,9 +21,7 @@ public class GestorPedidos {
     public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
     public static final String VALIDACION_EXITO = "El pedido tiene datos correctos";
     
-    //temp
-    ArrayList<Pedido> pedidos = new ArrayList<>();
-    
+   
     /**
      * @param cliente para buscar pedidos registrados
      * @return true si se encuentra pedidos con el Clinte,false en caso contrario
