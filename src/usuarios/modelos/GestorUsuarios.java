@@ -55,9 +55,6 @@ public class GestorUsuarios {
         
         if(nombre==null || nombre.trim().isEmpty())
             return ERROR_NOMBRE;
-        
-        if(perfil==null)
-            return ERROR_PERFIL;
             
         if(clave==null || clave.trim().isEmpty() || claveRepetida==null || !clave.equals(claveRepetida))
             return ERROR_CLAVES;
@@ -66,8 +63,20 @@ public class GestorUsuarios {
         if(obtenerUsuario(correo) != null)
             return USUARIOS_DUPLICADOS;
     
-        Usuario unUsuario=new (correo,apellido,nombre,perfil,clave);
+        Usuario usuario;
+        
+        switch(perfil){
+            case EMPLEADO -> usuario=new Empleado(correo,apellido,nombre,clave);
+            case ENCARGADO -> usuario=new Encargado(correo,apellido,nombre,clave);
+            case CLIENTE -> usuario=new Cliente(correo,apellido,nombre,clave);
+            default -> {
+                return ERROR_PERFIL;
+            }
+        }
+        
+        listaUsuarios.add(usuario);
         return EXITO;
+
     }
 
     /**
