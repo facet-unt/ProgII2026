@@ -24,6 +24,10 @@ public class GestorPedidos {
     //temp
     ArrayList<Pedido> pedidos = new ArrayList<>();
     
+    /**
+     * @param cliente para buscar pedidos registrados
+     * @return true si se encuentra pedidos con el Clinte,false en caso contrario
+     */
     public boolean hayPedidosConEsteCliente(Cliente cliente){
        
         if(cliente==null)
@@ -32,6 +36,11 @@ public class GestorPedidos {
         return !cliente.verPedidos().isEmpty(); 
     }
     
+    
+    /**
+     * @param producto que se busca en una lista de pedidos
+     * @return true si se encuentra el producto en al menos un pedido,false en caso contrario
+     */
     public boolean hayPedidosConEsteProducto(Producto producto){
         if(producto==null)
             return false;
@@ -47,13 +56,32 @@ public class GestorPedidos {
         return false;
     }
     
+    /**
+     * @param pedido a verificar si existe
+     * @return true si se encuentra el pedido en la lista,false en caso contrario
+     */
     public boolean existeEstePedido(Pedido pedido){
        
-        if(pedidos.contains(pedido)){
-            return true;
-        }
-        
-        return false;
+        //completar con el nombre del arraylist de pedidos
+
+        return pedidos.contains(pedido);
     }
  
+    /**
+     * 
+     * @param numero del pedido que se desea buscar
+     * @return el pedido si se lo encontro,null en caso contrario
+     */
+    public Pedido obtenerPedido(Integer numero){
+        if(numero==null)
+            return null;
+    
+    //completar con el nombre del arraylist de pedidos
+        for(Pedido p : pedidos){
+            if(p.verNumero()== numero){
+                return p;
+            }
+        }
+        return null;
+    }
 }
