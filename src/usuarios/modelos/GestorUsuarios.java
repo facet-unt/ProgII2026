@@ -29,14 +29,7 @@ public class GestorUsuarios {
      */
     ArrayList<Usuario> listaUsuarios= new ArrayList<>();
 
-    /**
-     * Variable estática privada para guardar la única instancia
-     */
     private static GestorUsuarios instancia;
-
-    /**
-     * Constructor privado para evitar que hagan 'new GestorUsuarios()' desde afuera
-     */
     private GestorUsuarios() {
         this.listaUsuarios = new ArrayList<>();
     }
@@ -66,13 +59,15 @@ public class GestorUsuarios {
         if(perfil==null)
             return ERROR_PERFIL;
             
-        if(clave==null || clave.trim().isEmpty())    
-            if(claveRepetida==null || !clave.equals(claveRepetida))
-                return ERROR_CLAVES;
-        
-        //FALTA USUARIO DUPLICADO
-        if()
+        if(clave==null || clave.trim().isEmpty() || claveRepetida==null || !clave.equals(claveRepetida))
+            return ERROR_CLAVES;
+  
+        //si es distinto de null,ya hay un usuario con ese correo
+        if(obtenerUsuario(correo) != null)
+            return USUARIOS_DUPLICADOS;
     
+        Usuario unUsuario=new (correo,apellido,nombre,perfil,clave);
+        return EXITO;
     }
 
     /**
@@ -88,18 +83,42 @@ public class GestorUsuarios {
      * @param Apellido a buscar
      * @return lista de usuarios que coincidan total o parcialmente con el ingresado
      */
-    public ArrayList<Usuario> buscarUsuarios(String Apellido){
-    
-        ArrayList<Usuario> usuariosEncontrados = new ArrayList<>();
-        
-        for(Usuario u : listaUsuarios){
-            if(u.verApellido())
+//    public ArrayList<Usuario> buscarUsuarios(String Apellido){
+//    
+//        ArrayList<Usuario> usuariosEncontrados = new ArrayList<>();
+//        
+//        for(Usuario u : listaUsuarios){
+//            if(u.verApellido())
+//        }
+//    }
+//    
+    /**
+     * 
+     * @param usuario que se busca
+     * @return true si existe el usuario,false en caso contrario
+     */
+     public boolean existeUsuario(Usuario usuario){
+        //
+         if(usuario==null){
+            return false;
         }
+        
+        return (obtenerUsuario(usuario.verCorreo()) != null);
     }
-    
    
-    
-    
-    
+     /**
+      * @param correo utilizado para buscar un usuario
+      * @return el usuario en caso de encontrarlo,null en caso contrario
+      */
+    public Usuario obtenerUsuario(String correo) {
+        
+        for (Usuario u : listaUsuarios) {
+            if (u.verCorreo().equalsIgnoreCase(correo)) {
+                return u;
+            }
+        }
+        
+        return null;
+    }
     
 }
