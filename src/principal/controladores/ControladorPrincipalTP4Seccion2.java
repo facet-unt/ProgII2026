@@ -48,6 +48,19 @@ public class ControladorPrincipalTP4Seccion2 {
             System.out.println("No se agrego unCliente4 por correo duplicado: " + unCliente4.verCorreo());
         }
         
+        if (!usuarios.contains(unCliente1))
+            usuarios.add(unCliente1);
+        
+        if (!usuarios.contains(unCliente2))
+            usuarios.add(unCliente2);
+        
+        if (!usuarios.contains(unCliente3))
+            usuarios.add(unCliente3);
+        
+        if (!usuarios.contains(unCliente4))
+            usuarios.add(unCliente4);
+        
+        
         System.out.println();        
                 
         Usuario unEmpleado1 = new Empleado("empleado1@bar.com", "claveEmpleado1", "ApellidoEmpleado1", "NombreEmpleado1");        
@@ -72,7 +85,7 @@ public class ControladorPrincipalTP4Seccion2 {
         } else {
             System.out.println("No se agrego unEmpleado4 por correo duplicado: " + unEmpleado4.verCorreo());
         }
-       
+      
         System.out.println("Clientes");
         System.out.println("=========");
          /*
@@ -85,7 +98,6 @@ public class ControladorPrincipalTP4Seccion2 {
             if (u instanceof Cliente) {
                 u.mostrar();
             }
-        }
         
         System.out.println("Empleados");
         System.out.println("=========");
@@ -141,7 +153,7 @@ public class ControladorPrincipalTP4Seccion2 {
             System.out.println("No se agrego unEncargado5 por repetir correo de cliente: " + unEncargado5.verCorreo());
         }
         
-        Usuario unCliente5 = new Encargado("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
+        Usuario unCliente5 = new Cliente("empleado3@bar.com", "claveEncargado4", "ApellidoEncargado4", "NombreEncargado4");
         //mismo correo que un empleado, no debe agregarse
         /*
         Agregar aquí la sentencia para agregar unCliente5 a la lista de usuarios,
@@ -153,7 +165,7 @@ public class ControladorPrincipalTP4Seccion2 {
         } else {
             System.out.println("No se agrego unCliente5 por repetir correo de empleado: " + unCliente5.verCorreo());
         }
-        
+      
         System.out.println("Todos");
         System.out.println("=====");
         for(Usuario u : usuarios) {

@@ -41,8 +41,7 @@ public class ControladorPrincipalTP4Seccion1 {
         
              
         /***************************************************
-         * AGREGAR aqui las sentencias para completar el llenado de 
-         * la lista de productos
+          SENTENCIAS PARA LLENAR LA LISTA DE PRODUCTOS
         ***************************************************/
         if (!listaProductos.contains(p1)) listaProductos.add(p1);
         if (!listaProductos.contains(p2)) listaProductos.add(p2);
@@ -58,8 +57,30 @@ public class ControladorPrincipalTP4Seccion1 {
             prod.mostrar();
         }
            
+
         
-        System.out.println("\n#################### ");
+        if (!listaProductos.contains(p2))
+            listaProductos.add(p2);
+
+        if (!listaProductos.contains(p3))
+            listaProductos.add(p3);
+
+        if (!listaProductos.contains(p4))
+            listaProductos.add(p4);
+
+        if (!listaProductos.contains(p5))
+            listaProductos.add(p5);
+
+        /***************************************************
+          SENTENCIAS PARA LISTAR LOS PRODUCTOS
+        ***************************************************/
+        
+        for (Producto prod: listaProductos){
+            prod.mostrar();
+            System.out.println();
+        }
+        
+        System.out.println("\n###########################");
         System.out.println("CLIENTES");
         Cliente cliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Cliente cliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
@@ -74,7 +95,7 @@ public class ControladorPrincipalTP4Seccion1 {
         for (Cliente e: listaClientes)
             e.mostrar();
                 
-        System.out.println("#################### ");
+        System.out.println("\n###########################");
         System.out.println("PEDIDOS");
         ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
@@ -118,7 +139,7 @@ public class ControladorPrincipalTP4Seccion1 {
         if(!listaPedidos.contains(unPedido1))
             listaPedidos.add(unPedido1);
         //***********************************************
-        //AGREGAR aqui la sentencia para agregar pedidos a la lista sin que se repitan
+        //    AGREGADO DE PEDIDOS SIN REPETIR
         //*************************************************
         if (!listaPedidos.contains(unPedido2)) {
             listaPedidos.add(unPedido2);
@@ -130,12 +151,12 @@ public class ControladorPrincipalTP4Seccion1 {
         System.out.println("=======");
         /*
         *************************************************
-        AGREGAR aqui la sentencia para mostrar la lista de pedidos
+                 MOSTRAR LOS PEDIDOS
         *************************************************
         */
          for(Pedido ped : listaPedidos){
              ped.mostrar();
-         
+       
         System.out.println("----------------------------------");        
         }
     /*

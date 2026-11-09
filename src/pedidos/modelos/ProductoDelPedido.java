@@ -36,13 +36,9 @@ public class ProductoDelPedido {
         this.producto = producto;
     }
 
-    public int verCantidad() {
-        return cantidad;
-    }
 
-    public void asignarCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+
+
 
     public ProductoDelPedido(Producto producto, int cantidad) {
         this.producto = producto;
@@ -57,8 +53,6 @@ public class ProductoDelPedido {
     public int hashCode() {
         int hash = 3;
         hash = 61 * hash + Objects.hashCode(this.producto);
-        return hash;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -75,8 +69,10 @@ public class ProductoDelPedido {
         return Objects.equals(this.producto, other.producto);
     }
 
+
     @Override
     public String toString() {
         return "Producto: " + producto.verCodigo() + " - " + producto.verDescripcion() + " Precio $:" + producto.verPrecio() + " " + cantidad;
     }
+}
 }

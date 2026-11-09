@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package productos.modelos;
 
 /**
@@ -14,6 +10,11 @@ public class Producto {
     private Categoria categoria;
     private EstadoProducto estado;
     private float precio;
+    
+    
+    //====================================
+    //      Métodos de Producto
+    //====================================
 
     public int verCodigo() {
         return codigo;

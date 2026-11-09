@@ -6,15 +6,11 @@ package principal.controladores;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import pedidos.modelos.EstadoPedido;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Categoria;
 import productos.modelos.EstadoProducto;
 import productos.modelos.Producto;
-import usuarios.modelos.Cliente;
-import usuarios.modelos.Empleado;
-import usuarios.modelos.Encargado;
 import usuarios.modelos.Usuario;
 
 /**
@@ -70,7 +66,7 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!usuarios.contains(unEmpleado3)) usuarios.add(unEmpleado3);
         if (!usuarios.contains(unEmpleado4)) usuarios.add(unEmpleado4);
         System.out.println("No se puede agregar el encargado5");
-        
+       
         Usuario unEncargado1 = new Encargado("encargado1@bar.com", "claveEncargado1", "ApellidoEncargado1", "NombreEncargado1");
         Usuario unEncargado2 = new Encargado("encargado2@bar.com", "claveEncargado2", "ApellidoEncargado2", "NombreEncargado2");
         Usuario unEncargado3 = new Encargado("encargado3@bar.com", "claveEncargado3", "ApellidoEncargado3", "NombreEncargado3");
@@ -160,7 +156,7 @@ public class ControladorPrincipalTP4Seccion3 {
         }
         System.out.println();
         
-        ((Cliente)unCliente1).cancelarPedido(unPedido1);
+        ((Cliente)unCliente1).cancelarPedido(unPedido1);        
         System.out.println("Pedidos de " + unCliente1.verApellido() + ", " + unCliente1.verNombre());
         for(Pedido p : ((Cliente)unCliente1).verPedidos()) {
             p.mostrar();
@@ -168,11 +164,11 @@ public class ControladorPrincipalTP4Seccion3 {
         }
         System.out.println();
     
-    /*
-    FIN Tercera parte - herencia
-    ***************************************************
-    ***************************************************
-    ***************************************************
-    */
+//    /*
+//    FIN Tercera parte - herencia
+//    ***************************************************
+//    ***************************************************
+//    ***************************************************
+//    */
     }
 }
