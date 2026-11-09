@@ -5,14 +5,15 @@
 package productos.modelos;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
  * @author ramayo
  */
 public class GestorProductos {
-    String validacion;
-    ArrayList<Producto> lista = new ArrayList<>();
+    private String validacion;
+    private ArrayList<Producto> lista = new ArrayList<>();
     
     public static final String EXITO = "Producto creado/modificado con éxito";
     public static final String ERROR_CODIGO = "El código del producto es incorrecto";
@@ -90,18 +91,18 @@ public class GestorProductos {
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> productosPorDescripcion = new ArrayList<>();
         
-        if(!(descripcion == null || descripcion.trim().isEmpty()))
+        if(!(descripcion == null || descripcion.isEmpty()))
             for(Producto p: lista){
                 String descripcionMinuscula = p.verDescripcion().toLowerCase();
-                if(descripcionMinuscula.contains(descripcion.toLowerCase())){
+                if(descripcionMinuscula.contains(descripcion.toLowerCase()))
                     productosPorDescripcion.add(p);
-                }
+                Collections.sort(productosPorDescripcion);
+            }
+            if(productosPorDescripcion.isEmpty()){
+                System.out.println(PRODUCTO_INEXISTENTE);
         }
         else 
             System.out.println(ERROR_DESCRIPCION);
-        if(productosPorDescripcion.isEmpty()){
-            System.out.println(PRODUCTO_INEXISTENTE);
-        }
         return productosPorDescripcion;
     }
     
