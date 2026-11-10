@@ -8,6 +8,24 @@ package usuarios.modelos;
  *
  * @author homep
  */
-public class Perfil {
+public enum Perfil {
+
+    CLIENTE("cliente"),
+    EMPLEADO("empleado"),
+    ENCARGADO("encargado");
     
+    private final String descripcion;
+    
+    //=========================================
+    //     Constructor de Estado del Pedido
+    //=========================================
+
+    Perfil(String descripcion){
+        this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString(){
+        return descripcion;
+    }
 }

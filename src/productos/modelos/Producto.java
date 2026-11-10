@@ -51,8 +51,8 @@ public class Producto {
      *
      * @return texto asociado a la categoría del producto
      */
-    public String verCategoria() {
-        return categoria.toString();
+    public Categoria verCategoria() {
+        return categoria;
     }
 
     /**
@@ -78,8 +78,8 @@ public class Producto {
      *
      * @return texto asociado al estado del producto
      */
-    public String verEstado() {
-        return estado.toString();
+    public Estado verEstado() {
+        return estado;
     }
     
     /**
