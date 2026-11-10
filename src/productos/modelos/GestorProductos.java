@@ -80,6 +80,8 @@ public class GestorProductos {
             if (p.verDescripcion().toLowerCase().contains(descripcion.toLowerCase()))
                 pdp.add(p);
         }
+        if (pdp.isEmpty())
+            return null;
         return pdp;
     }
     
@@ -93,6 +95,8 @@ public class GestorProductos {
             if (p.verCategoria() == categoria)
                 pdp.add(p);
         }
+        if (pdp.isEmpty())
+            return null;
         return pdp;
     }
     
