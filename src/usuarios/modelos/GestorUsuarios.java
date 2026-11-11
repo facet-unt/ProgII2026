@@ -55,20 +55,23 @@ public class GestorUsuarios {
         
         if (proceso.equals(VALIDACION_EXITO)){
             switch (perfil){
-                case Perfil.CLIENTE:
+                case Perfil.CLIENTE -> {
                     Usuario u = new Cliente(correo, clave, apellido, nombre);
-                    usuarios.add(u);
+                    GestorUsuarios.usuarios.add(u);
                     return proceso;
+                }
                 
-                case Perfil.EMPLEADO:
+                case Perfil.EMPLEADO -> {
                     Usuario u1 = new Empleado(correo, clave, apellido, nombre);
-                    usuarios.add(u1);
+                    GestorUsuarios.usuarios.add(u1);
                     return proceso;
+                }
                 
-                case Perfil.ENCARGADO:
+                case Perfil.ENCARGADO -> {
                     Usuario u2 = new Encargado(correo, clave, apellido, nombre);
-                    usuarios.add(u2);
+                    GestorUsuarios.usuarios.add(u2);
                     return proceso;
+                }
             }
             
         }
@@ -76,7 +79,7 @@ public class GestorUsuarios {
     }
     
     public ArrayList<Usuario> verUsuarios(){
-        return usuarios;
+        return GestorUsuarios.usuarios;
     }
     
     public ArrayList<Usuario> buscarUsuarios(String apellido){

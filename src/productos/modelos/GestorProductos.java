@@ -61,7 +61,7 @@ public class GestorProductos {
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         String proceso = CorroborarDatos(codigo, descripcion, precio, categoria, estado);
-        if (productos.contains(productoAModificar))
+        if (!productos.contains(productoAModificar))
             return ERROR_NO_ESTA;
         if (proceso.equals(EXITO)){
             Producto p = new Producto(codigo, descripcion, categoria, estado, precio);

@@ -1,6 +1,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 
 /**
@@ -12,7 +13,7 @@ import pedidos.modelos.Pedido;
  * @author foxeen
  */
 public class Encargado extends Usuario {
-
+    private final GestorPedidos gdp = GestorPedidos.instanciar();
     //==================================================
     //             Constructor de Encargado
     //==================================================
@@ -42,7 +43,6 @@ public class Encargado extends Usuario {
      */
     @Override
     public ArrayList<Pedido> verPedidos() {
-        ArrayList<Pedido> VPedidos = new ArrayList<>();
-        return VPedidos;
+        return gdp.verPedidos();
     }
 }
