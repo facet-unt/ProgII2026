@@ -4,21 +4,16 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
 
 /**
  *
  * @author homep
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
     private static final ArrayList<Producto> productos = new ArrayList<>();
-    public static final String EXITO = "Producto creado/modificado con éxito";
-    public static final String ERROR_CODIGO = "El código del producto es incorrecto";
-    public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
-    public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-    public static final String ERROR_NO_ESTA = "El producto indicado no se encuentra instanciado";
+
     
     //=============================
     //      Singletone
@@ -110,5 +105,12 @@ public class GestorProductos {
         }
         return null;
     }
-        
+    public String borrarProducto(Producto producto){
+        if (!productos.contains(producto)){
+            return ERROR_NO_ESTA;
+        }else{
+            productos.remove(producto);
+            return EXITO_BORRAR;
+        }
+    }
 }

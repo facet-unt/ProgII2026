@@ -4,6 +4,7 @@
  */
 package pedidos.modelos;
 
+import interfaces.IGestorPedidos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,19 +16,10 @@ import usuarios.modelos.Cliente;
  *
  * @author homep
  */
-public class GestorPedidos {
+public class GestorPedidos implements IGestorPedidos{
     private static final ArrayList<Pedido> pedidos = new ArrayList<>();
     private static int cantidadDePedidos = 0;
-    private static final String EXITO = "Pedido creado/moidificado/cancelado con éxito";
-    private static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
-    private static final String ERROR_HORA = "La hora del pedido es incorrecta";
-    private static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos";
-    private static final String ERROR_CLIENTE = "El pedido no tiene cliente";
-    private static final String ERROR_ESTADO = "El pedido no tiene un estado";
-    private static final String ERROR_CAMCELAR = "No se puede cancelar un pedido en este estado";
-    private static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese numero";
-    private static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
-    private static final String VALIDACION_EXITO = "El pedido tiene los datos correctos";
+    
 
     //=====================
     //      Singletone
