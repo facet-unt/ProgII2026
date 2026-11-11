@@ -46,6 +46,8 @@ public class Cliente extends Usuario {
      * @param unPedido instancia de {@link Pedido} a incorporar o actualizar
      */
     public void agregarPedido(Pedido unPedido) {
+        if (unPedido == null)
+            return;
         if (!pedidos.contains(unPedido)) {
             pedidos.add(unPedido);
         } else { 

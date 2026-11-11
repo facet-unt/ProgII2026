@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * @author homep
  */
 public class GestorProductos {
-    private final ArrayList<Producto> productos = new ArrayList<>();
-    public static final String EXITO = "Procuto creado/modificado con éxito";
+    private static final ArrayList<Producto> productos = new ArrayList<>();
+    public static final String EXITO = "Producto creado/modificado con éxito";
     public static final String ERROR_CODIGO = "El código del producto es incorrecto";
     public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
@@ -34,11 +34,11 @@ public class GestorProductos {
     //          Metodos
     //==============================
     private String CorroborarDatos(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-        if (codigo < 0)
+        if (codigo <= 0)
             return ERROR_CODIGO;
-        if (descripcion.isEmpty() || descripcion == null)
+        if (descripcion == null || descripcion.isEmpty())
             return ERROR_DESCRIPCION;
-        if (precio < 0)
+        if (precio <= 0)
             return ERROR_PRECIO;
         if (categoria == null)
             return ERROR_CATEGORIA;
@@ -53,6 +53,8 @@ public class GestorProductos {
         String proceso = CorroborarDatos(codigo, descripcion, precio, categoria, estado);
         if (proceso.equals(EXITO)){
             Producto p = new Producto(codigo, descripcion, categoria, estado, precio);
+            if (productos.contains(p))
+                return "Producto Repetido ingresado";
             productos.add(p);
         }
         return proceso;
@@ -102,8 +104,9 @@ public class GestorProductos {
     
     public Producto obtenerProducto(Integer codigo){
         for (Producto p: productos){
-            if (p.verCodigo() == codigo)
+            if (p.verCodigo() == codigo.intValue()){       
                 return p;
+            }
         }
         return null;
     }

@@ -52,20 +52,22 @@ public class GestorPedidos {
             return ERROR_PRODUCTOS_DEL_PEDIDO;
         if (cliente == null)
             return ERROR_CLIENTE;
+        
         return VALIDACION_EXITO;
     }
     
     public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
         String proceso = corroborarDatos(fecha, hora, productosDelPedido, cliente);
         
-        LocalDateTime fechaYHora = LocalDateTime.of(fecha, hora);
+        
         if (proceso.equals(VALIDACION_EXITO)){
+            LocalDateTime fechaYHora = LocalDateTime.of(fecha, hora);
             cantidadDePedidos++;
             Pedido p = new Pedido(cantidadDePedidos, fechaYHora, productosDelPedido, cliente);
             GestorPedidos.pedidos.add(p);
             cliente.agregarPedido(p);
         }
-        return VALIDACION_EXITO;
+        return proceso;
     }
     
     public String cambiarEstado(Pedido pedidoAModificar){

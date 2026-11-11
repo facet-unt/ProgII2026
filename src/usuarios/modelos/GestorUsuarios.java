@@ -12,10 +12,9 @@ import java.util.ArrayList;
  */
 public class GestorUsuarios {
     private static final ArrayList<Usuario> usuarios = new ArrayList<>();
-    private static final String EXITO = "Usuario creado/modificado con exito";
     private static final String ERROR_CORREO = "El correo del usuario es incorrecto";
     private static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
-    private static final String ERROR_NOMBRE = "Usuario creado/modificado con exito";
+    private static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
     private static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas";
     private static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
     private static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
@@ -34,24 +33,30 @@ public class GestorUsuarios {
         int contador = 0;
         if (correo == null || !correo.contains("@"))
             return ERROR_CORREO;
-        if (apellido == null)
+        if (apellido == null || apellido.isEmpty())
             return ERROR_APELLIDO;
-        if (nombre == null)
+        if (nombre == null || nombre.isEmpty()){
             return ERROR_NOMBRE;
-        if (clave.isEmpty() || clave == null || clave.equals(claveRepetida))
+        }
+        if (clave == null|| clave.isEmpty() || !clave.equals(claveRepetida))
             return ERROR_CLAVES;
         for (Perfil p : Perfil.values()){
-            if (!perfil.equals(p))
+            if (perfil == null || !perfil.equals(p))
                 contador ++;
         }
         if (contador == 3)
             return ERROR_PERFIL;
-
+        
+        Usuario u = new Cliente(correo, clave, apellido, nombre);
+        if (GestorUsuarios.usuarios.contains(u))
+            return USUARIOS_DUPLICADOS;
+        
         return VALIDACION_EXITO;
     }
     
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
         String proceso = corroborarDatos(correo, apellido, nombre, perfil, clave, claveRepetida);
+        System.out.println();
         
         if (proceso.equals(VALIDACION_EXITO)){
             switch (perfil){
@@ -102,8 +107,10 @@ public class GestorUsuarios {
     
     public Usuario obtenerUsuario(String Correo){
         for (Usuario u: usuarios){
-            if (u.verCorreo().equals(Correo))
+            if (u.verCorreo() == Correo){
                 return u;
+        
+            }
         }
         return null;
     }
