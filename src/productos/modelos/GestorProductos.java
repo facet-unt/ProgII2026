@@ -62,7 +62,7 @@ public class GestorProductos {
         validacion=validarProducto(codigo, descripcion, precio, categoria, estado);
         if (validacion.equals(VALIDACION_EXITO)){
             Producto p = new Producto(codigo, descripcion, precio, categoria, estado);
-            (lista).add(p);
+            lista.add(p);
             return EXITO;
         }
         else return validacion;

@@ -9,10 +9,23 @@ package pedidos.modelos;
  * @author ramayo
  */
 public enum Estado {
-    CREADO, PROCESANDO, ENTREGADO;
+    CREADO("Creado"),
+    PROCESANDO("Procesando"),
+    ENTREGADO("Entregado");
+    
+     private final String descripcion;
+
+    // constructor
+    private Estado(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String verDescripcion() {
+        return descripcion;
+    }
     
     @Override
     public String toString(){
-        return name();
+        return descripcion;
     }
 }

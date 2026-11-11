@@ -5,7 +5,6 @@
 package pedidos.modelos;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,7 +18,8 @@ import usuarios.modelos.Cliente;
  */
 public class Pedido {
     private int numero;
-    private LocalDateTime fechaYHora;
+    private LocalDate fecha;
+    private LocalTime hora;
     
     //Relacion: Un pedido tiene un cliente
     private Cliente cliente;
@@ -28,9 +28,10 @@ public class Pedido {
     //Relacion: Pedido tiene una cantidad
     private ArrayList<ProductoDelPedido> listaProductos = new ArrayList<>();
 
-    public Pedido(int numero,LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> listaProductos, Cliente cliente) {
+    public Pedido(int numero,LocalDate fecha, LocalTime hora,ArrayList<ProductoDelPedido> listaProductos, Cliente cliente) {
         this.numero = numero;
-        this.fechaYHora = fechaYHora;
+        this.fecha = fecha;
+        this.hora = hora;
         this.listaProductos=listaProductos;
         this.cliente = cliente;
         this.estado = Estado.CREADO;
@@ -57,27 +58,49 @@ public class Pedido {
 
     public String convertirFecha(){
         DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return this.fechaYHora.format(fechaConFormato);
+        return this.fecha.format(fechaConFormato);
     }
     
     public String convertirHora(){
         DateTimeFormatter horaConFormato = DateTimeFormatter.ofPattern("hh:mm");
-        return this.fechaYHora.format(horaConFormato);
+        return this.hora.format(horaConFormato);
     }
 
     public LocalDate verFecha() {
-        return fechaYHora.toLocalDate();
+        return fecha;
     }
     
     public LocalTime verHora() {
-        return fechaYHora.toLocalTime();
+        return hora;
     }
     
     public void asignarProductoDelPedido(Producto p,int cantidad) {
         ProductoDelPedido pdp = new ProductoDelPedido(p,cantidad);
         this.listaProductos.add(pdp);
     }
+    public ArrayList<ProductoDelPedido> verListaProductos() {
+        return listaProductos;
+    }
+    
+    public Estado verEstado(){
+        return estado;
+    }
+    public void asignarEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Cliente verCliente() {
+        return cliente;
+    }
+    public void asignarCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+    
+    
     //</editor-fold>
+
+
     
     //<editor-fold defaultstate="collapsed" desc="Metodos 'equals' y 'hashCode'">
     @Override

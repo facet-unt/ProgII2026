@@ -16,7 +16,6 @@ import usuarios.modelos.Cliente;
  */
 public class GestorPedidos {
     private ArrayList<Pedido> listaPedidos = new ArrayList<>();
-    private String validacion;
     public static final String EXITO="Pedido creado/modificado/cancelado con éxito";
     public static final String ERROR_FECHA="La fecha del pedido es incorrecta";
     public static final String ERROR_HORA ="La hora del pedido es incorrecta";
@@ -52,32 +51,73 @@ public class GestorPedidos {
         return VALIDACION_EXITO;
     }
     
-    /*Crea un nuevo pedido, devolviendo el resultado de la operación. 
-    Al crearlo, el pedido se agrega al cliente especificado (con el método
-    agregarPedido() definido en la clase Cliente).*/
+    /*Crea un nuevo pedido, devolviendo el resultado de la operación.
+    Al crearlo, el pedido se agrega al cliente especificado (con el método agregarPedido() definido en la clase Cliente).*/
     public String crearPedido(LocalDate fecha,LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
-        validacion = validarPedido(fecha, hora, productosDelPedido, cliente);
+        String validacion = validarPedido(fecha, hora, productosDelPedido, cliente);
         if(validacion==VALIDACION_EXITO){
-            
+            Pedido p = new Pedido(14 ,fecha, hora, productosDelPedido, cliente);
+            cliente.agregarPedido(p);
+            listaPedidos.add(p);
+            return EXITO;
         }
+        else return validacion;
     }
             
     /*Cambia el estado de un pedido: si está en Estado.CREADO lo pasa a Estado.PROCESANDO;
     si está en Estado.PROCESANDO lo pasa a Estado.ENTREGADO. Devuelve el resultado de la operación.*/
-    public String cambiarEstado(Pedido pedidoAModificar)
+    public String cambiarEstado(Pedido pedidoAModificar){
+        if(pedidoAModificar!=null){
+            if(pedidoAModificar.verEstado()== Estado.CREADO){
+                pedidoAModificar.asignarEstado(Estado.PROCESANDO);
+                return EXITO;
+            }
+            else if(pedidoAModificar.verEstado()==Estado.PROCESANDO){
+                pedidoAModificar.asignarEstado(Estado.ENTREGADO);
+                return EXITO;
+            }
+            else return "Error al cambiar de estado";
+        }
+        return PEDIDO_INEXISTENTE;
+    }
 
     //Devuelve todos los pedidos.
-    public ArrayList<Pedido> verPedidos()
+    public ArrayList<Pedido> verPedidos(){
+        return listaPedidos;
+    }
             
     //Devuelve true si hay al menos un pedido con el cliente especificado, false en caso contrario.
-    public boolean hayPedidosConEsteCliente(Cliente cliente)
+    public boolean hayPedidosConEsteCliente(Cliente cliente){
+        for(Pedido p:listaPedidos){
+            if(p.verCliente().equals(cliente)){
+                return true;
+            }
+        }
+        return false;
+    }
             
     //Devuelve true si hay al menos un pedido con el producto especificado, false en caso contrario.
-    public boolean hayPedidosConEsteProducto(Producto producto)
+    public boolean hayPedidosConEsteProducto(Producto producto){
+        for(Pedido p: listaPedidos){
+            if(p.verListaProductos().contains(producto)){
+                return true;
+            } 
+        }
+        return false;
+    }
             
-    //Devuelve true si existe el pedido especificado, false en casocontrario.
-    public boolean existeEstePedido(Pedido pedido)
+    //Devuelve true si existe el pedido especificado, false en caso contrario.
+    public boolean existeEstePedido(Pedido pedido){
+        return listaPedidos.contains(pedido);
+    }
                     
-    //Obtiene el pedido con el número especificado. Si no hay un pedidocon ese número, devuelve null.
-    public Pedido obtenerPedido(Integer numero)
+    //Obtiene el pedido con el número especificado. Si no hay un pedido con ese número, devuelve null.
+    public Pedido obtenerPedido(Integer numero){
+        for(Pedido p:listaPedidos){
+            if(p.verNumero()==numero){
+                return p;
+            }
+        }
+        return null;
+    }
 }

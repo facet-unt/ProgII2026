@@ -11,7 +11,7 @@ import java.util.Collections;
  *
  * @author ramayo
  */
-public class GestorUsuario{
+public class GestorUsuarios{
     private ArrayList<Usuario> listaUsuario = new ArrayList<>();
     private String validacion;
     public static final String EXITO = "Usuario creado/modificado con éxito";
@@ -24,13 +24,13 @@ public class GestorUsuario{
     public static final String VALIDACION_EXITO = "Los datos de usuario son correctos";
 
     //<editor-fold defaultstate="collapsed" desc="Patrón Singleton">
-    private static GestorUsuario gestor;
-    private GestorUsuario() {
+    private static GestorUsuarios gestor;
+    private GestorUsuarios() {
     }
     
-    public static GestorUsuario instanciar() {
+    public static GestorUsuarios instanciar() {
         if (gestor == null)
-        gestor = new GestorUsuario();
+        gestor = new GestorUsuarios();
         return gestor;
     }
     //</editor-fold>
@@ -71,11 +71,11 @@ public class GestorUsuario{
         else return validacion;
     }
     
-    public ArrayList<Usuario> verUsuario(){
+    public ArrayList<Usuario> verUsuarios(){
         return listaUsuario;
     }
     
-    public ArrayList<Usuario> buscarUsuario(String apellido){
+    public ArrayList<Usuario> buscarUsuarios(String apellido){
         ArrayList<Usuario> usuarioBuscado = new ArrayList<>();
         if(!(apellido==null||apellido.isEmpty())){
             for(Usuario u:listaUsuario){
