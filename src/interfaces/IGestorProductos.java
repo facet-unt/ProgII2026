@@ -47,5 +47,7 @@ public interface IGestorProductos {
     
     public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
     
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";                                     
+    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";         
+    
+    public static final String EXITO_AL_BORRAR = "El Producto fue borrado exitosamente";
 }

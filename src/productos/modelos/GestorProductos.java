@@ -4,26 +4,18 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
 
 /**
  *
  * @author estudiante
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
        //Declaracion de variables o atributos
        private ArrayList<Producto> productos = new ArrayList<>();
        private static GestorProductos gestor;
-       public static final String EXITO = "Producto creado/modificado con éxito";
-       public static final String ERROR_CODIGO = "El código del producto es incorrecto";
-       public static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
-       public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-       public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
-       public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-       public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
-       public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
-       public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
-       
+
        //Constructor privado de la clase
        private GestorProductos(){
            
@@ -32,7 +24,7 @@ public class GestorProductos {
        //Metodo estatico para crear una sola instancia de la clase
        public static GestorProductos instanciar(){
            if(gestor == null){
-               GestorProductos gestor = new GestorProductos();
+               gestor = new GestorProductos();
            }
            return gestor;
        }
@@ -59,29 +51,23 @@ public class GestorProductos {
                return PRODUCTO_INEXISTENTE;
            }
            
-           productoAModificar.asignarCodigo(codigo);
            productoAModificar.asignarDescripcion(descripcion);
            productoAModificar.asignarCategoria(categoria);
            productoAModificar.asignarPrecio(precio);
-           productoAModificar.asignarEstado(estado);
+           productoAModificar.asignarEstado(estado);          
            
-           Producto p2 = this.obtenerProducto(codigo);
-           
-           if(productoAModificar.equals(p2)){
-               return PRODUCTOS_DUPLICADOS;
-           }
-           
+           productos.add(productoAModificar);
            return EXITO;
        }
        
        
        
        private String validarDatos(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-           if(codigo < 0)
+           if(codigo <= 0)
                return ERROR_CODIGO;
-           if(descripcion.isEmpty() || descripcion == null)
+           if(descripcion == null || descripcion.isEmpty())
                return ERROR_DESCRIPCION;
-           if(precio < 0.0)
+           if(precio <= 0.0)
                return ERROR_PRECIO;
            if(categoria == null)
                return ERROR_CATEGORIA;
@@ -109,9 +95,8 @@ public class GestorProductos {
        //Busca el producto con el codigo asignado, si no esta devuelve null
        public Producto obtenerProducto(Integer codigo){
            for(Producto pd : productos){
-               if(pd.verCodigo() == codigo){
-                   return pd;
-               }
+               if(pd.verCodigo() == codigo)
+                   return pd;              
            }
            return null;
        }
@@ -136,17 +121,23 @@ public class GestorProductos {
        public ArrayList<Producto> buscarProductos(String descripcion){
            ArrayList<Producto> listaProductos = new ArrayList<>();
            
-           for(int i = 0; i < productos.size(); i++){             
-               Producto pd = productos.get(i);
-               
-               if(pd.verDescripcion().equals(descripcion)){
-                   
-                   listaProductos.add(pd);                   
-               }                   
+           for(Producto pd : productos){
+               if(pd.verDescripcion().toLowerCase().equals(descripcion.toLowerCase()))
+                   listaProductos.add(pd);
            }
            
            return listaProductos;
        }
+
+    @Override
+    public String borrarProducto(Producto producto) {
+        if(productos.contains(producto)){
+            productos.remove(producto);
+            return EXITO_AL_BORRAR;
+        }
+        
+        return PRODUCTO_INEXISTENTE;
+    }
        
        
 }

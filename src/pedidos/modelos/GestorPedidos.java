@@ -6,6 +6,7 @@ package pedidos.modelos;
 
 import interfaces.IGestorPedidos;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import productos.modelos.Producto;
@@ -18,6 +19,7 @@ import usuarios.modelos.Cliente;
 public class GestorPedidos implements IGestorPedidos{
     ArrayList<Pedido> pedidos = new ArrayList<>();
     private static GestorPedidos gestor;
+    private static int contadorPedidos = 1;
     
     //Patron Singleton
     private GestorPedidos(){        
@@ -32,12 +34,41 @@ public class GestorPedidos implements IGestorPedidos{
 
     @Override
     public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String respuesta = this.validarDatos(fecha, hora, productosDelPedido, cliente);
+        
+        if(!respuesta.equals(VALIDACION_EXITO)){
+            return respuesta;
+        }
+        
+        LocalDateTime fechaYHora = LocalDateTime.of(fecha, hora);
+        Pedido unPedido = new Pedido(contadorPedidos, fechaYHora, productosDelPedido, cliente);
+        contadorPedidos++;
+        
+        if(this.existeEstePedido(unPedido)){
+            return PEDIDOS_DUPLICADOS;
+        }
+        
+       pedidos.add(unPedido);
+       
+       return EXITO;
     }
 
     @Override
     public String cambiarEstado(Pedido pedidoAModificar) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        EstadoPedido estado = pedidoAModificar.verEstado();
+        
+        switch(estado){
+            case CREADO:
+                pedidoAModificar.asignarEstado(EstadoPedido.PROCESANDO);
+                break;
+            case PROCESANDO:
+                pedidoAModificar.asignarEstado(EstadoPedido.ENTREGADO);
+                break;
+            default:
+                return ERROR_ESTADO;
+        }
+        
+        return VALIDACION_EXITO;
     }
 
     @Override
@@ -93,5 +124,16 @@ public class GestorPedidos implements IGestorPedidos{
         return null;
     }
     
-    
+    private String validarDatos(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
+           if(fecha == null)
+               return ERROR_FECHA;
+           if(hora == null)
+               return ERROR_HORA;
+           if(productosDelPedido == null)
+               return ERROR_PRODUCTOS_DEL_PEDIDO;
+           if(cliente == null)
+               return ERROR_CLIENTE;
+           
+           return VALIDACION_EXITO;
+    }
 }

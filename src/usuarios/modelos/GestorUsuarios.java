@@ -55,7 +55,7 @@ public class GestorUsuarios implements IGestorUsuarios{
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida) {
         String resultado = this.validarDatos(correo, apellido, nombre, perfil, clave, claveRepetida);
         
-        if(resultado.equals(VALIDACION_EXITO)){
+        if(!resultado.equals(VALIDACION_EXITO)){
             return resultado;
         }
         
@@ -108,16 +108,16 @@ public class GestorUsuarios implements IGestorUsuarios{
     }
     
     private String validarDatos(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
-           if(correo.isEmpty() || correo == null)
-               return IGestorUsuarios.ERROR_CORREO;
-           if(nombre.isEmpty() || nombre == null)
-               return IGestorUsuarios.ERROR_NOMBRE;
-           if(apellido.isEmpty() || apellido == null)
-               return IGestorUsuarios.ERROR_APELLIDO;
+           if(correo == null || correo.isEmpty() || !correo.contains("@"))
+               return ERROR_CORREO;
+           if(nombre == null || nombre.isEmpty())
+               return ERROR_NOMBRE;
+           if(apellido == null || apellido.isEmpty())
+               return ERROR_APELLIDO;          
+           if(clave == null || claveRepetida == null || clave.isEmpty() || claveRepetida.isEmpty() || !clave.equals(claveRepetida))
+               return ERROR_CLAVES;
            if(perfil == null)
-               return IGestorUsuarios.ERROR_PERFIL;
-           if(clave.isEmpty() || clave == null || claveRepetida.isEmpty() || claveRepetida == null || !clave.equals(claveRepetida))
-               return IGestorUsuarios.ERROR_CLAVES;
+               return ERROR_PERFIL;
            
            return VALIDACION_EXITO;
        }
