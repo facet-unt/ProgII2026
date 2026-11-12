@@ -10,7 +10,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Arebalo
  */
-public class ModeloComboEstados extends DefaultComboBoxModel<Estado>{
+public class ModeloComboEstados extends DefaultComboBoxModel{
     public ModeloComboEstados(){
         for (Estado estado : Estado.values()){
             this.addElement(estado);
