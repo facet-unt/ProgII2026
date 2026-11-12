@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author homep
  */
 public class GestorUsuarios implements IGestorUsuarios{
-    private static final ArrayList<Usuario> usuarios = new ArrayList<>();
+    private static final List<Usuario> usuarios = new ArrayList<>();
 
     //=======================
     //      Singletone
