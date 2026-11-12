@@ -53,7 +53,8 @@ public class ProductoDelPedido {
     public int hashCode() {
         int hash = 3;
         hash = 61 * hash + Objects.hashCode(this.producto);
-
+        return hash;
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -74,5 +75,4 @@ public class ProductoDelPedido {
     public String toString() {
         return "Producto: " + producto.verCodigo() + " - " + producto.verDescripcion() + " Precio $:" + producto.verPrecio() + " " + cantidad;
     }
-}
 }
