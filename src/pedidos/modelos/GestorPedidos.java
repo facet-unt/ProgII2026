@@ -17,7 +17,7 @@ import usuarios.modelos.Cliente;
  * @author homep
  */
 public class GestorPedidos implements IGestorPedidos{
-    private static final ArrayList<Pedido> pedidos = new ArrayList<>();
+    private static final List<Pedido> pedidos = new ArrayList<>();
     private static int cantidadDePedidos = 0;
     
 
