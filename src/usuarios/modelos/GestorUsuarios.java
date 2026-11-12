@@ -4,13 +4,14 @@
  */
 package usuarios.modelos;
 
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
 
 /**
  *
  * @author tobias150
  */
-public class GestorUsuarios {
+public class GestorUsuarios implements IGestorUsuarios{
     //Atributos de la clase
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private static GestorUsuarios gestor;
@@ -49,4 +50,75 @@ public class GestorUsuarios {
         
         return null;
     }
+
+    @Override
+    public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida) {
+        String resultado = this.validarDatos(correo, apellido, nombre, perfil, clave, claveRepetida);
+        
+        if(resultado.equals(VALIDACION_EXITO)){
+            return resultado;
+        }
+        
+        switch(perfil){
+            case CLIENTE:
+                Usuario u1 = new Cliente(correo, clave, apellido, nombre);
+                if(!this.existeEsteUsuario(u1)){
+                    usuarios.add(u1);
+                }
+                break;
+            case EMPLEADO:
+                Usuario u2 = new Empleado(correo, clave, apellido, nombre);
+                if(!this.existeEsteUsuario(u2)){
+                    usuarios.add(u2);
+                }                
+                break;
+            case ENCARGADO:
+                Usuario u3 = new Encargado(correo, clave, apellido, nombre);
+                if(!this.existeEsteUsuario(u3)){
+                    usuarios.add(u3);
+                }                
+                break;
+        }
+        
+        return EXITO;
+    }
+
+    @Override
+    public ArrayList<Usuario> buscarUsuarios(String apellido) {
+        ArrayList<Usuario> buscados = new ArrayList<>();
+        
+        for(int i = 0; i < usuarios.size(); i++){
+            Usuario us = usuarios.get(i);
+            if(us.verApellido().equals(apellido)){
+                buscados.add(us);
+            }
+        }
+        
+        return buscados;
+    }
+
+    @Override
+    public String borrarUsuario(Usuario usuario) {
+        if(this.usuarios.contains(usuario)){
+            usuarios.remove(usuario);
+            return IGestorUsuarios.USUARIO_BORRADO;
+        }
+        
+        return IGestorUsuarios.USUARIO_INEXISTENTE;
+    }
+    
+    private String validarDatos(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
+           if(correo.isEmpty() || correo == null)
+               return IGestorUsuarios.ERROR_CORREO;
+           if(nombre.isEmpty() || nombre == null)
+               return IGestorUsuarios.ERROR_NOMBRE;
+           if(apellido.isEmpty() || apellido == null)
+               return IGestorUsuarios.ERROR_APELLIDO;
+           if(perfil == null)
+               return IGestorUsuarios.ERROR_PERFIL;
+           if(clave.isEmpty() || clave == null || claveRepetida.isEmpty() || claveRepetida == null || !clave.equals(claveRepetida))
+               return IGestorUsuarios.ERROR_CLAVES;
+           
+           return VALIDACION_EXITO;
+       }
 }

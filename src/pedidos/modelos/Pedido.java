@@ -62,6 +62,10 @@ public class Pedido {
         return this.fechaYHora.toLocalTime();
      }
     
+     public ArrayList<ProductoDelPedido> verListaPedidos(){
+         return this.listaProductos;
+     }
+     
     
      private String horaFormateada(){
         String formato = "hh:mm";
