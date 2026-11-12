@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author homep
  */
 public class GestorProductos implements IGestorProductos{
-    private static final ArrayList<Producto> productos = new ArrayList<>();
+    private static final List<Producto> productos = new ArrayList<>();
 
     
     //=============================
