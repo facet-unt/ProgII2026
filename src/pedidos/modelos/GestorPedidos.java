@@ -4,6 +4,9 @@
  */
 package pedidos.modelos;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
@@ -13,70 +16,141 @@ import usuarios.modelos.Cliente;
  * @author Usuario
  */
 public class GestorPedidos {
-    
-    
+
+    ArrayList<Pedido> pedidos = new ArrayList<>();
+
+    private static GestorPedidos gestor;
+
+    private GestorPedidos() {
+    }
+
+    public static final String EXITO = "Pedido creado/modificado/cancelado con exito";
+    public static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
+    public static final String ERROR_HORA = "La hora del pedido es incorrecta";
+    public static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos";
+    public static final String ERROR_CLIENTE = "El pedido no tiene un cliente";
     public static final String ERROR_ESTADO = "El pedido no tiene un estado";
     public static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado";
     public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese numero";
     public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
     public static final String VALIDACION_EXITO = "El pedido tiene datos correctos";
-    
-   
+
+    public static GestorPedidos instanciar() {
+        if (gestor == null) {
+            gestor = new GestorPedidos();
+        }
+        return gestor;
+    }
+
     /**
      * @param cliente para buscar pedidos registrados
-     * @return true si se encuentra pedidos con el Clinte,false en caso contrario
+     * @return true si se encuentra pedidos con el Clinte,false en caso
+     * contrario
      */
-    public boolean hayPedidosConEsteCliente(Cliente cliente){
-       
-        if(cliente==null)
+    public boolean hayPedidosConEsteCliente(Cliente cliente) {
+
+        if (cliente == null) {
             return false;
-        
-        return !cliente.verPedidos().isEmpty(); 
+        }
+
+        return !cliente.verPedidos().isEmpty();
     }
-    
-    
+
+    /**
+     * Crea un nuevo pedido, devolviendo el resultado de la operación. Al
+     * crearlo, el pedido se agrega al cliente especificado (con el método
+     * agregarPedido() definido en la clase Cliente).
+     *
+     * @param fecha
+     * @param hora
+     * @param productosDelPedido
+     * @param cliente
+     * @return
+     */
+    public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+        Pedido nuevoPedido = new Pedido(fecha, hora, productosDelPedido, cliente);
+        pedidos.add(nuevoPedido);
+        cliente.agregarPedido(nuevoPedido);
+        return EXITO;
+    }
+
+    /**
+     * Cambia el estado de un pedido: si está en Estado.CREADO lo pasa a
+     * Estado.PROCESANDO; si está en Estado.PROCESANDO lo pasa a
+     * Estado.ENTREGADO. Devuelve el resultado de la operación.
+     *
+     * @param pedidoAModificar
+     * @return
+     */
+    public String cambiarEstado(Pedido pedidoAModificar) {
+
+        Estado opc = pedidoAModificar.verEstado();
+        switch (opc) {
+            case CREADO:
+                pedidoAModificar.asignarEstado(Estado.PROCESANDO);
+                break;
+            case PROCESANDO:
+                pedidoAModificar.asignarEstado(Estado.ENTREGADO);
+                break;
+            default:
+        }
+        return EXITO;
+    }
+
+    /**
+     * Devuelve todos los pedidos
+     *
+     * @return
+     */
+    public ArrayList<Pedido> verPedidos() {
+        return pedidos;
+    }
+
     /**
      * @param producto que se busca en una lista de pedidos
-     * @return true si se encuentra el producto en al menos un pedido,false en caso contrario
+     * @return true si se encuentra el producto en al menos un pedido,false en
+     * caso contrario
      */
-    public boolean hayPedidosConEsteProducto(Producto producto){
-        if(producto==null)
+    public boolean hayPedidosConEsteProducto(Producto producto) {
+        if (producto == null) {
             return false;
+        }
 
         //completar con el nombre del arraylist de pedidos
-        for(Pedido p : pedidos){
-            for(ProductoDelPedido pdp : p.productosDelPedido){
-                if(pdp.verProducto().equals(pdp)){
-                   return true; 
+        for (Pedido p : pedidos) {
+            for (ProductoDelPedido pdp : p.productosDelPedido) {
+                if (pdp.verProducto().equals(pdp)) {
+                    return true;
                 }
             }
         }
         return false;
     }
-    
+
     /**
      * @param pedido a verificar si existe
-     * @return true si se encuentra el pedido en la lista,false en caso contrario
+     * @return true si se encuentra el pedido en la lista,false en caso
+     * contrario
      */
-    public boolean existeEstePedido(Pedido pedido){
-       
-        //completar con el nombre del arraylist de pedidos
+    public boolean existeEstePedido(Pedido pedido) {
 
+        //completar con el nombre del arraylist de pedidos
         return pedidos.contains(pedido);
     }
- 
+
     /**
-     * 
+     *
      * @param numero del pedido que se desea buscar
      * @return el pedido si se lo encontro,null en caso contrario
      */
-    public Pedido obtenerPedido(Integer numero){
-        if(numero==null)
+    public Pedido obtenerPedido(Integer numero) {
+        if (numero == null) {
             return null;
-    
-    //completar con el nombre del arraylist de pedidos
-        for(Pedido p : pedidos){
-            if(p.verNumero()== numero){
+        }
+
+        //completar con el nombre del arraylist de pedidos
+        for (Pedido p : pedidos) {
+            if (p.verNumero() == numero) {
                 return p;
             }
         }

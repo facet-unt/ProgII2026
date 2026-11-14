@@ -106,7 +106,7 @@ public class GestorProductos {
      * @param categoria
      * @return 
      */
-    public ArrayList<Producto> verProductoPorCategoria(Categoria categoria){
+    public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> productosPorCategoria = new ArrayList<>();
         for (Producto p : productos) {
             if (p.verCategoria() == categoria) {

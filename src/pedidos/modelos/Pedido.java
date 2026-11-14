@@ -24,8 +24,8 @@ public class Pedido {
     ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
 
     //sobrecarga de constructor
-    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente unCliente) {
-        this.numero = numero;
+    public Pedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente unCliente) {
+        //this.numero = numero;
         this.fechaYHora = LocalDateTime.now();
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;

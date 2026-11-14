@@ -200,7 +200,7 @@ public class ControladorPrincipalTP4Seccion3 {
             listapdp1.add(pdp2);
         }
 
-        Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, (Cliente) usuarios.get(0));
+        //Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, (Cliente) usuarios.get(0));
 
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(2), 10);
@@ -217,7 +217,7 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!productosDelPedido2.contains(pdp5)) {
             productosDelPedido2.add(pdp5);
         }
-        Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), productosDelPedido2, (Cliente) usuarios.get(1));
+        //Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), productosDelPedido2, (Cliente) usuarios.get(1));
 
         ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(1), 100);
@@ -228,9 +228,9 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!productosDelPedido3.contains(pdp7)) {
             productosDelPedido3.add(pdp7);
         }
-        Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, (Cliente) usuarios.get(2));
+        //Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, (Cliente) usuarios.get(2));
         //pedido repetido, no deberia agregar al pedido 3 porque posee el mismo codigo que unPedido2.
-
+/*
         if (!listaPedidos.contains(unPedido1)) {
             listaPedidos.add(unPedido1);
         }
@@ -240,14 +240,14 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!listaPedidos.contains(unPedido3)) {
             listaPedidos.add(unPedido3);
         }
-
+*/
         System.out.println("Pedidos");
         System.out.println("=======");
         for (Pedido p : listaPedidos) {
             p.mostrar();
             System.out.println();
         }
-
+/*
         ((Cliente) unCliente1).agregarPedido(unPedido1);
         //Si intentamos agregar nuevamente el pedido no deberia cargarlo.
         ((Cliente) unCliente1).agregarPedido(unPedido1);
@@ -268,7 +268,7 @@ public class ControladorPrincipalTP4Seccion3 {
             System.out.println();
         }
         System.out.println();
-
+*/
         /*
     FIN Tercera parte - herencia
     ***************************************************
