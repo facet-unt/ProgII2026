@@ -138,4 +138,18 @@ public class GestorProductos {
         }
         return resultado;
     }
+    
+    //Obtener un producto por su codigo
+    
+    public Producto obtenerProducto(Integer codigo){
+        if(codigo == null){
+            return null;
+        }
+        for (Producto p : this.productos){
+            if(p.verCodigo() == codigo){
+                return p;
+            }
+        }
+        return null;
+    }
 }
