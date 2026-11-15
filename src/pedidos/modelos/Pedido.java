@@ -57,6 +57,16 @@ public class Pedido {
         LocalTime hora = this.fechaYHora.toLocalTime();
         return hora;
     }
+
+    public Estado verEstado() {
+        return estado;
+    }
+
+    public void asignarEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
+    
     
     /**
      * Devuelve la fecha en formato String

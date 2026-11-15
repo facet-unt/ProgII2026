@@ -26,6 +26,7 @@ public class GestorProductos {
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     //Contructor privado
     private GestorProductos(){
+        productos = new ArrayList<>();
     }
     //Metodo de clase publico
     public static GestorProductos instanciar(){

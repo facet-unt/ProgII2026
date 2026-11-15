@@ -22,6 +22,7 @@ public class GestorPedidos {
     private static GestorPedidos gestor;
 
     private GestorPedidos() {
+        pedidos = new ArrayList<>();
     }
 
     public static final String EXITO = "Pedido creado/modificado/cancelado con exito";

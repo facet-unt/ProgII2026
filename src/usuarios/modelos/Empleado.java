@@ -26,6 +26,6 @@ public class Empleado extends Usuario {
      */
     @Override
     public ArrayList<Pedido> verPedidos() {
-        return new ArrayList<Pedido>();
+        return verPedidos();
     }
 }
