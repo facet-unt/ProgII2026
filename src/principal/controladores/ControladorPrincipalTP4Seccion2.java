@@ -55,18 +55,19 @@ public class ControladorPrincipalTP4Seccion2 {
          * ************************************************
          */
         System.out.println();
-
+        /*
         Usuario unEmpleado1 = new Empleado("empleado1@bar.com", "claveEmpleado1", "ApellidoEmpleado1", "NombreEmpleado1");
         Usuario unEmpleado2 = new Empleado("empleado2@bar.com", "claveEmpleado2", "ApellidoEmpleado2", "NombreEmpleado2");
         Usuario unEmpleado3 = new Empleado("empleado3@bar.com", "claveEmpleado3", "ApellidoEmpleado3", "NombreEmpleado3");
         Usuario unEmpleado4 = new Empleado("empleado3@bar.com", "claveEmpleado4", "ApellidoEmpleado4", "NombreEmpleado4");
         //empleado repetido
-
+        */
         /*
         *************************************************
         AGREGAR aqui las sentencias para sumar a la lista los 
         Empleados que corresponda mostrando en output el resultado para
         visualizar mejor´*/
+        /*
         if (!usuarios.contains(unEmpleado1)) {
             usuarios.add(unEmpleado1);
         }
@@ -82,7 +83,7 @@ public class ControladorPrincipalTP4Seccion2 {
         if (!usuarios.contains(unEmpleado4)) {
             usuarios.add(unEmpleado4);
         }
-
+        */
         /**
          * ************************************************
          */

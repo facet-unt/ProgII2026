@@ -69,6 +69,22 @@ public class GestorPedidos {
      * @return
      */
     public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+        if (fechaInavlida(fecha)) {
+            return ERROR_FECHA;
+        }
+
+        if (horaInvalida(hora)) {
+            return ERROR_HORA;
+        }
+
+        if (productosDelPedidoInvalido(productosDelPedido)) {
+            return ERROR_PRODUCTOS_DEL_PEDIDO;
+        }
+
+        if (clienteInvalido(cliente)) {
+            return ERROR_CLIENTE;
+        }
+
         Pedido nuevoPedido = new Pedido(fecha, hora, productosDelPedido, cliente);
         pedidos.add(nuevoPedido);
         cliente.agregarPedido(nuevoPedido);
@@ -84,8 +100,13 @@ public class GestorPedidos {
      * @return
      */
     public String cambiarEstado(Pedido pedidoAModificar) {
-
+        if (pedidoAModificar == null) {
+            return ERROR_PRODUCTOS_DEL_PEDIDO;
+        }
         Estado opc = pedidoAModificar.verEstado();
+        if (opc == null) {
+            return ERROR_ESTADO;
+        }
         switch (opc) {
             case CREADO:
                 pedidoAModificar.asignarEstado(Estado.PROCESANDO);
@@ -120,7 +141,7 @@ public class GestorPedidos {
         //completar con el nombre del arraylist de pedidos
         for (Pedido p : pedidos) {
             for (ProductoDelPedido pdp : p.productosDelPedido) {
-                if (pdp.verProducto().equals(pdp)) {
+                if (pdp.verProducto().equals(producto)) {
                     return true;
                 }
             }
@@ -156,5 +177,61 @@ public class GestorPedidos {
             }
         }
         return null;
+    }
+
+    /**
+     * Valida que fecha sea distinto de null. Si no cumple con la validacion
+     * devuelve true, caso contrario false.
+     *
+     * @param fecha
+     * @return
+     */
+    private boolean fechaInavlida(LocalDate fecha) {
+        if (fecha == null) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Valida que hora sea distinta de null Si no cumple con la validacion
+     * devuelve true, caso contrario false.
+     *
+     * @param hora
+     * @return
+     */
+    private boolean horaInvalida(LocalTime hora) {
+        if (hora == null) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Valida que cliente es distinto de null Si no cumple con la validacion
+     * devuelve true, caso contrario false.
+     *
+     * @param cliente
+     * @return
+     */
+    private boolean clienteInvalido(Cliente cliente) {
+        if (cliente == null) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Valida que el pedido tiene productos Si no cumple con la validacion
+     * devuelve true, caso contrario false.
+     *
+     * @param pdp
+     * @return
+     */
+    private boolean productosDelPedidoInvalido(ArrayList<ProductoDelPedido> pdp) {
+        if (pdp == null || pdp.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 }
