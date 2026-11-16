@@ -2,7 +2,7 @@
 package pedidos.modelos;
 
 public enum Estado {
-    CREADO("creado"), PROCESANDO("procesando"), ENTREGADO("entregado");
+    CREADO("Creado"), PROCESANDO("Procesando"), ENTREGADO("Entregado");
     
     private final String descripcion;
     

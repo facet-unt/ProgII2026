@@ -20,25 +20,31 @@ import usuarios.modelos.Cliente;
 public class Pedido { 
     private int numero;
     private LocalDateTime fechaYHora;
-    private EstadoPedido estado;
-    private Cliente cliente;
+    private Estado estado;
     private ArrayList<ProductoDelPedido> productosDelPedido;
+    private Cliente cliente;
 
-    public Pedido(int numero, LocalDateTime fechaYHora, Cliente cliente) {
+    //Constructor
+    
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
-        this.estado = EstadoPedido.CREADO;
-        this.cliente = cliente;
         this.productosDelPedido = productosDelPedido;
-        if (cliente != null && cliente.verPedidos() != null){
-    cliente.verPedidos().add(this);
+        this.cliente = cliente;
+        
     }
-   
-}
     
 
     public ArrayList<ProductoDelPedido> verProductosDelPedido() {
         return productosDelPedido;
+    }
+
+    public Estado verEstado() {
+        return estado;
+    }
+
+    public void asignarEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public void asignarProductosDelPedido(ArrayList<ProductoDelPedido> productosDelPedido) {
