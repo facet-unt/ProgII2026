@@ -25,7 +25,7 @@ public class Pedido {
     this.productos.add(new ProductoDelPedido(producto, cantidad));
 }
 
-    public ArrayList<ProductoDelPedido> verpedido() {
+    public ArrayList<ProductoDelPedido> verPedido() {
     return this.productos;
 }
     /**

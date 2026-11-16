@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 
 public class Empleado extends Usuario {
@@ -14,7 +15,7 @@ public class Empleado extends Usuario {
     }
     @Override
     public ArrayList<Pedido> verPedidos() {
-        return new ArrayList<Pedido>();
+        return GestorPedidos.instanciar().verPedidos();
     }
 
     @Override
