@@ -20,6 +20,7 @@ public class GestorPedidos {
     ArrayList<Pedido> pedidos = new ArrayList<>();
 
     private static GestorPedidos gestor;
+    private int numeroSgte = 1;
 
     private GestorPedidos() {
         pedidos = new ArrayList<>();
@@ -86,6 +87,8 @@ public class GestorPedidos {
         }
 
         Pedido nuevoPedido = new Pedido(fecha, hora, productosDelPedido, cliente);
+        nuevoPedido.asignarNumero(numeroSgte);
+        numeroSgte++;
         pedidos.add(nuevoPedido);
         cliente.agregarPedido(nuevoPedido);
         return EXITO;

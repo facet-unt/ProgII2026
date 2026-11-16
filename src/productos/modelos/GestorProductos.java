@@ -23,7 +23,7 @@ public class GestorProductos {
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
     public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
     public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
+    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
     public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
 
@@ -52,6 +52,13 @@ public class GestorProductos {
      * @return
      */
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
+        
+        for (Producto p : productos) {
+            if (p.verCodigo() == codigo) {
+                return PRODUCTOS_DUPLICADOS;
+            }
+        }
+        
         if (codigoInvalido(codigo)) {
             return ERROR_CODIGO;
         }
@@ -89,9 +96,13 @@ public class GestorProductos {
      * @return
      */
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
+        if (!productos.contains(productoAModificar)) {
+            return PRODUCTO_INEXISTENTE;
+        }
+        
         if (codigoInvalido(codigo)) {
             return ERROR_CODIGO;
-        }else productoAModificar.asignarCodigo(codigo);
+        }
 
         if (desripcionInvalida(descripcion)) {
             return ERROR_DESCRIPCION;

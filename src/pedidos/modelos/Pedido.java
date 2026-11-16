@@ -25,9 +25,7 @@ public class Pedido {
 
     //sobrecarga de constructor
     public Pedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente unCliente) {
-        //SE DEBE MODIFICAR, YA QUE EL CONSTRUCTOR NO DEBE RECIBIR EL CODIGO?
-        this.numero = 1;
-        this.fechaYHora = LocalDateTime.now();
+        this.fechaYHora = LocalDateTime.of(fecha, hora);
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;
         this.productosDelPedido = productosDelPedido;

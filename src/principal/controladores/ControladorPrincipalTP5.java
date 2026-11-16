@@ -27,11 +27,12 @@ import usuarios.modelos.Usuario;
  * @author Mariana
  */
 public class ControladorPrincipalTP5 {
+
     public static void main(String[] args) {
         GestorProductos gp = GestorProductos.instanciar();
-        GestorUsuarios gu=GestorUsuarios.instanciar();
+        GestorUsuarios gu = GestorUsuarios.instanciar();
         GestorPedidos gPed = GestorPedidos.instanciar();
-        
+
         System.out.println("#####PRODUCTOS#####");
         /*CREAR PRODUCTO*/
         System.out.println(gp.crearProducto(1, "Producto1", 1.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
@@ -53,12 +54,12 @@ public class ControladorPrincipalTP5 {
         //sin estado
 
         /*RECUPERAR LOS PRODUCTOS CON EL METODO MENU*/
+        System.out.println("");
         System.out.println("######## PRODUCTOS CON MENU ########");
         System.out.println("Productos");
         System.out.println("=========");
-        for(Producto p : gp.menu()) {
+        for (Producto p : gp.menu()) {
             p.mostrar();
-            System.out.println();
         }
         System.out.println();
         
@@ -66,45 +67,42 @@ public class ControladorPrincipalTP5 {
         /*OBTENER UN PRODUCTO MEDIANTE EL CODIGO*/
         Producto unProducto1 = gp.obtenerProducto(1);
         Producto unProducto2 = gp.obtenerProducto(2);
-        
+
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
         ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
-        System.out.println("Productos filtrados por categoría");
+        System.out.println("Productos filtrados por categoria");
         System.out.println("===================");
-        for(Producto p : productosBuscados) {
+        for (Producto p : productosBuscados) {
             p.mostrar();
-            System.out.println();
         }
         System.out.println();
-
+        
         System.out.println("######## PRODUCTOS POR DESCRIPCION ########");
         /*BUSCAR PRODUCTO POR DESCRIPCION*/
         productosBuscados = gp.buscarProductos("Prod");
         System.out.println("Productos buscados por descripcion");
         System.out.println("==================");
-        for(Producto p : productosBuscados) {
+        for (Producto p : productosBuscados) {
             p.mostrar();
-            System.out.println();
         }
         System.out.println();
-      
+        
         System.out.println(gp.modificarProducto(unProducto1, 100, "Producto11", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));
         //se le cambia la descripción, precio, categoría y estado
         //el código, por más que se lo pasa, no se modifica
         productosBuscados = gp.buscarProductos("Producto11");
         System.out.println("Productos buscados");
         System.out.println("==================");
-        for(Producto p : productosBuscados) {
+        for (Producto p : productosBuscados) {
             p.mostrar();
-            System.out.println();
         }
         System.out.println();
         
         System.out.println(gp.modificarProducto(unProducto1, 100, "", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));
-//    
+
         System.out.println("#####USUARIOS#####");
-    
+        
         System.out.println(gu.crearUsuario("cliente1@bar.com", "ApellidoCliente1", "NombreCliente1", Perfil.CLIENTE, "claveCliente1", "claveCliente1"));
         System.out.println(gu.crearUsuario("cliente2@bar.com", "ApellidoCliente2", "NombreCliente2", Perfil.CLIENTE, "claveCliente2", "claveCliente2"));
         System.out.println(gu.crearUsuario("cliente3@bar.com", "ApellidoCliente3", "NombreCliente3", Perfil.CLIENTE, "claveCliente3", "claveCliente3"));
@@ -134,13 +132,13 @@ public class ControladorPrincipalTP5 {
         //clave repetida inválida
         System.out.println(gu.crearUsuario("cliente4@bar.com", "ApellidoCliente4", "NombreCliente4", Perfil.CLIENTE, "claveCliente4", "claveCliente44"));
         //sin coincidir las claves
-        
+
+        System.out.println("");
         System.out.println("Clientes");
         System.out.println("========");
-        for(Usuario u : gu.verUsuarios()) {
+        for (Usuario u : gu.verUsuarios()) {
             if (u instanceof Cliente) {
                 u.mostrar();
-                System.out.println();
             }
         }
         System.out.println();
@@ -174,17 +172,16 @@ public class ControladorPrincipalTP5 {
         //clave repetida inválida
         System.out.println(gu.crearUsuario("empleado4@bar.com", "ApellidoEmpleado4", "NombreEmpleado4", Perfil.EMPLEADO, "claveEmpleado4", "claveEmpleado44"));
         //sin coincidir las claves
-        
+
         System.out.println("Empleados");
         System.out.println("=========");
-        for(Usuario u : gu.verUsuarios()) {
+        for (Usuario u : gu.verUsuarios()) {
             if (u instanceof Empleado) {
                 u.mostrar();
-                System.out.println();
             }
         }
         System.out.println();
-
+        
         System.out.println(gu.crearUsuario("encargado1@bar.com", "ApellidoEncargado1", "NombreEncargado1", Perfil.ENCARGADO, "claveEncargado1", "claveEncargado1"));
         System.out.println(gu.crearUsuario("encargado2@bar.com", "ApellidoEncargado2", "NombreEncargado2", Perfil.ENCARGADO, "claveEncargado2", "claveEncargado2"));
         System.out.println(gu.crearUsuario("encargado3@bar.com", "ApellidoEncargado3", "NombreEncargado3", Perfil.ENCARGADO, "claveEncargado3", "claveEncargado3"));
@@ -217,176 +214,173 @@ public class ControladorPrincipalTP5 {
 
         System.out.println("Encargados");
         System.out.println("==========");
-        for(Usuario u : gu.verUsuarios()) {
+        for (Usuario u : gu.verUsuarios()) {
             if (u instanceof Encargado) {
                 u.mostrar();
-                System.out.println();
             }
         }
         System.out.println();
-                
+        
         System.out.println("Menu");
         System.out.println("=========");
-        for(Producto p : gp.menu()) {
+        for (Producto p : gp.menu()) {
             p.mostrar();
-            System.out.println();
         }
         System.out.println();
-
+        
         System.out.println("Obtener usuarios y productos");
         System.out.println("=========");
         Usuario unCliente1 = gu.obtenerUsuario("cliente1@bar.com");
         Producto prod1 = gp.obtenerProducto(1);
         Producto prod2 = gp.obtenerProducto(2);
-        
+
         System.out.println("=========");
         System.out.println("Crear pedidos");
         ArrayList<ProductoDelPedido> productosDelPedido1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(unProducto1, 1);
-        ProductoDelPedido pdp2 = new ProductoDelPedido(unProducto2, 2); 
+        ProductoDelPedido pdp2 = new ProductoDelPedido(unProducto2, 2);
         LocalDateTime fechaYHora = LocalDateTime.now();
         LocalDate fecha = fechaYHora.toLocalDate();
         LocalTime hora = fechaYHora.toLocalTime();
-        if (!productosDelPedido1.contains(pdp1))
+        if (!productosDelPedido1.contains(pdp1)) {
             productosDelPedido1.add(pdp1);
-        if (!productosDelPedido1.contains(pdp2))
+        }
+        if (!productosDelPedido1.contains(pdp2)) {
             productosDelPedido1.add(pdp2);
-        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido1, (Cliente)unCliente1));
-        
+        }
+        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido1, (Cliente) unCliente1));
+
         Usuario unCliente2 = gu.obtenerUsuario("cliente2@bar.com");
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp3 = new ProductoDelPedido(unProducto1, 10);
         ProductoDelPedido pdp4 = new ProductoDelPedido(unProducto2, 20);
         ProductoDelPedido pdp5 = new ProductoDelPedido(unProducto1, 30);
         //producto repetido        
-        if (!productosDelPedido2.contains(pdp3))
+        if (!productosDelPedido2.contains(pdp3)) {
             productosDelPedido2.add(pdp3);
-        if (!productosDelPedido2.contains(pdp4))
+        }
+        if (!productosDelPedido2.contains(pdp4)) {
             productosDelPedido2.add(pdp4);
-        if (!productosDelPedido2.contains(pdp5))
+        }
+        if (!productosDelPedido2.contains(pdp5)) {
             productosDelPedido2.add(pdp5);
-        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido2, (Cliente)unCliente2));
+        }
+        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido2, (Cliente) unCliente2));
 
-        System.out.println(gPed.crearPedido(null, hora, productosDelPedido2, (Cliente)unCliente1));
+        System.out.println(gPed.crearPedido(null, hora, productosDelPedido2, (Cliente) unCliente1));
         //sin fecha
-        System.out.println(gPed.crearPedido(fecha, null, productosDelPedido2, (Cliente)unCliente1));
+        System.out.println(gPed.crearPedido(fecha, null, productosDelPedido2, (Cliente) unCliente1));
         //sin hora
-       ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
-        System.out.println(gPed.crearPedido(fecha, hora, null, (Cliente)unCliente1));
+        ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
+        System.out.println(gPed.crearPedido(fecha, hora, null, (Cliente) unCliente1));
         //sin productos
-        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido3, (Cliente)unCliente1));
+        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido3, (Cliente) unCliente1));
         //sin productos
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido2, null));
 //        //sin cliente
+        System.out.println("");
         System.out.println("=======");
         System.out.println("Pedidos");
-        for(Pedido p : gPed.verPedidos()) {
+        for (Pedido p : gPed.verPedidos()) {
             p.mostrar();
         }
         System.out.println("=======");
-        
+
         System.out.println("Hay pedidos con un producto");
-        Producto prod= gp.obtenerProducto(2);
+        Producto prod = gp.obtenerProducto(2);
         System.out.println(gPed.hayPedidosConEsteProducto(prod));
         System.out.println("=======");
-        
-        System.out.println("Hay pedidos con un cliente");
-        Usuario unCliente3= gu.obtenerUsuario("cliente3@bar.com");
-        System.out.println(gPed.hayPedidosConEsteCliente((Cliente)unCliente3));
-        System.out.println("=======");
-        
-        System.out.println("Hay pedidos con un cliente");
-        System.out.println(gPed.hayPedidosConEsteCliente((Cliente)unCliente1));
-        System.out.println("=======");
-        
-        System.out.println("Obtener el pedido y agregarle al cliente 1");        
-        Pedido unPedido1=gPed.obtenerPedido(1);
-        ((Cliente)unCliente1).agregarPedido(unPedido1);
 
-        ((Cliente)unCliente1).agregarPedido(unPedido1);
+        System.out.println("Hay pedidos con un cliente");
+        Usuario unCliente3 = gu.obtenerUsuario("cliente3@bar.com");
+        System.out.println(gPed.hayPedidosConEsteCliente((Cliente) unCliente3));
+        System.out.println("=======");
+
+        System.out.println("Hay pedidos con un cliente");
+        System.out.println(gPed.hayPedidosConEsteCliente((Cliente) unCliente1));
+        System.out.println("=======");
+
+        System.out.println("Obtener el pedido y agregarle al cliente 1");
+        Pedido unPedido1 = gPed.obtenerPedido(1);
+        ((Cliente) unCliente1).agregarPedido(unPedido1);
+
+        ((Cliente) unCliente1).agregarPedido(unPedido1);
         //pedido repetido
         System.out.println("=======");
         System.out.println("Pedidos de " + unCliente1.verApellido() + ", " + unCliente1.verNombre());
-        for(Pedido p : unCliente1.verPedidos()) {
+        for (Pedido p : unCliente1.verPedidos()) {
             p.mostrar();
         }
-        System.out.println();        
+        System.out.println();
 
         Usuario unEmpleado3 = gu.obtenerUsuario("empleado3@bar.com");
         System.out.println("Todos los pedidos (consultados por un empleado)");
-        for(Pedido p : unEmpleado3.verPedidos()) {
+        for (Pedido p : unEmpleado3.verPedidos()) {
             p.mostrar();
-            System.out.println();
         }
         System.out.println();
-                
+        
         Usuario unEncargado3 = gu.obtenerUsuario("encargado3@bar.com");
         System.out.println("Todos los pedidos (consultados por un encargado)");
-        for(Pedido p : unEncargado3.verPedidos()) {
+        for (Pedido p : unEncargado3.verPedidos()) {
             p.mostrar();
-            System.out.println();
         }
         System.out.println();
         
         System.out.println("Cancelar el pedido de unCliente1");
-        ((Cliente)unCliente1).cancelarPedido(unPedido1);
+        ((Cliente) unCliente1).cancelarPedido(unPedido1);
         System.out.println("Pedidos de " + unCliente1.verApellido() + ", " + unCliente1.verNombre());
-        for(Pedido p : unCliente1.verPedidos()) {
+        for (Pedido p : unCliente1.verPedidos()) {
             p.mostrar();
-            System.out.println();
         }
+        
+        System.out.println("");
         System.out.println("Ver si existe un usuario");
         System.out.println(gu.existeEsteUsuario(unCliente1));
         Usuario unCliente10 = new Cliente("cliente10@bar.com", "claveCliente10", "ApellidoCliente10", "NombreCliente10");
         //usuario inexistente
         System.out.println("Ver si existe un usuario");
         System.out.println(gu.existeEsteUsuario(unCliente10));
-           
+
         System.out.println("Usuarios");
         System.out.println("========");
-        for(Usuario u : gu.verUsuarios()) {
+        for (Usuario u : gu.verUsuarios()) {
             u.mostrar();
-            System.out.println();
         }
-        System.out.println();
         
+        System.out.println();
         ArrayList<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
         System.out.println("Usuarios filtrados");
         System.out.println("==================");
-        for(Usuario u : usuariosBuscados) {
+        for (Usuario u : usuariosBuscados) {
             u.mostrar();
-            System.out.println();
         }
-        System.out.println();
         
+        System.out.println();
         System.out.println(gPed.existeEstePedido(unPedido1));
         Pedido unPedido10 = gPed.obtenerPedido(10);
         //pedido inexistente
         System.out.println(gPed.existeEstePedido(unPedido10));
-        
+
         Pedido unPedido2 = gPed.obtenerPedido(2);
         System.out.println(gPed.cambiarEstado(unPedido2));
-        
+
         System.out.println("Pedidos");
         System.out.println("=======");
-        for(Pedido p : gPed.verPedidos()) {
+        for (Pedido p : gPed.verPedidos()) {
             p.mostrar();
-            System.out.println();
         }
-        System.out.println();  
+        System.out.println();
         
         //System.out.println(gPed.cancelarPedido(unPedido2));
         //no se puede por el estado del pedido
         //System.out.println(gPed.cancelarPedido(unPedido1));
 //        //sí se puede
-  
         System.out.println("\n\nPedidos");
         System.out.println("=======");
-        for(Pedido p : gPed.verPedidos()) {
+        for (Pedido p : gPed.verPedidos()) {
             p.mostrar();
         }
-        System.out.println();  
-        
+        System.out.println();
     }
 }
-
