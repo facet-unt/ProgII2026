@@ -4,29 +4,28 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorProductos;
+import static interfaces.IGestorProductos.ERROR_CATEGORIA;
+import static interfaces.IGestorProductos.ERROR_CODIGO;
+import static interfaces.IGestorProductos.ERROR_DESCRIPCION;
+import static interfaces.IGestorProductos.ERROR_ESTADO;
+import static interfaces.IGestorProductos.ERROR_PRECIO;
+import static interfaces.IGestorProductos.EXITO;
+import static interfaces.IGestorProductos.PRODUCTOS_DUPLICADOS;
+import static interfaces.IGestorProductos.PRODUCTO_INEXISTENTE;
 import java.util.ArrayList;
 
 /**
  *
  * @author Usuario
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
 
     ArrayList<Producto> productos = new ArrayList<>();
 
     //Variable de clase privada
     private static GestorProductos gestor;
     
-    public static final String EXITO = "Producto creado/modificado con exito";
-    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto";
-    public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
-    public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
-    public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
-
     //Contructor privado
     private GestorProductos() {
         productos = new ArrayList<>();
