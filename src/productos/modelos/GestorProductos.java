@@ -8,6 +8,7 @@ import interfaces.IGestorPedidos;
 import java.util.List;
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.Collections;
 import pedidos.modelos.GestorPedidos;
 /**
  *
@@ -27,6 +28,8 @@ public class GestorProductos implements IGestorProductos {
 
     private GestorProductos(){    
     }   
+    
+
 @Override
     public String crearProducto(int codigo, String descripcion,float precio, Categoria categoria, Estado estado){
         if(codigo < 0){
@@ -78,7 +81,10 @@ public class GestorProductos implements IGestorProductos {
     
 @Override  
     public List<Producto> menu(){
+        CompCategoriaDesc c = new CompCategoriaDesc();
+        Collections.sort(productos, c);
         return productos;
+        // se puede hacer en una linea?
     }
  @Override   
     public List<Producto> buscarProductos(String descripcion){
@@ -88,6 +94,7 @@ public class GestorProductos implements IGestorProductos {
                 productosBuscados.add(p);
             }
         }
+        Collections.sort(productosBuscados, new CompCategoriaDesc());
         return productosBuscados;
     }
  @Override   
@@ -107,6 +114,7 @@ public class GestorProductos implements IGestorProductos {
                 productosBuscados.add(p);
             }
         }
+        Collections.sort(productosBuscados);
         return productosBuscados;
     }
 @Override    

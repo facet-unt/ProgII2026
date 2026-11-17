@@ -16,7 +16,7 @@ import usuarios.modelos.Cliente;
  *
  * @author Home
  */
-public class Pedido {
+public class Pedido implements Comparable<Pedido> {
     private int numero;
     private LocalDateTime fechaYHora;
     private Estado estado;
@@ -124,7 +124,10 @@ public class Pedido {
     this.cliente = cliente;
     this.productos = new ArrayList<>();
 }
-    
+@Override
+    public int compareTo(Pedido p){
+        return this.verNumero() - p.verNumero();
+    } 
     public void mostrar(){
         DateTimeFormatter fechaFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter horaFormato = DateTimeFormatter.ofPattern("HH:mm");

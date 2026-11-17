@@ -12,7 +12,7 @@ import pedidos.modelos.Pedido;
  *
  * @author estudiante
  */
-public abstract class Usuario {
+public abstract class Usuario implements Comparable<Usuario> {
     private String correo;
     private String clave;
     private String apellido;
@@ -59,6 +59,14 @@ public abstract class Usuario {
     System.out.println("Usuario: " + apellido + ", " + nombre);
     System.out.println("Correo: " + correo + " | Clave: " + clave);
     }
+    
+    @Override
+    public int compareTo(Usuario u){
+        if(this.verApellido().equals(u.verApellido())){
+            return this.verApellido().compareTo(u.verApellido());
+        } else return this.verNombre().compareTo(u.verNombre());
+    }
+  
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

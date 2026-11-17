@@ -9,11 +9,16 @@ package productos.modelos;
  *
  * @author estudiante
  */
-public class Producto {
+public class Producto implements Comparable<Producto> {
     private int codigo;
     private String descripcion;
     private Categoria categoria;
 
+    @Override
+    public int compareTo(Producto p){
+        return this.verDescripcion().compareTo(p.verDescripcion());
+    } 
+    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -11,6 +11,7 @@ import interfaces.IGestorPedidos;
 import java.util.List;
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.Collections;
 import pedidos.modelos.GestorPedidos;
 public class GestorUsuarios implements IGestorUsuarios{
     
@@ -46,7 +47,7 @@ public class GestorUsuarios implements IGestorUsuarios{
         }
         return VALIDACION_EXITO;
     }
-
+    
 @Override
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida) {
         String resultadoValidacion = validarDatos(correo, apellido, nombre, perfil, clave, claveRepetida);
@@ -76,6 +77,7 @@ public class GestorUsuarios implements IGestorUsuarios{
     }
 @Override
     public List<Usuario> verUsuarios() {
+        Collections.sort(this.usuarios);
         return this.usuarios;
     }
 @Override
@@ -88,6 +90,7 @@ public class GestorUsuarios implements IGestorUsuarios{
                 }
             }
         }
+        Collections.sort(encontrados);
         return encontrados;
     }
 @Override
