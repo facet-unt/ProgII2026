@@ -7,6 +7,7 @@ package productos.modelos;
 import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.Collections;
 import pedidos.modelos.GestorPedidos;
 
 /**
@@ -85,6 +86,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public ArrayList<Producto> menu(){
+        Collections.sort(productos);
         return productos;
     }
     
@@ -100,6 +102,7 @@ public class GestorProductos implements IGestorProductos {
             if(p.verDescripcion() != null && p.verDescripcion().contains(descripcion))
                 productosCoincidentes.add(p);
         }
+        Collections.sort(productosCoincidentes);
         return productosCoincidentes;
     }
     
@@ -125,6 +128,7 @@ public class GestorProductos implements IGestorProductos {
             if(p.verCategoria().equals(categoria))
                 productosCoincidentes.add(p);
         }
+        Collections.sort(productosCoincidentes);
         return productosCoincidentes;
     }
     

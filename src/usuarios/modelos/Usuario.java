@@ -11,7 +11,7 @@ import pedidos.modelos.Pedido;
  *
  * @author MARYPAZ
  */
-public abstract class Usuario {
+public abstract class Usuario implements Comparable<Usuario> {
     private String correo;
     private String clave;
     private String apellido;
@@ -83,4 +83,14 @@ public abstract class Usuario {
         System.out.println("\tclave: "+clave +" | correo: " +correo+ "\n" );
     }
     
-}
+    @Override
+    public int compareTo(Usuario u){
+        if(this.apellido.equals(u.verApellido())){
+            return this.nombre.compareTo(u.verNombre());
+        }
+        else{
+            return this.apellido.compareTo(u.verApellido());
+        }      
+    }     
+    }
+
