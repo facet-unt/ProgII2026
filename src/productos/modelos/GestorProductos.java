@@ -50,6 +50,7 @@ public class GestorProductos implements IGestorProductos{
      * @param estado
      * @return
      */
+    @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         
         for (Producto p : productos) {
@@ -94,6 +95,8 @@ public class GestorProductos implements IGestorProductos{
      * @param estado
      * @return
      */
+    
+    @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         if (!productos.contains(productoAModificar)) {
             return PRODUCTO_INEXISTENTE;
@@ -126,6 +129,7 @@ public class GestorProductos implements IGestorProductos{
      * Devuelve todos los productos
      * @return
      */
+    @Override
     public ArrayList<Producto> menu() {
         return productos;
     }
@@ -137,6 +141,7 @@ public class GestorProductos implements IGestorProductos{
      * @param descripcion
      * @return
      */
+    @Override
     public ArrayList<Producto> buscarProductos(String descripcion) {
         ArrayList<Producto> productosPorDescricpcion = new ArrayList<>();
         for (Producto p : productos) {
@@ -153,6 +158,7 @@ public class GestorProductos implements IGestorProductos{
      * @param producto
      * @return
      */
+    @Override
     public boolean existeEsteProducto(Producto producto) {
         return productos.contains(producto);
     }
@@ -163,6 +169,7 @@ public class GestorProductos implements IGestorProductos{
      * @param categoria
      * @return
      */
+    @Override
     public ArrayList<Producto> verProductosPorCategoria(Categoria categoria) {
         ArrayList<Producto> productosPorCategoria = new ArrayList<>();
         for (Producto p : productos) {
@@ -180,6 +187,7 @@ public class GestorProductos implements IGestorProductos{
      * @param codigo
      * @return
      */
+    @Override
     public Producto obtenerProducto(Integer codigo) {
         for (Producto p : productos) {
             if (p.verCodigo() == codigo) {

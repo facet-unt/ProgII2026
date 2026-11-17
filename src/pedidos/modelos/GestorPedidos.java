@@ -59,7 +59,7 @@ public class GestorPedidos {
      * @return
      */
     public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
-        if (fechaInavlida(fecha)) {
+        if (fechaInvalida(fecha)) {
             return ERROR_FECHA;
         }
 
@@ -130,7 +130,6 @@ public class GestorPedidos {
             return false;
         }
 
-        //completar con el nombre del arraylist de pedidos
         for (Pedido p : pedidos) {
             for (ProductoDelPedido pdp : p.productosDelPedido) {
                 if (pdp.verProducto().equals(producto)) {
@@ -148,7 +147,6 @@ public class GestorPedidos {
      */
     public boolean existeEstePedido(Pedido pedido) {
 
-        //completar con el nombre del arraylist de pedidos
         return pedidos.contains(pedido);
     }
 
@@ -162,7 +160,6 @@ public class GestorPedidos {
             return null;
         }
 
-        //completar con el nombre del arraylist de pedidos
         for (Pedido p : pedidos) {
             if (p.verNumero() == numero) {
                 return p;
@@ -176,7 +173,6 @@ public class GestorPedidos {
      * @param pedido que,lueqo de validar que no sea nulo o no este en la lista,se quiere cancelar
      * @return un mensaje de exito de que se pudo cancelar,en caso contrario un mensaje de pedido inexistente
      */
-    @Override
     public String cancelarPedido(Pedido pedido){
         
         if (pedido == null || !(existeEstePedido(pedido))) {
@@ -200,11 +196,8 @@ public class GestorPedidos {
      * @param fecha
      * @return
      */
-    private boolean fechaInavlida(LocalDate fecha) {
-        if (fecha == null) {
-            return true;
-        }
-        return false;
+    private boolean fechaInvalida(LocalDate fecha) {
+        return fecha == null;
     }
 
     /**
@@ -215,10 +208,7 @@ public class GestorPedidos {
      * @return
      */
     private boolean horaInvalida(LocalTime hora) {
-        if (hora == null) {
-            return true;
-        }
-        return false;
+        return hora == null;
     }
 
     /**
@@ -229,10 +219,7 @@ public class GestorPedidos {
      * @return
      */
     private boolean clienteInvalido(Cliente cliente) {
-        if (cliente == null) {
-            return true;
-        }
-        return false;
+        return cliente == null;
     }
 
     /**
@@ -243,9 +230,6 @@ public class GestorPedidos {
      * @return
      */
     private boolean productosDelPedidoInvalido(ArrayList<ProductoDelPedido> pdp) {
-        if (pdp == null || pdp.isEmpty()) {
-            return true;
-        }
-        return false;
+        return pdp == null || pdp.isEmpty();
     }
 }
