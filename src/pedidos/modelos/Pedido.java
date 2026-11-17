@@ -64,8 +64,14 @@ public class Pedido {
     public void asignarEstado(Estado estado) {
         this.estado = estado;
     }
-    
-    
+
+    public Cliente verUnCliente() {
+        return unCliente;
+    }
+
+    public void asignarUnCliente(Cliente unCliente) {
+        this.unCliente = unCliente;
+    }
     
     /**
      * Devuelve la fecha en formato String
