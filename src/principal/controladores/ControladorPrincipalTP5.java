@@ -4,6 +4,9 @@
  */
 package principal.controladores;
 
+import interfaces.IGestorPedidos;
+import interfaces.IGestorProductos;
+import interfaces.IGestorUsuarios;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -28,9 +31,9 @@ import usuarios.modelos.Usuario;
  */
 public class ControladorPrincipalTP5 {
     public static void main(String[] args) {
-        GestorProductos gp = GestorProductos.instanciar();
-        GestorUsuarios gu=GestorUsuarios.instanciar();
-        GestorPedidos gPed = GestorPedidos.instanciar();
+        IGestorProductos gp = GestorProductos.instanciar();
+        IGestorUsuarios gu=GestorUsuarios.instanciar();
+        IGestorPedidos gPed = GestorPedidos.instanciar();
         
         System.out.println("#####PRODUCTOS#####");
         /*CREAR PRODUCTO*/
@@ -386,6 +389,17 @@ public class ControladorPrincipalTP5 {
             p.mostrar();
         }
         System.out.println();  
+        
+        System.out.println("===Borrar un producto===");
+        System.out.println(gp.borrarProducto(unProducto2));
+        System.out.println(gp.borrarProducto(unProducto1));
+        
+        System.out.println("===Borrar un usuario===");
+        System.out.println(gu.borrarUsuario(unEncargado3));
+        
+        System.out.println("===Cancelar un pedido===");
+        System.out.println(gPed.cancelarPedido(unPedido2));
+        System.out.println(gPed.cancelarPedido(unPedido1));
         
     }
 }

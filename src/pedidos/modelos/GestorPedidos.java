@@ -4,6 +4,7 @@
  */
 package pedidos.modelos;
 
+import interfaces.IGestorPedidos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,22 +16,11 @@ import usuarios.modelos.Cliente;
  *
  * @author LUCRECIA
  */
-public class GestorPedidos {
+public class GestorPedidos implements IGestorPedidos {
     ArrayList<Pedido> pedidos = new ArrayList<>();
     public static GestorPedidos gestor;
     private static int numero =0;
-    
-    public static final String EXITO = "Pedido creado/modificado/cancelado con exito.";
-    public static final String ERROR_FECHA = "La fecha del pedido es incorrecta.";
-    public static final String ERROR_HORA = "La hora del pedido es incorrecta.";
-    public static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos.";
-    public static final String ERROR_CLIENTE = "El pedido no tiene un cliente.";
-    public static final String ERROR_ESTADO = "El pedido no tiene un estado.";
-    public static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado.";
-    public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese numero.";
-    public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado.";
-    public static final String VALIDACION_EXITO = "El pedido tiene los datos correctos.";
-    
+ 
     private GestorPedidos(){
         
     }
@@ -55,6 +45,7 @@ public class GestorPedidos {
      * @param cliente Un cliente.
      * @return Una cadena de EXITO si se creó correctamente el pedido.
      */
+    @Override
     public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
         String resultadoValidacion = validarDatos(fecha, hora, productosDelPedido, cliente);
          if (!resultadoValidacion.equals(VALIDACION_EXITO)) {
@@ -74,6 +65,7 @@ public class GestorPedidos {
      * @param pedidoAModificar El pedido que hay que modificar.
      * @return Una cadena de EXITO si se modificó correctamente el pedido.
      */
+    @Override
     public String cambiarEstado(Pedido pedidoAModificar){
         switch(pedidoAModificar.verEstado()){
             case Estado.CREADO:
@@ -94,6 +86,7 @@ public class GestorPedidos {
      * Devuelve todos los pedidos.
      * @return 
      */
+    @Override
     public ArrayList<Pedido> verPedidos(){
         return pedidos;
     }
@@ -103,6 +96,7 @@ public class GestorPedidos {
      * @param cliente Un cliente.
      * @return Un boolean.
      */
+    @Override
     public boolean hayPedidosConEsteCliente(Cliente cliente){
         for(Pedido p: pedidos){
             if(p.verUnCliente().equals(cliente))
@@ -116,6 +110,7 @@ public class GestorPedidos {
      * @param producto Un producto.
      * @return Un boolean.
      */
+    @Override
     public boolean hayPedidosConEsteProducto(Producto producto){
         for(Pedido p: pedidos){
              for(ProductoDelPedido pdp : p.verProductos()){
@@ -131,6 +126,7 @@ public class GestorPedidos {
      * @param pedido Un pedido.
      * @return Un boolean.
      */
+    @Override
     public boolean existeEstePedido(Pedido pedido){
         return pedidos.contains(pedido);
     }
@@ -140,6 +136,7 @@ public class GestorPedidos {
      * @param numero El número del pedido.
      * @return Null.
      */
+    @Override
     public Pedido obtenerPedido(Integer numero){
         for(Pedido p: pedidos){
             if(p.verNumero() == numero)
@@ -154,7 +151,11 @@ public class GestorPedidos {
      * @param pedido Un pedido.
      * @return Una cadena de EXITO si se canceló correctamente el pedido.
      */
+    @Override
     public String cancelarPedido(Pedido pedido){
+        if (pedido == null || !pedidos.contains(pedido)) {
+        return PEDIDO_INEXISTENTE;
+        }
         if(pedido.verEstado()!=Estado.CREADO)
             return ERROR_CANCELAR;
         pedidos.remove(pedido);

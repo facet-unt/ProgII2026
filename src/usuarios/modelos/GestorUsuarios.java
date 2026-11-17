@@ -4,25 +4,19 @@
  */
 package usuarios.modelos;
 
+import interfaces.IGestorPedidos;
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
  * @author LUCRECIA
  */
-public class GestorUsuarios {
+public class GestorUsuarios implements IGestorUsuarios {
     ArrayList<Usuario> usuarios = new ArrayList<>();
     public static GestorUsuarios gestor;
-    
-    public static final String EXITO = "Usuario creado/modificado con exito.";
-    public static final String ERROR_CORREO = "El correo del usuario es incorrecto.";
-    public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto.";
-    public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto.";
-    public static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas.";
-    public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto.";
-    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo.";
-    public static final String VALIDACION_EXITO = "Los datos del usuario son correctos.";
-    
+  
     private GestorUsuarios(){
         
     }
@@ -49,6 +43,7 @@ public class GestorUsuarios {
      * @return Una cadena de EXITO si se creó correctamente el usuario.
      */
     
+    @Override
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
         
         String resultadoValidacion = validarDatos(correo, apellido, nombre, perfil, clave, claveRepetida );
@@ -77,6 +72,7 @@ public class GestorUsuarios {
      * Devuelve todos los usuarios.
      * @return 
      */
+    @Override
     public ArrayList<Usuario> verUsuarios(){
         return usuarios;
     }
@@ -86,6 +82,7 @@ public class GestorUsuarios {
      * @param apellido El apellido del usuario.
      * @return Un ArrayList de usuarios coincidentes.
      */
+    @Override
     public ArrayList<Usuario> buscarUsuarios(String apellido){
         ArrayList<Usuario> usuariosCoincidentes= new ArrayList<>();
         for(Usuario u: usuarios){
@@ -101,6 +98,7 @@ public class GestorUsuarios {
      * @param usuario Un usuario.
      * @return Un boolean.
      */
+    @Override
     public boolean existeEsteUsuario(Usuario usuario){
         return usuarios.contains(usuario);
     }
@@ -110,12 +108,33 @@ public class GestorUsuarios {
      * @param correo El correo del usuario.
      * @return Null.
      */
+    @Override
     public Usuario obtenerUsuario(String correo){
         for(Usuario u: usuarios){
             if(u.verCorreo().equals(correo))
                 return u;
         }
         return null;
+    }
+    
+    /** 
+     * Borra un usuario siempre y cuando no haya pedidos con el mismo.
+     * @param usuario Un usuario.
+     * @return Cadena con el resultado de la operación.
+     */
+    @Override
+    public String borrarUsuario(Usuario usuario){
+        if (usuario == null || !usuarios.contains(usuario)) {
+        return USUARIO_INEXISTENTE; 
+        }
+        if (usuario instanceof Cliente) {
+        IGestorPedidos gp = GestorPedidos.instanciar();
+        if (gp.hayPedidosConEsteCliente((Cliente) usuario)) {
+            return ERROR_BORRAR; 
+        }
+        }
+        usuarios.remove(usuario);
+        return EXITO_BORRAR;
     }
     
     //Métodos para hacer los distintos controles

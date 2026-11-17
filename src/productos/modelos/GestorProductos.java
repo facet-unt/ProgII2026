@@ -4,26 +4,19 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorPedidos;
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
  * @author LUCRECIA
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos {
     ArrayList<Producto> productos =new ArrayList<>();
     private static GestorProductos gestor; 
-    
-    public static final String EXITO = "Producto creado/modificado con exito.";
-    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto.";
-    public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta.";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto.";
-    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta.";
-    public static final String ERROR_ESTADO = "El estado del producto es incorrecto.";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo.";
-    public static final String VALIDACION_EXITO = "Los datos del producto son correctos.";
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado.";
-    
+ 
     private GestorProductos(){
         
     }
@@ -48,6 +41,7 @@ public class GestorProductos {
      * @param precio El precio del producto.
      * @return Una cadena de EXITO si se creó correctamente el producto.
      */
+    @Override
     public String crearProducto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio){
         String resultadoValidacion = validarDatos(codigo, descripcion, categoria, estado, precio, null);
         if (!resultadoValidacion.equals(VALIDACION_EXITO)) {
@@ -68,6 +62,7 @@ public class GestorProductos {
      * @param estado El estado del producto.
      * @return Una cadena de VALIDACION_EXITO si se modificó correctamente el producto.
      */
+    @Override
     public String modificarProducto (Producto productoAModificar,int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         if(!productos.contains(productoAModificar)){
@@ -88,6 +83,7 @@ public class GestorProductos {
      * Devuelve todos los productos.
      * @return 
      */
+    @Override
     public ArrayList<Producto> menu(){
         return productos;
     }
@@ -97,6 +93,7 @@ public class GestorProductos {
      * @param descripcion La descripción del producto.
      * @return Un ArrayList de productos coincidentes.
      */
+    @Override
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> productosCoincidentes= new ArrayList<>();
         for(Producto p: productos){
@@ -111,6 +108,7 @@ public class GestorProductos {
      * @param producto Un producto.
      * @return Un boolean.
      */
+    @Override
     public boolean existeEsteProducto(Producto producto){
         return productos.contains(producto);
     }
@@ -120,6 +118,7 @@ public class GestorProductos {
      * @param categoria La categoría del producto.
      * @return Un ArrayList de productos.
      */
+    @Override
     public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> productosCoincidentes = new ArrayList<>();
         for(Producto p: productos){
@@ -134,12 +133,31 @@ public class GestorProductos {
      * @param codigo El código del producto.
      * @return Null.
      */
+    @Override
     public Producto obtenerProducto(Integer codigo){
         for(Producto p: productos){
             if(p.verCodigo()==codigo)
                 return p;
         }
         return null;
+    }
+    
+    /**
+     * Borra un producto siempre y cuando no haya pedidos con el mismo.
+     * @param producto Un producto.
+     * @return Cadena con el resultado de la operación.
+     */
+    @Override
+    public String borrarProducto(Producto producto){
+        if (producto == null || !productos.contains(producto)) {
+        return PRODUCTO_INEXISTENTE; 
+        }
+        
+        IGestorPedidos gp = GestorPedidos.instanciar();
+        if(gp.hayPedidosConEsteProducto(producto))
+            return ERROR_BORRAR;
+        productos.remove(producto);
+        return EXITO_BORRAR;
     }
     
     //Métodos para hacer los distintos controles
