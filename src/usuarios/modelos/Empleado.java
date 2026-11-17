@@ -4,7 +4,7 @@
 // */
 package usuarios.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 
@@ -46,7 +46,7 @@ public class Empleado extends Usuario {
      * @return lista de instancias de {@link Pedido} asociadas al empleado
      */
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
         return gdp.verPedidos();
     }
 }

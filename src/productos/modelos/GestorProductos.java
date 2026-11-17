@@ -6,13 +6,14 @@ package productos.modelos;
 
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author homep
  */
 public class GestorProductos implements IGestorProductos{
-    private static final ArrayList<Producto> productos = new ArrayList<>();
+    private static final List<Producto> productos = new ArrayList<>();
 
     
     //=============================
@@ -43,6 +44,7 @@ public class GestorProductos implements IGestorProductos{
         return EXITO;
     }
     
+    @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         String proceso = CorroborarDatos(codigo, descripcion, precio, categoria, estado);
@@ -55,6 +57,7 @@ public class GestorProductos implements IGestorProductos{
         return proceso;
     }
     
+    @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         String proceso = CorroborarDatos(codigo, descripcion, precio, categoria, estado);
@@ -67,10 +70,12 @@ public class GestorProductos implements IGestorProductos{
         return proceso;
     }
     
-    public ArrayList<Producto> menu(){
+    @Override
+    public List<Producto> menu(){
         return productos;
     }
     
+    @Override
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> pdp = new ArrayList<>();
         for (Producto p : productos){
@@ -82,11 +87,13 @@ public class GestorProductos implements IGestorProductos{
         return pdp;
     }
     
+    @Override
     public boolean existeEsteProducto(Producto producto){
         return productos.contains(producto);
     }
     
-    public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
+    @Override
+    public List<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> pdp = new ArrayList<>();
         for (Producto p : productos){
             if (p.verCategoria() == categoria)
@@ -97,9 +104,10 @@ public class GestorProductos implements IGestorProductos{
         return pdp;
     }
     
+    @Override
     public Producto obtenerProducto(Integer codigo){
         for (Producto p: productos){
-            if (p.verCodigo() == codigo.intValue()){       
+            if (p.verCodigo() == codigo){       
                 return p;
             }
         }

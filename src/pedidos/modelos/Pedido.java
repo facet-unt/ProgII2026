@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import usuarios.modelos.Cliente;
 import productos.modelos.Producto;
 
@@ -30,7 +31,7 @@ public class Pedido {
     private Cliente cliente;
 
     /** Lista con los renglones de productos y cantidades asociadas al pedido. */
-    private ArrayList<ProductoDelPedido> ProductoDelPedido = new ArrayList<>();
+    private List<ProductoDelPedido> ProductoDelPedido = new ArrayList<>();
     
     //====================================
     //      Constructor de Pedido
@@ -44,7 +45,7 @@ public class Pedido {
      * @param pdp lista de renglones con los productos y sus cantidades 
      * @param cliente instancia de {@link Cliente} que realiza la compra
      */
-    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> pdp, Cliente cliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, List<ProductoDelPedido> pdp, Cliente cliente) {
         this.numero = numero;
         this.cliente = cliente;
         this.fechaYHora = fechaYHora;
@@ -106,7 +107,7 @@ public class Pedido {
      *
      * @return lista de instancias de {@link ProductoDelPedido}
      */
-    public ArrayList<ProductoDelPedido> verProductoDelPedido() {
+    public List<ProductoDelPedido> verProductoDelPedido() {
         return ProductoDelPedido;
     }
     

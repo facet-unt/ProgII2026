@@ -1,6 +1,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Pedido;
 
 /**
@@ -13,7 +14,7 @@ import pedidos.modelos.Pedido;
  */
 public class Cliente extends Usuario {
     /** Lista de pedidos solicitados por el cliente. */
-    private ArrayList<Pedido> pedidos;
+    private final List<Pedido> pedidos;
     
     //==================================================
     //             Constructor de Cliente
@@ -73,7 +74,7 @@ public class Cliente extends Usuario {
      * @return lista de instancias de {@link Pedido} pertenecientes al cliente
      */
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
         return pedidos;
     }
 }

@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.ProductoDelPedido;
@@ -72,7 +73,7 @@ public class ControladorPrincipalTP5 {
         
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
-        ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
+        List<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
         System.out.println("Productos filtrados por categoría");
         System.out.println("===================");
         for(Producto p : productosBuscados) {
@@ -353,7 +354,7 @@ public class ControladorPrincipalTP5 {
         }
         System.out.println();
         
-        ArrayList<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
+        List<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
         System.out.println("Usuarios filtrados");
         System.out.println("==================");
         for(Usuario u : usuariosBuscados) {

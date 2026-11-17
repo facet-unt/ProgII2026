@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -17,7 +18,7 @@ import usuarios.modelos.Cliente;
  * @author homep
  */
 public class GestorPedidos implements IGestorPedidos{
-    private static final ArrayList<Pedido> pedidos = new ArrayList<>();
+    private static final List<Pedido> pedidos = new ArrayList<>();
     private static int cantidadDePedidos = 0;
     
 
@@ -48,14 +49,14 @@ public class GestorPedidos implements IGestorPedidos{
         return VALIDACION_EXITO;
     }
     
-    public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
-        String proceso = corroborarDatos(fecha, hora, productosDelPedido, cliente);
+    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
+        String proceso = corroborarDatos(fecha, hora, (ArrayList<ProductoDelPedido>) productosDelPedido, cliente);
         
         
         if (proceso.equals(VALIDACION_EXITO)){
             LocalDateTime fechaYHora = LocalDateTime.of(fecha, hora);
             cantidadDePedidos++;
-            Pedido p = new Pedido(cantidadDePedidos, fechaYHora, productosDelPedido, cliente);
+            Pedido p = new Pedido(cantidadDePedidos, fechaYHora, (ArrayList<ProductoDelPedido>) productosDelPedido, cliente);
             GestorPedidos.pedidos.add(p);
             cliente.agregarPedido(p);
         }
@@ -73,7 +74,7 @@ public class GestorPedidos implements IGestorPedidos{
         return VALIDACION_EXITO;
     }
     
-    public ArrayList<Pedido> verPedidos(){
+    public List<Pedido> verPedidos(){
         return GestorPedidos.pedidos;
     }
     

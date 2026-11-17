@@ -6,13 +6,14 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author homep
  */
 public class GestorUsuarios implements IGestorUsuarios{
-    private static final ArrayList<Usuario> usuarios = new ArrayList<>();
+    private static final List<Usuario> usuarios = new ArrayList<>();
 
     //=======================
     //      Singletone
@@ -78,11 +79,11 @@ public class GestorUsuarios implements IGestorUsuarios{
         return proceso;
     }
     
-    public ArrayList<Usuario> verUsuarios(){
+    public List<Usuario> verUsuarios(){
         return GestorUsuarios.usuarios;
     }
     
-    public ArrayList<Usuario> buscarUsuarios(String apellido){
+    public List<Usuario> buscarUsuarios(String apellido){
         ArrayList<Usuario> usuarios_coincidentes = new ArrayList<>();
         
         for (Usuario u : usuarios){

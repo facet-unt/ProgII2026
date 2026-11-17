@@ -1,6 +1,6 @@
 package usuarios.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import pedidos.modelos.Pedido;
 
@@ -134,7 +134,7 @@ public abstract class Usuario {
      *
      * @return lista de instancias de {@link Pedido} asociadas al usuario
      */
-    public abstract ArrayList<Pedido> verPedidos();
+    public abstract List<Pedido> verPedidos();
     
     /**
      * Muestra por consola los datos principales del usuario.
