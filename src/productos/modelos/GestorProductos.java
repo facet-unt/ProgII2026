@@ -4,26 +4,19 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
 
 /**
  *
  * @author Arebalo
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
     private static GestorProductos gestor;
     
     private ArrayList<Producto> productos = new ArrayList<>();
     
-    public static final String EXITO = "Producto creado/modificado con exito";
-    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto";
-    public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
-    public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
-    public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
+    
     
     private GestorProductos(){
     }
@@ -55,6 +48,7 @@ public class GestorProductos {
     }
     //Metodo para crear producto
     
+    @Override
     public String crearProducto(int codigo,String descripcion,float precio,Categoria categoria,Estado estado){
         String validacion = validarDatos(codigo,descripcion,precio,categoria,estado);
         if(!validacion.equals(EXITO)){
@@ -70,6 +64,7 @@ public class GestorProductos {
     
     //Modificar un producto existente si los nuevos datos son validos
     
+    @Override
     public String modificarProducto(Producto productoAModificar,int codigo,String descripcion,float precio,Categoria categoria,Estado estado){
         if(productoAModificar == null || !this.productos.contains(productoAModificar)){
             return PRODUCTO_INEXISTENTE;
@@ -94,12 +89,14 @@ public class GestorProductos {
          
     //Devolver todos los productos
     
+    @Override
     public ArrayList<Producto> menu(){
         return this.productos;
     }
     
     //Buscar productos por descripcion
     
+    @Override
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> resultado = new ArrayList<>();
         if(descripcion == null || descripcion.trim().isEmpty()){
@@ -116,7 +113,8 @@ public class GestorProductos {
     
     //Verificar si un producto existe
     
-    public boolean extisteEsteProducto(Producto producto){
+    @Override
+    public boolean existeEsteProducto(Producto producto){
         if(producto == null){
             return false;
         }
@@ -125,6 +123,7 @@ public class GestorProductos {
     
     //Devuelve los productos de una categoria
     
+    @Override
     public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> resultado = new ArrayList<>();
         if(categoria == null){
@@ -140,6 +139,7 @@ public class GestorProductos {
     
     //Obtener un producto por su codigo
     
+    @Override
     public Producto obtenerProducto(Integer codigo){
         if(codigo == null){
             return null;
