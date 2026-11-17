@@ -6,7 +6,7 @@ package productos.modelos;
 
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 /**
  *
@@ -83,7 +83,8 @@ public class GestorProductos implements IGestorProductos{
        //Devuelve todos los productos guardados
        @Override
        public ArrayList<Producto> menu(){
-           return productos;
+           Collections.sort(productos, new DescYCatComp());
+           return productos;          
        }
        
        //Busca si es que el producto a buscar esta guardado en el menu
@@ -134,6 +135,7 @@ public class GestorProductos implements IGestorProductos{
                    listaProductos.add(pd);
            }
            
+           Collections.sort(listaProductos, new DescYCatComp());
            return listaProductos;
        }
 

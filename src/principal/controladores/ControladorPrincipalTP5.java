@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.ProductoDelPedido;
@@ -70,7 +71,7 @@ public class ControladorPrincipalTP5 {
         
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
-        ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
+        List<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
         System.out.println("Productos filtrados por categoría");
         System.out.println("===================");
         for(Producto p : productosBuscados) {
@@ -242,7 +243,7 @@ public class ControladorPrincipalTP5 {
         
         System.out.println("=========");
         System.out.println("Crear pedidos");
-        ArrayList<ProductoDelPedido> productosDelPedido1 = new ArrayList<>();
+        List<ProductoDelPedido> productosDelPedido1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(unProducto1, 1);
         ProductoDelPedido pdp2 = new ProductoDelPedido(unProducto2, 2); 
         LocalDateTime fechaYHora = LocalDateTime.now();
@@ -255,7 +256,7 @@ public class ControladorPrincipalTP5 {
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido1, (Cliente)unCliente1));
         
         Usuario unCliente2 = gu.obtenerUsuario("cliente2@bar.com");
-        ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
+        List<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp3 = new ProductoDelPedido(unProducto1, 10);
         ProductoDelPedido pdp4 = new ProductoDelPedido(unProducto2, 20);
         ProductoDelPedido pdp5 = new ProductoDelPedido(unProducto1, 30);
@@ -351,7 +352,7 @@ public class ControladorPrincipalTP5 {
         }
         System.out.println();
         
-        ArrayList<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
+        List<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
         System.out.println("Usuarios filtrados");
         System.out.println("==================");
         for(Usuario u : usuariosBuscados) {
