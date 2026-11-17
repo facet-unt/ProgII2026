@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -17,7 +18,7 @@ import usuarios.modelos.Cliente;
  * @author LUCRECIA
  */
 public class GestorPedidos implements IGestorPedidos {
-    ArrayList<Pedido> pedidos = new ArrayList<>();
+    List<Pedido> pedidos = new ArrayList<>();
     public static GestorPedidos gestor;
     private static int numero =0;
  
@@ -46,7 +47,7 @@ public class GestorPedidos implements IGestorPedidos {
      * @return Una cadena de EXITO si se creó correctamente el pedido.
      */
     @Override
-    public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
+    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
         String resultadoValidacion = validarDatos(fecha, hora, productosDelPedido, cliente);
          if (!resultadoValidacion.equals(VALIDACION_EXITO)) {
             return resultadoValidacion;
@@ -87,7 +88,7 @@ public class GestorPedidos implements IGestorPedidos {
      * @return 
      */
     @Override
-    public ArrayList<Pedido> verPedidos(){
+    public List<Pedido> verPedidos(){
         return pedidos;
     }
     
@@ -164,7 +165,7 @@ public class GestorPedidos implements IGestorPedidos {
     }
     
     //Métrodos para hacer los distintos controles
-    private String validarDatos(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
+    private String validarDatos(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
         if(fecha == null)
             return ERROR_FECHA;
         if(hora == null)

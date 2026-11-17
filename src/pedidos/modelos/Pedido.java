@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import usuarios.modelos.Cliente;
 
 /**
@@ -20,9 +21,9 @@ public class Pedido {
     private LocalDateTime fechaYHora;
     private Estado estado;
     private Cliente unCliente;
-    private ArrayList<ProductoDelPedido> productos;
+    private List<ProductoDelPedido> productos = new ArrayList<>();
 
-    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productos, Cliente unCliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, List<ProductoDelPedido> productos, Cliente unCliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
         this.unCliente = unCliente;
@@ -62,11 +63,11 @@ public class Pedido {
         this.unCliente = unCliente;
     }
 
-    public ArrayList<ProductoDelPedido> verProductos() {
+    public List<ProductoDelPedido> verProductos() {
         return productos;
     }
 
-    public void asignarProductos(ArrayList<ProductoDelPedido> productos) {
+    public void asignarProductos(List<ProductoDelPedido> productos) {
         this.productos = productos;
     }
 

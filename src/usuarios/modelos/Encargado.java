@@ -4,7 +4,7 @@
 // */
 package usuarios.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 
@@ -22,8 +22,8 @@ public class Encargado extends Usuario {
     
     //El método verPedidos devuelve todos los pedidos gracias a GestorPedidos.
     @Override
-    public ArrayList<Pedido> verPedidos(){
-        ArrayList<Pedido> pedidos = GestorPedidos.gestor.verPedidos();
+    public List<Pedido> verPedidos(){
+        List<Pedido> pedidos = GestorPedidos.gestor.verPedidos();
         return pedidos;
     }
 

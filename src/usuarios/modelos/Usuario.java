@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package usuarios.modelos;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import pedidos.modelos.Pedido;
 
@@ -76,7 +76,7 @@ public abstract class Usuario {
         return Objects.equals(this.correo, other.correo);
     }
     
-    public abstract ArrayList<Pedido> verPedidos();
+    public abstract List<Pedido> verPedidos();
     
     public void mostrar(){
         System.out.println("\t: "+apellido +", " +nombre );

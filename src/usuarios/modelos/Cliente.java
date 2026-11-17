@@ -4,6 +4,7 @@
 // */
 package usuarios.modelos;
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Pedido;
 
 /**
@@ -11,7 +12,7 @@ import pedidos.modelos.Pedido;
  * @author estudiante
  */
 public class Cliente extends Usuario {
-    private ArrayList<Pedido> pedidos = new ArrayList<>(); 
+    private List<Pedido> pedidos = new ArrayList<>(); 
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo,clave,apellido,nombre);
@@ -42,7 +43,7 @@ public class Cliente extends Usuario {
     }
     //Se redefine el metodo verPedidos de la clase Usuario para que retorne un ArrayList de pedidos
     @Override
-    public ArrayList<Pedido> verPedidos(){
+    public List<Pedido> verPedidos(){
         return pedidos;
     }
     
