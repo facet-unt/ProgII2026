@@ -4,25 +4,16 @@
  */
 package productos.modelos;
 
+import Interfaces.IGestorProductos;
 import java.util.ArrayList;
 
 /**
  *
  * @author LUCRECIA
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
     ArrayList<Producto> productos =new ArrayList<>();
     private static GestorProductos gestor; 
-    
-    public static final String EXITO = "Producto creado/modificado con exito.";
-    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto.";
-    public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta.";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto.";
-    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta.";
-    public static final String ERROR_ESTADO = "El estado del producto es incorrecto.";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo.";
-    public static final String VALIDACION_EXITO = "Los datos del producto son correctos.";
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado.";
     
     private GestorProductos(){
         
@@ -68,6 +59,7 @@ public class GestorProductos {
      * @param estado El estado del producto.
      * @return Una cadena de VALIDACION_EXITO si se modificó correctamente el producto.
      */
+    @Override
     public String modificarProducto (Producto productoAModificar,int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         
         if(!productos.contains(productoAModificar)){
@@ -88,6 +80,7 @@ public class GestorProductos {
      * Devuelve todos los productos.
      * @return 
      */
+    @Override
     public ArrayList<Producto> menu(){
         return productos;
     }
@@ -97,6 +90,7 @@ public class GestorProductos {
      * @param descripcion La descripción del producto.
      * @return Un ArrayList de productos coincidentes.
      */
+    @Override
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> productosCoincidentes= new ArrayList<>();
         for(Producto p: productos){
@@ -111,6 +105,7 @@ public class GestorProductos {
      * @param producto Un producto.
      * @return Un boolean.
      */
+    @Override
     public boolean existeEsteProducto(Producto producto){
         return productos.contains(producto);
     }
@@ -120,6 +115,7 @@ public class GestorProductos {
      * @param categoria La categoría del producto.
      * @return Un ArrayList de productos.
      */
+    @Override
     public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> productosCoincidentes = new ArrayList<>();
         for(Producto p: productos){
@@ -134,6 +130,7 @@ public class GestorProductos {
      * @param codigo El código del producto.
      * @return Null.
      */
+    @Override
     public Producto obtenerProducto(Integer codigo){
         for(Producto p: productos){
             if(p.verCodigo()==codigo)
@@ -172,7 +169,17 @@ public class GestorProductos {
         }
         return false;
     }
-    
+
+    @Override
+    public String borrarProducto(Producto producto) {
+        if(productos.contains(producto)){
+            //if(no hay pedidos con este producto) 
+            productos.remove(producto);
+            return EXITO_BORRADO;
+        }else{
+            return ERROR_PRODUCTO_INEXISTENTE;
+        }
+    }
     
 }
     
