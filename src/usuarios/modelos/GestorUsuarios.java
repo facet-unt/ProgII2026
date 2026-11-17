@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public class GestorUsuarios {
+public class GestorUsuarios implements IGestorUsuarios{
     /**
      * Constantes con sus respectivos mensajes de texto
      */
