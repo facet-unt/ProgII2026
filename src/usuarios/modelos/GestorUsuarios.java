@@ -1,8 +1,9 @@
 package usuarios.modelos;
 
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
 
-public class GestorUsuarios {
+public class GestorUsuarios implements IGestorUsuarios {
   private GestorUsuarios() {
     usuarios = new ArrayList<>();
   }
@@ -87,6 +88,28 @@ public class GestorUsuarios {
     return resultado;
   }
 
+  public String borrarUsuario(Usuario usuario) {
+    // Revisar que el argumento no sea nulo
+    // o que el usuario no este registrado
+    if (usuario == null) {
+      return USUARIO_INEXISTENTE;
+    }
+    int indice = this.usuarios.indexOf(usuario);
+    if (indice == -1) {
+      return USUARIO_INEXISTENTE;
+    }
+
+    // Revisar si tiene pedidos
+    if (!usuario.verPedidos().isEmpty()) {
+      return ERROR_HAY_PEDIDOS;
+    }
+
+    // Ya deberia quedar un usuario valido
+    // para eliminacion, entonces se lo saca
+    this.usuarios.remove(indice);
+    return BORRAR_EXITO;
+  }
+
   private String validarUsuario(
       String correo, String apellido, String nombre, String clave, String claveRepetida) {
     // No se especifica que correo no debe ser cadena vacia pero lo incluyo igual.
@@ -118,14 +141,4 @@ public class GestorUsuarios {
 
   private static GestorUsuarios gestor;
   private ArrayList<Usuario> usuarios;
-
-  private static final String EXITO = "Usuario creado/modificado con éxito";
-  private static final String ERROR_CORREO = "El correo del usuario es incorrecto";
-  private static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
-  private static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
-  private static final String ERROR_CLAVES =
-      "Las claves especificadas no coinciden o son incorrectas";
-  private static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
-  private static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
-  private static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
 }

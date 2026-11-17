@@ -1,9 +1,11 @@
 package productos.modelos;
 
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
 import java.util.Objects;
+import pedidos.modelos.GestorPedidos;
 
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos {
   private GestorProductos() {
     productos = new ArrayList<>();
   };
@@ -106,6 +108,29 @@ public class GestorProductos {
     return resultado;
   }
 
+  public String borrarProducto(Producto producto) {
+    // Revisar primero que el producto no es nulo
+    // y que se encuentre en el gestor
+    if (producto == null) {
+      return PRODUCTO_INEXISTENTE;
+    }
+    int indice = this.productos.indexOf(producto);
+    if (indice == -1) {
+      return PRODUCTO_INEXISTENTE;
+    }
+
+    // Si no es nulo y esta en el gestor, revisar
+    // que no este en ningun pedido
+    if (GestorPedidos.instanciar().hayPedidosConEsteProducto(producto)) {
+      return ERROR_EN_PEDIDO;
+    }
+
+    // A esta altura se cumplen todos los requisitos de
+    // validez para borrar, entonces borro
+    this.productos.remove(producto);
+    return BORRAR_EXITO;
+  }
+
   // Revisa que:
   // -El codigo sea positivo
   // -La descripcion no sea nula o cadena vacia
@@ -141,13 +166,4 @@ public class GestorProductos {
 
   private ArrayList<Producto> productos;
   private static GestorProductos gestor;
-  private static final String EXITO = "Producto creado/modificado con éxito";
-  private static final String ERROR_CODIGO = "El código del producto es incorrecto";
-  private static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
-  private static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-  private static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
-  private static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-  private static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
-  private static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
-  private static final String VALIDACION_EXITO = "Los datos del producto son correctos";
 }

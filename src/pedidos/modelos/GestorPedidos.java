@@ -1,5 +1,6 @@
 package pedidos.modelos;
 
+import interfaces.IGestorPedidos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -8,7 +9,7 @@ import java.util.Objects;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
-public class GestorPedidos {
+public class GestorPedidos implements IGestorPedidos {
   private GestorPedidos() {
     pedidos = new ArrayList<>();
   }
@@ -114,30 +115,34 @@ public class GestorPedidos {
     if (pedido == null) {
       return PEDIDO_INEXISTENTE;
     }
-
-    for (Pedido p : this.pedidos) {
-      if (p.equals(pedido) && Objects.equals(p.verEstado(), Estado.CREADO)) {
-        p.verCliente().cancelarPedido(p);
-        pedidos.remove(p);
-        return EXITO;
-      } else {
-        return ERROR_CANCELAR;
-      }
-    }
-
-    return PEDIDO_INEXISTENTE;
-  }
-
-  public String existeEstePedido(Pedido pedido) {
-    if (pedido == null) {
+    int indice = this.pedidos.indexOf(pedido);
+    if (indice == -1) {
       return PEDIDO_INEXISTENTE;
     }
 
-    if (this.pedidos.contains(pedido)) {
-      return PEDIDO_EXISTE;
+    Pedido p = this.pedidos.get(indice);
+    if (p.verEstado() != Estado.CREADO) {
+      return ERROR_CANCELAR;
     }
 
-    return PEDIDO_INEXISTENTE;
+    this.pedidos.remove(indice);
+    if (p.verCliente() != null) {
+      p.verCliente().cancelarPedido(p);
+    }
+
+    return EXITO;
+  }
+
+  public boolean existeEstePedido(Pedido pedido) {
+    if (pedido == null) {
+      return false;
+    }
+
+    if (!this.pedidos.contains(pedido)) {
+      return false;
+    }
+
+    return true;
   }
 
   private String validarPedido(LocalDate fecha, LocalTime hora, Cliente cliente,
@@ -158,16 +163,6 @@ public class GestorPedidos {
     return VALIDACION_EXITO;
   }
 
-  private static final String EXITO = "Pedido creado/modificado/cancelado con éxito";
-  private static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
-  private static final String ERROR_HORA = "La hora del pedido es incorrecta";
-  private static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos";
-  private static final String ERROR_CLIENTE = "El cliente ingresado es invalido";
-  private static final String ERROR_ESTADO = "El pedido no tiene un estado valido";
-  private static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado";
-  private static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
-  private static final String VALIDACION_EXITO = "El pedido tiene los datos correctos";
-  private static final String PEDIDO_EXISTE = "Si existe el pedido solicitado";
   private static GestorPedidos gestor;
   private static int numerosDePedidos = 1;
   private ArrayList<Pedido> pedidos;

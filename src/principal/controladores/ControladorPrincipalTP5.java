@@ -4,6 +4,9 @@
  */
 package principal.controladores;
 
+import interfaces.IGestorPedidos;
+import interfaces.IGestorProductos;
+import interfaces.IGestorUsuarios;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -28,9 +31,9 @@ import usuarios.modelos.Usuario;
  */
 public class ControladorPrincipalTP5 {
   public static void main(String[] args) {
-    GestorProductos gp = GestorProductos.instanciar();
-    GestorUsuarios gu = GestorUsuarios.instanciar();
-    GestorPedidos gPed = GestorPedidos.instanciar();
+    IGestorProductos gp = GestorProductos.instanciar();
+    IGestorUsuarios gu = GestorUsuarios.instanciar();
+    IGestorPedidos gPed = GestorPedidos.instanciar();
 
     System.out.println("#####PRODUCTOS#####");
     /*CREAR PRODUCTO*/
@@ -439,5 +442,155 @@ public class ControladorPrincipalTP5 {
       p.mostrar();
     }
     System.out.println();
+
+    // =========================================================================
+    // Pruebas de borrarProducto, borrarUsuario y cancelarPedido
+    // =========================================================================
+    probarBorrarProducto(gp, gPed);
+    probarBorrarUsuario(gu, gPed);
+    probarCancelarPedido(gPed, gu, gp);
+  }
+
+  /**
+   * Verifica el funcionamiento de borrarProducto(Producto producto):
+   * -Borrar producto nulo (invalido -> PRODUCTO_INEXISTENTE)
+   * -Borrar producto que no existe en el gestor (invalido -> PRODUCTO_INEXISTENTE)
+   * -Borrar producto que tiene pedidos asociados (invalido -> ERROR_EN_PEDIDO)
+   * -Borrar producto que NO tiene pedidos asociados (valido -> BORRAR_EXITO)
+   */
+  public static void probarBorrarProducto(IGestorProductos gp, IGestorPedidos gPed) {
+    System.out.println("\n##################################################");
+    System.out.println("PRUEBA: borrarProducto(Producto producto)");
+    System.out.println("##################################################");
+
+    // Producto nulo
+    System.out.println("Intentar borrar producto nulo:");
+    System.out.println("Resultado: " + gp.borrarProducto(null));
+
+    // Producto no registrado en el gestor
+    System.out.println("\nIntentar borrar producto no registrado:");
+    Producto prodInexistente =
+        new Producto(999, "Producto Fantasma", Categoria.POSTRE, Estado.DISPONIBLE, 100.0f);
+    System.out.println("Resultado: " + gp.borrarProducto(prodInexistente));
+
+    // Producto con pedidos asociados (el producto 2 está en el pedido 2)
+    System.out.println("\nIntentar borrar producto con pedidos asociados:");
+    Producto prodConPedido = gp.obtenerProducto(2);
+    System.out.println("Producto a borrar: Código " + prodConPedido.verCodigo() + " - "
+        + prodConPedido.verDescripcion());
+    System.out.println(
+        "¿Hay pedidos con este producto?: " + gPed.hayPedidosConEsteProducto(prodConPedido));
+    System.out.println("Resultado: " + gp.borrarProducto(prodConPedido));
+    System.out.println("¿Sigue existiendo en el gestor?: " + gp.existeEsteProducto(prodConPedido));
+
+    // Producto sin pedidos (creamos uno nuevo que no esté en ningún pedido)
+    System.out.println("\nBorrar producto sin pedidos asociados:");
+    gp.crearProducto(50, "Producto Sin Pedidos", 150.0f, Categoria.ENTRADA, Estado.DISPONIBLE);
+    Producto prodSinPedido = gp.obtenerProducto(50);
+    System.out.println("Producto a borrar: Código " + prodSinPedido.verCodigo() + " - "
+        + prodSinPedido.verDescripcion());
+    System.out.println(
+        "¿Hay pedidos con este producto?: " + gPed.hayPedidosConEsteProducto(prodSinPedido));
+    System.out.println("Resultado: " + gp.borrarProducto(prodSinPedido));
+    System.out.println("¿Sigue existiendo en el gestor?: " + gp.existeEsteProducto(prodSinPedido));
+  }
+
+  /**
+   * Verifica el funcionamiento de borrarUsuario(Usuario usuario):
+   * -Borrar usuario nulo (invalido -> USUARIO_INEXISTENTE)
+   * -Borrar usuario que no existe en el gestor (invalido -> USUARIO_INEXISTENTE)
+   * -Borrar usuario que tiene pedidos asociados (invalido -> ERROR_HAY_PEDIDOS)
+   * -Borrar usuario que NO tiene pedidos asociados (valido -> BORRAR_EXITO)
+   */
+  public static void probarBorrarUsuario(IGestorUsuarios gu, IGestorPedidos gPed) {
+    System.out.println("\n##################################################");
+    System.out.println("PRUEBA: borrarUsuario(Usuario usuario)");
+    System.out.println("##################################################");
+
+    // Usuario nulo
+    System.out.println("Intentar borrar usuario nulo:");
+    System.out.println("Resultado: " + gu.borrarUsuario(null));
+
+    // Usuario no registrado en el gestor
+    System.out.println("\nIntentar borrar usuario no registrado:");
+    Usuario userInexistente = new Cliente("fantasma@bar.com", "123", "Fantasma", "Casper");
+    System.out.println("Resultado: " + gu.borrarUsuario(userInexistente));
+
+    // Usuario con pedidos asociados (cliente2 tiene pedidos)
+    System.out.println("\nIntentar borrar usuario que tiene pedidos asociados:");
+    Usuario userConPedidos = gu.obtenerUsuario("cliente2@bar.com");
+    System.out.println("Usuario a borrar: " + userConPedidos.verCorreo());
+    System.out.println("¿Tiene pedidos?: " + !userConPedidos.verPedidos().isEmpty());
+    System.out.println("Resultado: " + gu.borrarUsuario(userConPedidos));
+    System.out.println("¿Sigue existiendo en el gestor?: " + gu.existeEsteUsuario(userConPedidos));
+
+    // Usuario sin pedidos (creamos uno nuevo que no tenga pedidos)
+    System.out.println("\nBorrar usuario sin pedidos asociados:");
+    gu.crearUsuario("borrarme@bar.com", "Perez", "Juan", Perfil.CLIENTE, "clave123", "clave123");
+    Usuario userSinPedidos = gu.obtenerUsuario("borrarme@bar.com");
+    System.out.println("Usuario a borrar: " + userSinPedidos.verCorreo());
+    System.out.println("¿Tiene pedidos?: " + !userSinPedidos.verPedidos().isEmpty());
+    System.out.println("Resultado: " + gu.borrarUsuario(userSinPedidos));
+    System.out.println("¿Sigue existiendo en el gestor?: " + gu.existeEsteUsuario(userSinPedidos));
+  }
+
+  /**
+   * Verifica el funcionamiento de cancelarPedido(Pedido pedido):
+   * -Cancelar pedido nulo (invalido -> PEDIDO_INEXISTENTE)
+   * -Cancelar pedido inexistente (invalido -> PEDIDO_INEXISTENTE)
+   * -Cancelar pedido en estado PROCESANDO/ENTREGADO (invalido -> ERROR_CANCELAR)
+   * -Cancelar pedido en estado CREADO (valido -> EXITO, y se borra de cliente y gestor)
+   */
+  public static void probarCancelarPedido(
+      IGestorPedidos gPed, IGestorUsuarios gu, IGestorProductos gp) {
+    System.out.println("\n##################################################");
+    System.out.println("PRUEBA: cancelarPedido(Pedido pedido)");
+    System.out.println("##################################################");
+
+    // Pedido nulo
+    System.out.println("Intentar cancelar pedido nulo:");
+    System.out.println("Resultado: " + gPed.cancelarPedido(null));
+
+    // Pedido inexistente
+    System.out.println("\nIntentar cancelar pedido no registrado:");
+    Pedido pedInexistente = new Pedido(999, (Cliente) gu.obtenerUsuario("cliente1@bar.com"));
+    System.out.println("Resultado: " + gPed.cancelarPedido(pedInexistente));
+
+    // Pedido en estado PROCESANDO (pedido 2 está en PROCESANDO)
+    System.out.println("\nIntentar cancelar pedido en estado distinto a CREADO:");
+    Pedido pedProcesando = gPed.obtenerPedido(2);
+    if (pedProcesando != null) {
+      System.out.println("Pedido #" + pedProcesando.verNumero()
+          + " - Estado actual: " + pedProcesando.verEstado());
+      System.out.println("Resultado: " + gPed.cancelarPedido(pedProcesando));
+      System.out.println(
+          "¿Sigue existiendo en el gestor?: " + gPed.existeEstePedido(pedProcesando));
+    }
+
+    // Cancelar pedido en estado CREADO
+    System.out.println("\nCancelar pedido en estado CREADO:");
+    Usuario clientePrueba = gu.obtenerUsuario("cliente3@bar.com");
+    Producto prodPrueba = gp.obtenerProducto(3);
+    ArrayList<ProductoDelPedido> listaPdp = new ArrayList<>();
+    listaPdp.add(new ProductoDelPedido(prodPrueba, 2));
+
+    LocalDate hoy = LocalDate.now();
+    LocalTime ahora = LocalTime.now();
+    gPed.crearPedido(hoy, ahora, listaPdp, (Cliente) clientePrueba);
+
+    // Obtener el último pedido creado
+    ArrayList<Pedido> listaPedidos = gPed.verPedidos();
+    Pedido pedACancelar = listaPedidos.get(listaPedidos.size() - 1);
+    System.out.println(
+        "Pedido creado: #" + pedACancelar.verNumero() + " para " + clientePrueba.verCorreo());
+    System.out.println("Estado del pedido: " + pedACancelar.verEstado());
+    System.out.println("¿El cliente tiene el pedido en su lista?: "
+        + ((Cliente) clientePrueba).verPedidos().contains(pedACancelar));
+    System.out.println("¿El gestor tiene el pedido?: " + gPed.existeEstePedido(pedACancelar));
+
+    System.out.println("Resultado de cancelarPedido(): " + gPed.cancelarPedido(pedACancelar));
+    System.out.println("¿Sigue en GestorPedidos?: " + gPed.existeEstePedido(pedACancelar));
+    System.out.println("¿Sigue en la lista del Cliente?: "
+        + ((Cliente) clientePrueba).verPedidos().contains(pedACancelar));
   }
 }
