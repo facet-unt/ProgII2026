@@ -15,25 +15,25 @@ import productos.modelos.Producto;
  */
 public interface IGestorProductos {
 
-    public static final String EXITO = "Producto creado/modificado con exito";
-    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto";
-    public static final String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
-    public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
-    public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
+    String EXITO = "Producto creado/modificado con exito";
+    String ERROR_CODIGO = "El codigo del producto es incorrecto";
+    String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
+    String ERROR_PRECIO = "El precio del producto es incorrecto";
+    String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
+    String ERROR_ESTADO = "El estado del producto es incorrecto";
+    String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
+    String VALIDACION_EXITO = "Los datos del producto son correctos";
+    String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     
     
-    public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria,Estado estado);
-    public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, 
+    String crearProducto(int codigo, String descripcion, float precio, Categoria categoria,Estado estado);
+    String modificarProducto(Producto productoAModificar, int codigo, String descripcion, 
     float precio, Categoria categoria, Estado estado); 
-    public ArrayList<Producto> menu(); 
-    public ArrayList<Producto> buscarProductos(String descripcion); 
-    public String borrarProducto(Producto producto); 
-    public boolean existeEsteProducto(Producto producto); 
-    public ArrayList<Producto> verProductosPorCategoria(Categoria categoria); 
-    public Producto obtenerProducto(Integer codigo); 
+    ArrayList<Producto> menu(); 
+    ArrayList<Producto> buscarProductos(String descripcion); 
+    String borrarProducto(Producto producto); 
+    boolean existeEsteProducto(Producto producto); 
+    ArrayList<Producto> verProductosPorCategoria(Categoria categoria); 
+    Producto obtenerProducto(Integer codigo); 
     
 }
