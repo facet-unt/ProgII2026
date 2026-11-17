@@ -21,3 +21,4 @@ nb-configuration.xml
 run.sh
 .clang-format
 bin/
+*.pdf
