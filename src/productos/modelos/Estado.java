@@ -6,13 +6,28 @@ package productos.modelos;
 
 /**
  *
- * @author estudiante
+ * @author foxeen
  */
 public enum Estado {
-    DISPONIBLE, NO_DISPONIBLE;
+    DISPONIBLE("disponible"),NO_DISPONIBLE("no disponible");
     
-    @Override
+    private final String descripcion;
+    
+    
+    //====================================
+    //      Metodos de Estado
+    //====================================
+    
+@Override
     public String toString(){
-        return name();
+        return descripcion;
+    }
+    //====================================
+    //      Constructor de Estado
+    //====================================
+    
+    Estado(String descripcion){
+        this.descripcion = descripcion;
     }
 }
+

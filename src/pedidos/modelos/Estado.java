@@ -1,27 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
+
 package pedidos.modelos;
 
-/**
- *
- * @author leand
- */
 public enum Estado {
-    CREADO("Creado"), PROCESANDO("Procesando"), ENTREGADO("Entregado");
+    CREADO("creado"), PROCESANDO("procesando"), ENTREGADO("entregado");
     
-    private String name;
+    private final String descripcion;
     
+    //====================================
+    //      Métodos de Estado
+    //====================================
     @Override
     public String toString(){
-        return name;
+        return descripcion;
     }
+    //====================================
+    //      Constructores de Estado
+    //====================================
     
-    Estado(String name)
-    {
-        this.name = name;
+    Estado(String descripcion){
+        this.descripcion = descripcion;
     }
 }
-
-

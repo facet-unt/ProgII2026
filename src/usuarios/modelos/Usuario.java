@@ -6,24 +6,17 @@ package usuarios.modelos;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import pedidos.modelos.Pedido;
 
 /**
  *
- * @author leand
+ * @author tinytuber2
  */
 public abstract class Usuario {
+    
     private String correo;
     private String clave;
     private String apellido;
     private String nombre;
-
-    public Usuario(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
-    }
 
     public String verCorreo() {
         return correo;
@@ -57,15 +50,12 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
     
-    public void mostrar(){
-        System.out.println(" "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
-    }
+    public abstract ArrayList verPedidos();
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.correo);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.correo);
         return hash;
     }
 
@@ -77,13 +67,26 @@ public abstract class Usuario {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof Usuario))
-        {
+        if (!(obj instanceof Usuario)) {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        return Objects.equals(this.correo, other.verCorreo());
+        return Objects.equals(this.correo, other.correo);
     }
     
-    public abstract ArrayList<Pedido> verPedidos();
+    
+    
+    public void mostrar(){
+        System.out.println("Usuario: <"+ this.verApellido() +" " +this.verNombre()+">" );
+        System.out.println("Correo: " +this.verCorreo());
+        System.out.println("Clave: "+this.verClave()+"\n");
+    }
+    
+    public Usuario(String correo, String clave, String apellido, String nombre) {
+        this.correo = correo;
+        this.clave = clave;
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
+    
 }

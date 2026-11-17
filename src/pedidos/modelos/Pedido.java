@@ -1,93 +1,80 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package pedidos.modelos;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import usuarios.modelos.Cliente;
+import productos.modelos.Producto;
 
-/**
- *
- * @author leand
- */
-public class Pedido 
-{
-    int Numero;
-    LocalDateTime fechaYHora;
-    private Cliente unCliente;
-    private Estado unEstado;
-    private ArrayList<ProductoDelPedido> CantidadProducto;
+public class Pedido {
+    private int numero;
+    private final LocalDateTime fechaYHora;
+    private Estado estado;
+    private Cliente cliente;
+    private ArrayList<ProductoDelPedido> ProductoDelPedido = new ArrayList<>();
     
-    public Pedido(int Numero, LocalDateTime fechaYHora,ArrayList<ProductoDelPedido> CantidadProducto, Cliente unCliente) 
-    {
-        this.Numero = Numero;
-        this.fechaYHora = fechaYHora;
-        this.CantidadProducto = CantidadProducto;
-        this.unCliente = unCliente;
-        this.unEstado = Estado.CREADO;
-    }
-
-    public int verNumero() 
-    {
-        return Numero;
-    }
-
-    public void asignarNumero(int Numero) 
-    {
-        this.Numero = Numero;
-    }
-
-    public LocalDate verFecha() {
-        return this.fechaYHora.toLocalDate();
-    }
-    public LocalTime verHora() 
-    {
-        return this.fechaYHora.toLocalTime();
-    }
-    
-    private String FechaACadena (LocalDate fecha)
-    {
-        String patron = "dd/MM/yyyy";
-        String fechaEnCadena = fecha.format(DateTimeFormatter.ofPattern(patron));
-        return fechaEnCadena;
-        
-    }
-    
-    private String HoraACadena (LocalTime hora)
-    {
-        String patron = "HH:mm";
-        String horaEnCadena = hora.format(DateTimeFormatter.ofPattern(patron));
-        return horaEnCadena;
-        
-    }
-    
-    public void mostrar() 
-    {        
-        System.out.println("Nro:"+ Numero+"\n"+"Fecha: "+ FechaACadena(verFecha())+ "\t"+"Hora: "+ HoraACadena(verHora()));
-        System.out.println("Cliente: "+ unCliente.verApellido() +"," +unCliente.verNombre());
-        System.out.println("Estado: "+ unEstado);
-        System.out.println("\tProducto                      Cantidad");
-        System.out.println("\t====================================");
-        if (CantidadProducto.isEmpty()) {
-            System.out.println("");
-            return;
+    //====================================
+    //      Métodos de Pedido
+    //====================================
+    public void mostrar(){
+        System.out.printf("\nNro: %d                      Estado: %s",numero,estado);
+        System.out.printf("\nFecha: %tF       \tHora: %tR \n", fechaYHora, fechaYHora );
+        System.out.println("Cliente: "+ this.cliente.verApellido() +", " + this.cliente.verNombre() );
+        System.out.println("clave: "+ this.cliente.verClave() +" | correo: " + this.cliente.verCorreo()+ "\n");
+        System.out.println("         Producto                                                                   Cantidad");
+        System.out.println("==============================================================================================");
+        for(ProductoDelPedido pido: ProductoDelPedido){
+            pido.mostrar();
         }
-        
-        for (ProductoDelPedido p : CantidadProducto){
-            p.mostrar();
-        }
-        System.out.println("");
+        System.out.printf("\n\n");
+    }
+
+    public int verNumero() {
+        return numero;
+    }
+
+    public void asignarNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String verHora() {
+        return this.fechaYHora.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
     
+    public String verFecha(){
+        return this.fechaYHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+
+    public Estado verEstado() {
+        return estado;
+    }
+
+    public void asignarEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Cliente verCliente() {
+        return cliente;
+    }
+
+    public void asignarCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ArrayList<ProductoDelPedido> verProductoDelPedido() {
+        return ProductoDelPedido;
+    }
+
+    public void asignarProductoDelPedido(int cantidad, Producto p) {
+        ProductoDelPedido pdp = new ProductoDelPedido(p, cantidad);
+        this.ProductoDelPedido.add(pdp);
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.Numero;
+        hash = 59 * hash + this.numero;
         return hash;
     }
 
@@ -103,7 +90,22 @@ public class Pedido
             return false;
         }
         final Pedido other = (Pedido) obj;
-        return this.Numero == other.Numero;
+        return this.numero == other.numero;
     }
+    
+    //====================================
+    //      Constructores de Producto
+    //====================================
+
+    public Pedido(int numero,LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> pdp, Cliente cliente) {
+        this.numero = numero;
+        this.cliente = cliente;
+        this.fechaYHora = fechaYHora;
+        this.estado = Estado.CREADO;
+        this.ProductoDelPedido = pdp;
+        
+    }
+    
+    
     
 }

@@ -11,21 +11,23 @@ import pedidos.modelos.Pedido;
  *
  * @author estudiante
  */
-public class Cliente extends Usuario
-{
-    public ArrayList<Pedido> pedidos;
-
-    public Cliente(String correo, String clave, String apellido, String nombre) 
-    {
-        super(correo, clave, apellido, nombre);
-        this.pedidos =  new ArrayList<>();
+public class Cliente extends Usuario {
+    private ArrayList<Pedido> pedidos;
+    
+    //====================================
+    //      Metodos de Cliente
+    //====================================
+    public void agregarPedido(Pedido unPedido) {
+        if(!pedidos.contains(unPedido))
+            pedidos.add(unPedido);
+        
     }
     
-    @Override
-    public void mostrar()
-    {
-        System.out.printf("Cliente:");
-        super.mostrar();
+    public void cancelarPedido(Pedido unPedido) {
+        if(pedidos.contains(unPedido)){
+            pedidos.remove(unPedido);
+            System.out.println("Pedido cancelado! ");
+        }
     }
     
     @Override
@@ -33,21 +35,18 @@ public class Cliente extends Usuario
         return pedidos;
     }
     
-    public void agregarPedido(Pedido p)
-    {
-        if(pedidos.contains(p))
-        {
-            pedidos.set(pedidos.indexOf(p), p);
-        }
-        else
-        {
-            pedidos.add(p);
-        }
-    }
     
-    public void cancelarPedido(Pedido p)
-    {
-        if(pedidos.contains(p))
-            pedidos.remove(p);
+    //====================================
+    //      Constructor de Cliente
+    //====================================
+
+    public Cliente(String correo, String clave, String apellido, String nombre) {
+        super(correo, clave, apellido, nombre);
+        this.pedidos = new ArrayList<>();
     }
+
+    
+    
+    
+
 }

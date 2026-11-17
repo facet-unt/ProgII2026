@@ -6,20 +6,26 @@ package productos.modelos;
 
 /**
  *
- * @author estudiante
+ * @author foxeen
  */
 public enum Categoria {
-    ENTRADA("Entrada"), PLATO_PRINCIPAL("Plato principal"), POSTRE("Postre");
-    private String name;
+    ENTRADA("entrada"),PLATO_PRINCIPAL("plato principal"),POSTRE("postre");
     
-    @Override
+    private final String descripcion;
+    
+    //====================================
+    //      Métodos de Categoria
+    //====================================
+    
+@Override
     public String toString(){
-        return name();
+        return descripcion;
     }
+    //====================================
+    //      Constructor de Categoria
+    //====================================
     
-    Categoria(String name)
-    {
-        this.name = name;
+    Categoria(String descripcion){
+        this.descripcion = descripcion;
     }
-    
 }
