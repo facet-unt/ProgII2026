@@ -107,7 +107,7 @@ public class GestorUsuarios {
     
     //Comprobar si un usuario existe o no
     
-    public boolean exiteEsteUsuario(Usuario usuario){
+    public boolean existeEsteUsuario(Usuario usuario){
         if (usuario == null){
             return false;
         }

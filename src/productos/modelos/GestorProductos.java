@@ -84,7 +84,6 @@ public class GestorProductos {
                 return PRODUCTOS_DUPLICADOS;
             }
         }
-        productoAModificar.asignarCodigo(codigo);
         productoAModificar.asignarDescripcion(descripcion.trim());
         productoAModificar.asignarPrecio(precio);
         productoAModificar.setCategoria(categoria);

@@ -166,4 +166,17 @@ public class GestorPedidos {
         }
         return null;
     }
+    public String cancelarPedido(Pedido pedidoACancelar){
+        if(pedidoACancelar == null || !this.pedidos.contains(pedidoACancelar)){
+            return PEDIDO_INEXISTENTE;
+        }
+        if(pedidoACancelar.verEstado() == Estado.CREADO){
+            if(pedidoACancelar.verCliente() != null){
+                pedidoACancelar.verCliente().cancelarPedido(pedidoACancelar);
+            }
+            this.pedidos.remove(pedidoACancelar);
+            return EXITO;
+        }
+        return ERROR_CANCELAR;
+    }
 }
