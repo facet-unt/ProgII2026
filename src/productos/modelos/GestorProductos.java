@@ -153,6 +153,15 @@ public class GestorProductos implements IGestorProductos{
     }
 
     /**
+     * Borra un producto siempre y cuando no haya pedidos con el mismo. Devuelve una cadena con el resultado de la operación.
+     * @param producto
+     * @return 
+     */
+    public String borrarProducto(Producto producto){
+        return "Hola";
+    }
+    
+    /**
      * Devuelve true si existe el producto especificado, false en caso contrario
      *
      * @param producto

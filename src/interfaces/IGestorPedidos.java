@@ -4,14 +4,17 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
 import pedidos.modelos.Pedido;
+import productos.modelos.Producto;
+import usuarios.modelos.Cliente;
 
 /**
  *
  * @author Usuario
  */
 public interface IGestorPedidos {
-    
+
     String EXITO = "Pedido creado/modificado/cancelado con exito";
     String ERROR_FECHA = "La fecha del pedido es incorrecta";
     String ERROR_HORA = "La hora del pedido es incorrecta";
@@ -23,11 +26,10 @@ public interface IGestorPedidos {
     String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
     String VALIDACION_EXITO = "El pedido tiene datos correctos";
 
-    
-    
-    
-    
-    public String cancelarPedido(Pedido pedido); 
-    public boolean existeEstePedido(Pedido pedido); 
-    public Pedido obtenerPedido(Integer numero); 
+    ArrayList<Pedido> verPedidos();
+    boolean hayPedidosConEsteCliente(Cliente cliente);
+    boolean hayPedidosConEsteProducto(Producto producto);
+    String cancelarPedido(Pedido pedido);
+    boolean existeEstePedido(Pedido pedido);
+    Pedido obtenerPedido(Integer numero);
 }

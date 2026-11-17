@@ -4,13 +4,14 @@
  */
 package usuarios.modelos;
 
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
 
 /**
  *
  * @author Usuario
  */
-public class GestorUsuarios implements IGestorUsuarios{
+public class GestorUsuarios implements IGestorUsuarios {
     /**
      * Constantes con sus respectivos mensajes de texto
      */
@@ -101,6 +102,15 @@ public class GestorUsuarios implements IGestorUsuarios{
             }
         }
         return encontrados;
+    }
+    
+    /**
+     * Borra un usuario siempre y cuando no haya pedidos con el mismo.Devuelve una cadena con el resultado de la operacion. 
+     * @param usuario
+     * @return 
+     */
+    public String borrarUsuario(Usuario usuario){
+        return "Hola";
     }
     
     /**

@@ -4,6 +4,12 @@
  */
 package pedidos.modelos;
 
+import interfaces.IGestorPedidos;
+import static interfaces.IGestorPedidos.ERROR_CLIENTE;
+import static interfaces.IGestorPedidos.ERROR_FECHA;
+import static interfaces.IGestorPedidos.ERROR_HORA;
+import static interfaces.IGestorPedidos.ERROR_PRODUCTOS_DEL_PEDIDO;
+import static interfaces.IGestorPedidos.PEDIDO_INEXISTENTE;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -14,7 +20,7 @@ import usuarios.modelos.Cliente;
  *
  * @author Usuario
  */
-public class GestorPedidos {
+public class GestorPedidos implements IGestorPedidos{
 
     ArrayList<Pedido> pedidos = new ArrayList<>();
 
@@ -24,27 +30,12 @@ public class GestorPedidos {
     private GestorPedidos() {
         pedidos = new ArrayList<>();
     }
-
     
     public static GestorPedidos instanciar() {
         if (gestor == null) {
             gestor = new GestorPedidos();
         }
         return gestor;
-    }
-
-    /**
-     * @param cliente para buscar pedidos registrados
-     * @return true si se encuentra pedidos con el Clinte,false en caso
-     * contrario
-     */
-    public boolean hayPedidosConEsteCliente(Cliente cliente) {
-
-        if (cliente == null) {
-            return false;
-        }
-
-        return !cliente.verPedidos().isEmpty();
     }
 
     /**
@@ -116,16 +107,30 @@ public class GestorPedidos {
      *
      * @return
      */
+    @Override
     public ArrayList<Pedido> verPedidos() {
         return pedidos;
     }
 
     /**
+     * @param cliente para buscar pedidos registrados
+     * @return true si se encuentra pedidos con el Clinte,false en caso
+     * contrario
+     */
+    public boolean hayPedidosConEsteCliente(Cliente cliente){
+        if (cliente == null) {
+            return false;
+        }
+        return !cliente.verPedidos().isEmpty();
+    }
+    
+    /**
      * @param producto que se busca en una lista de pedidos
      * @return true si se encuentra el producto en al menos un pedido,false en
      * caso contrario
      */
-    public boolean hayPedidosConEsteProducto(Producto producto) {
+    @Override
+    public boolean hayPedidosConEsteProducto(Producto producto){
         if (producto == null) {
             return false;
         }
@@ -140,39 +145,12 @@ public class GestorPedidos {
         return false;
     }
 
-    /**
-     * @param pedido a verificar si existe
-     * @return true si se encuentra el pedido en la lista,false en caso
-     * contrario
-     */
-    public boolean existeEstePedido(Pedido pedido) {
-
-        return pedidos.contains(pedido);
-    }
-
-    /**
-     *
-     * @param numero del pedido que se desea buscar
-     * @return el pedido si se lo encontro,null en caso contrario
-     */
-    public Pedido obtenerPedido(Integer numero) {
-        if (numero == null) {
-            return null;
-        }
-
-        for (Pedido p : pedidos) {
-            if (p.verNumero() == numero) {
-                return p;
-            }
-        }
-        return null;
-    }
-    
-    /**
+     /**
      * 
      * @param pedido que,lueqo de validar que no sea nulo o no este en la lista,se quiere cancelar
      * @return un mensaje de exito de que se pudo cancelar,en caso contrario un mensaje de pedido inexistente
      */
+    @Override
     public String cancelarPedido(Pedido pedido){
         
         if (pedido == null || !(existeEstePedido(pedido))) {
@@ -185,9 +163,37 @@ public class GestorPedidos {
 
         this.pedidos.remove(pedido);
 
-        return EXITO_CANCELAR;
+        return EXITO;
     }
-   
+    
+    /**
+     * @param pedido a verificar si existe
+     * @return true si se encuentra el pedido en la lista,false en caso
+     * contrario
+     */
+    @Override
+    public boolean existeEstePedido(Pedido pedido) {
+        return pedidos.contains(pedido);
+    }
+
+    /**
+     *
+     * @param numero del pedido que se desea buscar
+     * @return el pedido si se lo encontro,null en caso contrario
+     */
+    @Override
+    public Pedido obtenerPedido(Integer numero) {
+        if (numero == null) {
+            return null;
+        }
+
+        for (Pedido p : pedidos) {
+            if (p.verNumero() == numero) {
+                return p;
+            }
+        }
+        return null;
+    }
 
     /**
      * Valida que fecha sea distinto de null. Si no cumple con la validacion

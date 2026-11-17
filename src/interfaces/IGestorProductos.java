@@ -24,8 +24,7 @@ public interface IGestorProductos {
     String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
     String VALIDACION_EXITO = "Los datos del producto son correctos";
     String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
-    
-    
+   
     String crearProducto(int codigo, String descripcion, float precio, Categoria categoria,Estado estado);
     String modificarProducto(Producto productoAModificar, int codigo, String descripcion, 
     float precio, Categoria categoria, Estado estado); 
