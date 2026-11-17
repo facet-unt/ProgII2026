@@ -4,7 +4,7 @@
  */
 package principal.controladores;
 
-import java.util.ArrayList;
+import java.util.List;
 import usuarios.modelos.Cliente;
 import usuarios.modelos.Empleado;
 import usuarios.modelos.Encargado;
@@ -22,7 +22,7 @@ public class ControladorPrincipalTP4Seccion2 {
     ***************************************************
     INICIO Segunda parte - herencia
 //    */
-        ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<Usuario> usuarios = new List<>();
         
         Usuario unCliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Usuario unCliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       

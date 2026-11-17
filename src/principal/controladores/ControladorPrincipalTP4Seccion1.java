@@ -5,7 +5,7 @@
 package principal.controladores;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Categoria;
@@ -24,9 +24,9 @@ public class ControladorPrincipalTP4Seccion1 {
         INICIO Primera parte - comparación de objetos
         ***************************************************
         */
-        ArrayList<Producto> listaProductos = new ArrayList<>();
-        ArrayList<Pedido> listaPedidos = new ArrayList<>();
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
+        ArrayList<Producto> listaProductos = new List<>();
+        ArrayList<Pedido> listaPedidos = new List<>();
+        ArrayList<Cliente> listaClientes = new List<>();
         
         
         System.out.println("#################### ");
@@ -72,7 +72,7 @@ public class ControladorPrincipalTP4Seccion1 {
                 
         System.out.println("#################### ");
         System.out.println("PEDIDOS");
-        ArrayList<ProductoDelPedido> listapdp1 = new ArrayList<>();
+        ArrayList<ProductoDelPedido> listapdp1 = new List<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(1), 8);
@@ -90,7 +90,7 @@ public class ControladorPrincipalTP4Seccion1 {
         }
         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, cliente1);        
         
-        ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
+        ArrayList<ProductoDelPedido> productosDelPedido2 = new List<>();
         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(2), 10);
         ProductoDelPedido pdp5 = new ProductoDelPedido(listaProductos.get(0), 20);
         ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(2), 30);
@@ -103,7 +103,7 @@ public class ControladorPrincipalTP4Seccion1 {
             productosDelPedido2.add(pdp6);
         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), productosDelPedido2, cliente2);        
         
-        ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
+        ArrayList<ProductoDelPedido> productosDelPedido3 = new List<>();
         ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(1), 100);
         ProductoDelPedido pdp8 = new ProductoDelPedido(listaProductos.get(2), 200);
         if (!productosDelPedido3.contains(pdp7))

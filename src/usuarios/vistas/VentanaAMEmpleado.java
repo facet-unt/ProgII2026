@@ -6,12 +6,12 @@
 package usuarios.vistas;
 
 import java.awt.Dialog;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import usuarios.modelos.Empleado;
 
 public class VentanaAMEmpleado extends JDialog {
-    private ArrayList<Empleado> empleados = new ArrayList<>();
+    private ArrayList<Empleado> empleados = new List<>();
     
     /**
      * Constructor

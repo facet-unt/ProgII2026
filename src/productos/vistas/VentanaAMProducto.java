@@ -6,7 +6,7 @@
 package productos.vistas;
 
 import java.awt.Dialog;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import productos.modelos.Categoria;
 import productos.modelos.Estado;
@@ -15,7 +15,7 @@ import productos.modelos.ModeloComboEstados;
 import productos.modelos.Producto;
 
 public class VentanaAMProducto extends JDialog {
-    private ArrayList<Producto> productos = new ArrayList<>();
+    private ArrayList<Producto> productos = new List<>();
     
     /**
      * Constructor

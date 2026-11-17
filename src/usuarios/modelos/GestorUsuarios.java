@@ -8,13 +8,14 @@ package usuarios.modelos;
  * @author luciano
  */
 import interfaces.IGestorPedidos;
-import java.util.ArrayList;
+import java.util.List;
 import interfaces.IGestorUsuarios;
+import java.util.ArrayList;
 import pedidos.modelos.GestorPedidos;
 public class GestorUsuarios implements IGestorUsuarios{
     
     private static GestorUsuarios gestor;
-    private ArrayList<Usuario> usuarios;
+    private List<Usuario> usuarios;
 
     private GestorUsuarios() {
         this.usuarios = new ArrayList<>();
@@ -74,12 +75,12 @@ public class GestorUsuarios implements IGestorUsuarios{
         return EXITO;
     }
 @Override
-    public ArrayList<Usuario> verUsuarios() {
+    public List<Usuario> verUsuarios() {
         return this.usuarios;
     }
 @Override
-    public ArrayList<Usuario> buscarUsuarios(String apellido) {
-        ArrayList<Usuario> encontrados = new ArrayList<>();
+    public List<Usuario> buscarUsuarios(String apellido) {
+        List<Usuario> encontrados = new ArrayList<>();
         if (apellido != null) {
             for (Usuario u : this.usuarios) {
                 if (u.verApellido().toLowerCase().contains(apellido.toLowerCase())) {

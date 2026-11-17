@@ -6,12 +6,12 @@
 package usuarios.vistas;
 
 import java.awt.Dialog;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import usuarios.modelos.Encargado;
 
 public class VentanaAMEncargado extends JDialog {
-    private ArrayList<Encargado> encargado = new ArrayList<>();
+    private ArrayList<Encargado> encargado = new List<>();
     
     /**
      * Constructor

@@ -6,12 +6,12 @@
 package usuarios.vistas;
 
 import java.awt.Dialog;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import usuarios.modelos.Cliente;
 
 public class VentanaAMCliente extends JDialog {
-    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private ArrayList<Cliente> clientes = new List<>();
     
     /**
      * Constructor

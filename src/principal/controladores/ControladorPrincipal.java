@@ -5,7 +5,7 @@
 package principal.controladores;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Estado;
 import pedidos.modelos.Pedido;
 import productos.modelos.Producto;
@@ -19,10 +19,10 @@ public class ControladorPrincipal {
     public static void main(String[] args) {
         
         
-        ArrayList<Cliente> clientes = new ArrayList <>();
-        ArrayList<Encargado> encargados = new ArrayList <>();
-        ArrayList<Empleado> empleados = new ArrayList <>();
-        ArrayList<Producto> productos = new ArrayList <>();
+        ArrayList<Cliente> clientes = new List <>();
+        ArrayList<Encargado> encargados = new List <>();
+        ArrayList<Empleado> empleados = new List <>();
+        ArrayList<Producto> productos = new List <>();
         
         
         Cliente cliente1 = new Cliente("martinvarga@hotmail.com","1234","Varga","Martin");
@@ -120,7 +120,7 @@ public class ControladorPrincipal {
         Pedido pedido1 = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
         Pedido pedido2 = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
         Pedido pedido3 = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
-        ArrayList<Pedido> listaPedidos = new ArrayList<>();
+        ArrayList<Pedido> listaPedidos = new List<>();
         listaPedidos.add(pedido1);
         listaPedidos.add(pedido2);
         listaPedidos.add(pedido3);
