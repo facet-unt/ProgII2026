@@ -5,7 +5,6 @@
 package pedidos.modelos;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import productos.modelos.Producto;
@@ -26,17 +25,7 @@ public class GestorPedidos {
         pedidos = new ArrayList<>();
     }
 
-    public static final String EXITO = "Pedido creado/modificado/cancelado con exito";
-    public static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
-    public static final String ERROR_HORA = "La hora del pedido es incorrecta";
-    public static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tiene productos";
-    public static final String ERROR_CLIENTE = "El pedido no tiene un cliente";
-    public static final String ERROR_ESTADO = "El pedido no tiene un estado";
-    public static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado";
-    public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese numero";
-    public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
-    public static final String VALIDACION_EXITO = "El pedido tiene datos correctos";
-
+    
     public static GestorPedidos instanciar() {
         if (gestor == null) {
             gestor = new GestorPedidos();
@@ -181,6 +170,28 @@ public class GestorPedidos {
         }
         return null;
     }
+    
+    /**
+     * 
+     * @param pedido que,lueqo de validar que no sea nulo o no este en la lista,se quiere cancelar
+     * @return un mensaje de exito de que se pudo cancelar,en caso contrario un mensaje de pedido inexistente
+     */
+    @Override
+    public String cancelarPedido(Pedido pedido){
+        
+        if (pedido == null || !(existeEstePedido(pedido))) {
+         return PEDIDO_INEXISTENTE;
+        }
+
+        if (!clienteInvalido(pedido.verUnCliente())) { 
+            pedido.verUnCliente().cancelarPedido(pedido);
+        }
+
+        this.pedidos.remove(pedido);
+
+        return EXITO_CANCELAR;
+    }
+   
 
     /**
      * Valida que fecha sea distinto de null. Si no cumple con la validacion
