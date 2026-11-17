@@ -4,8 +4,10 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
@@ -151,4 +153,18 @@ public class GestorProductos implements IGestorProductos{
         }
         return null;
     }
+    @Override
+public String borrarProducto(Producto producto) {
+    if (producto == null || !this.productos.contains(producto)) {
+        return PRODUCTO_INEXISTENTE;
+    }
+
+    IGestorPedidos gp = GestorPedidos.instanciar();
+    if (gp.hayPedidosConEsteProducto(producto)) {
+        return ERROR_BORRAR;
+    }
+
+    this.productos.remove(producto);
+    return EXITO;
+}
 }
