@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 
 /**
@@ -17,8 +18,8 @@ public class Encargado extends Usuario {
         super(correo, clave, apellido, nombre);
     }
 
-    public ArrayList<Pedido> verPedidos() {
-        return new ArrayList<>();
+    public ArrayList<Pedido> verPedidos(){
+        return GestorPedidos.instanciar().verPedidos();
     }
 
     @Override
@@ -27,3 +28,6 @@ public class Encargado extends Usuario {
         super.mostrar();
     }
 }
+    
+   
+    
