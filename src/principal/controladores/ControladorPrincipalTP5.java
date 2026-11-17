@@ -74,7 +74,8 @@ public class ControladorPrincipalTP5 {
 
     System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
     /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
-    ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
+    ArrayList<Producto> productosBuscados =
+        (ArrayList) gp.verProductosPorCategoria(Categoria.POSTRE);
     System.out.println("Productos filtrados por categoría");
     System.out.println("===================");
     for (Producto p : productosBuscados) {
@@ -85,7 +86,7 @@ public class ControladorPrincipalTP5 {
 
     System.out.println("######## PRODUCTOS POR DESCRIPCION ########");
     /*BUSCAR PRODUCTO POR DESCRIPCION*/
-    productosBuscados = gp.buscarProductos("Prod");
+    productosBuscados = (ArrayList) gp.buscarProductos("Prod");
     System.out.println("Productos buscados por descripcion");
     System.out.println("==================");
     for (Producto p : productosBuscados) {
@@ -98,7 +99,7 @@ public class ControladorPrincipalTP5 {
         unProducto1, 100, "Producto11", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));
     // se le cambia la descripción, precio, categoría y estado
     // el código, por más que se lo pasa, no se modifica
-    productosBuscados = gp.buscarProductos("Producto11");
+    productosBuscados = (ArrayList) gp.buscarProductos("Producto11");
     System.out.println("Productos buscados");
     System.out.println("==================");
     for (Producto p : productosBuscados) {
@@ -406,7 +407,7 @@ public class ControladorPrincipalTP5 {
     }
     System.out.println();
 
-    ArrayList<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
+    ArrayList<Usuario> usuariosBuscados = (ArrayList) gu.buscarUsuarios("ApellidoCliente");
     System.out.println("Usuarios filtrados");
     System.out.println("==================");
     for (Usuario u : usuariosBuscados) {
@@ -579,7 +580,7 @@ public class ControladorPrincipalTP5 {
     gPed.crearPedido(hoy, ahora, listaPdp, (Cliente) clientePrueba);
 
     // Obtener el último pedido creado
-    ArrayList<Pedido> listaPedidos = gPed.verPedidos();
+    ArrayList<Pedido> listaPedidos = (ArrayList) gPed.verPedidos();
     Pedido pedACancelar = listaPedidos.get(listaPedidos.size() - 1);
     System.out.println(
         "Pedido creado: #" + pedACancelar.verNumero() + " para " + clientePrueba.verCorreo());

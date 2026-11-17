@@ -7,6 +7,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 
@@ -19,7 +20,7 @@ public class Encargado extends Usuario {
     super(correo, clave, apellido, nombre);
   }
 
-  public ArrayList<Pedido> verPedidos() {
+  public List<Pedido> verPedidos() {
     return GestorPedidos.instanciar().verPedidos();
   }
 

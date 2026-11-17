@@ -1,6 +1,6 @@
 package usuarios.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import pedidos.modelos.Pedido;
 
@@ -83,7 +83,7 @@ public abstract class Usuario {
     mostrarEspecificos();
   }
 
-  public abstract ArrayList<Pedido> verPedidos();
+  public abstract List<Pedido> verPedidos();
 
   /**
    * Metodo utilizado para que el metodo mostrar() sea generico.

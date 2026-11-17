@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
@@ -22,7 +23,7 @@ public class GestorPedidos implements IGestorPedidos {
   }
 
   public String crearPedido(LocalDate fecha, LocalTime hora,
-      ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+      List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
     String validacion = validarPedido(fecha, hora, cliente, productosDelPedido);
     if (!validacion.equals(VALIDACION_EXITO)) {
       return validacion;
@@ -146,7 +147,7 @@ public class GestorPedidos implements IGestorPedidos {
   }
 
   private String validarPedido(LocalDate fecha, LocalTime hora, Cliente cliente,
-      ArrayList<ProductoDelPedido> productosDelPedido) {
+      List<ProductoDelPedido> productosDelPedido) {
     if (fecha == null) {
       return ERROR_FECHA;
     }

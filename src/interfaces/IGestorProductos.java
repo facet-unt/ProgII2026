@@ -1,6 +1,6 @@
 package interfaces;
 
-import java.util.ArrayList;
+import java.util.List;
 import productos.modelos.Categoria;
 import productos.modelos.Estado;
 import productos.modelos.Producto;
@@ -12,15 +12,15 @@ public interface IGestorProductos {
   String modificarProducto(Producto productoAModificar, int codigo, String descripcion,
       float precio, Categoria categoria, Estado estado);
 
-  ArrayList<Producto> menu();
+  List<Producto> menu();
 
-  ArrayList<Producto> buscarProductos(String descripcion);
+  List<Producto> buscarProductos(String descripcion);
 
   String borrarProducto(Producto producto);
 
   boolean existeEsteProducto(Producto producto);
 
-  ArrayList<Producto> verProductosPorCategoria(Categoria categoria);
+  List<Producto> verProductosPorCategoria(Categoria categoria);
 
   Producto obtenerProducto(Integer codigo);
 

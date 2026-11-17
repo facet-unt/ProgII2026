@@ -7,6 +7,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Pedido;
 
 /**
@@ -19,7 +20,7 @@ public class Cliente extends Usuario {
     this.pedidos = new ArrayList<>();
   }
 
-  public ArrayList<Pedido> verPedidos() {
+  public List<Pedido> verPedidos() {
     return this.pedidos;
   }
 

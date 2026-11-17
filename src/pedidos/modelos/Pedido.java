@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import productos.modelos.Producto;
+import java.util.List;
 import usuarios.modelos.Cliente;
 
 /**
@@ -15,7 +15,7 @@ import usuarios.modelos.Cliente;
 public class Pedido {
   private int numero;
   private LocalDateTime fechaYHora;
-  private ArrayList<ProductoDelPedido> productos;
+  private List<ProductoDelPedido> productos;
   private Cliente cliente;
   private Estado estado;
 
@@ -30,7 +30,7 @@ public class Pedido {
 
   // Constructor completo
   public Pedido(int numero, LocalDateTime fechaYHora, Cliente cliente,
-      ArrayList<ProductoDelPedido> productos, Estado estado) {
+      List<ProductoDelPedido> productos, Estado estado) {
     this.numero = numero;
     this.fechaYHora = fechaYHora;
     this.cliente = cliente;
@@ -39,7 +39,7 @@ public class Pedido {
   }
 
   // Constructor que asigna fecha y hora actual con estado inicial CREADO
-  public Pedido(int numero, Cliente cliente, ArrayList<ProductoDelPedido> productos) {
+  public Pedido(int numero, Cliente cliente, List<ProductoDelPedido> productos) {
     this(numero, LocalDateTime.now(), cliente, productos, Estado.CREADO);
   }
 
@@ -48,8 +48,8 @@ public class Pedido {
     this(numero, LocalDateTime.now(), cliente, new ArrayList<>(), Estado.CREADO);
   }
 
-  public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productos,
-      Cliente cliente) {
+  public Pedido(
+      int numero, LocalDateTime fechaYHora, List<ProductoDelPedido> productos, Cliente cliente) {
     this(numero, fechaYHora, cliente, productos, Estado.CREADO);
   }
 
@@ -78,7 +78,7 @@ public class Pedido {
     return this.cliente;
   }
 
-  public ArrayList<ProductoDelPedido> verProductos() {
+  public List<ProductoDelPedido> verProductos() {
     return this.productos;
   }
 
@@ -99,7 +99,7 @@ public class Pedido {
     this.cliente = nuevoCliente;
   }
 
-  public void asignarListaDeProductos(ArrayList<ProductoDelPedido> nuevosProductos) {
+  public void asignarListaDeProductos(List<ProductoDelPedido> nuevosProductos) {
     this.productos = nuevosProductos;
   }
 
