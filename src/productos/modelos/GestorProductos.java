@@ -6,6 +6,7 @@ package productos.modelos;
 
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -29,6 +30,7 @@ public class GestorProductos implements IGestorProductos{
            return gestor;
        }
        
+       @Override
        public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
            String validacionDatos = this.validarDatos(codigo, descripcion, precio, categoria, estado);
            
@@ -46,6 +48,7 @@ public class GestorProductos implements IGestorProductos{
            return EXITO;
        }
        
+       @Override
        public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
            if(this.existeEsteProducto(productoAModificar)){
                return PRODUCTO_INEXISTENTE;
@@ -78,11 +81,13 @@ public class GestorProductos implements IGestorProductos{
        }
                                                                                                                                                       
        //Devuelve todos los productos guardados
+       @Override
        public ArrayList<Producto> menu(){
            return productos;
        }
        
        //Busca si es que el producto a buscar esta guardado en el menu
+       @Override
        public boolean existeEsteProducto(Producto producto){
            if(this.productos.contains(producto)){
                return true;
@@ -93,6 +98,7 @@ public class GestorProductos implements IGestorProductos{
        }
        
        //Busca el producto con el codigo asignado, si no esta devuelve null
+       @Override
        public Producto obtenerProducto(Integer codigo){
            for(Producto pd : productos){
                if(pd.verCodigo() == codigo)
@@ -103,6 +109,7 @@ public class GestorProductos implements IGestorProductos{
        
        //Metodo que busca productos que coincidan con la categoria buscada, que luego 
        //los guarda en un arraylist que sera devuelto
+       @Override
        public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
            ArrayList<Producto> lista = new ArrayList<>();
            
@@ -118,6 +125,7 @@ public class GestorProductos implements IGestorProductos{
            return lista;
        }
        
+       @Override
        public ArrayList<Producto> buscarProductos(String descripcion){
            ArrayList<Producto> listaProductos = new ArrayList<>();
            

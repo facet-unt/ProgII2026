@@ -5,7 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
-import pedidos.modelos.GestorPedidos;
+import java.util.List;
 import pedidos.modelos.Pedido;
 
 /**
@@ -28,7 +28,7 @@ public class Cliente extends Usuario{
     }
 
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
         return listaPedidos;
     }
     

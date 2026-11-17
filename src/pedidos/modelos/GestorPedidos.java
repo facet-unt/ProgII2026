@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -17,7 +18,7 @@ import usuarios.modelos.Cliente;
  * @author tobias150
  */
 public class GestorPedidos implements IGestorPedidos{
-    ArrayList<Pedido> pedidos = new ArrayList<>();
+    List<Pedido> pedidos = new ArrayList<>();
     private static GestorPedidos gestor;
     private static int contadorPedidos = 1;
     
@@ -33,7 +34,7 @@ public class GestorPedidos implements IGestorPedidos{
     }
 
     @Override
-    public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         String respuesta = this.validarDatos(fecha, hora, productosDelPedido, cliente);
         
         if(!respuesta.equals(VALIDACION_EXITO)){
@@ -72,7 +73,7 @@ public class GestorPedidos implements IGestorPedidos{
     }
 
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
         return pedidos;
     }
 
@@ -124,7 +125,7 @@ public class GestorPedidos implements IGestorPedidos{
         return null;
     }
     
-    private String validarDatos(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
+    private String validarDatos(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
            if(fecha == null)
                return ERROR_FECHA;
            if(hora == null)
@@ -136,4 +137,5 @@ public class GestorPedidos implements IGestorPedidos{
            
            return VALIDACION_EXITO;
     }
+    
 }
