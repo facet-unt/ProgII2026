@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import productos.modelos.Producto;
+import java.util.List;
 import usuarios.modelos.Cliente;
 
 /**
@@ -21,12 +21,12 @@ public class Pedido {
     private int numero;
     private LocalDateTime fechaYHora;
     private Estado estado;
-    private ArrayList<ProductoDelPedido> productosDelPedido;
+    private List<ProductoDelPedido> productosDelPedido;
     private Cliente cliente;
 
     //Constructor
     
-    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+    public Pedido(int numero, LocalDateTime fechaYHora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
         this.productosDelPedido = productosDelPedido;
@@ -35,7 +35,7 @@ public class Pedido {
     }
     
 
-    public ArrayList<ProductoDelPedido> verProductosDelPedido() {
+    public List<ProductoDelPedido> verProductosDelPedido() {
         return productosDelPedido;
     }
 
@@ -47,7 +47,7 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public void asignarProductosDelPedido(ArrayList<ProductoDelPedido> productosDelPedido) {
+    public void asignarProductosDelPedido(List<ProductoDelPedido> productosDelPedido) {
         this.productosDelPedido = productosDelPedido;
     }
 // Getter que retorna solo la fecha (año-mes-día)

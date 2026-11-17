@@ -4,7 +4,7 @@
  */
 package usuarios.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import pedidos.modelos.Pedido;
 
@@ -63,7 +63,7 @@ public abstract class Usuario {
         System.out.println("Correo: " + correo);
         System.out.println("Clave: " + clave);
     }
-    public abstract ArrayList<Pedido> verPedidos();
+    public abstract List<Pedido> verPedidos();
     
     @Override
     public boolean equals(Object obj) {
