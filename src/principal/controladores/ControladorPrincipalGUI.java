@@ -16,8 +16,10 @@ import usuarios.vistas.VentanaAMEncargado;
  *
  * @author mariana
  */
-//public class ControladorPrincipalGUI {
-//    public static void main(String[] args) {
+public class ControladorPrincipalGUI 
+{
+    public static void main(String[] args) 
+    {
 //        //Trabajar con una ventana por vez
 //        //Para todas las ventanas lo pasos son:
 //        /*
@@ -30,11 +32,14 @@ import usuarios.vistas.VentanaAMEncargado;
 //        establecerLookAndFeel("Nimbus"); 
 //        
 //        //<editor-fold defaultstate="collapsed" desc="Producto">
-//        VentanaAMProducto ventana = new VentanaAMProducto(null);
-//        ventana.setLocationRelativeTo(null);
-//        ventana.setTitle("Nuevo producto");
-//        ventana.setVisible(true);
+        VentanaAMProducto ventana = new VentanaAMProducto(null);
+        ventana.setLocationRelativeTo(null);
+        ventana.setTitle("Nuevo producto");
+        ventana.setVisible(true);
 //        //</editor-fold>
+    }
+}
+    
 //       //<editor-fold defaultstate="collapsed" desc="Cliente">
 //        VentanaAMCliente ventana1 = new VentanaAMCliente(null);
 //        ventana1.setLocationRelativeTo(null);

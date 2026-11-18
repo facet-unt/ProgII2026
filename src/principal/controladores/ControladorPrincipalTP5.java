@@ -322,7 +322,7 @@ public class ControladorPrincipalTP5 {
                 
         Usuario unEncargado3 = gu.obtenerUsuario("encargado3@bar.com");
         System.out.println("Todos los pedidos (consultados por un encargado)");
-        for(Pedido p : unEncargado3.verPedidos()) {
+        for(Pedido p : unEncargado3.verPedidos()) {      
             p.mostrar();
             System.out.println();
         }
