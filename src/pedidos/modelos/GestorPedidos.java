@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
@@ -53,6 +54,15 @@ public class GestorPedidos implements IGestorPedidos{
         }
         return VALIDACION_EXITO;
     }
+    private int generarNumeroPedido(){
+        int max=0;
+        for(Pedido p : this.pedidos){
+            if(p.verNumero() > max){
+                max =p.verNumero();
+            }
+        }
+        return max + 1;
+    }
     
     //Creador de un pedido
     
@@ -62,7 +72,7 @@ public class GestorPedidos implements IGestorPedidos{
         if(!validacion.equals(VALIDACION_EXITO)){
             return validacion;
         }
-        int numeroPedido = this.pedidos.size() + 1;
+        int numeroPedido = generarNumeroPedido();
         LocalDateTime fechaYHora = LocalDateTime.of(fecha,hora);
         
         Pedido nuevoPedido = new Pedido(numeroPedido,fechaYHora,productosDelPedido,cliente);
@@ -100,6 +110,7 @@ public class GestorPedidos implements IGestorPedidos{
     
     @Override
     public List<Pedido> verPedidos(){
+        this.pedidos.sort(Comparator.comparingInt(Pedido::verNumero));
         return this.pedidos;
     }
     

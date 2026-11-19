@@ -7,6 +7,7 @@ package usuarios.modelos;
 import interfaces.IGestorPedidos;
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import pedidos.modelos.GestorPedidos;
 
@@ -85,6 +86,7 @@ public class GestorUsuarios implements IGestorUsuarios{
     
     @Override
     public List<Usuario> verUsuarios(){
+        this.usuarios.sort(new CompararApellido().thenComparing(new CompararNombre()));
         return this.usuarios;
     }
     
@@ -102,6 +104,7 @@ public class GestorUsuarios implements IGestorUsuarios{
                 resultado.add(u);
             }
         }
+        resultado.sort(new CompararApellido().thenComparing(new CompararNombre()));
         return resultado;
     }
     
