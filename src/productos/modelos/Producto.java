@@ -99,8 +99,10 @@ public class Producto implements Comparable<Producto>{
     
     
     public void mostrar() {        
-        System.out.println("Producto " + codigo + " " + descripcion );
-        System.out.println("Categoria:" + categoria + "\tEstado: " + estado + "\tPrecio: " + precio);
+        System.out.println("Producto " + codigo + " " + (this.descripcion != null ? this.descripcion : "-"));
+        System.out.print("Categoria: " + (this.categoria != null ? this.categoria :"-"));
+        System.out.print("  Estado: " + (this.estado != null ? this.estado : "-"));
+        System.out.print("  Precio: " + this.precio);
         System.out.println("\n");
     }
     

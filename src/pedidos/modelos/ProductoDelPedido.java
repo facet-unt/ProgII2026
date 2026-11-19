@@ -20,6 +20,14 @@ public class ProductoDelPedido {
         return producto;
     }
 
+    public int verCantidad() {
+        return cantidad;
+    }
+
+    public void asignarCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public String verDescripcion() {
         return producto.verDescripcion();
     }

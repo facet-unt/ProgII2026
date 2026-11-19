@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
+import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
 /**
@@ -93,28 +93,34 @@ public class Pedido {
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm");
 
-        String fechaFormateada = fechaYHora != null ? fechaYHora.format(formatoFecha) : "";
-        String horaFormateada = fechaYHora != null ? fechaYHora.format(formatoHora) : "";
+        String strEstado = (this.estado != null) ? this.estado.toString() : "-";
+        String strFecha = (this.fechaYHora != null) ? this.fechaYHora.format(formatoFecha): "-";
+        String strHora = (this.fechaYHora != null) ? this.fechaYHora.format(formatoHora) : "-";
         
-        System.out.println("Nro: " + numero);
-        System.out.println("Fecha: " + fechaFormateada + " Hora: " + horaFormateada);
-        
-        if (cliente != null) {
-            System.out.println("Cliente: " + cliente.verApellido() + ", " + cliente.verNombre());
-        } else {
-            System.out.println("Cliente: Sin asignar");
+        String  strCliente = "-";
+        if(this.cliente != null){
+            String apellido = (this.cliente.verApellido() != null) ? this.cliente.verApellido() : "-";
+            String nombre = (this.cliente.verNombre() != null) ? this.cliente.verNombre() : "-";
+            strCliente = apellido + ", " + nombre;
         }
-        
-        System.out.println("Estado: " + estado);
-
-        if (productosDelPedido != null && !productosDelPedido.isEmpty()) {
-            System.out.println("Producto Cantidad");
-            System.out.println("==========================");
-            
-            for (ProductoDelPedido prod : productosDelPedido) {
-                prod.mostrar();
+        System.out.printf("%-25s Estado: %s%n", "Nro: " + this.numero, strEstado);
+        System.out.printf("%-34s Hora: %s%n", "Fecha: " + strFecha,strHora);
+        System.out.println("Cliente: " + strCliente);
+        System.out.printf("\t%-48s %s%n", "Producto", "Cantidad");
+        System.out.println("\t=========================================================");
+        if(this.productosDelPedido != null && !this.productosDelPedido.isEmpty()){
+            for(ProductoDelPedido pdp : this.productosDelPedido){
+                if(pdp != null && pdp.verProducto() != null){
+                    Producto prod = pdp.verProducto();
+                    String desc = (prod.verDescripcion() != null) ? prod.verDescripcion() : "-";
+                    String colProducto = "[" + prod.verCodigo() + "]" + desc;
+                    String colPrecio = String.format(java.util.Locale.US, "$%.2f", prod.verPrecio());
+                    
+                    System.out.printf("\t%-28s %-20s %d%n", colProducto, colPrecio, pdp.verCantidad());
+                }
             }
         }
+        
     }
 
     @Override
