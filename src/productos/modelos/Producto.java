@@ -4,7 +4,7 @@ package productos.modelos;
  *
  * @author estudiante
  */
-public class Producto {  
+public class Producto implements Comparable<Producto>{  
     private int codigo;
     private String descripcion;
     private Categoria categoria;
@@ -107,6 +107,11 @@ public class Producto {
     @Override
     public String toString(){
         return  "[1]" + descripcion + "\t" +     precio;
+    }
+    
+    @Override
+    public int compareTo(Producto o){
+        return this.descripcion.compareToIgnoreCase(o.descripcion);
     }
     
 }

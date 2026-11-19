@@ -7,6 +7,7 @@ package productos.modelos;
 import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import pedidos.modelos.GestorPedidos;
 
@@ -94,14 +95,15 @@ public class GestorProductos implements IGestorProductos{
     
     @Override
     public List<Producto> menu(){
+        this.productos.sort(Comparator.comparing(Producto::verCategoria).thenComparing(Producto::verDescripcion, String.CASE_INSENSITIVE_ORDER));
         return this.productos;
     }
     
     //Buscar productos por descripcion
     
     @Override
-    public ArrayList<Producto> buscarProductos(String descripcion){
-        ArrayList<Producto> resultado = new ArrayList<>();
+    public List<Producto> buscarProductos(String descripcion){
+        List<Producto> resultado = new ArrayList<>();
         if(descripcion == null || descripcion.trim().isEmpty()){
             return resultado;
         }
@@ -111,6 +113,7 @@ public class GestorProductos implements IGestorProductos{
                 resultado.add(p);
             }
         }
+        resultado.sort(Comparator.comparing(Producto::verCategoria).thenComparing(Producto::verDescripcion, String.CASE_INSENSITIVE_ORDER));
         return resultado;
     }
     
@@ -127,8 +130,8 @@ public class GestorProductos implements IGestorProductos{
     //Devuelve los productos de una categoria
     
     @Override
-    public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
-        ArrayList<Producto> resultado = new ArrayList<>();
+    public List<Producto> verProductosPorCategoria(Categoria categoria){
+        List<Producto> resultado = new ArrayList<>();
         if(categoria == null){
             return resultado;
         }
@@ -137,6 +140,7 @@ public class GestorProductos implements IGestorProductos{
                 resultado.add(p);
             }
         }
+        resultado.sort(Comparator.comparing(Producto::verDescripcion, String.CASE_INSENSITIVE_ORDER));
         return resultado;
     }
     
@@ -168,4 +172,12 @@ public String borrarProducto(Producto producto) {
     this.productos.remove(producto);
     return EXITO;
 }
+
+    Comparator<Producto> compCategoriaYDescripcion = (p1,p2) -> {
+        int cmpCat = p1.verCategoria().compareTo(p2.verCategoria());
+        if(cmpCat != 0){
+            return cmpCat;
+        }
+        return p1.verDescripcion().compareToIgnoreCase(p2.verDescripcion());
+    };
 }
