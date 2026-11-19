@@ -13,12 +13,6 @@ import usuarios.modelos.Usuario;
  * @author MARYPAZ
  */
 public interface IGestorUsuarios {
-    public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
-    public List<Usuario> verUsuarios();
-    public List<Usuario> buscarUsuarios(String apellido);
-    public boolean existeEsteUsuario(Usuario usuario);
-    public Usuario obtenerUsuario(String correo);
-    public String borrarUsuario(Usuario usuario);
     
     public static final String EXITO = "Usuario creado/modificado con exito.";
     public static final String ERROR_CORREO = "El correo del usuario es incorrecto.";
@@ -31,4 +25,17 @@ public interface IGestorUsuarios {
     public static final String USUARIO_INEXISTENTE = "El usuario no existe.";
     public static final String ERROR_BORRAR = "El usuario no puede ser eliminado.";
     public static final String EXITO_BORRAR = "Usuario borrado exitosamente.";
+    
+    public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
+    
+    public List<Usuario> verUsuarios();
+    
+    public List<Usuario> buscarUsuarios(String apellido);
+    
+    public boolean existeEsteUsuario(Usuario usuario);
+    
+    public Usuario obtenerUsuario(String correo);
+    
+    public String borrarUsuario(Usuario usuario);
+    
 }

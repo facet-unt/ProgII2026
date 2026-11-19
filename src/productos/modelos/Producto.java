@@ -87,6 +87,7 @@ public class Producto implements Comparable<Producto> {
     }
     
       public void mostrar() {        
+        System.out.println("\tCategoria" +this.verCategoria());
         System.out.println("\tProducto: "+descripcion +" |Codigo: " +codigo );
         System.out.println("\tEstado: "+estado +" | Precio: " +precio+ "\n");
     }

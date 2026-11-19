@@ -17,14 +17,6 @@ import usuarios.modelos.Cliente;
  * @author MARYPAZ
  */
 public interface IGestorPedidos {
-    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente);
-    public String cambiarEstado(Pedido pedidoAModificar);
-    public List<Pedido> verPedidos();
-    public boolean hayPedidosConEsteCliente(Cliente cliente);
-    public boolean hayPedidosConEsteProducto(Producto producto);
-    public boolean existeEstePedido(Pedido pedido);
-    public Pedido obtenerPedido(Integer numero);
-    public String cancelarPedido(Pedido pedido);
     
     public static final String EXITO = "Pedido creado/modificado/cancelado con exito.";
     public static final String ERROR_FECHA = "La fecha del pedido es incorrecta.";
@@ -36,4 +28,21 @@ public interface IGestorPedidos {
     public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese numero.";
     public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado.";
     public static final String VALIDACION_EXITO = "El pedido tiene los datos correctos.";
+    
+    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente);
+    
+    public String cambiarEstado(Pedido pedidoAModificar);
+    
+    public List<Pedido> verPedidos();
+    
+    public boolean hayPedidosConEsteCliente(Cliente cliente);
+    
+    public boolean hayPedidosConEsteProducto(Producto producto);
+    
+    public boolean existeEstePedido(Pedido pedido);
+    
+    public Pedido obtenerPedido(Integer numero);
+    
+    public String cancelarPedido(Pedido pedido);
+    
 }

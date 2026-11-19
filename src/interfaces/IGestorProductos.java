@@ -14,14 +14,6 @@ import productos.modelos.Producto;
  * @author MARYPAZ
  */
 public interface IGestorProductos {
-    public String crearProducto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio);
-    public String modificarProducto (Producto productoAModificar,int codigo, String descripcion, float precio, Categoria categoria, Estado estado);
-    public List<Producto> menu();
-    public List<Producto> buscarProductos(String descripcion);
-    public boolean existeEsteProducto(Producto producto);
-    public List<Producto> verProductosPorCategoria(Categoria categoria);
-    public Producto obtenerProducto(Integer codigo);
-    public String borrarProducto(Producto producto); 
     
     public static final String EXITO = "Producto creado/modificado con exito.";
     public static final String ERROR_CODIGO = "El codigo del producto es incorrecto.";
@@ -34,5 +26,22 @@ public interface IGestorProductos {
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado.";
     public static final String ERROR_BORRAR = "No se pudo borrar el producto.";
     public static final String EXITO_BORRAR = "Producto borrado exitosamente.";
-     
+    
+    
+    public String crearProducto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio);
+    
+    public String modificarProducto (Producto productoAModificar,int codigo, String descripcion, float precio, Categoria categoria, Estado estado);
+    
+    public List<Producto> menu();
+    
+    public List<Producto> buscarProductos(String descripcion);
+    
+    public boolean existeEsteProducto(Producto producto);
+    
+    public List<Producto> verProductosPorCategoria(Categoria categoria);
+    
+    public Producto obtenerProducto(Integer codigo);
+    
+    public String borrarProducto(Producto producto);  
+    
 }

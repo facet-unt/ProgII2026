@@ -16,7 +16,7 @@ import usuarios.modelos.Cliente;
  *
  * @author estudiante
  */
-public class Pedido {
+public class Pedido implements Comparable  <Pedido>{
     private int numero;
     private LocalDateTime fechaYHora;
     private Estado estado;
@@ -119,6 +119,9 @@ public class Pedido {
                 p.verCantidad());
       }
     }
-    
-    
+
+    @Override
+    public int compareTo(Pedido o) {
+        return this.numero - o.numero;
+    }
 }

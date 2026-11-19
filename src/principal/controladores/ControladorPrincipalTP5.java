@@ -38,9 +38,14 @@ public class ControladorPrincipalTP5 {
         
         System.out.println("#####PRODUCTOS#####");
         /*CREAR PRODUCTO*/
-        System.out.println(gp.crearProducto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f));
-        System.out.println(gp.crearProducto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f));
-        System.out.println(gp.crearProducto(3, "Plato3", Categoria.POSTRE, Estado.DISPONIBLE, 3.0f));
+        System.out.println(gp.crearProducto(1, "A_Producto2", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f));
+        System.out.println(gp.crearProducto(2, "B_Producto1", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f));
+        System.out.println(gp.crearProducto(3, "A_Producto3", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 3.0f));
+        System.out.println(gp.crearProducto(4, "B_Producto6", Categoria.POSTRE, Estado.DISPONIBLE, 6.0f));
+        System.out.println(gp.crearProducto(6, "A_Producto5", Categoria.POSTRE, Estado.NO_DISPONIBLE, 32.0f));
+        System.out.println(gp.crearProducto(5, "B_Producto4", Categoria.ENTRADA, Estado.DISPONIBLE, 1.4f));
+        
+        //productos que no se añaden a productos
         System.out.println(gp.crearProducto(3, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f));
         //producto repetido, mismo codigo
         System.out.println(gp.crearProducto(0, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f));
@@ -69,7 +74,9 @@ public class ControladorPrincipalTP5 {
         System.out.println("######## PRODUCTOS POR CODIGO ########");
         /*OBTENER UN PRODUCTO MEDIANTE EL CODIGO*/
         Producto unProducto1 = gp.obtenerProducto(1);
+        unProducto1.mostrar();
         Producto unProducto2 = gp.obtenerProducto(2);
+        unProducto2.mostrar();
         
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
@@ -109,9 +116,11 @@ public class ControladorPrincipalTP5 {
 //    
         System.out.println("#####USUARIOS#####");
     
-        System.out.println(gu.crearUsuario("cliente1@bar.com", "ApellidoCliente1", "NombreCliente1", Perfil.CLIENTE, "claveCliente1", "claveCliente1"));
         System.out.println(gu.crearUsuario("cliente2@bar.com", "ApellidoCliente2", "NombreCliente2", Perfil.CLIENTE, "claveCliente2", "claveCliente2"));
+        System.out.println(gu.crearUsuario("cliente1@bar.com", "ApellidoCliente1", "NombreCliente1", Perfil.CLIENTE, "claveCliente1", "claveCliente1"));
         System.out.println(gu.crearUsuario("cliente3@bar.com", "ApellidoCliente3", "NombreCliente3", Perfil.CLIENTE, "claveCliente3", "claveCliente3"));
+        
+        //usuarios que no se añadiran a usuarios
         System.out.println(gu.crearUsuario("cliente3@bar.com", "ApellidoCliente4", "NombreCliente4", Perfil.CLIENTE, "claveCliente4", "claveCliente4"));
         //cliente duplicado
         System.out.println(gu.crearUsuario(null, "ApellidoCliente4", "NombreCliente4", Perfil.CLIENTE, "claveCliente4", "claveCliente4"));
@@ -149,9 +158,11 @@ public class ControladorPrincipalTP5 {
         }
         System.out.println();
         
+        System.out.println(gu.crearUsuario("empleado3@bar.com", "ApellidoEmpleado3", "NombreEmpleado3", Perfil.EMPLEADO, "claveEmpleado3", "claveEmpleado3"));
         System.out.println(gu.crearUsuario("empleado1@bar.com", "ApellidoEmpleado1", "NombreEmpleado1", Perfil.EMPLEADO, "claveEmpleado1", "claveEmpleado1"));
         System.out.println(gu.crearUsuario("empleado2@bar.com", "ApellidoEmpleado2", "NombreEmpleado2", Perfil.EMPLEADO, "claveEmpleado2", "claveEmpleado2"));
-        System.out.println(gu.crearUsuario("empleado3@bar.com", "ApellidoEmpleado3", "NombreEmpleado3", Perfil.EMPLEADO, "claveEmpleado3", "claveEmpleado3"));
+        
+        //usuarios que no se añadiran a usuarios
         System.out.println(gu.crearUsuario("empleado3@bar.com", "ApellidoEmpleado4", "NombreEmpleado4", Perfil.EMPLEADO, "claveEmpleado4", "claveEmpleado4"));
         //empleado duplicado
         System.out.println(gu.crearUsuario(null, "ApellidoEmpleado4", "NombreEmpleado4", Perfil.EMPLEADO, "claveEmpleado4", "claveEmpleado4"));
@@ -189,9 +200,11 @@ public class ControladorPrincipalTP5 {
         }
         System.out.println();
 
-        System.out.println(gu.crearUsuario("encargado1@bar.com", "ApellidoEncargado1", "NombreEncargado1", Perfil.ENCARGADO, "claveEncargado1", "claveEncargado1"));
         System.out.println(gu.crearUsuario("encargado2@bar.com", "ApellidoEncargado2", "NombreEncargado2", Perfil.ENCARGADO, "claveEncargado2", "claveEncargado2"));
         System.out.println(gu.crearUsuario("encargado3@bar.com", "ApellidoEncargado3", "NombreEncargado3", Perfil.ENCARGADO, "claveEncargado3", "claveEncargado3"));
+        System.out.println(gu.crearUsuario("encargado1@bar.com", "ApellidoEncargado1", "NombreEncargado1", Perfil.ENCARGADO, "claveEncargado1", "claveEncargado1"));
+
+        //usuarios que no se añadiran a usuarios
         System.out.println(gu.crearUsuario("encargado3@bar.com", "ApellidoEncargado4", "NombreEncargado4", Perfil.ENCARGADO, "claveEncargado4", "claveEncargado4"));
         //encargado duplicado
         System.out.println(gu.crearUsuario(null, "ApellidoEncargado4", "NombreEncargado4", Perfil.ENCARGADO, "claveEncargado4", "claveEncargado4"));
@@ -245,12 +258,25 @@ public class ControladorPrincipalTP5 {
         
         System.out.println("=========");
         System.out.println("Crear pedidos");
-        ArrayList<ProductoDelPedido> productosDelPedido1 = new ArrayList<>();
-        ProductoDelPedido pdp1 = new ProductoDelPedido(unProducto1, 1);
-        ProductoDelPedido pdp2 = new ProductoDelPedido(unProducto2, 2); 
+                
+        Usuario unCliente3 = gu.obtenerUsuario("cliente3@bar.com");
+        ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         LocalDateTime fechaYHora = LocalDateTime.now();
         LocalDate fecha = fechaYHora.toLocalDate();
         LocalTime hora = fechaYHora.toLocalTime();
+        ProductoDelPedido pdp6 = new ProductoDelPedido(unProducto1, 5);
+        ProductoDelPedido pdp7 = new ProductoDelPedido(unProducto2, 6);
+        
+        if (!productosDelPedido3.contains(pdp6))
+            productosDelPedido3.add(pdp6);
+        if (!productosDelPedido3.contains(pdp7))
+            productosDelPedido3.add(pdp7);
+        
+        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido3, (Cliente)unCliente3));
+        
+        ArrayList<ProductoDelPedido> productosDelPedido1 = new ArrayList<>();
+        ProductoDelPedido pdp1 = new ProductoDelPedido(unProducto1, 1);
+        ProductoDelPedido pdp2 = new ProductoDelPedido(unProducto2, 2); 
         if (!productosDelPedido1.contains(pdp1))
             productosDelPedido1.add(pdp1);
         if (!productosDelPedido1.contains(pdp2))
@@ -261,6 +287,7 @@ public class ControladorPrincipalTP5 {
         ArrayList<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp3 = new ProductoDelPedido(unProducto1, 10);
         ProductoDelPedido pdp4 = new ProductoDelPedido(unProducto2, 20);
+        
         ProductoDelPedido pdp5 = new ProductoDelPedido(unProducto1, 30);
         //producto repetido        
         if (!productosDelPedido2.contains(pdp3))
@@ -275,10 +302,10 @@ public class ControladorPrincipalTP5 {
         //sin fecha
         System.out.println(gPed.crearPedido(fecha, null, productosDelPedido2, (Cliente)unCliente1));
         //sin hora
-       ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
+       ArrayList<ProductoDelPedido> productosDelPedido5 = new ArrayList<>();
         System.out.println(gPed.crearPedido(fecha, hora, null, (Cliente)unCliente1));
         //sin productos
-        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido3, (Cliente)unCliente1));
+        System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido5, (Cliente)unCliente1));
         //sin productos
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido2, null));
 //        //sin cliente
@@ -286,6 +313,7 @@ public class ControladorPrincipalTP5 {
         System.out.println("Pedidos");
         for(Pedido p : gPed.verPedidos()) {
             p.mostrar();
+            System.out.println("\n");
         }
         System.out.println("=======");
         
@@ -295,8 +323,8 @@ public class ControladorPrincipalTP5 {
         System.out.println("=======");
         
         System.out.println("Hay pedidos con un cliente");
-        Usuario unCliente3= gu.obtenerUsuario("cliente3@bar.com");
-        System.out.println(gPed.hayPedidosConEsteCliente((Cliente)unCliente3));
+        Usuario unCliente5= gu.obtenerUsuario("cliente5@bar.com");
+        System.out.println(gPed.hayPedidosConEsteCliente((Cliente)unCliente5));
         System.out.println("=======");
         
         System.out.println("Hay pedidos con un cliente");
