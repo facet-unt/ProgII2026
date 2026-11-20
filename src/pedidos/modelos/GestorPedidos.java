@@ -15,7 +15,8 @@ import usuarios.modelos.Cliente;
  * @author ramayo
  */
 public class GestorPedidos {
-    private ArrayList<Pedido> listaPedidos = new ArrayList<>();
+    private static ArrayList<Pedido> listaPedidos = new ArrayList<>();
+    private static int cantidadPedidos=1;
     public static final String EXITO="Pedido creado/modificado/cancelado con éxito";
     public static final String ERROR_FECHA="La fecha del pedido es incorrecta";
     public static final String ERROR_HORA ="La hora del pedido es incorrecta";
@@ -46,7 +47,7 @@ public class GestorPedidos {
             return ERROR_HORA;
         if(cliente==null)
             return ERROR_CLIENTE;
-        if(productosDelPedido.isEmpty())
+        if(productosDelPedido==null||productosDelPedido.isEmpty())
             return ERROR_PRODUCTOS_DEL_PEDIDO;
         return VALIDACION_EXITO;
     }
@@ -55,11 +56,15 @@ public class GestorPedidos {
     Al crearlo, el pedido se agrega al cliente especificado (con el método agregarPedido() definido en la clase Cliente).*/
     public String crearPedido(LocalDate fecha,LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
         String validacion = validarPedido(fecha, hora, productosDelPedido, cliente);
-        if(validacion==VALIDACION_EXITO){
-            Pedido p = new Pedido(14 ,fecha, hora, productosDelPedido, cliente);
-            cliente.agregarPedido(p);
-            listaPedidos.add(p);
-            return EXITO;
+        if(validacion.equals(VALIDACION_EXITO)){
+            Pedido p = new Pedido(cantidadPedidos ,fecha, hora, productosDelPedido, cliente);
+            if(!(listaPedidos.contains(p))){
+                cantidadPedidos++;
+                cliente.agregarPedido(p);
+                GestorPedidos.listaPedidos.add(p);
+                return EXITO;
+            }
+            else return PEDIDOS_DUPLICADOS;
         }
         else return validacion;
     }
@@ -83,7 +88,7 @@ public class GestorPedidos {
 
     //Devuelve todos los pedidos.
     public ArrayList<Pedido> verPedidos(){
-        return listaPedidos;
+        return GestorPedidos.listaPedidos;
     }
             
     //Devuelve true si hay al menos un pedido con el cliente especificado, false en caso contrario.
@@ -99,7 +104,8 @@ public class GestorPedidos {
     //Devuelve true si hay al menos un pedido con el producto especificado, false en caso contrario.
     public boolean hayPedidosConEsteProducto(Producto producto){
         for(Pedido p: listaPedidos){
-            if(p.verListaProductos().contains(producto)){
+            for(ProductoDelPedido pdp:p.verListaProductos())
+                if(pdp.verProducto().equals(producto)){
                 return true;
             } 
         }
@@ -119,5 +125,18 @@ public class GestorPedidos {
             }
         }
         return null;
+    }
+    
+    public String cancelarPedido(Pedido unPedido){
+        if(unPedido.verEstado()==Estado.CREADO){
+            for(Pedido p:listaPedidos){
+                if(p.equals(unPedido)){
+                    p.verCliente().cancelarPedido(unPedido);
+                    return EXITO;
+                }
+            }
+            return PEDIDO_INEXISTENTE;
+        }
+        else return ERROR_CANCELAR;
     }
 }

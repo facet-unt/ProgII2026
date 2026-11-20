@@ -282,6 +282,7 @@ public class ControladorPrincipalTP5 {
         System.out.println("Pedidos");
         for(Pedido p : gPed.verPedidos()) {
             p.mostrar();
+            System.out.println();
         }
         System.out.println("=======");
         
@@ -378,7 +379,7 @@ public class ControladorPrincipalTP5 {
         System.out.println(gPed.cancelarPedido(unPedido2));
         //no se puede por el estado del pedido
         System.out.println(gPed.cancelarPedido(unPedido1));
-//        //sí se puede
+        //sí se puede
   
         System.out.println("\n\nPedidos");
         System.out.println("=======");

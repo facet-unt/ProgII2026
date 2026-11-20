@@ -12,7 +12,7 @@ import java.util.Collections;
  * @author ramayo
  */
 public class GestorUsuarios{
-    private ArrayList<Usuario> listaUsuario = new ArrayList<>();
+    private static final ArrayList<Usuario> listaUsuario = new ArrayList<>();
     private String validacion;
     public static final String EXITO = "Usuario creado/modificado con éxito";
     public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
@@ -36,35 +36,40 @@ public class GestorUsuarios{
     //</editor-fold>
     
     private String validarUsuario(String correo, String apellido, String nombre,Perfil perfil, String clave, String claveRepetida){
-        if(correo==null && !(correo.contains("@")))
+        if(correo==null || !(correo.contains("@")))
             return ERROR_CORREO;
         if(apellido==null || apellido.trim().isEmpty())
             return ERROR_APELLIDO;
-        if(nombre==null || apellido.trim().isEmpty())
+        if(nombre==null || nombre.trim().isEmpty())
             return ERROR_NOMBRE;
-        if(perfil.name()!="ENCARGADO"||perfil.name()!="CLIENTE"||perfil.name()!="EMPLEADO")
+        if(perfil!=Perfil.CLIENTE&&perfil!=Perfil.EMPLEADO&&perfil!=Perfil.ENCARGADO)
             return ERROR_PERFIL;
-        if(clave==null || clave.trim().isEmpty())
+        if(clave==null || clave.trim().isEmpty()||claveRepetida==null||clave.trim().isEmpty()||!(claveRepetida.equals(clave)))
             return ERROR_CLAVES;
-        if(claveRepetida==null||clave.trim().isEmpty()||claveRepetida!=clave)
-            return ERROR_CLAVES;
-        
+        for(Usuario u:listaUsuario){
+            if(u.verCorreo().equals(correo)){
+                return USUARIOS_DUPLICADOS;
+            }
+        }
         return VALIDACION_EXITO;
     }       
     
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
         validacion= validarUsuario(correo, apellido, nombre, perfil, clave, claveRepetida);
-        if(validacion==VALIDACION_EXITO){
+        if(validacion.equals(VALIDACION_EXITO)){
             switch(perfil){
                 case EMPLEADO:
-                    Usuario e = new Empleado(correo, apellido, nombre, clave);
-                    listaUsuario.add(e);
+                    Usuario e = new Empleado(correo, clave, apellido, nombre);
+                    if(!(listaUsuario.contains(e))){
+                        GestorUsuarios.listaUsuario.add(e);}
                 case ENCARGADO:
-                    Usuario ec = new Encargado(correo, apellido, nombre, clave);
-                    listaUsuario.add(ec);
+                    Usuario ec = new Encargado(correo, clave, apellido, nombre);
+                    if(!(listaUsuario.contains(ec))){
+                        GestorUsuarios.listaUsuario.add(ec);}
                 default:
-                    Usuario c = new Cliente(correo, apellido, nombre, clave);
-                    listaUsuario.add(c);
+                    Usuario c = new Cliente(correo, clave, apellido, nombre);
+                    if(!(listaUsuario.contains(c))){
+                        GestorUsuarios.listaUsuario.add(c);}
             }
             return EXITO;
         }
@@ -72,15 +77,15 @@ public class GestorUsuarios{
     }
     
     public ArrayList<Usuario> verUsuarios(){
-        return listaUsuario;
+        return GestorUsuarios.listaUsuario;
     }
     
     public ArrayList<Usuario> buscarUsuarios(String apellido){
         ArrayList<Usuario> usuarioBuscado = new ArrayList<>();
         if(!(apellido==null||apellido.isEmpty())){
             for(Usuario u:listaUsuario){
-                String apellidoLowCase = u.verApellido().toLowerCase();
-                if(apellidoLowCase.contains(apellido.toLowerCase()))
+                String apellidoMinuscula = u.verApellido().toLowerCase();
+                if(apellidoMinuscula.contains(apellido.toLowerCase()))
                     usuarioBuscado.add(u);
             }
             Collections.sort(usuarioBuscado);
@@ -100,15 +105,16 @@ public class GestorUsuarios{
     public Usuario obtenerUsuario(String correo){
         if(correo!=null && (correo.contains("@"))){
             for(Usuario u:listaUsuario){
-                if(u.verCorreo().equals(correo))
+                if(u.verCorreo().equals(correo)){
+                    u.mostrar();
                     return u;
+                }
             }
         }
         else
             System.out.println(ERROR_CORREO);
         return null; 
     }
-    
-    
+        
 }
 

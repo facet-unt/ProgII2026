@@ -39,7 +39,7 @@ public class Pedido {
     
     public void mostrar(){
         System.out.println("Nro: "+numero+"\t\tEstado:"+estado.toString());
-        System.out.println("Fecha: "+ verFecha()+"\t Hora: "+verHora());
+        System.out.println("Fecha: "+ convertirFecha()+"\t Hora: "+convertirHora());
         System.out.println("Cliente: "+cliente.verApellido()+", "+cliente.verNombre());
         System.out.println("\tProducto\t\t\tCantidad");
         System.out.println("\t================================================");

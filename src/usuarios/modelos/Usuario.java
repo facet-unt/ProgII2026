@@ -29,7 +29,7 @@ public abstract class Usuario implements Comparable<Usuario> {
     
     public void mostrar(){
         System.out.println("Usuario: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+ "\n" );
+        System.out.println("clave: "+clave +" | correo: " +correo );
     }
     
     //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/asginar">

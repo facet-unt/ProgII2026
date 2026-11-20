@@ -15,13 +15,13 @@ public class GestorProductos {
     private String validacion;
     private ArrayList<Producto> lista = new ArrayList<>();
     
-    public static final String EXITO = "Producto creado/modificado con éxito";
-    public static final String ERROR_CODIGO = "El código del producto es incorrecto";
-    public static final String ERROR_DESCRIPCION="La descripción del producto es incorrecta";
+    public static final String EXITO = "Producto creado/modificado con exito";
+    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto";
+    public static final String ERROR_DESCRIPCION="La descripcion del producto es incorrecta";
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
+    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
     public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
+    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
     public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     
@@ -39,13 +39,13 @@ public class GestorProductos {
     
     //Verifica que los datos ingresados sean válidos según enunciado.
     public String validarProducto(int codigo, String descripcion,float precio, Categoria categoria, Estado estado){
-        if(codigo>=0){
+        if(codigo<=0){
             return ERROR_CODIGO;
         }
-        if(!(descripcion == null || descripcion.trim().isEmpty())){
+        if(descripcion == null || descripcion.trim().isEmpty()){
             return ERROR_DESCRIPCION;
         }
-        if(precio>=0){
+        if(precio<=0){
             return ERROR_PRECIO;
         }
         if(categoria == null){
@@ -62,8 +62,13 @@ public class GestorProductos {
         validacion=validarProducto(codigo, descripcion, precio, categoria, estado);
         if (validacion.equals(VALIDACION_EXITO)){
             Producto p = new Producto(codigo, descripcion, precio, categoria, estado);
-            lista.add(p);
-            return EXITO;
+            if(lista.contains(p)){  
+                return PRODUCTOS_DUPLICADOS;
+            }
+            else{
+                lista.add(p);
+                return EXITO;     
+            }  
         }
         else return validacion;
     }
@@ -71,15 +76,15 @@ public class GestorProductos {
     //Modifica un producto, devolviendo una cadena con el resultado de la operación.
     public String modificarProducto(Producto productoAModificar,int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         if(existeEsteProducto(productoAModificar)){
-            validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
+            validacion = validarProducto(productoAModificar.verCodigo(), descripcion, precio, categoria, estado);
             if(validacion.equals(VALIDACION_EXITO)){
                 int indice = lista.indexOf(productoAModificar);
-                Producto p = new Producto(codigo, descripcion, precio, categoria, estado);
+                Producto p = new Producto(productoAModificar.verCodigo(), descripcion, precio, categoria, estado);
                 lista.set(indice, p);
             }
+            return EXITO;
         }
-        else validacion = PRODUCTO_INEXISTENTE;
-        return validacion;
+        else return PRODUCTO_INEXISTENTE;
     }
     
     // Devuelve todos los productos.
@@ -90,18 +95,20 @@ public class GestorProductos {
     //Busca los productos cuya descripción coincida, total o parcialmente, con la especificada.
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> productosPorDescripcion = new ArrayList<>();
+        String desc = descripcion.toLowerCase();
         
-        if(!(descripcion == null || descripcion.isEmpty()))
+        if(!(desc == null || desc.trim().isEmpty())){
             for(Producto p: lista){
                 String descripcionMinuscula = p.verDescripcion().toLowerCase();
-                if(descripcionMinuscula.contains(descripcion.toLowerCase()))
+                if(descripcionMinuscula.contains(desc))
                     productosPorDescripcion.add(p);
-                Collections.sort(productosPorDescripcion);
             }
             if(productosPorDescripcion.isEmpty()){
                 System.out.println(PRODUCTO_INEXISTENTE);
+            }
+            Collections.sort(productosPorDescripcion);
         }
-        else 
+        else
             System.out.println(ERROR_DESCRIPCION);
         return productosPorDescripcion;
     }
@@ -129,10 +136,11 @@ public class GestorProductos {
     }
     
     //Obtiene el producto con el código especificado. Si no hay un producto con ese código, devuelve null.
-    public Producto obtenerProducto(Integer codigo){
-        if(codigo>=0||codigo==null){
+    public Producto obtenerProducto(int codigo){
+        if(codigo>=0){
             for(Producto p: lista){
                 if(p.verCodigo() == codigo){
+                    System.out.println(p);
                     return p;
                 }
             }

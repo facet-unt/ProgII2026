@@ -11,19 +11,19 @@ import productos.modelos.Producto;
  */
 public class ProductoDelPedido {
     private int cantidad;
-    private Producto unProducto;
+    private Producto producto;
 
 
     
     public ProductoDelPedido(Producto unProducto, int cantidad){
         this.cantidad = cantidad;
-        this.unProducto = unProducto;
+        this.producto = unProducto;
     }
     
     public ProductoDelPedido(){}
     
     public void mostrar(){
-        System.out.println("\t["+unProducto.verCodigo()+"] "+unProducto.verDescripcion()+"\t$"+unProducto.verPrecio()+"\t\t"+cantidad);
+        System.out.println("\t["+producto.verCodigo()+"] "+producto.verDescripcion()+"\t$"+producto.verPrecio()+"\t\t"+cantidad);
     }
     
     //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/mostrar'">
@@ -34,24 +34,24 @@ public class ProductoDelPedido {
         this.cantidad = cantidad;
     }
 
-    public Producto verUnProducto() {
-        return unProducto;
+    public Producto verProducto() {
+        return producto;
     }
     public void asignarProducto(Producto unProducto) {
-        this.unProducto = unProducto;
+        this.producto = unProducto;
     }
     //</editor-fold>
     
     @Override
     public String toString(){
-        return "Producto:"+unProducto.verDescripcion()+" - Cant:"+cantidad;
+        return "Producto:"+producto.verDescripcion()+" - Cant:"+cantidad;
     }
 
     //<editor-fold defaultstate="collapsed" desc="Metodos 'equals' y 'hashCode'">
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.unProducto);
+        hash = 29 * hash + Objects.hashCode(this.producto);
         return hash;
     }
 
@@ -67,7 +67,7 @@ public class ProductoDelPedido {
             return false;
         }
         final ProductoDelPedido other = (ProductoDelPedido) obj;
-        return Objects.equals(this.unProducto, other.unProducto);
+        return Objects.equals(this.producto, other.producto);
     }
     //</editor-fold>
 }

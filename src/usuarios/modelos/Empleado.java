@@ -13,7 +13,7 @@ import pedidos.modelos.Pedido;
  * @author estudiante
  */
 public class Empleado extends Usuario {
-    private GestorPedidos gestorPedidos;
+    private final GestorPedidos gdp = GestorPedidos.instanciar();
 
     public Empleado(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
@@ -21,7 +21,7 @@ public class Empleado extends Usuario {
     
     @Override
     public ArrayList<Pedido> verPedidos() {
-        return gestorPedidos.verPedidos();
+        return gdp.verPedidos();
     }
     
 }
