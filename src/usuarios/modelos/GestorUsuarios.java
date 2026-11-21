@@ -12,18 +12,6 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class GestorUsuarios implements IGestorUsuarios {
-    /**
-     * Constantes con sus respectivos mensajes de texto
-     */
-    public static final String EXITO = "Usuario creado/modificado con exito";
-    public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
-    public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
-    public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
-    public static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas";
-    public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
-    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
-    public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
-    
     
     /**
      * Lista para guardar los usuarios que se ingresen
@@ -42,6 +30,7 @@ public class GestorUsuarios implements IGestorUsuarios {
         return instancia;
     }
     
+    @Override
     public String crearUsuario(String correo,String apellido,String nombre,Perfil perfil,String clave,String claveRepetida){
         if(correo == null || !correo.contains("@"))
             return ERROR_CORREO;
@@ -82,6 +71,7 @@ public class GestorUsuarios implements IGestorUsuarios {
     /**
      * @return toda la lista de usuarios  
      */
+    @Override
     public ArrayList<Usuario> verUsuarios(){
         return listaUsuarios;
     }
@@ -92,6 +82,7 @@ public class GestorUsuarios implements IGestorUsuarios {
      * @param Apellido a buscar
      * @return lista de usuarios que coincidan total o parcialmente con el ingresado
      */
+    @Override
     public ArrayList<Usuario> buscarUsuarios(String Apellido){
     
        ArrayList<Usuario> encontrados = new ArrayList<>();
@@ -109,6 +100,7 @@ public class GestorUsuarios implements IGestorUsuarios {
      * @param usuario
      * @return 
      */
+    @Override
     public String borrarUsuario(Usuario usuario){
         return "Hola";
     }
@@ -118,6 +110,7 @@ public class GestorUsuarios implements IGestorUsuarios {
      * @param usuario que se busca
      * @return true si existe el usuario,false en caso contrario
      */
+    @Override
      public boolean existeEsteUsuario(Usuario usuario){
         //
          if(usuario==null){
@@ -131,6 +124,7 @@ public class GestorUsuarios implements IGestorUsuarios {
       * @param correo utilizado para buscar un usuario
       * @return el usuario en caso de encontrarlo,null en caso contrario
       */
+    @Override
     public Usuario obtenerUsuario(String correo) {
         
         for (Usuario u : listaUsuarios) {

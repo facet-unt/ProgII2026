@@ -67,7 +67,7 @@ public class ControladorPrincipalTP5 {
         /*OBTENER UN PRODUCTO MEDIANTE EL CODIGO*/
         Producto unProducto1 = gp.obtenerProducto(1);
         Producto unProducto2 = gp.obtenerProducto(2);
-
+        
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
         ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);

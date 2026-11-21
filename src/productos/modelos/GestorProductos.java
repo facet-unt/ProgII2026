@@ -157,6 +157,7 @@ public class GestorProductos implements IGestorProductos{
      * @param producto
      * @return 
      */
+    @Override
     public String borrarProducto(Producto producto){
         return "Hola";
     }
