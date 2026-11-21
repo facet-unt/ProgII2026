@@ -14,6 +14,7 @@ import static interfaces.IGestorProductos.EXITO;
 import static interfaces.IGestorProductos.PRODUCTOS_DUPLICADOS;
 import static interfaces.IGestorProductos.PRODUCTO_INEXISTENTE;
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
@@ -158,7 +159,14 @@ public class GestorProductos implements IGestorProductos{
      */
     @Override
     public String borrarProducto(Producto producto){
-        return "Hola";
+        if (producto == null || !productos.contains(producto)) {
+            return PRODUCTO_INEXISTENTE;
+        }
+        if (GestorPedidos.instanciar().hayPedidosConEsteProducto(producto)) {
+            return ERROR_ELIMINAR; 
+        }
+        productos.remove(producto);
+        return EXITO;
     }
     
     /**
