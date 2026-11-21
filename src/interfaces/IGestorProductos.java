@@ -20,6 +20,7 @@ public interface IGestorProductos {
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
     public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
     public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
+    public static final String ERROR_BORRADO = "El producto esta presenta alguno/s pedido/s. Imposible de borrar hasta resolver";
     public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
     public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
