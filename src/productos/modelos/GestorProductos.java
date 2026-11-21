@@ -4,6 +4,7 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -11,19 +12,9 @@ import java.util.Collections;
  *
  * @author ramayo
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
     private String validacion;
     private ArrayList<Producto> lista = new ArrayList<>();
-    
-    public static final String EXITO = "Producto creado/modificado con exito";
-    public static final String ERROR_CODIGO = "El codigo del producto es incorrecto";
-    public static final String ERROR_DESCRIPCION="La descripcion del producto es incorrecta";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoria del producto es incorrecta";
-    public static final String ERROR_ESTADO = "El estado del producto es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
-    public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     
     //<editor-fold defaultstate="collapsed" desc="Patrón Singleton">
     private static GestorProductos gestor;
@@ -136,7 +127,7 @@ public class GestorProductos {
     }
     
     //Obtiene el producto con el código especificado. Si no hay un producto con ese código, devuelve null.
-    public Producto obtenerProducto(int codigo){
+    public Producto obtenerProducto(Integer codigo){
         if(codigo>=0){
             for(Producto p: lista){
                 if(p.verCodigo() == codigo){
@@ -147,5 +138,14 @@ public class GestorProductos {
         }
         else System.out.println(ERROR_CODIGO);
         return null;
+    }
+
+    public String borrarProducto(Producto producto) {
+        if(lista.contains(producto)){
+            //Buscar donde está el pedido al que pertenece el producto.
+            lista.remove(producto);
+            return EXITO;
+        }
+        else return PRODUCTO_INEXISTENTE;
     }
 }

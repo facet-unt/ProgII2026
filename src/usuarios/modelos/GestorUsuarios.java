@@ -4,6 +4,7 @@
  */
 package usuarios.modelos;
 
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -11,18 +12,10 @@ import java.util.Collections;
  *
  * @author ramayo
  */
-public class GestorUsuarios{
+public class GestorUsuarios implements IGestorUsuarios{
     private static final ArrayList<Usuario> listaUsuario = new ArrayList<>();
     private String validacion;
-    public static final String EXITO = "Usuario creado/modificado con éxito";
-    public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
-    public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
-    public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
-    public static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas";
-    public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
-    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
-    public static final String VALIDACION_EXITO = "Los datos de usuario son correctos";
-
+    
     //<editor-fold defaultstate="collapsed" desc="Patrón Singleton">
     private static GestorUsuarios gestor;
     private GestorUsuarios() {
@@ -114,6 +107,17 @@ public class GestorUsuarios{
         else
             System.out.println(ERROR_CORREO);
         return null; 
+    }
+
+    public String borrarUsuario(Usuario usuario) {
+        if(listaUsuario.contains(usuario)){
+            if(usuario.verPedidos().isEmpty()){
+                listaUsuario.remove(usuario);
+                return EXITO;
+            }
+            else return ERROR_USUARIO_CON_PEDIDO;
+        }
+        else return ERROR_USUARIO;
     }
         
 }
