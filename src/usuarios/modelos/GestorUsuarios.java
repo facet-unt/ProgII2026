@@ -76,7 +76,6 @@ public class GestorUsuarios implements IGestorUsuarios {
         return listaUsuarios;
     }
     
-    
     /**
      * metodo para buscar un apellido en una lista de usuarios
      * @param Apellido a buscar
@@ -134,6 +133,5 @@ public class GestorUsuarios implements IGestorUsuarios {
         }
         
         return null;
-    }
-    
+    }   
 }

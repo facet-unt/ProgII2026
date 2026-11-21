@@ -4,8 +4,11 @@
  */
 package interfaces;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
+import pedidos.modelos.ProductoDelPedido;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -25,7 +28,9 @@ public interface IGestorPedidos {
     String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese numero";
     String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
     String VALIDACION_EXITO = "El pedido tiene datos correctos";
-
+    
+    String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente);
+    String cambiarEstado(Pedido pedidoAModificar);
     ArrayList<Pedido> verPedidos();
     boolean hayPedidosConEsteCliente(Cliente cliente);
     boolean hayPedidosConEsteProducto(Producto producto);

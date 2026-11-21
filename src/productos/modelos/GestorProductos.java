@@ -94,8 +94,7 @@ public class GestorProductos implements IGestorProductos{
      * @param categoria
      * @param estado
      * @return
-     */
-    
+     */ 
     @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         if (!productos.contains(productoAModificar)) {
