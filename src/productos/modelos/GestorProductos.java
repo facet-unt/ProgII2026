@@ -6,6 +6,8 @@ package productos.modelos;
 
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -14,7 +16,17 @@ import java.util.List;
  */
 public class GestorProductos implements IGestorProductos{
     private static final List<Producto> productos = new ArrayList<>();
-
+    private final Comparator <Producto> comparadorCatyDescr = (p1,p2) -> {
+        int compCategoria = p1.verCategoria().compareTo(p2.verCategoria());
+        if (compCategoria != 0){
+            return compCategoria;
+        }
+        
+        return p1.verDescripcion().compareToIgnoreCase(p2.verDescripcion());
+    };
+    
+    private final Comparator <Producto> comparadorDescripcion = Comparator.comparing(Producto::verDescripcion,String.CASE_INSENSITIVE_ORDER);
+    
     
     //=============================
     //      Singletone
@@ -72,18 +84,20 @@ public class GestorProductos implements IGestorProductos{
     
     @Override
     public List<Producto> menu(){
+        Collections.sort(productos,comparadorCatyDescr);
         return productos;
     }
     
     @Override
-    public ArrayList<Producto> buscarProductos(String descripcion){
-        ArrayList<Producto> pdp = new ArrayList<>();
+    public List<Producto> buscarProductos(String descripcion){
+        List<Producto> pdp = new ArrayList<>();
         for (Producto p : productos){
             if (p.verDescripcion().toLowerCase().contains(descripcion.toLowerCase()))
                 pdp.add(p);
         }
         if (pdp.isEmpty())
             return null;
+        Collections.sort(pdp,comparadorCatyDescr);
         return pdp;
     }
     
@@ -94,25 +108,27 @@ public class GestorProductos implements IGestorProductos{
     
     @Override
     public List<Producto> verProductosPorCategoria(Categoria categoria){
-        ArrayList<Producto> pdp = new ArrayList<>();
+        List<Producto> pdp = new ArrayList<>();
         for (Producto p : productos){
             if (p.verCategoria() == categoria)
                 pdp.add(p);
         }
         if (pdp.isEmpty())
             return null;
+        Collections.sort(pdp,comparadorDescripcion);
         return pdp;
     }
     
     @Override
     public Producto obtenerProducto(Integer codigo){
         for (Producto p: productos){
-            if (p.verCodigo() == codigo){       
+            if (p.verCodigo() == codigo){      
                 return p;
             }
         }
         return null;
     }
+    @Override
     public String borrarProducto(Producto producto){
         if (!productos.contains(producto)){
             return ERROR_NO_ESTA;

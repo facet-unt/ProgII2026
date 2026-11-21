@@ -9,17 +9,20 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
 /**
  *
- * @author homep
+ * @author foxeen
  */
 public class GestorPedidos implements IGestorPedidos{
     private static final List<Pedido> pedidos = new ArrayList<>();
     private static int cantidadDePedidos = 0;
+    private final Comparator<Pedido> comparadorNumAsc = Comparator.comparing(Pedido::verNumero);
     
 
     //=====================
@@ -49,6 +52,7 @@ public class GestorPedidos implements IGestorPedidos{
         return VALIDACION_EXITO;
     }
     
+    @Override
     public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
         String proceso = corroborarDatos(fecha, hora, (ArrayList<ProductoDelPedido>) productosDelPedido, cliente);
         
@@ -63,6 +67,7 @@ public class GestorPedidos implements IGestorPedidos{
         return proceso;
     }
     
+    @Override
     public String cambiarEstado(Pedido pedidoAModificar){
         switch (pedidoAModificar.verEstado()){
             case Estado.CREADO -> pedidoAModificar.asignarEstado(Estado.PROCESANDO);
@@ -74,10 +79,13 @@ public class GestorPedidos implements IGestorPedidos{
         return VALIDACION_EXITO;
     }
     
+    @Override
     public List<Pedido> verPedidos(){
+        Collections.sort(GestorPedidos.pedidos,comparadorNumAsc);
         return GestorPedidos.pedidos;
     }
     
+    @Override
     public boolean hayPedidosConEsteCliente(Cliente cliente){
         for (Pedido p : pedidos){
             if (p.verCliente().equals(cliente))
@@ -86,6 +94,7 @@ public class GestorPedidos implements IGestorPedidos{
         return false;
     }
     
+    @Override
     public boolean hayPedidosConEsteProducto(Producto producto){
         for (Pedido p : pedidos){
             for (ProductoDelPedido pdp : p.verProductoDelPedido()){
@@ -96,6 +105,8 @@ public class GestorPedidos implements IGestorPedidos{
         return false;
     }
     
+
+    @Override
     public boolean existeEstePedido(Pedido pedido){
         for (Pedido p : pedidos){
             if (p.equals(pedido))
@@ -104,6 +115,7 @@ public class GestorPedidos implements IGestorPedidos{
         return false;
     }
     
+    @Override
     public Pedido obtenerPedido(Integer numero){
         for (Pedido p: pedidos){
             if (p.verNumero() == numero)
@@ -112,6 +124,7 @@ public class GestorPedidos implements IGestorPedidos{
         return null;
     }
 
+    @Override
     public String cancelarPedido(Pedido unPedido2) {
         for (Pedido p: pedidos){
             if (p.equals(unPedido2)){
