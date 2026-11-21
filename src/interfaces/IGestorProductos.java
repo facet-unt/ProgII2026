@@ -15,7 +15,7 @@ import productos.modelos.Producto;
  */
 public interface IGestorProductos {
 
-    String EXITO = "Producto creado/modificado con exito";
+    String EXITO = "Producto creado/modificado/eliminado con exito";
     String ERROR_CODIGO = "El codigo del producto es incorrecto";
     String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
     String ERROR_PRECIO = "El precio del producto es incorrecto";
@@ -24,6 +24,7 @@ public interface IGestorProductos {
     String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese codigo";
     String VALIDACION_EXITO = "Los datos del producto son correctos";
     String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
+    String ERROR_ELIMINAR = "El producto no se pudo eliminar correctamente";
    
     String crearProducto(int codigo, String descripcion, float precio, Categoria categoria,Estado estado);
     String modificarProducto(Producto productoAModificar, int codigo, String descripcion, 

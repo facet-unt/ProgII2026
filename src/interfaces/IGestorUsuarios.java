@@ -22,6 +22,8 @@ public interface IGestorUsuarios {
     String ERROR_PERFIL = "El perfil del usuario es incorrecto";
     String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
     String VALIDACION_EXITO = "Los datos del usuario son correctos";
+    String USUARIO_INEXISTENTE = "No existe el usuario especificado";
+    String ERROR_ELIMINAR = "El usuario no se pudo eliminar correctamente";
     
     String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
     ArrayList<Usuario> verUsuarios();

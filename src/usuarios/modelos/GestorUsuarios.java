@@ -6,6 +6,7 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
@@ -101,7 +102,14 @@ public class GestorUsuarios implements IGestorUsuarios {
      */
     @Override
     public String borrarUsuario(Usuario usuario){
-        return "Hola";
+        if (usuario == null || !listaUsuarios.contains(usuario)) {
+            return USUARIO_INEXISTENTE;
+        }
+        if (GestorPedidos.instanciar().hayPedidosConEsteCliente((Cliente)usuario)){
+            return ERROR_ELIMINAR;
+        }
+        listaUsuarios.remove(usuario);
+        return EXITO;
     }
     
     /**
