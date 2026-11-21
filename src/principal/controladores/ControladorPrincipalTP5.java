@@ -4,6 +4,9 @@
  */
 package principal.controladores;
 
+import interfaces.IGestorPedidos;
+import interfaces.IGestorProductos;
+import interfaces.IGestorUsuarios;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -22,15 +25,16 @@ import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
 
+
 /**
  *
  * @author Mariana
  */
 public class ControladorPrincipalTP5 {
     public static void main(String[] args) {
-        GestorProductos gp = GestorProductos.instanciar();
-        GestorUsuarios gu=GestorUsuarios.instanciar();
-        GestorPedidos gPed = GestorPedidos.instanciar();
+        IGestorProductos gp = GestorProductos.instanciar();
+        IGestorUsuarios gu=GestorUsuarios.instanciar();
+        IGestorPedidos gPed = GestorPedidos.instanciar();
         
         System.out.println("#####PRODUCTOS#####");
         /*CREAR PRODUCTO*/

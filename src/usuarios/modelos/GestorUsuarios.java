@@ -99,7 +99,6 @@ public class GestorUsuarios implements IGestorUsuarios{
         if(correo!=null && (correo.contains("@"))){
             for(Usuario u:listaUsuario){
                 if(u.verCorreo().equals(correo)){
-                    u.mostrar();
                     return u;
                 }
             }

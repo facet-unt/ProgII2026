@@ -131,7 +131,6 @@ public class GestorProductos implements IGestorProductos{
         if(codigo>=0){
             for(Producto p: lista){
                 if(p.verCodigo() == codigo){
-                    System.out.println(p);
                     return p;
                 }
             }
