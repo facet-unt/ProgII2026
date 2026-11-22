@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -26,9 +27,9 @@ public class Pedido {
     private Estado estado;
     
     //Relacion: Pedido tiene una cantidad
-    private ArrayList<ProductoDelPedido> listaProductos = new ArrayList<>();
+    private List<ProductoDelPedido> listaProductos = new ArrayList<>();
 
-    public Pedido(int numero,LocalDate fecha, LocalTime hora,ArrayList<ProductoDelPedido> listaProductos, Cliente cliente) {
+    public Pedido(int numero,LocalDate fecha, LocalTime hora, List<ProductoDelPedido> listaProductos, Cliente cliente) {
         this.numero = numero;
         this.fecha = fecha;
         this.hora = hora;
@@ -78,7 +79,7 @@ public class Pedido {
         ProductoDelPedido pdp = new ProductoDelPedido(p,cantidad);
         this.listaProductos.add(pdp);
     }
-    public ArrayList<ProductoDelPedido> verListaProductos() {
+    public List<ProductoDelPedido> verListaProductos() {
         return listaProductos;
     }
     

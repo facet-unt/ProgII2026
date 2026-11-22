@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Pedido;
 
 /**
@@ -14,14 +15,14 @@ import pedidos.modelos.Pedido;
 public class Cliente extends Usuario {
     
     //Relacion:Un cliente tiene muchos pedidos:
-    private ArrayList<Pedido> listaPedidos;
+    private List<Pedido> listaPedidos;
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
         this.listaPedidos = new ArrayList<>();
     }  
 
-    public void asignarPedidos(ArrayList<Pedido> pedidos) {
+    public void asignarPedidos(List<Pedido> pedidos) {
         this.listaPedidos = pedidos;
     }
 
@@ -44,7 +45,7 @@ public class Cliente extends Usuario {
     }
 
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
         return this.listaPedidos;
     }    
 }
