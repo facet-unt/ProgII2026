@@ -17,7 +17,7 @@ import usuarios.modelos.Cliente;
  *
  * @author ramayo
  */
-public class Pedido {
+public class Pedido implements Comparable<Pedido>{
     private int numero;
     private LocalDate fecha;
     private LocalTime hora;
@@ -36,6 +36,11 @@ public class Pedido {
         this.listaProductos=listaProductos;
         this.cliente = cliente;
         this.estado = Estado.CREADO;
+    }
+    
+    @Override
+    public int compareTo(Pedido otro){// Devuelve negativo si this.numero < otro.numero, 0 si son iguales, positivo si this.numero > otro.numero
+        return Integer.compare(this.numero , otro.numero);
     }
     
     public void mostrar(){
