@@ -7,8 +7,10 @@ package productos.modelos;
 import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import pedidos.modelos.GestorPedidos;
+import java.util.Comparator;
 
 /**
  *
@@ -16,7 +18,17 @@ import pedidos.modelos.GestorPedidos;
  */
 public class GestorProductos implements IGestorProductos{
     private String validacion;
-    private ArrayList<Producto> lista = new ArrayList<>();
+    private List<Producto> lista = new ArrayList<>();
+    private final Comparator<Producto> compCategoriaDescripcion = new Comparator<Producto>(){
+        @Override
+        public int compare(Producto p1, Producto p2) {
+            int res = p1.verCategoria().compareTo(p2.verCategoria());
+            if (res == 0) {
+                return p1.verDescripcion().compareToIgnoreCase(p2.verDescripcion());
+            }
+            return res;
+        }
+    };
     
     //<editor-fold defaultstate="collapsed" desc="Patrón Singleton">
     private static GestorProductos gestor;
@@ -30,8 +42,8 @@ public class GestorProductos implements IGestorProductos{
     }
     //</editor-fold>
     
-    //Verifica que los datos ingresados sean válidos según enunciado.
-    public String validarProducto(int codigo, String descripcion,float precio, Categoria categoria, Estado estado){
+    //Verifica que los datos ingresados sean válidos según enunciado
+    public String validarProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         if(codigo<=0){
             return ERROR_CODIGO;
         }
@@ -50,8 +62,9 @@ public class GestorProductos implements IGestorProductos{
         return VALIDACION_EXITO;
     }
     
-    //Crea un nuevo producto, devolviendo una cadena con el resultado de la operación.    
-    public String crearProducto(int codigo, String descripcion,float precio, Categoria categoria, Estado estado){
+    //Crea un nuevo producto, devolviendo una cadena con el resultado de la operación 
+    @Override
+    public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         validacion=validarProducto(codigo, descripcion, precio, categoria, estado);
         if (validacion.equals(VALIDACION_EXITO)){
             Producto p = new Producto(codigo, descripcion, precio, categoria, estado);
@@ -66,7 +79,8 @@ public class GestorProductos implements IGestorProductos{
         else return validacion;
     }
 
-    //Modifica un producto, devolviendo una cadena con el resultado de la operación.
+    //Modifica un producto, devolviendo una cadena con el resultado de la operación
+    @Override
     public String modificarProducto(Producto productoAModificar,int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         if(existeEsteProducto(productoAModificar)){
             validacion = validarProducto(productoAModificar.verCodigo(), descripcion, precio, categoria, estado);
@@ -81,54 +95,62 @@ public class GestorProductos implements IGestorProductos{
     }
     
     // Devuelve todos los productos.
-    public ArrayList<Producto> menu(){
+    @Override
+    public List<Producto> menu(){
+        Collections.sort(lista, compCategoriaDescripcion);
         return lista;
     }
     
-    //Busca los productos cuya descripción coincida, total o parcialmente, con la especificada.
-    public ArrayList<Producto> buscarProductos(String descripcion){
-        ArrayList<Producto> productosPorDescripcion = new ArrayList<>();
-        String desc = descripcion.toLowerCase();
-        
-        if(!(desc == null || desc.trim().isEmpty())){
-            for(Producto p: lista){
+    //Busca los productos cuya descripción coincida, total o parcialmente, con la especificada
+    @Override
+    public List<Producto> buscarProductos(String descripcion) {
+        List<Producto> productosPorDescripcion = new ArrayList<>();
+        if (descripcion != null && !descripcion.trim().isEmpty()) {
+            String desc = descripcion.toLowerCase();
+            for (Producto p : lista) {
                 String descripcionMinuscula = p.verDescripcion().toLowerCase();
-                if(descripcionMinuscula.contains(desc))
+                if (descripcionMinuscula.contains(desc)) {
                     productosPorDescripcion.add(p);
+                }
             }
-            if(productosPorDescripcion.isEmpty()){
+            if (productosPorDescripcion.isEmpty()) {
                 System.out.println(PRODUCTO_INEXISTENTE);
             }
-            Collections.sort(productosPorDescripcion);
-        }
-        else
+            Collections.sort(productosPorDescripcion, compCategoriaDescripcion);
+        } else {
             System.out.println(ERROR_DESCRIPCION);
+        }
         return productosPorDescripcion;
     }
     
-    //Devuelve true si existe el producto especificado, false en caso contrario.
+    //Devuelve true si existe el producto especificado, false en caso contrario
+    @Override
     public boolean existeEsteProducto(Producto producto){
         return lista.contains(producto);
     }
     
-    //Devuelve los productos con la categoría especificada.
-    public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
-        ArrayList<Producto> productosPorCategoria = new ArrayList<>();
-        if(!(categoria ==null)){
-            for(Producto p: lista){
-                if(p.verCategoria() == categoria){
-                    productosPorCategoria.add(p);
-                }
+    //Devuelve los productos con la categoría especificada
+    @Override
+    public List<Producto> verProductosPorCategoria(Categoria categoria) {
+    List<Producto> productosPorCategoria = new ArrayList<>();
+    if (categoria != null) {
+        for (Producto p : lista) {
+            if (p.verCategoria() == categoria) {
+                productosPorCategoria.add(p);
             }
         }
-        else System.out.println(ERROR_CATEGORIA);
-        if(productosPorCategoria.isEmpty()){
+        if (productosPorCategoria.isEmpty()) {
             System.out.println(PRODUCTO_INEXISTENTE);
         }
-        return productosPorCategoria;
+        Collections.sort(productosPorCategoria); // usa el compareTo de Producto
+    } else {
+        System.out.println(ERROR_CATEGORIA);
     }
+    return productosPorCategoria;
+}
     
-    //Obtiene el producto con el código especificado. Si no hay un producto con ese código, devuelve null.
+    //Obtiene el producto con el código especificado. Si no hay un producto con ese código, devuelve null
+    @Override
     public Producto obtenerProducto(Integer codigo){
         if(codigo>=0){
             for(Producto p: lista){
@@ -141,9 +163,10 @@ public class GestorProductos implements IGestorProductos{
         return null;
     }
 
+    @Override
     public String borrarProducto(Producto producto) {
         if(lista.contains(producto)){
-            //Buscar donde está el pedido al que pertenece el producto.
+            //Busca donde está el pedido al que pertenece el producto
             IGestorPedidos gp=GestorPedidos.instanciar();
             if(!(gp.hayPedidosConEsteProducto(producto))){
                 lista.remove(producto);

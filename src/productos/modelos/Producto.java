@@ -78,7 +78,16 @@ public class Producto implements Comparable<Producto>{
 
     @Override
     public int compareTo(Producto o) {
-        return this.descripcion.compareTo(o.verDescripcion());
+        if (this.descripcion == null && o.verDescripcion() == null) {
+        return 0; //Si ambos productos tienen descripción null, los considera iguales en cuanto a descripcion
+        }
+        if (this.descripcion == null) {
+        return -1; //Si el producto actual (this) tiene null y el otro (o) si tiene texto, devuelve -1. Es decir, pone los null primero
+        }
+        if (o.verDescripcion() == null) {
+        return 1; //Si el otro producto (o) tiene null y el actual (this) si tiene texto, devuelve 1 (o sea el null queda antes)
+        }
+        return this.descripcion.compareToIgnoreCase(o.verDescripcion()); //Cuando ninguno de los dos es null ahi compara las descripciones
     }
 
     //<editor-fold defaultstate="collapsed" desc="Metodos 'equals' y 'hashCode'">
