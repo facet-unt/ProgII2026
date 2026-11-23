@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
@@ -50,12 +51,14 @@ public class GestorPedidos implements IGestorPedidos{
         }
         
        pedidos.add(unPedido);
-       
        return EXITO;
     }
 
     @Override
     public String cambiarEstado(Pedido pedidoAModificar) {
+        if(pedidoAModificar == null || !existeEstePedido(pedidoAModificar))
+            return PEDIDO_INEXISTENTE;
+        
         EstadoPedido estado = pedidoAModificar.verEstado();
         
         switch(estado){
@@ -74,25 +77,29 @@ public class GestorPedidos implements IGestorPedidos{
 
     @Override
     public List<Pedido> verPedidos() {
+        Collections.sort(pedidos);
         return pedidos;
     }
 
     @Override
     public boolean hayPedidosConEsteCliente(Cliente cliente) {
-        for(Pedido p : pedidos){
-            if(p.verCliente().equals(cliente))
-                return true;
-        }
-        
+        if(cliente != null){
+            for(Pedido p : pedidos){
+                if(p.verCliente().equals(cliente))
+                    return true;
+            }
+        }       
         return false;
     }
 
     @Override
-    public boolean hayPedidosConEsteProducto(Producto producto) {
-        for(Pedido p : pedidos){
-            for(ProductoDelPedido pdp : p.verListaPedidos()){
-                if(pdp.verProducto().equals(producto)){
-                    return true;
+    public boolean hayPedidosConEsteProducto(Producto producto) {   
+        if(producto != null){
+            for(Pedido p : pedidos){
+                for(ProductoDelPedido pdp : p.verListaPedidos()){
+                    if(pdp.verProducto().equals(producto)){
+                        return true;
+                    }
                 }
             }
         }
@@ -102,12 +109,21 @@ public class GestorPedidos implements IGestorPedidos{
 
     @Override
     public String cancelarPedido(Pedido pedido) {
-        if(this.pedidos.contains(pedido)){
-            pedidos.remove(pedido);
-            return PEDIDO_BORRADO;
+        if(pedido == null || !existeEstePedido(pedido)){
+            return PEDIDO_INEXISTENTE;
         }
         
-        return PEDIDO_INEXISTENTE;
+        if(pedido.verEstado() != EstadoPedido.CREADO){
+            return ERROR_ESTADO;
+        }
+        else
+            this.pedidos.remove(pedido);
+        
+        if(pedido.verCliente() != null){
+            pedido.verCliente().cancelarPedido(pedido);
+        }
+        
+        return PEDIDO_BORRADO;
     }
 
     @Override
@@ -130,7 +146,7 @@ public class GestorPedidos implements IGestorPedidos{
                return ERROR_FECHA;
            if(hora == null)
                return ERROR_HORA;
-           if(productosDelPedido == null)
+           if(productosDelPedido == null || productosDelPedido.isEmpty())
                return ERROR_PRODUCTOS_DEL_PEDIDO;
            if(cliente == null)
                return ERROR_CLIENTE;

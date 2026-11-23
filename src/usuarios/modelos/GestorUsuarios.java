@@ -6,6 +6,7 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -30,6 +31,7 @@ public class GestorUsuarios implements IGestorUsuarios{
     
     //Metodo que devuelve todos los usuarios creados
     public ArrayList<Usuario> verUsuarios(){
+        Collections.sort(usuarios);
         return usuarios;
     }
     
@@ -59,27 +61,22 @@ public class GestorUsuarios implements IGestorUsuarios{
             return resultado;
         }
         
+        Usuario u = null;
         switch(perfil){
             case CLIENTE:
-                Usuario u1 = new Cliente(correo, clave, apellido, nombre);
-                if(!this.existeEsteUsuario(u1)){
-                    usuarios.add(u1);
-                }
+                u = new Cliente(correo, clave, apellido, nombre);
                 break;
             case EMPLEADO:
-                Usuario u2 = new Empleado(correo, clave, apellido, nombre);
-                if(!this.existeEsteUsuario(u2)){
-                    usuarios.add(u2);
-                }                
+                u = new Empleado(correo, clave, apellido, nombre);
                 break;
             case ENCARGADO:
-                Usuario u3 = new Encargado(correo, clave, apellido, nombre);
-                if(!this.existeEsteUsuario(u3)){
-                    usuarios.add(u3);
-                }                
+                u = new Encargado(correo, clave, apellido, nombre);              
                 break;
         }
         
+        if(!this.existeEsteUsuario(u)){
+            usuarios.add(u);
+        }
         return EXITO;
     }
 
@@ -94,6 +91,7 @@ public class GestorUsuarios implements IGestorUsuarios{
             }
         }
         
+        Collections.sort(buscados);
         return buscados;
     }
 

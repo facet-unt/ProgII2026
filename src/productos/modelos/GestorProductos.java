@@ -83,7 +83,7 @@ public class GestorProductos implements IGestorProductos{
        //Devuelve todos los productos guardados
        @Override
        public ArrayList<Producto> menu(){
-           Collections.sort(productos, new DescYCatComp());
+           Collections.sort(productos, new ComparadorDescYCat());
            return productos;          
        }
        
@@ -123,6 +123,7 @@ public class GestorProductos implements IGestorProductos{
                }
            }
            
+           Collections.sort(lista);
            return lista;
        }
        
@@ -131,11 +132,11 @@ public class GestorProductos implements IGestorProductos{
            ArrayList<Producto> listaProductos = new ArrayList<>();
            
            for(Producto pd : productos){
-               if(pd.verDescripcion().toLowerCase().equals(descripcion.toLowerCase()))
+               if(pd.verDescripcion().trim().toLowerCase().equals(descripcion.trim().toLowerCase()))
                    listaProductos.add(pd);
            }
            
-           Collections.sort(listaProductos, new DescYCatComp());
+           Collections.sort(listaProductos, new ComparadorDescYCat());
            return listaProductos;
        }
 
