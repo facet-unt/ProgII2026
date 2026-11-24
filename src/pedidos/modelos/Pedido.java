@@ -13,7 +13,7 @@ import java.util.List;
  *Representa un pedido realizado en el sistema
  * @author Usuario
  */
-public class Pedido {
+public class Pedido implements Comparable<Pedido>{
 
     private int numero;
     private LocalDateTime fechaYHora;
@@ -134,5 +134,12 @@ public class Pedido {
         for (ProductoDelPedido pDP : productosDelPedido) {
             pDP.mostrarPDP();
         }
+    }
+    
+    
+    @Override
+    public int compareTo(Pedido p1){
+        
+      return Integer.compare(this.numero, p1.numero);
     }
 }

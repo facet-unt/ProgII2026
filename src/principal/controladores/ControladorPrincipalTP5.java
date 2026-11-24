@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.ProductoDelPedido;
@@ -70,7 +71,7 @@ public class ControladorPrincipalTP5 {
         
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
-        ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
+        List<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
         System.out.println("Productos filtrados por categoria");
         System.out.println("===================");
         for (Producto p : productosBuscados) {
@@ -334,27 +335,27 @@ public class ControladorPrincipalTP5 {
             p.mostrar();
         }
         
-        System.out.println("");
-        System.out.println("Ver si existe un usuario");
-        System.out.println(gu.existeEsteUsuario(unCliente1));
-        Usuario unCliente10 = new Cliente("cliente10@bar.com", "claveCliente10", "ApellidoCliente10", "NombreCliente10");
-        //usuario inexistente
-        System.out.println("Ver si existe un usuario");
-        System.out.println(gu.existeEsteUsuario(unCliente10));
-
-        System.out.println("Usuarios");
-        System.out.println("========");
-        for (Usuario u : gu.verUsuarios()) {
-            u.mostrar();
-        }
-        
-        System.out.println();
-        ArrayList<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
-        System.out.println("Usuarios filtrados");
-        System.out.println("==================");
-        for (Usuario u : usuariosBuscados) {
-            u.mostrar();
-        }
+//        System.out.println("");
+//        System.out.println("Ver si existe un usuario");
+//        System.out.println(gu.existeEsteUsuario(unCliente1));
+//        Usuario unCliente10 = new Cliente("cliente10@bar.com", "claveCliente10", "ApellidoCliente10", "NombreCliente10");
+//        //usuario inexistente
+//        System.out.println("Ver si existe un usuario");
+//        System.out.println(gu.existeEsteUsuario(unCliente10));
+//
+//        System.out.println("Usuarios");
+//        System.out.println("========");
+//        for (Usuario u : gu.verUsuarios()) {
+//            u.mostrar();
+//        }
+//        
+//        System.out.println();
+//        ArrayList<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
+//        System.out.println("Usuarios filtrados");
+//        System.out.println("==================");
+//        for (Usuario u : usuariosBuscados) {
+//            u.mostrar();
+//        }
         
         System.out.println();
         System.out.println(gPed.existeEstePedido(unPedido1));

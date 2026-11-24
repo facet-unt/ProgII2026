@@ -13,6 +13,7 @@ import static interfaces.IGestorPedidos.PEDIDO_INEXISTENTE;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
@@ -23,7 +24,7 @@ import usuarios.modelos.Cliente;
  */
 public class GestorPedidos implements IGestorPedidos{
 
-    ArrayList<Pedido> pedidos = new ArrayList<>();
+    List<Pedido> pedidos = new ArrayList<>();
 
     private static GestorPedidos gestor;
     private int numeroSgte = 1;
@@ -94,13 +95,10 @@ public class GestorPedidos implements IGestorPedidos{
             return ERROR_ESTADO;
         }
         switch (opc) {
-            case CREADO:
-                pedidoAModificar.asignarEstado(Estado.PROCESANDO);
-                break;
-            case PROCESANDO:
-                pedidoAModificar.asignarEstado(Estado.ENTREGADO);
-                break;
-            default:
+            case CREADO -> pedidoAModificar.asignarEstado(Estado.PROCESANDO);
+            case PROCESANDO -> pedidoAModificar.asignarEstado(Estado.ENTREGADO);
+            default -> {
+            }
         }
         return EXITO;
     }
@@ -111,7 +109,8 @@ public class GestorPedidos implements IGestorPedidos{
      * @return
      */
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
+        Collections.sort(pedidos);
         return pedidos;
     }
 
