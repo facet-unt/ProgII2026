@@ -5,6 +5,10 @@
 package productos.modelos;
 
 import interfaces.IGestorProductos;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -19,7 +23,7 @@ public class GestorProductos implements IGestorProductos{
 
        //Constructor privado de la clase
        private GestorProductos(){
-           
+           this.crearArchivo();
        }
        
        //Metodo estatico para crear una sola instancia de la clase
@@ -43,8 +47,8 @@ public class GestorProductos implements IGestorProductos{
            if(this.existeEsteProducto(unProducto)){
                return "El Producto ya existe";
            }
-           this.productos.add(unProducto);
-           
+//           this.productos.add(unProducto);
+           this.escribirProducto(unProducto);
            return EXITO;
        }
        
@@ -150,6 +154,45 @@ public class GestorProductos implements IGestorProductos{
         return PRODUCTO_INEXISTENTE;
     }
        
-       
+    private void crearArchivo(){
+        try{
+            File f = new File(NOMBRE_ARCHIVO);
+            if(!f.exists()){
+                f.createNewFile();
+                System.out.println(CREACION_OK);
+            }
+        }
+        catch(IOException e){
+            System.out.println(CREACION_ERROR);
+        }
+    }   
+    
+    private String escribirProducto(Producto p){
+        String linea;
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(NOMBRE_ARCHIVO, true))){
+            linea = this.convertirProductoEnLinea(p);
+            bw.write(linea);
+            bw.newLine();
+        }
+        catch(IOException e){
+            System.out.println(ESCRITURA_ERROR);
+        }
+        
+        return ESCRITURA_OK;
+    }
+    
+    private String convertirProductoEnLinea(Producto p){
+        StringBuilder sb = new StringBuilder();
+        sb.append(Integer.toString(p.verCodigo())).append(SEPARADOR);
+        sb.append(p.verDescripcion()).append(SEPARADOR);
+        sb.append(p.verCategoria()).append(SEPARADOR);
+        sb.append(p.verEstado()).append(SEPARADOR);
+        sb.append(Float.toString(p.verPrecio()));
+        return sb.toString();
+    }
+    
+    private void leerArchivo(){
+        
+    }
 }
 

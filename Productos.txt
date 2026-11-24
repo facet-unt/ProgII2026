@@ -1,0 +1,6 @@
+1 - Producto1 - Entrada - Disponible - 1.0
+2 - Pizza2 - Plato Principal - Disponible - 2.0
+3 - Producto3 - Postre - Disponible - 3.0
+4 - Producto4 - Postre - Disponible - 4.0
+5 - Producto5 - Entrada - Disponible - 4.0
+6 - Pizza6 - Plato Principal - Disponible - 4.0
