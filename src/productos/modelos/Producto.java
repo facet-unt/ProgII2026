@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package productos.modelos;
 
-/**
- *
- * @author estudiante
- */
 public class Producto {
+
     private int codigo;
     private String descripcion;
     private Categoria categoria;
-private Estado estado;
+    private Estado estado;
     private float precio;
+
+    //====================================
+    //      Métodos de Producto
+    //====================================
 
     public int verCodigo() {
         return codigo;
@@ -23,13 +21,13 @@ private Estado estado;
         return descripcion;
     }
 
-    public Categoria verCategoria() {
-    return categoria;
-}
+    public String verEstado() {
+        return estado.toString();
+    }
 
-public Estado verEstado() {
-    return estado;
-}
+    public String verCategoria() {
+        return categoria.toString();
+    }
 
     public float verPrecio() {
         return precio;
@@ -43,49 +41,57 @@ public Estado verEstado() {
         this.descripcion = descripcion;
     }
 
-    public void asignarCategoria(Categoria categoria) {
-    this.categoria = categoria;
-}
+    public void asignarEstado(Estado estado) {
+        this.estado = estado;
+    }
 
-public void asignarEstado(Estado estado) {
-    this.estado = estado;
-}
+    public void asignarCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public void asignarPrecio(float precio) {
         this.precio = precio;
     }
 
+    //====================================
+    //      Constructor de Producto
+    //====================================
+
     public Producto(int codigo, String descripcion,
-                Categoria categoria, Estado estado, float precio) {
-    this.codigo = codigo;
-    this.descripcion = descripcion;
-    this.categoria = categoria;
-    this.estado = estado;
-    this.precio = precio;
-} 
-    
-    
-    public void mostrar() {        
-        System.out.println("Producto: "+descripcion +" |Codigo: " +codigo );
-        System.out.println("Estado: "+estado +" | Precio: " +precio+ "\n");
+            Categoria categoria, Estado estado, float precio) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
     }
-    
+
+    public void mostrar() {
+        System.out.println("Producto " + "<Codigo " + codigo + "> " + descripcion);
+        System.out.println("Categoria: " + categoria + " Estado: " + estado
+                + "  Precio: " + precio);
+    }
+
     @Override
-public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
 
-    Producto otro = (Producto) obj;
-    return codigo == otro.codigo;
-}
+        Producto otro = (Producto) obj;
+        return codigo == otro.codigo;
+    }
 
-@Override
-public int hashCode() {
-    return Integer.hashCode(codigo);
-}
-   @Override
-public String toString() {
-    return "Producto: " + descripcion
-            + " | Codigo: " + codigo;
-} 
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(codigo);
+    }
+
+    @Override
+    public String toString() {
+        return "Producto: " + descripcion + " | Codigo: " + codigo;
+    }
 }

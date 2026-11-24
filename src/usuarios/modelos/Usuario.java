@@ -1,88 +1,44 @@
-/*
+//* 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package usuarios.modelos;
+
 import java.util.ArrayList;
-import pedidos.modelos.Pedido;
+import java.util.Objects;
 
 /**
  *
- * @author Usuario
+ * @author lourdes
  */
 public abstract class Usuario {
-
-    // Atributos comunes
+    
     private String correo;
     private String clave;
     private String apellido;
     private String nombre;
 
-    public Usuario(String correo, String clave, String apellido, String nombre) {
+    public String verCorreo() {
+        return correo;
+    }
+
+    public void asignarCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String verClave() {
+        return clave;
+    }
+
+    public void asignarClave(String clave) {
         this.clave = clave;
+    }
+
+    public String verApellido() {
+        return apellido;
+    }
+
+    public void asignarApellido(String apellido) {
         this.apellido = apellido;
-        this.nombre = nombre;
     }
-    
-    
-public String verCorreo() {
-    return correo;
-}
-
-public void asignarCorreo(String correo) {
-    this.correo = correo;
-}
-
-public String verClave() {
-    return clave;
-}
-
-public void asignarClave(String clave) {
-    this.clave = clave;
-}
-
-public String verApellido() {
-    return apellido;
-}
-
-public void asignarApellido(String apellido) {
-    this.apellido = apellido;
-}
-
-public String verNombre() {
-    return nombre;
-}
-
-public void asignarNombre(String nombre) {
-    this.nombre = nombre;
-}
-
-public void mostrar(){
-        System.out.println("Empleado: "+apellido +", " +nombre );
-        System.out.println("clave: "+clave +" | correo: " +correo+"\n");
-    }
-
-       // Control de correos 
- public abstract ArrayList<Pedido> verPedidos();
- 
-@Override
-public boolean equals(Object obj) {
-    if (this == obj) {
-        return true;
-    }
-
-    if (!(obj instanceof Usuario)) {
-        return false;
-    }
-
-    Usuario otro = (Usuario) obj;
-    return correo.equals(otro.correo);
-}
-
-@Override
-public int hashCode() {
-    return correo.hashCode();
-}
-
 }

@@ -6,21 +6,28 @@ package productos.modelos;
 
 /**
  *
- * @author lourdes
+ * @author foxeen
  */
 public enum Estado {
-    DISPONIBLE,
-    NO_DISPONIBLE;
+    DISPONIBLE("disponible"),NO_DISPONIBLE("no disponible");
+    
+    private final String descripcion;
+    
+    
+    //====================================
+    //      Metodos de Estado
+    //====================================
     
 @Override
-    public String toString() {
-        switch (this) {
-            case DISPONIBLE:
-                return "Disponible";
-            case NO_DISPONIBLE:
-                return "No disponible";
-            default:
-                return " ";
-        }
+    public String toString(){
+        return descripcion;
+    }
+    //====================================
+    //      Constructor de Estado
+    //====================================
+    
+    Estado(String descripcion){
+        this.descripcion = descripcion;
     }
 }
+
