@@ -36,6 +36,7 @@ public class Cliente extends Usuario {
         }
     }
 
+    
     // Cancela (elimina) el pedido de la lista
     public void cancelarPedido(Pedido pedido) {
         if (listaPedidos.contains(pedido)){

@@ -6,6 +6,8 @@ package productos.modelos;
 
 import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -19,7 +21,7 @@ import java.util.Comparator;
 public class GestorProductos implements IGestorProductos{
     private String validacion;
     private List<Producto> lista = new ArrayList<>();
-    
+       
     //<editor-fold defaultstate="collapsed" desc="Patrón Singleton">
     private static GestorProductos gestor;
     private GestorProductos() {
@@ -74,10 +76,20 @@ public class GestorProductos implements IGestorProductos{
             }
             else{
                 lista.add(p);
+                try{
+                    FileWriter fw=new FileWriter("Lista de Productos",true);
+                    fw.write(p.verCodigo()+","+p.verDescripcion()+","+p.verPrecio()+","+p.verCategoria()+","+p.verEstado());
+                    fw.close();
+                }
+                catch(IOException ex){
+                    System.out.println(ESCRITURA_ERROR);
+                }
                 return EXITO;     
             }  
         }
         else return validacion;
+        
+        
     }
 
     //Modifica un producto, devolviendo una cadena con el resultado de la operación
@@ -178,4 +190,6 @@ public class GestorProductos implements IGestorProductos{
         }
         else return PRODUCTO_INEXISTENTE;
     }
+    
+    
 }

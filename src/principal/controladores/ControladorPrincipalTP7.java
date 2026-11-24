@@ -101,11 +101,7 @@ public class ControladorPrincipalTP7 {
         Usuario u = gu.obtenerUsuario("correo5.cliente@bar.com");
         Cliente cliente = (Cliente)gu.obtenerUsuario("correo5.cliente@bar.com");
         Producto p2 = gp.obtenerProducto(2);
-        Pedido pe1 = new Pedido(1, 
-            LocalDateTime.now(),             
-            new ArrayList<>(List.of(new ProductoDelPedido(p1, 1), new ProductoDelPedido(p2, 2))), 
-            cliente
-        );
+        Pedido pe1 = new Pedido(1, LocalDateTime.now(), new ArrayList<>(List.of(new ProductoDelPedido(p1, 1), new ProductoDelPedido(p2, 2))),cliente);
         System.out.println(gp.borrarProducto(p2)); //no se debe poder borrar este producto
         
         productos = gp.menu();
