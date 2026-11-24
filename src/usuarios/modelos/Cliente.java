@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Pedido;
 
 /**
@@ -15,7 +16,7 @@ import pedidos.modelos.Pedido;
 public class Cliente extends Usuario {
 
     //Relacion: un cliente tiene muchos pedidos
-    private ArrayList<Pedido> pedidos = new ArrayList<>();
+    private List<Pedido> pedidos = new ArrayList<>();
 
     public Cliente(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
@@ -27,7 +28,7 @@ public class Cliente extends Usuario {
      * @return pedidos un Arraylist con los pedidos del Cliente
      */
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
         return pedidos;
     }
     
