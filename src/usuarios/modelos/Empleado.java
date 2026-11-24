@@ -5,13 +5,14 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
  * @author estudiante
  */
 public class Empleado extends Usuario {
-
+    GestorPedidos gdp;
     
 
 
@@ -20,9 +21,7 @@ public class Empleado extends Usuario {
     //====================================
     @Override
        public  ArrayList verPedidos(){
-//           ArrayList vacio = new ArrayList<>();
-//           return vacio;
-            return null;
+            return gdp.verPedidos();
        }
        
 

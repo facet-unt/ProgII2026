@@ -120,10 +120,11 @@ public class GestorPedidos
     {
         for (Pedido p : pedidos) 
         {
-            if (p.verNumero() ==) 
+            if (p.verNumero() == numero) 
             {
-                
+                return p;
             }
         }
+        return null;
     }
 }
