@@ -6,6 +6,12 @@ package productos.modelos;
 
 import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import pedidos.modelos.GestorPedidos;
@@ -15,6 +21,7 @@ import pedidos.modelos.GestorPedidos;
  * @author LUCRECIA
  */
 public class GestorProductos implements IGestorProductos {
+    File f = new File ("Productos.txt");
     ArrayList<Producto> productos =new ArrayList<>();
     private static GestorProductos gestor; 
  
@@ -50,6 +57,7 @@ public class GestorProductos implements IGestorProductos {
         }
         Producto p = new Producto(codigo, descripcion, categoria, estado, precio);
         productos.add(p);
+        this.escribirArchivo();
         return EXITO;
     }
     
@@ -76,7 +84,7 @@ public class GestorProductos implements IGestorProductos {
         }
         Producto p = new Producto(codigo, descripcion, categoria, estado, precio);
         productos.set(productos.indexOf(productoAModificar), p);
-        
+        this.escribirArchivo();
         return VALIDACION_EXITO;
     }
     
@@ -161,6 +169,7 @@ public class GestorProductos implements IGestorProductos {
         if(gp.hayPedidosConEsteProducto(producto))
             return ERROR_BORRAR;
         productos.remove(producto);
+        this.escribirArchivo();
         return EXITO_BORRAR;
     }
     
@@ -195,6 +204,17 @@ public class GestorProductos implements IGestorProductos {
         return false;
     }
     
+    void escribirArchivo(){
+        try(BufferedWriter bw =new BufferedWriter (new FileWriter(f))){
+            for(Producto pro : productos){
+                bw.write(pro.verCodigo() + ";" + pro.verDescripcion() + ";" + pro.verCategoria() + ";" + pro.verEstado() + ";" + pro.verPrecio());
+                bw.newLine();
+            }   
+            }
+            catch(IOException ex){
+                System.out.println(ex);
+            }
+    }
     
 }
     

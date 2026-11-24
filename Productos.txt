@@ -1,0 +1,4 @@
+1;Producto1;Categoria: Entrada;Disponible;1.0
+5;Producto5;Categoria: Entrada;Disponible;4.0
+3;Producto3;Categoria: Postre;Disponible;3.0
+4;Producto4;Categoria: Postre;Disponible;4.0

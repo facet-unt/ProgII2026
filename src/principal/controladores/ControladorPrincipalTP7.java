@@ -32,12 +32,12 @@ public class ControladorPrincipalTP7 {
         //<editor-fold defaultstate="collapsed" desc="Creación de productos">
         //Ejecutar una única vez y comprobar que se guarden en el archivo los productos
         //Luego comentar todo este bloque para probar las otras secciones
-        System.out.println(gp.crearProducto(1, "Producto1", 1.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
-        System.out.println(gp.crearProducto(2, "Pizza2", 2.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
-        System.out.println(gp.crearProducto(3, "Producto3", 3.0f, Categoria.POSTRE, Estado.DISPONIBLE));
-        System.out.println(gp.crearProducto(4, "Producto4", 4.0f, Categoria.POSTRE, Estado.DISPONIBLE));
-        System.out.println(gp.crearProducto(5, "Producto5", 4.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
-        System.out.println(gp.crearProducto(6, "Pizza6", 4.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1.0f));
+        System.out.println(gp.crearProducto(2, "Pizza2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 2.0f));
+        System.out.println(gp.crearProducto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 3.0f));
+        System.out.println(gp.crearProducto(4, "Producto4", Categoria.POSTRE, Estado.DISPONIBLE, 4.0f));
+        System.out.println(gp.crearProducto(5, "Producto5", Categoria.ENTRADA, Estado.DISPONIBLE, 4.0f));
+        System.out.println(gp.crearProducto(6, "Pizza6", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 4.0f));
         //</editor-fold>
         
         //<editor-fold defaultstate="collapsed" desc="Listado ordenado por categoría y descripción">
