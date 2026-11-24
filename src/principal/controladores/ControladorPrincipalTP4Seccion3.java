@@ -5,6 +5,7 @@
 package principal.controladores;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.ProductoDelPedido;
@@ -28,9 +29,9 @@ public class ControladorPrincipalTP4Seccion3 {
     INICIO Tercera parte - herencia
     ***************************************************
     */
-        ArrayList<Usuario> listaUsuarios = new List<>();
-        ArrayList<Producto> listaProductos = new List<>();
-        ArrayList<Pedido> listaPedidos = new List<>();
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        List<Producto> listaProductos = new ArrayList<>();
+        List<Pedido> listaPedidos = new ArrayList<>();
         
         Usuario unCliente1 = new Cliente("cliente1@bar.com", "claveCliente1", "ApellidoCliente1", "NombreCliente1");        
         Usuario unCliente2 = new Cliente("cliente2@bar.com", "claveCliente2", "ApellidoCliente2", "NombreCliente2");       
@@ -104,7 +105,7 @@ public class ControladorPrincipalTP4Seccion3 {
         if (!listaProductos.contains(unProducto4))
             listaProductos.add(unProducto4);
         
-        ArrayList<ProductoDelPedido> listapdp1 = new List<>();
+        List<ProductoDelPedido> listapdp1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(listaProductos.get(0), 1);
         ProductoDelPedido pdp2 = new ProductoDelPedido(listaProductos.get(1), 2);        
         if (!listapdp1.contains(pdp1))
@@ -113,7 +114,7 @@ public class ControladorPrincipalTP4Seccion3 {
             listapdp1.add(pdp2);
         Pedido unPedido1 = new Pedido(1, LocalDateTime.now(), listapdp1, (Cliente) listaUsuarios.get(0));        
         
-        ArrayList<ProductoDelPedido> productosDelPedido2 = new List<>();
+        List<ProductoDelPedido> productosDelPedido2 = new ArrayList<>();
         ProductoDelPedido pdp3 = new ProductoDelPedido(listaProductos.get(2), 10);
         ProductoDelPedido pdp4 = new ProductoDelPedido(listaProductos.get(0), 20);
         ProductoDelPedido pdp5 = new ProductoDelPedido(listaProductos.get(2), 30);
@@ -126,7 +127,7 @@ public class ControladorPrincipalTP4Seccion3 {
             productosDelPedido2.add(pdp5);
         Pedido unPedido2 = new Pedido(2, LocalDateTime.now(), productosDelPedido2, (Cliente) listaUsuarios.get(1));        
         
-        ArrayList<ProductoDelPedido> productosDelPedido3 = new List<>();
+        List<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         ProductoDelPedido pdp6 = new ProductoDelPedido(listaProductos.get(1), 100);
         ProductoDelPedido pdp7 = new ProductoDelPedido(listaProductos.get(2), 200);
         if (!productosDelPedido3.contains(pdp6))
