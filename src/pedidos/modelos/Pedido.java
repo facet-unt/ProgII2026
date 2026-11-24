@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Cliente;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *Representa un pedido realizado en el sistema
@@ -21,10 +22,10 @@ public class Pedido {
     private Cliente unCliente;
     private Estado estado;
     //Relacion con ProductoDelPedido
-    ArrayList<ProductoDelPedido> productosDelPedido = new ArrayList<>();
+    List<ProductoDelPedido> productosDelPedido = new ArrayList<>();
 
     //sobrecarga de constructor
-    public Pedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente unCliente) {
+    public Pedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente unCliente) {
         this.fechaYHora = LocalDateTime.of(fecha, hora);
         this.unCliente = unCliente;
         this.estado = Estado.CREADO;

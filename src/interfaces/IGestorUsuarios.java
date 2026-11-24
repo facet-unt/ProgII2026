@@ -5,6 +5,7 @@
 package interfaces;
 
 import java.util.ArrayList;
+import java.util.List;
 import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
 
@@ -26,8 +27,8 @@ public interface IGestorUsuarios {
     String ERROR_ELIMINAR = "El usuario no se pudo eliminar correctamente";
     
     String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
-    ArrayList<Usuario> verUsuarios();
-    ArrayList<Usuario> buscarUsuarios(String apellido);
+    List<Usuario> verUsuarios();
+    List<Usuario> buscarUsuarios(String apellido);
     String borrarUsuario(Usuario usuario);
     boolean existeEsteUsuario(Usuario usuario);
     Usuario obtenerUsuario(String correo);

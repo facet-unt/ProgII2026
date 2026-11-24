@@ -6,6 +6,7 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 
 /**
@@ -17,7 +18,7 @@ public class GestorUsuarios implements IGestorUsuarios {
     /**
      * Lista para guardar los usuarios que se ingresen
      */
-    ArrayList<Usuario> listaUsuarios= new ArrayList<>();
+    List<Usuario> listaUsuarios= new ArrayList<>();
 
     private static GestorUsuarios instancia;
     private GestorUsuarios() {
@@ -73,7 +74,7 @@ public class GestorUsuarios implements IGestorUsuarios {
      * @return toda la lista de usuarios  
      */
     @Override
-    public ArrayList<Usuario> verUsuarios(){
+    public List<Usuario> verUsuarios(){
         return listaUsuarios;
     }
     
@@ -83,9 +84,9 @@ public class GestorUsuarios implements IGestorUsuarios {
      * @return lista de usuarios que coincidan total o parcialmente con el ingresado
      */
     @Override
-    public ArrayList<Usuario> buscarUsuarios(String Apellido){
+    public List<Usuario> buscarUsuarios(String Apellido){
     
-       ArrayList<Usuario> encontrados = new ArrayList<>();
+       List<Usuario> encontrados = new ArrayList<>();
        
         for (Usuario u : listaUsuarios) {
             if (u.verApellido().toLowerCase().contains(Apellido.toLowerCase())) {

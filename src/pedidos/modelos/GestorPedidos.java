@@ -13,6 +13,7 @@ import static interfaces.IGestorPedidos.PEDIDO_INEXISTENTE;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 
@@ -49,7 +50,8 @@ public class GestorPedidos implements IGestorPedidos{
      * @param cliente
      * @return
      */
-    public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente) {
+    @Override
+    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         if (fechaInvalida(fecha)) {
             return ERROR_FECHA;
         }
@@ -82,6 +84,7 @@ public class GestorPedidos implements IGestorPedidos{
      * @param pedidoAModificar
      * @return
      */
+    @Override
     public String cambiarEstado(Pedido pedidoAModificar) {
         if (pedidoAModificar == null) {
             return ERROR_PRODUCTOS_DEL_PEDIDO;
@@ -117,6 +120,7 @@ public class GestorPedidos implements IGestorPedidos{
      * @return true si se encuentra pedidos con el Clinte,false en caso
      * contrario
      */
+    @Override
     public boolean hayPedidosConEsteCliente(Cliente cliente){
         if (cliente == null) {
             return false;
@@ -235,7 +239,7 @@ public class GestorPedidos implements IGestorPedidos{
      * @param pdp
      * @return
      */
-    private boolean productosDelPedidoInvalido(ArrayList<ProductoDelPedido> pdp) {
+    private boolean productosDelPedidoInvalido(List<ProductoDelPedido> pdp) {
         return pdp == null || pdp.isEmpty();
     }
 }
