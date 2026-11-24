@@ -153,6 +153,26 @@ public class Producto {
         this.precio = precio;
     }
     
+    //int codigo, String descripcion, Categoria categoria, Estado estado, float precio
+    
+    public static String concatenar(Producto p){
+        String cadena = 
+                Integer.toString(p.verCodigo()) + ";" + p.verDescripcion() + ";" + p.verCategoria().toString() + ";" + p.verEstado().toString() + ";" + Float.toString(p.verPrecio());
+        return cadena;
+    }
+    
+    public static Producto desconcatenar(String cadenaDeProducto){
+        String[] cadena = cadenaDeProducto.split(";");
+        int codigo = Integer.parseInt(cadena[0]);
+        float precio = Float.parseFloat(cadena[4]);
+        Categoria categoria = Categoria.esValido(cadena[2]);
+        Estado estado = Estado.esValido(cadena[3]);
+        if (categoria != null && estado != null)
+            return new Producto(codigo, cadena[1], categoria, estado, precio);
+        
+        return "Producto no valido";
+    }
+    
     // ====================================
     //       Salida y Representación
     // ====================================

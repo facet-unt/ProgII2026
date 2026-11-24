@@ -42,5 +42,13 @@ public enum Estado {
     public String toString() {
         return descripcion;
     }
+    
+    public static Estado esValido(String s){
+        if (s == Estado.DISPONIBLE.toString())
+            return Estado.DISPONIBLE;
+        if (s == Estado.NO_DISPONIBLE.toString())
+            return Estado.NO_DISPONIBLE;
+        return null; 
+    }
 }
 

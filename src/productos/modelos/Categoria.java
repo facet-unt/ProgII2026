@@ -19,6 +19,8 @@ public enum Categoria {
     /**
      * Descripcion de la categoría.
      */
+    
+    
     private final String descripcion;
 
     /**
@@ -40,5 +42,17 @@ public enum Categoria {
     @Override
     public String toString() {
         return descripcion;
+    }
+    
+    public static Categoria esValido(String s){
+        if (s == Categoria.ENTRADA.toString())
+            return Categoria.ENTRADA;
+        if (s == Categoria.PLATO_PRINCIPAL.toString())
+            return Categoria.PLATO_PRINCIPAL;
+        
+        if (s == Categoria.POSTRE.toString())
+            return Categoria.POSTRE;
+        
+        return null; 
     }
 }

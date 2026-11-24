@@ -4,11 +4,17 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
@@ -26,7 +32,8 @@ public class GestorProductos implements IGestorProductos{
     };
     
     private final Comparator <Producto> comparadorDescripcion = Comparator.comparing(Producto::verDescripcion,String.CASE_INSENSITIVE_ORDER);
-    
+    private final IGestorPedidos gdp = GestorPedidos.instanciar();
+    private final String BASE_DE_DATOS = "../media/productos.txt";
     
     //=============================
     //      Singletone
@@ -130,11 +137,34 @@ public class GestorProductos implements IGestorProductos{
     }
     @Override
     public String borrarProducto(Producto producto){
-        if (!productos.contains(producto)){
+        if (!this.productos.contains(producto)){
             return ERROR_NO_ESTA;
-        }else{
-            productos.remove(producto);
+        
+        }else if(this.gdp.hayPedidosConEsteProducto(producto))
+            return "No es puede borrar este producto ya que se encuentra en un pedido";
+        
+        else{
+            this.productos.remove(producto);
+            this.subirProductos();
             return EXITO_BORRAR;
         }
+    }
+    
+    public String subirProductos(){
+        
+        File f = new File (this.BASE_DE_DATOS);
+        try (BufferedWriter bw = new BufferedWriter (new FileWriter(f))){
+            for (Producto p : this.productos){
+                bw.write(Producto.concatenar(p));
+                bw.newLine();
+            }
+            bw.flush();
+            
+        } catch (IOException ex) {
+            System.getLogger(GestorProductos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
+        return EXITO;
+       
     }
 }
