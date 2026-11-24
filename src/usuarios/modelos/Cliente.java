@@ -18,9 +18,13 @@ public class Cliente extends Usuario {
     //      Metodos de Cliente
     //====================================
     public void agregarPedido(Pedido unPedido) {
-        if(!pedidos.contains(unPedido))
-            pedidos.add(unPedido);
-        
+        if(this.pedidos.contains(unPedido)){
+            int indice = this.pedidos.indexOf(unPedido);
+            this.pedidos.set(indice, unPedido);
+        }
+        else {
+            this.pedidos.add(unPedido);
+        }
     }
     
     public void cancelarPedido(Pedido unPedido) {

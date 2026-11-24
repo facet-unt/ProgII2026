@@ -4,13 +4,14 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
 
 /**
  *
  * @author Usuario
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
     ArrayList<Producto> prods = new ArrayList <>();
     private static GestorProductos gestor;
     private GestorProductos(){
@@ -23,29 +24,29 @@ public class GestorProductos {
     }
     private String verificarDatos(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         if (codigo <= 0){
-            return "ERROR_CODIGO";
+            return ERROR_CODIGO;
         }
         if (descripcion == null || descripcion.isEmpty()){
-            return "ERROR_DESCRIPCION";
+            return ERROR_DESCRIPCION;
         }
         if (precio <= 0){
-            return "ERROR_PRECIO";
+            return ERROR_PRECIO;
         }
         if (categoria == null){
-            return "ERROR_CATEGORIA";
+            return ERROR_CATEGORIA;
         }
         if (estado == null){
-            return "ERROR_ESTADO";
+            return ERROR_ESTADO;
         }
-        return "EXITO";
+        return EXITO;
     }
     public String crearProducto(int codigo, String descripcion,
     float precio, Categoria categoria, Estado estado){
         String proceso = verificarDatos(codigo, descripcion, precio, categoria, estado);
-        if (proceso.equals("EXITO")){
+        if (proceso.equals(EXITO)){
             Producto p = new Producto(codigo, descripcion,categoria, estado, precio);
             if (prods.contains(p)){
-                return "PRODUCTOS_DUPLICADOS";
+                return PRODUCTOS_DUPLICADOS;
             }
             prods.add(p);
             }
@@ -57,13 +58,13 @@ public class GestorProductos {
     categoria, Estado estado){
         String proceso = verificarDatos(codigo, descripcion, precio, categoria, estado);
         if (!prods.contains(productoAModificar)){
-            return "PRODUCTO_INEXISTENTE";
+            return PRODUCTO_INEXISTENTE;
         }
-        if (proceso.equals("EXITO")){
+        if (proceso.equals(EXITO)){
         int posicion = prods.indexOf(productoAModificar);
         Producto p = new Producto (codigo, descripcion,categoria, estado, precio);
         prods.set(posicion, p);
-        proceso = "VALIDACION_EXITO";
+        proceso = VALIDACION_EXITO;
     }
         return proceso;
     }  
@@ -104,4 +105,11 @@ public class GestorProductos {
         }
         return null;
     }
+        public String borrarProducto(Producto producto){
+            if(prods.contains(producto)){
+                prods.remove(producto);
+                return EXITO;
+            }
+            return PRODUCTO_INEXISTENTE;
+        }
 }

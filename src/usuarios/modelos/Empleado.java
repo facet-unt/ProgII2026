@@ -12,9 +12,7 @@ import pedidos.modelos.GestorPedidos;
  * @author estudiante
  */
 public class Empleado extends Usuario {
-    GestorPedidos gdp;
-    
-
+    private final GestorPedidos gdp = GestorPedidos.instanciar();
 
     //====================================
     //      Metodos de Empleado

@@ -4,6 +4,7 @@
  */
 package pedidos.modelos;
 
+import interfaces.IGestorPedidos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,7 +16,7 @@ import usuarios.modelos.Cliente;
  *
  * @author leand
  */
-public class GestorPedidos 
+public class GestorPedidos implements IGestorPedidos 
 {
     ArrayList<Pedido> pedidos = new ArrayList<>();
     private static GestorPedidos gestorP;
@@ -34,49 +35,49 @@ public class GestorPedidos
     {
         if ( fecha == null) 
         {
-            return "ERROR_FECHA";   
+            return ERROR_FECHA;   
         }
         if (hora == null ) 
         {
-            return "ERROR_HORA";   
+            return ERROR_HORA;   
         }
         if (cliente == null) 
         {
-            return "ERROR_CLIENTE";   
+            return ERROR_CLIENTE;   
         }
         if (pdp == null || pdp.isEmpty()) 
         {
-            return "ERROR_PRODUCTOS_DEL_PEDIDO";
+            return ERROR_PRODUCTOS_DEL_PEDIDO;
         }
-        return "VALIDACION_EXITO";
+        return VALIDACION_EXITO;
     }
     
     public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> pdp, Cliente cliente)
     {
         String verificacion = verificarDatosPedidos(fecha, hora, cliente, pdp);
-        if (verificacion.equals("VALIDACION_EXITO")) 
+        if (verificacion.equals(VALIDACION_EXITO)) 
         {
             Pedido p = new Pedido(numero, LocalDateTime.of(fecha, hora), pdp, cliente);
             if (pedidos.contains(p)) 
             {
-                return "PEDIDOS_DUPLICADOS";
+                return PEDIDOS_DUPLICADOS;
             }
             else
             {
                 pedidos.add(p);
                 numero+=1;
-                return "EXITO";
+                return EXITO;
             }
         }
         
-        return null;
+        return verificacion;
     }
     
     public String cambiarEstado(Pedido pedidoAModificar)
     {
-        if (pedidoAModificar.verEstado() == null) 
+        if (pedidoAModificar == null) 
         {
-            return "ERROR_ESTADO";
+            return ERROR_ESTADO;
         }
         if (pedidoAModificar.verEstado().equals(Estado.CREADO)) 
         {
@@ -86,7 +87,7 @@ public class GestorPedidos
         {
             pedidoAModificar.asignarEstado(Estado.ENTREGADO);
         }
-        return "EXITO";
+        return EXITO;
     }
     
     public ArrayList<Pedido> verPedidos()
@@ -96,7 +97,12 @@ public class GestorPedidos
     
     public boolean hayPedidosConEsteCliente(Cliente cliente)
     {
-        return !cliente.verPedidos().isEmpty();
+        for(Pedido p: pedidos){
+           if(p.verCliente().equals(cliente)){
+               return true;
+           } 
+    }
+        return false;
     }
     
     public boolean hayPedidosConEsteProducto(Producto producto)
@@ -137,10 +143,10 @@ public class GestorPedidos
                 if (p.equals(pedido)) 
                 {
                     p.verCliente().cancelarPedido(pedido);
-                    return "EXITO";
+                    return EXITO;
                 }
             }
         }
-        return "PEDIDO_INEXISTENTE";
+        return PEDIDO_INEXISTENTE;
     }
 }

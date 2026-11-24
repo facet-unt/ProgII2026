@@ -314,7 +314,8 @@ public class ControladorPrincipalTP5 {
 
         Usuario unEmpleado3 = gu.obtenerUsuario("empleado3@bar.com");
         System.out.println("Todos los pedidos (consultados por un empleado)");
-        for(Pedido p : unEmpleado3.verPedidos()) {
+        for(Pedido p : unEmpleado3.verPedidos()) 
+        {
             p.mostrar();
             System.out.println();
         }
