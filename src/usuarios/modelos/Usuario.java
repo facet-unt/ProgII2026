@@ -6,6 +6,7 @@ package usuarios.modelos;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import pedidos.modelos.Pedido;
 
 /**
  *
@@ -50,7 +51,7 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
     
-    public abstract ArrayList verPedidos();
+    public abstract ArrayList<Pedido> verPedidos();
 
     @Override
     public int hashCode() {

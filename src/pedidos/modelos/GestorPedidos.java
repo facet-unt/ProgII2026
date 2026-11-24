@@ -127,4 +127,20 @@ public class GestorPedidos
         }
         return null;
     }
+    
+    public String cancelarPedido(Pedido pedido)
+    {
+        if (pedidos.contains(pedido)) 
+        {
+            for (Pedido p : pedidos) 
+            {
+                if (p.equals(pedido)) 
+                {
+                    p.verCliente().cancelarPedido(pedido);
+                    return "EXITO";
+                }
+            }
+        }
+        return "PEDIDO_INEXISTENTE";
+    }
 }
