@@ -22,6 +22,7 @@ public interface IGestorUsuarios {
     public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
     public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
     public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
+    public static final String ERROR_USUARIO = "El usuario no existe o aun tiene pedidos";
     
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida);
     public ArrayList<Usuario> verUsuarios();

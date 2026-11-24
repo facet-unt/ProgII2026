@@ -110,4 +110,21 @@ public class GestorUsuarios
         }
         return null;
     }
+    
+    public String borrarUsuario(Usuario usuario)
+    {
+        if (usuarios.contains(usuario)) 
+        {
+            for(Usuario u : usuarios)
+            {
+                if (u.equals(usuario) && u.verPedidos().isEmpty()) 
+                {
+                    usuarios.remove(usuario);
+                    return "EXITO";
+                }
+            }
+        }
+        
+        return "ERROR_USUARIO";
+    }
 }
