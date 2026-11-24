@@ -14,19 +14,21 @@ import static interfaces.IGestorProductos.EXITO;
 import static interfaces.IGestorProductos.PRODUCTOS_DUPLICADOS;
 import static interfaces.IGestorProductos.PRODUCTO_INEXISTENTE;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import pedidos.modelos.GestorPedidos;
 
 /**
  *
  * @author Usuario
  */
-public class GestorProductos implements IGestorProductos{
+public class GestorProductos implements IGestorProductos {
 
     ArrayList<Producto> productos = new ArrayList<>();
 
     //Variable de clase privada
     private static GestorProductos gestor;
-    
+
     //Contructor privado
     private GestorProductos() {
         productos = new ArrayList<>();
@@ -39,6 +41,11 @@ public class GestorProductos implements IGestorProductos{
         }
         return gestor;
     }
+
+    //Ordena por categoria
+    Comparator<Producto> ordenarPorCategoria = (p1, p2) -> p1.verCategoria().compareTo(p2.verCategoria());
+    //Ordena por descripcion
+    Comparator<Producto> ordenPorDescripcion = (p1, p2) -> p1.verDescripcion().compareTo(p2.verDescripcion());
 
     /**
      * Crea un nuevo producto, devolviendo una cadena con el resultado de la
@@ -53,13 +60,13 @@ public class GestorProductos implements IGestorProductos{
      */
     @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
-        
+
         for (Producto p : productos) {
             if (p.verCodigo() == codigo) {
                 return PRODUCTOS_DUPLICADOS;
             }
         }
-        
+
         if (codigoInvalido(codigo)) {
             return ERROR_CODIGO;
         }
@@ -95,42 +102,54 @@ public class GestorProductos implements IGestorProductos{
      * @param categoria
      * @param estado
      * @return
-     */ 
+     */
     @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         if (!productos.contains(productoAModificar)) {
             return PRODUCTO_INEXISTENTE;
         }
-        
+
         if (codigoInvalido(codigo)) {
             return ERROR_CODIGO;
         }
 
         if (desripcionInvalida(descripcion)) {
             return ERROR_DESCRIPCION;
-        } else productoAModificar.asignarDescripcion(descripcion);
+        } else {
+            productoAModificar.asignarDescripcion(descripcion);
+        }
 
         if (precioInvalido(precio)) {
             return ERROR_PRECIO;
-        } else productoAModificar.asignarPrecio(precio);
+        } else {
+            productoAModificar.asignarPrecio(precio);
+        }
 
         if (categoriaInvalida(categoria)) {
             return ERROR_CATEGORIA;
-        }else productoAModificar.asignarCategoria(categoria);
+        } else {
+            productoAModificar.asignarCategoria(categoria);
+        }
 
         if (estadoInavlido(estado)) {
             return ERROR_ESTADO;
-        }else productoAModificar.asignarEstado(estado);
-        
+        } else {
+            productoAModificar.asignarEstado(estado);
+        }
+
         return EXITO;
     }
 
     /**
-     * Devuelve todos los productos
+     * Devuelve todos los productos ordenados por categoría y luego
+     * alfabeticamente por la descripción.
+     *
      * @return
      */
     @Override
     public ArrayList<Producto> menu() {
+        Collections.sort(productos, ordenarPorCategoria);
+        Collections.sort(productos, ordenPorDescripcion);
         return productos;
     }
 
@@ -153,22 +172,24 @@ public class GestorProductos implements IGestorProductos{
     }
 
     /**
-     * Borra un producto siempre y cuando no haya pedidos con el mismo. Devuelve una cadena con el resultado de la operación.
+     * Borra un producto siempre y cuando no haya pedidos con el mismo. Devuelve
+     * una cadena con el resultado de la operación.
+     *
      * @param producto
-     * @return 
+     * @return
      */
     @Override
-    public String borrarProducto(Producto producto){
+    public String borrarProducto(Producto producto) {
         if (producto == null || !productos.contains(producto)) {
             return PRODUCTO_INEXISTENTE;
         }
         if (GestorPedidos.instanciar().hayPedidosConEsteProducto(producto)) {
-            return ERROR_ELIMINAR; 
+            return ERROR_ELIMINAR;
         }
         productos.remove(producto);
         return EXITO;
     }
-    
+
     /**
      * Devuelve true si existe el producto especificado, false en caso contrario
      *
@@ -215,10 +236,11 @@ public class GestorProductos implements IGestorProductos{
     }
 
     /**
-     * Valida que el codigo sea un entero positivo. 
-     * Si el codigo no cumple con la validacion devuelve true, caso contrario false.
+     * Valida que el codigo sea un entero positivo. Si el codigo no cumple con
+     * la validacion devuelve true, caso contrario false.
+     *
      * @param codigo
-     * @return 
+     * @return
      */
     private boolean codigoInvalido(int codigo) {
         if (codigo <= 0) {
@@ -228,10 +250,11 @@ public class GestorProductos implements IGestorProductos{
     }
 
     /**
-     * Valida que la descripción no sea una cadena vacia o null.
-     * Si el String no cumple con la validacion devuelve true, caso contrario false.
+     * Valida que la descripción no sea una cadena vacia o null. Si el String no
+     * cumple con la validacion devuelve true, caso contrario false.
+     *
      * @param descripcion
-     * @return 
+     * @return
      */
     private boolean desripcionInvalida(String descripcion) {
         if (descripcion == null || descripcion.isEmpty()) {
@@ -241,10 +264,11 @@ public class GestorProductos implements IGestorProductos{
     }
 
     /**
-     * Valida que el precio sea mayor que 0.
-     * Si el precio no cumple con la validacion devuelve true, caso contrario false.
+     * Valida que el precio sea mayor que 0. Si el precio no cumple con la
+     * validacion devuelve true, caso contrario false.
+     *
      * @param precio
-     * @return 
+     * @return
      */
     private boolean precioInvalido(float precio) {
         if (precio <= 0) {
@@ -254,10 +278,11 @@ public class GestorProductos implements IGestorProductos{
     }
 
     /**
-     * Valida que categoria no es null.
-     * Si la categoria no cumple con la validacion devuelve true, caso contrario false.
+     * Valida que categoria no es null. Si la categoria no cumple con la
+     * validacion devuelve true, caso contrario false.
+     *
      * @param categoria
-     * @return 
+     * @return
      */
     private boolean categoriaInvalida(Categoria categoria) {
         if (categoria == null) {
@@ -267,10 +292,11 @@ public class GestorProductos implements IGestorProductos{
     }
 
     /**
-     * Valida que estado no es null.
-     * Si el estado no cumple con la validacion devuelve true, caso contrario false.
+     * Valida que estado no es null. Si el estado no cumple con la validacion
+     * devuelve true, caso contrario false.
+     *
      * @param estado
-     * @return 
+     * @return
      */
     private boolean estadoInavlido(Estado estado) {
         if (estado == null) {

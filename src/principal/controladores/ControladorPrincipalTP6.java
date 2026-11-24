@@ -36,8 +36,8 @@ public class ControladorPrincipalTP6 {
 
         System.out.println("#####PRODUCTOS#####");
         /*CREAR PRODUCTO*/
-        System.out.println(gp.crearProducto(1, "Producto1", 1.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
         System.out.println(gp.crearProducto(2, "Producto2", 2.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(1, "Producto1", 1.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
         System.out.println(gp.crearProducto(3, "Plato3", 3.0f, Categoria.POSTRE, Estado.DISPONIBLE));
         System.out.println(gp.crearProducto(3, "Producto4", 4.0f, Categoria.POSTRE, Estado.DISPONIBLE));
         //producto repetido, mismo codigo
@@ -54,11 +54,13 @@ public class ControladorPrincipalTP6 {
         System.out.println(gp.crearProducto(4, "Producto4", 4.0f, Categoria.POSTRE, null));
         //sin estado
 
-        /*RECUPERAR LOS PRODUCTOS CON EL METODO MENU*/
+        /*RECUPERAR LOS PRODUCTOS CON EL METODO MENU ORDENADOS 
+        POR CATEGORIA Y LUEGO ALFABETICAMENTE POR LA DESCRIPCION*/
         System.out.println("");
         System.out.println("######## PRODUCTOS CON MENU ########");
         System.out.println("Productos");
-        System.out.println("=========");
+        System.out.println("=========");        
+        gp.menu();
         for (Producto p : gp.menu()) {
             p.mostrar();
         }
