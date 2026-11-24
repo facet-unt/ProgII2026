@@ -12,7 +12,7 @@ import pedidos.modelos.Pedido;
  *Es la super clase de Cliente,Empleado y Encargado
  * @author Usuario
  */
-public abstract class Usuario implements Comparable<Usuario> {
+public abstract class Usuario {
 
     private String correo;
     private String apellido;
