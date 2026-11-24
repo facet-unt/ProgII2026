@@ -10,13 +10,15 @@ import java.util.ArrayList;
  *
  * @author leand
  */
-public class GestorUsuarios {
+public class GestorUsuarios 
+{
     ArrayList<Usuario> usuarios = new ArrayList<>();
     private static GestorUsuarios gestorU;
     private GestorUsuarios(){   
     }
     
-    public static GestorUsuarios instanciar(){
+    public static GestorUsuarios instanciar()
+    {
         if(gestorU == null){
             gestorU = new GestorUsuarios();
         }
@@ -24,19 +26,24 @@ public class GestorUsuarios {
     }
     
     private String verificarDatosUsuarios(String correo, String apellido,String nombre, String clave, String claveRepetida){
-        if (correo == null || !correo.contains("@")) {
+        if (correo == null || !correo.contains("@")) 
+        {
             return "ERROR_CORREO";
         }
-        if (apellido == null || apellido.isEmpty()) {
+        if (apellido == null || apellido.isEmpty()) 
+        {
             return "ERROR_APELLIDO";   
         }
-        if (nombre == null || nombre.isEmpty()) {
+        if (nombre == null || nombre.isEmpty()) 
+        {
             return "ERROR_NOMBRE";   
         }
-        if (clave == null || clave.isEmpty()) {
+        if (clave == null || clave.isEmpty()) 
+        {
             return "ERROR_CLAVES";   
         }
-        if (claveRepetida == null || !claveRepetida.equals(clave)) {
+        if (claveRepetida == null || !claveRepetida.equals(clave)) 
+        {
             return "ERROR_CLAVES";
         }
         return "VALIDACION_EXITO";
