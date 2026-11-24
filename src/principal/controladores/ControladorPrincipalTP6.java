@@ -39,7 +39,10 @@ public class ControladorPrincipalTP6 {
         System.out.println(gp.crearProducto(1, "Producto1", 1.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
         System.out.println(gp.crearProducto(2, "Producto2", 2.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
         System.out.println(gp.crearProducto(3, "Plato3", 3.0f, Categoria.POSTRE, Estado.DISPONIBLE));
-        System.out.println(gp.crearProducto(3, "Producto4", 4.0f, Categoria.POSTRE, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(777, "A", 1.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(666, "B", 2.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(444, "C", 3.0f, Categoria.POSTRE, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(000, "D", 4.0f, Categoria.POSTRE, Estado.DISPONIBLE));
         //producto repetido, mismo codigo
         System.out.println(gp.crearProducto(0, "Producto4", 4.0f, Categoria.POSTRE, Estado.DISPONIBLE));
         //código inválido vale 0
@@ -71,7 +74,7 @@ public class ControladorPrincipalTP6 {
         
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
-        ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
+        List<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
         System.out.println("Productos filtrados por categoria");
         System.out.println("===================");
         for (Producto p : productosBuscados) {

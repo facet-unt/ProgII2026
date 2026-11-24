@@ -32,7 +32,7 @@ public interface IGestorPedidos {
     
     String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente);
     String cambiarEstado(Pedido pedidoAModificar);
-    ArrayList<Pedido> verPedidos();
+    List<Pedido> verPedidos();
     boolean hayPedidosConEsteCliente(Cliente cliente);
     boolean hayPedidosConEsteProducto(Producto producto);
     String cancelarPedido(Pedido pedido);

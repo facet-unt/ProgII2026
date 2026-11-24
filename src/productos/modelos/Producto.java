@@ -4,11 +4,13 @@
  */
 package productos.modelos;
 
+import java.util.Comparator;
+
 /**
  *
  * @author estudiante
  */
-public class Producto {
+public class Producto implements Comparable<Producto> {
 
     private int codigo;
     private String descripcion;
@@ -108,5 +110,18 @@ public class Producto {
     @Override
     public String toString() {
         return "[" + codigo + "] " + descripcion + "\t\t\t" + "$" + precio + "\t\t\t\t";
+    }
+    
+    
+    
+    @Override
+    public int compareTo(Producto p1){
+        
+        if(this.categoria.equals(p1.verCategoria())){
+            return this.descripcion.compareTo(p1.verDescripcion());
+        }
+        else{
+            return this.categoria.compareTo(p1.verCategoria());
+        }
     }
 }

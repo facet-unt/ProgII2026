@@ -4,7 +4,7 @@
  */
 package usuarios.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import pedidos.modelos.Pedido;
 
@@ -12,7 +12,7 @@ import pedidos.modelos.Pedido;
  *Es la super clase de Cliente,Empleado y Encargado
  * @author Usuario
  */
-public abstract class Usuario {
+public abstract class Usuario implements Comparable<Usuario> {
 
     private String correo;
     private String apellido;
@@ -99,5 +99,18 @@ public abstract class Usuario {
      * Metodo para obtener la lista de pedidos
      * @return ArrayList de pedidos de un usuario
      */
-    public abstract ArrayList<Pedido> verPedidos();
+    public abstract List<Pedido> verPedidos();
+
+
+    
+    @Override
+    public int compareTo(Usuario u1){
+        
+        if(this.apellido.equalsIgnoreCase(u1.verApellido())){
+            return this.nombre.compareToIgnoreCase(u1.verNombre());
+        }else{
+            return this.apellido.compareToIgnoreCase(u1.verApellido());
+        }
+       
+    }
 }

@@ -14,6 +14,8 @@ import static interfaces.IGestorProductos.EXITO;
 import static interfaces.IGestorProductos.PRODUCTOS_DUPLICADOS;
 import static interfaces.IGestorProductos.PRODUCTO_INEXISTENTE;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 
 /**
@@ -22,7 +24,7 @@ import pedidos.modelos.GestorPedidos;
  */
 public class GestorProductos implements IGestorProductos{
 
-    ArrayList<Producto> productos = new ArrayList<>();
+    List<Producto> productos = new ArrayList<>();
 
     //Variable de clase privada
     private static GestorProductos gestor;
@@ -130,7 +132,8 @@ public class GestorProductos implements IGestorProductos{
      * @return
      */
     @Override
-    public ArrayList<Producto> menu() {
+    public List<Producto> menu() {
+        Collections.sort(productos);
         return productos;
     }
 
@@ -142,14 +145,18 @@ public class GestorProductos implements IGestorProductos{
      * @return
      */
     @Override
-    public ArrayList<Producto> buscarProductos(String descripcion) {
-        ArrayList<Producto> productosPorDescricpcion = new ArrayList<>();
+    public List<Producto> buscarProductos(String descripcion) {
+        List<Producto> productosPorDescripcion = new ArrayList<>();
+        
         for (Producto p : productos) {
             if (p.verDescripcion().contains(descripcion)) {
-                productosPorDescricpcion.add(p);
+                productosPorDescripcion.add(p);
             }
         }
-        return productosPorDescricpcion;
+        
+        Collections.sort(productosPorDescripcion);
+        
+        return productosPorDescripcion;
     }
 
     /**
@@ -187,13 +194,17 @@ public class GestorProductos implements IGestorProductos{
      * @return
      */
     @Override
-    public ArrayList<Producto> verProductosPorCategoria(Categoria categoria) {
-        ArrayList<Producto> productosPorCategoria = new ArrayList<>();
+    public List<Producto> verProductosPorCategoria(Categoria categoria) {
+        List<Producto> productosPorCategoria = new ArrayList<>();
+        
         for (Producto p : productos) {
             if (p.verCategoria() == categoria) {
                 productosPorCategoria.add(p);
             }
         }
+        
+        Collections.sort(productosPorCategoria);
+
         return productosPorCategoria;
     }
 
