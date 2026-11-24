@@ -12,8 +12,6 @@ import productos.modelos.Producto;
 public class ProductoDelPedido {
     private int cantidad;
     private Producto producto;
-
-
     
     public ProductoDelPedido(Producto unProducto, int cantidad){
         this.cantidad = cantidad;

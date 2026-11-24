@@ -390,6 +390,7 @@ public class ControladorPrincipalTP6 {
         System.out.println("=======");
         for(Pedido p : gPed.verPedidos()) {
             p.mostrar();
+            System.out.println();
         }
         System.out.println();  
         

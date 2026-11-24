@@ -19,16 +19,6 @@ import java.util.Comparator;
 public class GestorProductos implements IGestorProductos{
     private String validacion;
     private List<Producto> lista = new ArrayList<>();
-    private final Comparator<Producto> compCategoriaDescripcion = new Comparator<Producto>(){
-        @Override
-        public int compare(Producto p1, Producto p2) {
-            int res = p1.verCategoria().compareTo(p2.verCategoria());
-            if (res == 0) {
-                return p1.verDescripcion().compareToIgnoreCase(p2.verDescripcion());
-            }
-            return res;
-        }
-    };
     
     //<editor-fold defaultstate="collapsed" desc="Patrón Singleton">
     private static GestorProductos gestor;
@@ -62,6 +52,17 @@ public class GestorProductos implements IGestorProductos{
         return VALIDACION_EXITO;
     }
     
+    private final Comparator<Producto> compCategoriaDescripcion = new Comparator<Producto>(){
+        @Override
+        public int compare(Producto p1, Producto p2) {
+            int res = p1.verCategoria().compareTo(p2.verCategoria());
+            if (res == 0) {
+                return p1.verDescripcion().compareToIgnoreCase(p2.verDescripcion());
+            }
+            return res;
+        }
+    };
+    
     //Crea un nuevo producto, devolviendo una cadena con el resultado de la operación 
     @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
@@ -88,8 +89,9 @@ public class GestorProductos implements IGestorProductos{
                 int indice = lista.indexOf(productoAModificar);
                 Producto p = new Producto(productoAModificar.verCodigo(), descripcion, precio, categoria, estado);
                 lista.set(indice, p);
+                return EXITO;
             }
-            return EXITO;
+            else return validacion;
         }
         else return PRODUCTO_INEXISTENTE;
     }
@@ -176,5 +178,4 @@ public class GestorProductos implements IGestorProductos{
         }
         else return PRODUCTO_INEXISTENTE;
     }
-    
 }

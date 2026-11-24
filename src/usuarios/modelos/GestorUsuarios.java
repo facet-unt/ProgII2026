@@ -132,7 +132,6 @@ public class GestorUsuarios implements IGestorUsuarios{
             else return ERROR_USUARIO_CON_PEDIDO;
         }
         else return ERROR_USUARIO;
-    }
-        
+    }    
 }
 
