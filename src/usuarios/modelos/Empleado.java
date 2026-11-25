@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 
 /**
@@ -18,7 +19,7 @@ public class Empleado extends Usuario {
     //      Metodos de Empleado
     //====================================
     @Override
-       public  ArrayList verPedidos(){
+       public List verPedidos(){
             return gdp.verPedidos();
        }
        
@@ -30,8 +31,5 @@ public class Empleado extends Usuario {
     public Empleado(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
     }
-    
-    
-
 
 }

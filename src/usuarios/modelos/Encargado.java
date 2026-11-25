@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 
 /**
@@ -19,7 +20,7 @@ public class Encargado extends Usuario{
     //====================================
     
     @Override
-       public  ArrayList verPedidos(){
+       public List verPedidos(){
            return gdp.verPedidos();
        }
        
