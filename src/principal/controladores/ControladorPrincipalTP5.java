@@ -50,6 +50,16 @@ public class ControladorPrincipalTP5 {
         System.out.println(gp.crearProducto(4, "Producto4", 4.0f, null, Estado.DISPONIBLE));
         //sin categoría 
         System.out.println(gp.crearProducto(4, "Producto4", 4.0f, Categoria.POSTRE, null));
+        
+        //====================================
+        //      Pedidos agregegados para      
+        //        probar el ordenamiento
+        System.out.println("###Creados para probar###");
+        System.out.println(gp.crearProducto(4, "Producto4", 4.0f, Categoria.ENTRADA, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(5, "Producto18", 2.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
+        System.out.println(gp.crearProducto(6, "Producto17", 18.0f, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
+        //====================================
+
         //sin estado
 
         /*RECUPERAR LOS PRODUCTOS CON EL METODO MENU*/

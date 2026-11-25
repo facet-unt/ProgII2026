@@ -6,6 +6,8 @@ package productos.modelos;
 
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  *
@@ -69,8 +71,24 @@ public class GestorProductos implements IGestorProductos{
         return proceso;
     }  
     
-    public ArrayList<Producto> menu(){
-        return prods;
+    public List<Producto> menu()
+    {
+        List<Producto> ordenado = new ArrayList <>();
+        System.out.println("Ordenados por desc.");
+        Comparator<Producto> CatYDescComp = new Comparator<Producto>(){
+        @Override
+        public int compare(Producto p1, Producto p2) 
+        {
+            int comparacion = p1.verCategoria().compareTo(p2.verCategoria());
+            if (comparacion == 0) {
+                return p1.verDescripcion().compareTo(p2.verDescripcion());
+            }
+            return comparacion;
+        }
+        };
+        ordenado.addAll(prods);
+        ordenado.sort(CatYDescComp);
+        return ordenado;
     }
     
     public ArrayList<Producto> buscarProductos(String descripcion){
@@ -105,11 +123,15 @@ public class GestorProductos implements IGestorProductos{
         }
         return null;
     }
-        public String borrarProducto(Producto producto){
-            if(prods.contains(producto)){
-                prods.remove(producto);
-                return EXITO;
-            }
-            return PRODUCTO_INEXISTENTE;
+    
+    public String borrarProducto(Producto producto)
+    {
+        if(prods.contains(producto))
+        {
+            prods.remove(producto);
+            return EXITO;
         }
+        return PRODUCTO_INEXISTENTE;
+    }
+        
 }
