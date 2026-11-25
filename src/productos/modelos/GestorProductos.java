@@ -21,9 +21,11 @@ import pedidos.modelos.GestorPedidos;
  * @author LUCRECIA
  */
 public class GestorProductos implements IGestorProductos {
-    File f = new File ("Productos.txt");
+    File archivo = new File ("Productos.txt");
     ArrayList<Producto> productos =new ArrayList<>();
-    private static GestorProductos gestor; 
+    private static GestorProductos gestor;
+    private final int MAX_COLUMNA = 6;
+    private final int MAX_FILA = 50;
  
     private GestorProductos(){
         
@@ -51,6 +53,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public String crearProducto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio){
+        this.leerArchivo();
         String resultadoValidacion = validarDatos(codigo, descripcion, categoria, estado, precio, null);
         if (!resultadoValidacion.equals(VALIDACION_EXITO)) {
             return resultadoValidacion;
@@ -73,7 +76,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public String modificarProducto (Producto productoAModificar,int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-        
+        this.leerArchivo();
         if(!productos.contains(productoAModificar)){
             return PRODUCTO_INEXISTENTE;
         }
@@ -94,6 +97,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public ArrayList<Producto> menu(){
+        this.leerArchivo();
         Collections.sort(productos);
         return productos;
     }
@@ -105,6 +109,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public ArrayList<Producto> buscarProductos(String descripcion){
+        this.leerArchivo();
         ArrayList<Producto> productosCoincidentes= new ArrayList<>();
         for(Producto p: productos){
             if(p.verDescripcion() != null && p.verDescripcion().contains(descripcion))
@@ -121,6 +126,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public boolean existeEsteProducto(Producto producto){
+        this.leerArchivo();
         return productos.contains(producto);
     }
     
@@ -132,6 +138,7 @@ public class GestorProductos implements IGestorProductos {
     @Override
     public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> productosCoincidentes = new ArrayList<>();
+        this.leerArchivo();
         for(Producto p: productos){
             if(p.verCategoria().equals(categoria))
                 productosCoincidentes.add(p);
@@ -147,6 +154,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public Producto obtenerProducto(Integer codigo){
+        this.leerArchivo();
         for(Producto p: productos){
             if(p.verCodigo()==codigo)
                 return p;
@@ -161,6 +169,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public String borrarProducto(Producto producto){
+        this.leerArchivo();
         if (producto == null || !productos.contains(producto)) {
         return PRODUCTO_INEXISTENTE; 
         }
@@ -196,6 +205,7 @@ public class GestorProductos implements IGestorProductos {
     }
     
     private boolean codigoEsRepetido (int codigo, Producto productoAExcluir){
+        this.leerArchivo();
         for(Producto p: productos){
             //Si el código coincide y no es el producto que estamos editando, está duplicado
             if(p.verCodigo() == codigo && !p.equals(productoAExcluir))
@@ -205,7 +215,7 @@ public class GestorProductos implements IGestorProductos {
     }
     
     void escribirArchivo(){
-        try(BufferedWriter bw =new BufferedWriter (new FileWriter(f))){
+        try(BufferedWriter bw =new BufferedWriter (new FileWriter(archivo))){
             for(Producto pro : productos){
                 bw.write(pro.verCodigo() + ";" + pro.verDescripcion() + ";" + pro.verCategoria() + ";" + pro.verEstado() + ";" + pro.verPrecio());
                 bw.newLine();
@@ -213,6 +223,58 @@ public class GestorProductos implements IGestorProductos {
             }
             catch(IOException ex){
                 System.out.println(ex);
+            }
+    }
+    
+    void leerArchivo(){
+        //limpiamos la coleccion
+        if(productos !=null) productos.clear();
+        String [][] componentes = new String[MAX_FILA][MAX_COLUMNA];
+        
+        String linea;  //linea que sera leida por nuestro bufferedReader
+        Producto p;  //se usa para llenar la coleccion productos
+        int contador = 0 ; //nos ayuda a contar la cantidad de productos en nuestro archivo
+        Categoria categoria = null;   //lo usaremos para convertir un String en una clase enum
+        Estado estado = null;  //lo usaremos para convertir un String en una clase enum
+        
+        try (BufferedReader br=new BufferedReader(new FileReader(archivo))) {
+            
+            //leemos el archivo linea por linea
+            while((linea = br.readLine()) != null) {
+                componentes[contador] = linea.split(";", -1);  //linea se separa en Substrings diferenciados por ; y se añade cada uno en una fila de un arreglo de strings
+                contador ++;  //contador nos indica en qué fila estamos
+            }
+            
+            //ahora recorremos nuestro arreglo de Strings componentes
+            for (int i = 0; i < contador; i++) {
+                //como el arreglo tiene Strings, tenemos que asignar un enum con su respectivo valor
+                switch (componentes[i][2]) {
+                    case "Entrada": 
+                        categoria = Categoria.ENTRADA; 
+                        break;
+                    case "Plato principal": 
+                        categoria = Categoria.PLATO_PRINCIPAL; 
+                        break;
+                    case "Postre": 
+                        categoria = Categoria.POSTRE; 
+                        break;
+                }
+                switch (componentes[i][3]) {
+                    case "Disponible": 
+                        estado = Estado.DISPONIBLE; 
+                        break;
+                    case "No disponible": 
+                        estado = Estado.NO_DISPONIBLE; 
+                        break;
+                }
+                //usamos los valores de la fila i para ponerlos en un producto p que despues añadiremos a la coleccion productos
+                p= new Producto(Integer.parseInt(componentes[i][0]) , componentes[i][1], categoria, estado, Float.parseFloat(componentes[i][4]));
+                productos.add(p);
+            }
+            
+            }
+            catch(IOException ex) {
+            System.out.println(ex);
             }
     }
     

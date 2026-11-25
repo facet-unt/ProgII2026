@@ -90,26 +90,26 @@ public class ControladorPrincipalTP7 {
         //</editor-fold>                
         
         //<editor-fold defaultstate="collapsed" desc="Borrado de productos:">
-        Producto p6 = gp.obtenerProducto(6);
-        System.out.println(gp.borrarProducto(p6)); //sí se puede borrar
+//        Producto p6 = gp.obtenerProducto(6);
+//        System.out.println(gp.borrarProducto(p6)); //sí se puede borrar
+////        productos = gp.menu();
+////        System.out.println("Cantidad de productos luego de borrar uno: " + productos.size());
+////        for(Producto p : productos)
+////            p.mostrar();
+//        
+//        System.out.println(gu.crearUsuario("correo5.cliente@bar.com", "ApeCli5", "NomCli5", Perfil.CLIENTE, "123456", "123456"));
+//        Usuario u = gu.obtenerUsuario("correo5.cliente@bar.com");
+//        Cliente cliente = (Cliente)gu.obtenerUsuario("correo5.cliente@bar.com");
+//        Producto p2 = gp.obtenerProducto(2);
+//        Pedido pe1 = new Pedido(1, 
+//            LocalDateTime.now(),             
+//            new ArrayList<>(List.of(new ProductoDelPedido(p1, 1), new ProductoDelPedido(p2, 2))), 
+//            cliente
+//        );
+//        System.out.println(gp.borrarProducto(p2)); //no se debe poder borrar este producto
+//        
 //        productos = gp.menu();
-//        System.out.println("Cantidad de productos luego de borrar uno: " + productos.size());
-//        for(Producto p : productos)
-//            p.mostrar();
-        
-        System.out.println(gu.crearUsuario("correo5.cliente@bar.com", "ApeCli5", "NomCli5", Perfil.CLIENTE, "123456", "123456"));
-        Usuario u = gu.obtenerUsuario("correo5.cliente@bar.com");
-        Cliente cliente = (Cliente)gu.obtenerUsuario("correo5.cliente@bar.com");
-        Producto p2 = gp.obtenerProducto(2);
-        Pedido pe1 = new Pedido(1, 
-            LocalDateTime.now(),             
-            new ArrayList<>(List.of(new ProductoDelPedido(p1, 1), new ProductoDelPedido(p2, 2))), 
-            cliente
-        );
-        System.out.println(gp.borrarProducto(p2)); //no se debe poder borrar este producto
-        
-        productos = gp.menu();
-        System.out.println("Cantidad de productos: " + productos.size()); //5
+//        System.out.println("Cantidad de productos: " + productos.size()); //5
         //</editor-fold>                
         
     }
