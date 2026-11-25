@@ -6,6 +6,7 @@ package usuarios.modelos;
 
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  */
 public class GestorUsuarios implements IGestorUsuarios 
 {
-    ArrayList<Usuario> usuarios = new ArrayList<>();
+    List<Usuario> usuarios = new ArrayList<>();
     private static GestorUsuarios gestorU;
     private GestorUsuarios(){   
     }
@@ -82,14 +83,25 @@ public class GestorUsuarios implements IGestorUsuarios
         return verificacion;
     }
     
-    public ArrayList<Usuario> verUsuarios()
+    private void ordenar(List<Usuario> ordenados){
+        ordenados.sort((u1, u2) -> {
+         int resultado = u1.verApellido().compareToIgnoreCase(u2.verApellido());
+            if(resultado == 0){
+            return u1.verNombre().compareToIgnoreCase(u2.verNombre());
+            }
+            return resultado;
+            });
+    }
+    
+    public List<Usuario> verUsuarios()
     {
+        ordenar(usuarios);
         return usuarios;
     }
     
-    public ArrayList<Usuario> buscarUsuarios(String apellido)
+    public List<Usuario> buscarUsuarios(String apellido)
     {
-        ArrayList <Usuario> encontrados = new ArrayList<>();
+        List <Usuario> encontrados = new ArrayList<>();
         for(Usuario u: usuarios)
         {
             if (u.verApellido().contains(apellido))
@@ -97,6 +109,7 @@ public class GestorUsuarios implements IGestorUsuarios
                 encontrados.add(u);
             }
         }
+        ordenar(encontrados);
         return encontrados;
     }
     

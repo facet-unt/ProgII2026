@@ -91,9 +91,14 @@ public class GestorPedidos implements IGestorPedidos
         return EXITO;
     }
     
-    public ArrayList<Pedido> verPedidos()
+    public List<Pedido> verPedidos()
     {
-        return pedidos;
+        List<Pedido> orden = new ArrayList<>(pedidos);
+        
+        orden.sort((p1,p2)->
+        Integer.compare(p1.verNumero(), p2.verNumero())
+        );
+        return orden;
     }
     
     public boolean hayPedidosConEsteCliente(Cliente cliente)

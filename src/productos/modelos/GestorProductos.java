@@ -91,15 +91,28 @@ public class GestorProductos implements IGestorProductos{
         return ordenado;
     }
     
-    public ArrayList<Producto> buscarProductos(String descripcion){
-        ArrayList <Producto> encontrados = new ArrayList<>();
-        for(Producto p: prods){
-            if (p.verDescripcion().contains(descripcion)){
-                encontrados.add(p);
-            }
+    public List<Producto> buscarProductos(String descripcion) {
+    List<Producto> encontrados = new ArrayList<>();
+
+    for (Producto p : prods) {
+        if (p.verDescripcion().contains(descripcion)) {
+            encontrados.add(p);
         }
-        return encontrados;
     }
+    Comparator<Producto> CatYDescComp = (Producto p1, Producto p2) -> {
+        int comparacion = p1.verCategoria().compareTo(p2.verCategoria());
+        
+        if (comparacion == 0) {
+            return p1.verDescripcion().compareTo(p2.verDescripcion());
+        }
+        
+        return comparacion;
+    };
+
+    encontrados.sort(CatYDescComp);
+
+    return encontrados;
+}
     
     public boolean existeEsteProducto(Producto producto){
         return prods.contains(producto);
@@ -112,6 +125,18 @@ public class GestorProductos implements IGestorProductos{
                 encontrados.add(p);
             }
         }
+        
+            Comparator<Producto> CatYDescComp = (Producto p1, Producto p2) -> {
+        int comparacion = p1.verCategoria().compareTo(p2.verCategoria());
+        
+        if (comparacion == 0) {
+            return p1.verDescripcion().compareTo(p2.verDescripcion());
+        }
+        
+        return comparacion;
+    };
+
+    encontrados.sort(CatYDescComp);
         return encontrados;
     }
     
