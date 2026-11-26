@@ -9,8 +9,7 @@ import java.util.List;
 import pedidos.modelos.Pedido;
 
 /**
- * 
- *Hereda de la clase Usuario
+ *
  * @author estudiante
  */
 public class Cliente extends Usuario {
@@ -23,24 +22,26 @@ public class Cliente extends Usuario {
     }
 
     /**
-     * Metodo heredado de Usuario 
-     * Muestra la lista de pedidos realizados por el Cliente,incluso si la lista esta vacia
+     * Metodo heredado de Usuario Muestra la lista de pedidos realizados por el
+     * Cliente,incluso si la lista esta vacia
+     *
      * @return pedidos un Arraylist con los pedidos del Cliente
      */
     @Override
     public List<Pedido> verPedidos() {
         return pedidos;
     }
-    
+
     /**
-     * Agrega un pedido a la lista del cliente,verifica que la lista no sea nula,
-     * evita que se ingresen objetos duplicados y/o los actualiza
+     * Agrega un pedido a la lista del cliente,verifica que la lista no sea
+     * nula, evita que se ingresen objetos duplicados y/o los actualiza
+     *
      * @param unPedido El pedido a agregar o actualizar
      */
     public void agregarPedido(Pedido unPedido) {
         // y si isEmpty es false
-        if(unPedido != null){
-            
+        if (unPedido != null) {
+
             if (!pedidos.contains(unPedido)) {
                 pedidos.add(unPedido);
             } else {
@@ -56,6 +57,7 @@ public class Cliente extends Usuario {
 
     /**
      * Cancelar un pedido de la lista,verifica que se este para removerlo
+     *
      * @param unPedido El pedido a remover de la lista
      */
     public void cancelarPedido(Pedido unPedido) {

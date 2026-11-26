@@ -5,7 +5,8 @@
 package pedidos.modelos;
 
 /**
- *Enumeracion que representa los estados posibles de un pedido
+ * Enumeracion que representa los estados posibles de un pedido
+ *
  * @author Usuario
  */
 public enum Estado {
@@ -18,6 +19,7 @@ public enum Estado {
     Estado(String descripcion) {
         this.descripcion = descripcion;
     }
+
     /**
      * @return String con la descripcion del pedido
      */

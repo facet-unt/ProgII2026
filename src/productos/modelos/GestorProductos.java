@@ -42,15 +42,16 @@ public class GestorProductos implements IGestorProductos {
         }
         return gestor;
     }
-    
+
     /**
      * Crea un nuevo producto, devolviendo una cadena con el resultado
+     *
      * @param codigo
      * @param descripcion
      * @param precio
      * @param categoria
      * @param estado
-     * @return 
+     * @return
      */
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         for (Producto p : productos) {
@@ -297,16 +298,16 @@ public class GestorProductos implements IGestorProductos {
         }
         return false;
     }
-    
+
     /**
-    * Ordena los productos por categoria y luego alfabéticamente
-    * por descripción.
-    */
+     * Ordena los productos por categoria y luego alfabéticamente por
+     * descripción.
+     */
     Comparator<Producto> ordenarProductos = (p1, p2) -> {
         int ordenarPorCategoria = p1.verCategoria().compareTo(p2.verCategoria());
         if (ordenarPorCategoria != 0) {
             return ordenarPorCategoria;
         }
         return p1.verDescripcion().compareTo(p2.verDescripcion());
-    }; 
+    };
 }

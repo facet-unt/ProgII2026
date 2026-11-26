@@ -4,7 +4,6 @@
  */
 package interfaces;
 
-import java.util.ArrayList;
 import java.util.List;
 import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
@@ -14,7 +13,6 @@ import usuarios.modelos.Usuario;
  * @author estudiante
  */
 public interface IGestorUsuarios {
-    
     String EXITO = "Usuario creado/modificado con exito";
     String ERROR_CORREO = "El correo del usuario es incorrecto";
     String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
@@ -32,5 +30,4 @@ public interface IGestorUsuarios {
     String borrarUsuario(Usuario usuario);
     boolean existeEsteUsuario(Usuario usuario);
     Usuario obtenerUsuario(String correo);
-    
 }

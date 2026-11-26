@@ -9,7 +9,8 @@ import java.util.Objects;
 import pedidos.modelos.Pedido;
 
 /**
- *Es la super clase de Cliente,Empleado y Encargado
+ * Es la superclase de Cliente,Empleado y Encargado
+ *
  * @author Usuario
  */
 public abstract class Usuario {
@@ -66,9 +67,12 @@ public abstract class Usuario {
     }
 
     /**
-     *compara el usuario ingresado con otro para verificar su igualdad segun el correo.
+     * compara el usuario ingresado con otro para verificar su igualdad segun el
+     * correo.
+     *
      * @param obj a comparar con otro usuario
-     * @return true si ambos objetos son de la misma clase y tienen el mismo correo,si no devuelve false.
+     * @return true si ambos objetos son de la misma clase y tienen el mismo
+     * correo,si no devuelve false.
      */
     @Override
     public boolean equals(Object obj) {

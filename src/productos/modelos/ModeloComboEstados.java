@@ -10,15 +10,15 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Usuario
  */
-public class ModeloComboEstados extends DefaultComboBoxModel{
-    
+public class ModeloComboEstados extends DefaultComboBoxModel {
+
     public ModeloComboEstados() {
-        for(Estado e : Estado.values()) {
+        for (Estado e : Estado.values()) {
             this.addElement(e);
         }
     }
-    
+
     public Estado obtenerEstado() {
-        return (Estado)this.getSelectedItem();
+        return (Estado) this.getSelectedItem();
     }
 }

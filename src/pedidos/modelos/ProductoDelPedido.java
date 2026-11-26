@@ -8,7 +8,7 @@ import java.util.Objects;
 import productos.modelos.Producto;
 
 /**
- *Representa los detalles de un pedido con respecto a la cantidad y el producto
+ *
  * @author estudiante
  */
 public class ProductoDelPedido {
@@ -36,11 +36,13 @@ public class ProductoDelPedido {
         hash = 97 * hash + Objects.hashCode(this.unProducto);
         return hash;
     }
-    
+
     /**
      * compara un objeto con otro para verificar su igualdad segun el producto.
+     *
      * @param obj a comparar con el producto
-     * @return true si ambos objetos son de la misma clase y tienen el mismo producto,si no devuelve false
+     * @return true si ambos objetos son de la misma clase y tienen el mismo
+     * producto,si no devuelve false
      */
     @Override
     public boolean equals(Object obj) {
@@ -71,5 +73,4 @@ public class ProductoDelPedido {
     public void mostrarPDP() {
         System.out.println("[" + unProducto.verCodigo() + "] " + unProducto.verDescripcion() + "\t\t$" + unProducto.verPrecio() + "\t\t\t" + cantidad);
     }
-
 }

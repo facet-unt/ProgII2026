@@ -21,20 +21,30 @@ public class GestorUsuarios implements IGestorUsuarios {
      * Lista para guardar los usuarios que se ingresen
      */
     List<Usuario> listaUsuarios = new ArrayList<>();
-    
+
     private static GestorUsuarios instancia;
 
     private GestorUsuarios() {
         this.listaUsuarios = new ArrayList<>();
     }
-    
+
     public static GestorUsuarios instanciar() {
         if (instancia == null) {
             instancia = new GestorUsuarios();
         }
         return instancia;
     }
-    
+
+    /**
+     * Crea un nuevo usuario, devolviendo una cadena con el resultado de l aoperación.
+     * @param correo
+     * @param apellido
+     * @param nombre
+     * @param perfil
+     * @param clave
+     * @param claveRepetida
+     * @return 
+     */
     @Override
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida) {
         if (correo == null || !correo.contains("@")) {
@@ -45,15 +55,15 @@ public class GestorUsuarios implements IGestorUsuarios {
         if (apellido == null || apellido.trim().isEmpty()) {
             return ERROR_APELLIDO;
         }
-        
+
         if (nombre == null || nombre.trim().isEmpty()) {
             return ERROR_NOMBRE;
         }
-        
+
         if (perfil == null) {
             return ERROR_PERFIL;
-        }        
-        
+        }
+
         if (clave == null || clave.trim().isEmpty() || claveRepetida == null || !clave.equals(claveRepetida)) {
             return ERROR_CLAVES;
         }
@@ -62,9 +72,9 @@ public class GestorUsuarios implements IGestorUsuarios {
         if (obtenerUsuario(correo) != null) {
             return USUARIOS_DUPLICADOS;
         }
-        
+
         Usuario usuario;
-        
+
         switch (perfil) {
             case EMPLEADO ->
                 usuario = new Empleado(correo, apellido, nombre, clave);
@@ -76,10 +86,10 @@ public class GestorUsuarios implements IGestorUsuarios {
                 return ERROR_PERFIL;
             }
         }
-        
+
         listaUsuarios.add(usuario);
         return EXITO;
-        
+
     }
 
     /**
@@ -100,9 +110,9 @@ public class GestorUsuarios implements IGestorUsuarios {
      */
     @Override
     public List<Usuario> buscarUsuarios(String Apellido) {
-        
+
         List<Usuario> encontrados = new ArrayList<>();
-        
+
         for (Usuario u : listaUsuarios) {
             if (u.verApellido().toLowerCase().contains(Apellido.toLowerCase())) {
                 encontrados.add(u);
@@ -132,7 +142,7 @@ public class GestorUsuarios implements IGestorUsuarios {
     }
 
     /**
-     *
+     * Verifica que exista el usuario especificado.
      * @param usuario que se busca
      * @return true si existe el usuario,false en caso contrario
      */
@@ -142,26 +152,27 @@ public class GestorUsuarios implements IGestorUsuarios {
         if (usuario == null) {
             return false;
         }
-        
+
         return (obtenerUsuario(usuario.verCorreo()) != null);
     }
 
     /**
+     * Obtiene el usuario con el correo especificado.
      * @param correo utilizado para buscar un usuario
      * @return el usuario en caso de encontrarlo,null en caso contrario
      */
     @Override
     public Usuario obtenerUsuario(String correo) {
-        
+
         for (Usuario u : listaUsuarios) {
             if (u.verCorreo().equalsIgnoreCase(correo)) {
                 return u;
             }
         }
-        
+
         return null;
-    }    
-    
+    }
+
     /**
      * Ordena alfabéticamnete por apellido y luego por nombre.
      */

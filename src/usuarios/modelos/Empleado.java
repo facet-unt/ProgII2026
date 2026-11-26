@@ -10,7 +10,6 @@ import pedidos.modelos.Pedido;
 
 /**
  *
- * Hereda de la clase Usuario
  * @author estudiante
  */
 public class Empleado extends Usuario {
@@ -20,9 +19,9 @@ public class Empleado extends Usuario {
     }
 
     /**
-     * metodo heredado de Usuario 
-     * Muestra la lista de pedidos realizados
-     * En Empleado devuelve una lista vacia
+     * metodo heredado de Usuario Muestra la lista de pedidos realizados En
+     * Empleado devuelve una lista vacia
+     *
      * @return pedidos un ArrayList vacio
      */
     @Override

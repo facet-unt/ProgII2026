@@ -5,14 +5,15 @@
 package usuarios.modelos;
 
 /**
- *Enumeracion que representa los valores que puede tomar un usuario
+ * Enumeracion que representa los valores que puede tomar un usuario
+ *
  * @author Usuario
  */
 public enum Perfil {
     CLIENTE("Cliente"),
     EMPLEADO("Empleado"),
     ENCARGADO("Encargado");
-    
+
     private final String perfil;
 
     private Perfil(String perfil) {
@@ -23,8 +24,4 @@ public enum Perfil {
     public String toString() {
         return perfil;
     }
-    
-    
-    
-  
 }

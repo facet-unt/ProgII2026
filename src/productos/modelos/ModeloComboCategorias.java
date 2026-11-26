@@ -8,18 +8,17 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author luis
+ * @author
  */
 public class ModeloComboCategorias extends DefaultComboBoxModel {
-    
+
     public ModeloComboCategorias() {
-        for(Categoria c : Categoria.values()) {
+        for (Categoria c : Categoria.values()) {
             this.addElement(c);
         }
     }
-    
+
     public Categoria obtenerCategoria() {
-        return (Categoria)this.getSelectedItem();
+        return (Categoria) this.getSelectedItem();
     }
-    
 }

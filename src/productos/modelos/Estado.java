@@ -6,6 +6,7 @@ package productos.modelos;
 
 /**
  * *Enumeracion que representa los estados posibles de un producto
+ *
  * @author Usuario
  */
 public enum Estado {
@@ -19,12 +20,11 @@ public enum Estado {
     }
 
     /**
-     * 
+     *
      * @return String con el estado de disponibilidad de un producto
      */
     @Override
     public String toString() {
         return estado;
     }
-
 }

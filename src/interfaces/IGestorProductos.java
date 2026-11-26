@@ -14,7 +14,6 @@ import productos.modelos.Producto;
  * @author Usuario
  */
 public interface IGestorProductos {
-
     String EXITO = "Producto creado/modificado/eliminado con exito";
     String ERROR_CODIGO = "El codigo del producto es incorrecto";
     String ERROR_DESCRIPCION = "La descripcion del producto es incorrecta";
@@ -35,5 +34,4 @@ public interface IGestorProductos {
     boolean existeEsteProducto(Producto producto); 
     List<Producto> verProductosPorCategoria(Categoria categoria); 
     Producto obtenerProducto(Integer codigo); 
-    
 }

@@ -1,4 +1,3 @@
-
 package pedidos.modelos;
 
 import java.time.LocalDate;
@@ -10,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Representa un pedido realizado en el sistema
+ *
  * @author Usuario
  */
-public class Pedido implements Comparable<Pedido>{
+public class Pedido implements Comparable<Pedido> {
 
     private int numero;
     private LocalDateTime fechaYHora;
@@ -73,24 +72,25 @@ public class Pedido implements Comparable<Pedido>{
     public void asignarUnCliente(Cliente unCliente) {
         this.unCliente = unCliente;
     }
-    
+
     /**
      * Devuelve la fecha en formato String
+     *
      * @return un objeto con la fecha formateada del tipo "dd/MM/yyyy"
      */
-    //Metodos auxiliares para mostrar la fecha y la hora con el formato solicitado
     public String verFechaFormateada() {
-       LocalDate fecha = this.fechaYHora.toLocalDate();
-       DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-       return fecha.format(fechaConFormato);
+        LocalDate fecha = this.fechaYHora.toLocalDate();
+        DateTimeFormatter fechaConFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return fecha.format(fechaConFormato);
     }
-    
+
     /**
-     *Devuelve la hora en formato String
+     * Devuelve la hora en formato String
+     *
      * @return un objeto con la hora formateada del tipo "HH:mm"
      */
     public String verHoraFormateada() {
-        LocalTime hora=this.fechaYHora.toLocalTime();
+        LocalTime hora = this.fechaYHora.toLocalTime();
         DateTimeFormatter horaConFormato = DateTimeFormatter.ofPattern("HH:mm");
         return hora.format(horaConFormato);
     }
@@ -104,8 +104,10 @@ public class Pedido implements Comparable<Pedido>{
 
     /**
      * compara este pedido con otro para verificar su igualdad segun el número.
+     *
      * @param obj a comparar con el pedido
-     * @return true si ambos objetos son de la misma clase y tienen el mismo número,si no devuelve false
+     * @return true si ambos objetos son de la misma clase y tienen el mismo
+     * número,si no devuelve false
      */
     @Override
     public boolean equals(Object obj) {
@@ -135,11 +137,15 @@ public class Pedido implements Comparable<Pedido>{
             pDP.mostrarPDP();
         }
     }
-    
-    
+
+    /**
+     * Se implementa el método compareTo() para ordenar por número.
+     *
+     * @param p1
+     * @return
+     */
     @Override
-    public int compareTo(Pedido p1){
-        
-      return Integer.compare(this.numero, p1.numero);
+    public int compareTo(Pedido p1) {
+        return Integer.compare(this.numero, p1.numero);
     }
 }

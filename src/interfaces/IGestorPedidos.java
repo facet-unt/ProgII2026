@@ -17,7 +17,6 @@ import usuarios.modelos.Cliente;
  * @author Usuario
  */
 public interface IGestorPedidos {
-
     String EXITO = "Pedido creado/modificado/cancelado con exito";
     String ERROR_FECHA = "La fecha del pedido es incorrecta";
     String ERROR_HORA = "La hora del pedido es incorrecta";

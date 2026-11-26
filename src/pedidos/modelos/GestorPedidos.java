@@ -22,7 +22,7 @@ import usuarios.modelos.Cliente;
  *
  * @author Usuario
  */
-public class GestorPedidos implements IGestorPedidos{
+public class GestorPedidos implements IGestorPedidos {
 
     List<Pedido> pedidos = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class GestorPedidos implements IGestorPedidos{
     private GestorPedidos() {
         pedidos = new ArrayList<>();
     }
-    
+
     public static GestorPedidos instanciar() {
         if (gestor == null) {
             gestor = new GestorPedidos();
@@ -71,6 +71,9 @@ public class GestorPedidos implements IGestorPedidos{
 
         Pedido nuevoPedido = new Pedido(fecha, hora, productosDelPedido, cliente);
         nuevoPedido.asignarNumero(numeroSgte);
+        if (numeroSgte == 1) {
+            nuevoPedido.asignarNumero(300);
+        }
         numeroSgte++;
         pedidos.add(nuevoPedido);
         cliente.agregarPedido(nuevoPedido);
@@ -95,8 +98,10 @@ public class GestorPedidos implements IGestorPedidos{
             return ERROR_ESTADO;
         }
         switch (opc) {
-            case CREADO -> pedidoAModificar.asignarEstado(Estado.PROCESANDO);
-            case PROCESANDO -> pedidoAModificar.asignarEstado(Estado.ENTREGADO);
+            case CREADO ->
+                pedidoAModificar.asignarEstado(Estado.PROCESANDO);
+            case PROCESANDO ->
+                pedidoAModificar.asignarEstado(Estado.ENTREGADO);
             default -> {
             }
         }
@@ -105,7 +110,6 @@ public class GestorPedidos implements IGestorPedidos{
 
     /**
      * Devuelve todos los pedidos
-     *
      * @return
      */
     @Override
@@ -115,25 +119,27 @@ public class GestorPedidos implements IGestorPedidos{
     }
 
     /**
+     * Verifica si existen clientes asociados a un pedido.
      * @param cliente para buscar pedidos registrados
      * @return true si se encuentra pedidos con el Clinte,false en caso
      * contrario
      */
     @Override
-    public boolean hayPedidosConEsteCliente(Cliente cliente){
+    public boolean hayPedidosConEsteCliente(Cliente cliente) {
         if (cliente == null) {
             return false;
         }
         return !cliente.verPedidos().isEmpty();
     }
-    
+
     /**
+     * Verifica si existen productos asociados a un pedido.
      * @param producto que se busca en una lista de pedidos
      * @return true si se encuentra el producto en al menos un pedido,false en
      * caso contrario
      */
     @Override
-    public boolean hayPedidosConEsteProducto(Producto producto){
+    public boolean hayPedidosConEsteProducto(Producto producto) {
         if (producto == null) {
             return false;
         }
@@ -148,19 +154,21 @@ public class GestorPedidos implements IGestorPedidos{
         return false;
     }
 
-     /**
-     * 
-     * @param pedido que,lueqo de validar que no sea nulo o no este en la lista,se quiere cancelar
-     * @return un mensaje de exito de que se pudo cancelar,en caso contrario un mensaje de pedido inexistente
+    /**
+     *Cancela un pedido, devolviendo el resultado de la operación.
+     * @param pedido que,lueqo de validar que no sea nulo o no este en la
+     * lista,se quiere cancelar
+     * @return un mensaje de exito de que se pudo cancelar,en caso contrario un
+     * mensaje de pedido inexistente
      */
     @Override
-    public String cancelarPedido(Pedido pedido){
-        
+    public String cancelarPedido(Pedido pedido) {
+
         if (pedido == null || !(existeEstePedido(pedido))) {
-         return PEDIDO_INEXISTENTE;
+            return PEDIDO_INEXISTENTE;
         }
 
-        if (!clienteInvalido(pedido.verUnCliente())) { 
+        if (!clienteInvalido(pedido.verUnCliente())) {
             pedido.verUnCliente().cancelarPedido(pedido);
         }
 
@@ -168,8 +176,9 @@ public class GestorPedidos implements IGestorPedidos{
 
         return EXITO;
     }
-    
+
     /**
+     * Verifica que un pedido exista
      * @param pedido a verificar si existe
      * @return true si se encuentra el pedido en la lista,false en caso
      * contrario
@@ -180,7 +189,7 @@ public class GestorPedidos implements IGestorPedidos{
     }
 
     /**
-     *
+     * Obtiene el pedido con el número especificado.
      * @param numero del pedido que se desea buscar
      * @return el pedido si se lo encontro,null en caso contrario
      */

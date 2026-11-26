@@ -4,8 +4,6 @@
  */
 package productos.modelos;
 
-import java.util.Comparator;
-
 /**
  *
  * @author estudiante
@@ -67,9 +65,12 @@ public class Producto implements Comparable<Producto> {
     }
 
     /**
-     * compara un objeto del tipo producto con otro para verificar su igualdad segun el codigo.
+     * compara un objeto del tipo producto con otro para verificar su igualdad
+     * segun el codigo.
+     *
      * @param obj a comparar con un producto
-     * @return true si ambos objetos son de la misma clase y tienen el mismo codigo,si no devuelve false
+     * @return true si ambos objetos son de la misma clase y tienen el mismo
+     * codigo,si no devuelve false
      */
     @Override
     public boolean equals(Object obj) {
@@ -103,21 +104,23 @@ public class Producto implements Comparable<Producto> {
     }
 
     /**
-     * 
+     *
      * @return String con formato solicitado para codigo,descripcion y precio
      */
     @Override
     public String toString() {
         return "[" + codigo + "] " + descripcion + "\t\t\t" + "$" + precio + "\t\t\t\t";
     }
-    
+
     /**
-     * Implementamos el metodo compareTo para ordenar los productos por la descripción 
+     * Implementamos el metodo compareTo para ordenar los productos por la
+     * descripción
+     *
      * @param p
-     * @return 
+     * @return
      */
     @Override
-    public int compareTo(Producto p){
+    public int compareTo(Producto p) {
         return this.verDescripcion().compareTo(p.verDescripcion());
     }
 }
