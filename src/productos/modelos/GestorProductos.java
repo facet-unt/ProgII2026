@@ -131,6 +131,11 @@ public class GestorProductos implements IGestorProductos{
             return PRODUCTOS_DUPLICADOS;
         }
         this.productos.add(nuevoProducto);
+        String resultadoEscritura = this.escribirArchivo();
+        if(!resultadoEscritura.equals(ESCRITURA_OK)){
+            this.productos.remove(nuevoProducto);
+            return resultadoEscritura;
+        }
         return EXITO;
     }
     
