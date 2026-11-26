@@ -76,7 +76,7 @@ public class GestorUsuarios implements IGestorUsuarios {
      */
     @Override
     public List<Usuario> verUsuarios(){
-        Collections.sort(listaUsuarios);
+        //Collections.sort(listaUsuarios);
         return listaUsuarios;
     }
     
@@ -96,7 +96,7 @@ public class GestorUsuarios implements IGestorUsuarios {
             }
         }
         
-        Collections.sort(encontrados);
+        //Collections.sort(encontrados);
         return encontrados;
     }
     

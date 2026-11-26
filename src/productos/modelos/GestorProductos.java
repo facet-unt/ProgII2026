@@ -42,26 +42,17 @@ public class GestorProductos implements IGestorProductos {
         }
         return gestor;
     }
-
-    //Ordena por categoria
-    Comparator<Producto> ordenarPorCategoria = (p1, p2) -> p1.verCategoria().compareTo(p2.verCategoria());
-    //Ordena por descripcion
-    Comparator<Producto> ordenPorDescripcion = (p1, p2) -> p1.verDescripcion().compareTo(p2.verDescripcion());
-
+    
     /**
-     * Crea un nuevo producto, devolviendo una cadena con el resultado de la
-     * operacion
-     *
+     * Crea un nuevo producto, devolviendo una cadena con el resultado
      * @param codigo
      * @param descripcion
      * @param precio
      * @param categoria
      * @param estado
-     * @return
+     * @return 
      */
-    @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
-
         for (Producto p : productos) {
             if (p.verCodigo() == codigo) {
                 return PRODUCTOS_DUPLICADOS;
@@ -149,8 +140,7 @@ public class GestorProductos implements IGestorProductos {
      */
     @Override
     public List<Producto> menu() {
-        Collections.sort(productos, ordenarPorCategoria);
-        Collections.sort(productos, ordenPorDescripcion);
+        Collections.sort(productos, ordenarProductos);
         return productos;
     }
 
@@ -164,15 +154,12 @@ public class GestorProductos implements IGestorProductos {
     @Override
     public List<Producto> buscarProductos(String descripcion) {
         List<Producto> productosPorDescripcion = new ArrayList<>();
-        
         for (Producto p : productos) {
             if (p.verDescripcion().contains(descripcion)) {
                 productosPorDescripcion.add(p);
             }
         }
-        
-        Collections.sort(productosPorDescripcion);
-        
+        Collections.sort(productosPorDescripcion, ordenarProductos);
         return productosPorDescripcion;
     }
 
@@ -215,15 +202,12 @@ public class GestorProductos implements IGestorProductos {
     @Override
     public List<Producto> verProductosPorCategoria(Categoria categoria) {
         List<Producto> productosPorCategoria = new ArrayList<>();
-        
         for (Producto p : productos) {
             if (p.verCategoria() == categoria) {
                 productosPorCategoria.add(p);
             }
         }
-        
         Collections.sort(productosPorCategoria);
-
         return productosPorCategoria;
     }
 
@@ -313,4 +297,16 @@ public class GestorProductos implements IGestorProductos {
         }
         return false;
     }
+    
+    /**
+    * Ordena los productos por categoria y luego alfabéticamente
+    * por descripción.
+    */
+    Comparator<Producto> ordenarProductos = (p1, p2) -> {
+        int ordenarPorCategoria = p1.verCategoria().compareTo(p2.verCategoria());
+        if (ordenarPorCategoria != 0) {
+            return ordenarPorCategoria;
+        }
+        return p1.verDescripcion().compareTo(p2.verDescripcion());
+    }; 
 }

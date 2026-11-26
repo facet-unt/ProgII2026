@@ -101,7 +101,6 @@ public abstract class Usuario {
      */
     public abstract List<Pedido> verPedidos();
 
-    @Override
     public int compareTo(Usuario u1){
         
         if(this.apellido.equalsIgnoreCase(u1.verApellido())){

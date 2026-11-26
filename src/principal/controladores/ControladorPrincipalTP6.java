@@ -73,13 +73,29 @@ public class ControladorPrincipalTP6 {
         /*OBTENER UN PRODUCTO MEDIANTE EL CODIGO*/
         Producto unProducto1 = gp.obtenerProducto(1);
         Producto unProducto2 = gp.obtenerProducto(2);
-        
+        List<Producto> productosPostre = gp.verProductosPorCategoria(Categoria.POSTRE);
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
         List<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
-        System.out.println("Productos filtrados por categoria");
+        System.out.println("Productos filtrados por categoria: POSTRE");
         System.out.println("===================");
-        for (Producto p : productosBuscados) {
+        for (Producto p : productosPostre) {
+            p.mostrar();
+        }
+        System.out.println();
+        
+        List<Producto> productosPP = gp.verProductosPorCategoria(Categoria.PLATO_PRINCIPAL);
+        System.out.println("Productos filtrados por categoria: PLATO PRINCIPAL");
+        System.out.println("===================");
+        for (Producto p : productosPP) {
+            p.mostrar();
+        }
+        System.out.println();
+        
+        List<Producto> productosEntrada = gp.verProductosPorCategoria(Categoria.ENTRADA);
+        System.out.println("Productos filtrados por categoria: ENTRADA");
+        System.out.println("===================");
+        for (Producto p : productosEntrada) {
             p.mostrar();
         }
         System.out.println();

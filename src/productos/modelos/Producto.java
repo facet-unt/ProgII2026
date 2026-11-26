@@ -71,7 +71,6 @@ public class Producto implements Comparable<Producto> {
      * @param obj a comparar con un producto
      * @return true si ambos objetos son de la misma clase y tienen el mismo codigo,si no devuelve false
      */
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -112,16 +111,13 @@ public class Producto implements Comparable<Producto> {
         return "[" + codigo + "] " + descripcion + "\t\t\t" + "$" + precio + "\t\t\t\t";
     }
     
-    
-    
+    /**
+     * Implementamos el metodo compareTo para ordenar los productos por la descripción 
+     * @param p
+     * @return 
+     */
     @Override
-    public int compareTo(Producto p1){
-        
-        if(this.categoria.equals(p1.verCategoria())){
-            return this.descripcion.compareTo(p1.verDescripcion());
-        }
-        else{
-            return this.categoria.compareTo(p1.verCategoria());
-        }
+    public int compareTo(Producto p){
+        return this.verDescripcion().compareTo(p.verDescripcion());
     }
 }
