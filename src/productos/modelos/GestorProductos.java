@@ -7,8 +7,10 @@ package productos.modelos;
 import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -77,6 +79,23 @@ public class GestorProductos implements IGestorProductos{
             return LECTURA_OK;
         } catch(IOException | IllegalArgumentException e){
             return LECTURA_ERROR;
+        }
+    }
+    
+    private String escribirArchivo(){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(NOMBRE_ARCHIVO))){
+            for(Producto p : this.productos){
+                String linea = p.verCodigo() + SEPARADOR
+                        + p.verDescripcion() + SEPARADOR
+                        + p.verPrecio() + SEPARADOR
+                        + p.verCategoria() + SEPARADOR
+                        + p.verEstado() + SEPARADOR;
+                bw.write(linea);
+                bw.newLine();                       
+            }
+            return ESCRITURA_OK;
+        }catch(IOException e){
+            return ESCRITURA_ERROR;
         }
     }
     //Metodo para validar datos
