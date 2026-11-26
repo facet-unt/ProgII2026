@@ -125,9 +125,11 @@ public class ControladorPrincipalTP6 {
 
         System.out.println("#####USUARIOS#####");
         
-        System.out.println(gu.crearUsuario("cliente2@bar.com", "ApellidoCliente2", "NombreCliente2", Perfil.CLIENTE, "claveCliente2", "claveCliente2"));
-        System.out.println(gu.crearUsuario("cliente3@bar.com", "ApellidoCliente3", "NombreCliente3", Perfil.CLIENTE, "claveCliente3", "claveCliente3"));
-        System.out.println(gu.crearUsuario("cliente1@bar.com", "ApellidoCliente1", "NombreCliente1", Perfil.CLIENTE, "claveCliente1", "claveCliente1"));
+        System.out.println(gu.crearUsuario("cliente2@bar.com", "ApAAC", "NombreDDC", Perfil.CLIENTE, "claveCliente2", "claveCliente2"));
+        System.out.println(gu.crearUsuario("cliente3@bar.com", "ApDDC", "NombreJJC", Perfil.CLIENTE, "claveCliente3", "claveCliente3"));
+        System.out.println(gu.crearUsuario("cliente1@bar.com", "ApEEC", "NombreLLC", Perfil.CLIENTE, "claveCliente1", "claveCliente1"));
+        System.out.println(gu.crearUsuario("cliente4@bar.com", "ApAAC", "NombreZZC", Perfil.CLIENTE, "claveCliente4", "claveCliente4"));
+
         System.out.println(gu.crearUsuario("cliente3@bar.com", "ApellidoCliente4", "NombreCliente4", Perfil.CLIENTE, "claveCliente4", "claveCliente4"));
         //cliente duplicado
         System.out.println(gu.crearUsuario(null, "ApellidoCliente4", "NombreCliente4", Perfil.CLIENTE, "claveCliente4", "claveCliente4"));
@@ -165,10 +167,12 @@ public class ControladorPrincipalTP6 {
         }
         System.out.println();
         
-        System.out.println(gu.crearUsuario("empleado1@bar.com", "ApellidoEmpleado1", "NombreEmpleado1", Perfil.EMPLEADO, "claveEmpleado1", "claveEmpleado1"));
-        System.out.println(gu.crearUsuario("empleado3@bar.com", "ApellidoEmpleado3", "NombreEmpleado3", Perfil.EMPLEADO, "claveEmpleado3", "claveEmpleado3"));
-        System.out.println(gu.crearUsuario("empleado2@bar.com", "ApellidoEmpleado2", "NombreEmpleado2", Perfil.EMPLEADO, "claveEmpleado2", "claveEmpleado2"));
+        System.out.println(gu.crearUsuario("empleado1@bar.com", "ApOOEm", "NombreAAEm", Perfil.EMPLEADO, "claveEmpleado1", "claveEmpleado1"));
+        System.out.println(gu.crearUsuario("empleado3@bar.com", "ApQQEm", "NombreGGEm", Perfil.EMPLEADO, "claveEmpleado3", "claveEmpleado3"));
+        System.out.println(gu.crearUsuario("empleado2@bar.com", "ApPPEm", "NombreDDEm", Perfil.EMPLEADO, "claveEmpleado2", "claveEmpleado2"));
+        System.out.println(gu.crearUsuario("empleado4@bar.com", "ApBBEm", "NombreTTEm", Perfil.EMPLEADO, "claveEmpleado4", "claveEmpleado4"));
 
+        
         System.out.println(gu.crearUsuario("empleado3@bar.com", "ApellidoEmpleado4", "NombreEmpleado4", Perfil.EMPLEADO, "claveEmpleado4", "claveEmpleado4"));
         //empleado duplicado
         System.out.println(gu.crearUsuario(null, "ApellidoEmpleado4", "NombreEmpleado4", Perfil.EMPLEADO, "claveEmpleado4", "claveEmpleado4"));
@@ -205,10 +209,12 @@ public class ControladorPrincipalTP6 {
         }
         System.out.println();
         
-        System.out.println(gu.crearUsuario("encargado5@bar.com", "ApellidoEncargado5", "NombreEncargado5", Perfil.ENCARGADO, "claveEncargado5", "claveEncargado5"));
-        System.out.println(gu.crearUsuario("encargado1@bar.com", "ApellidoEncargado1", "NombreEncargado1", Perfil.ENCARGADO, "claveEncargado1", "claveEncargado1"));
-        System.out.println(gu.crearUsuario("encargado2@bar.com", "ApellidoEncargado2", "NombreEncargado2", Perfil.ENCARGADO, "claveEncargado2", "claveEncargado2"));
-        System.out.println(gu.crearUsuario("encargado3@bar.com", "ApellidoEncargado3", "NombreEncargado3", Perfil.ENCARGADO, "claveEncargado3", "claveEncargado3"));
+        System.out.println(gu.crearUsuario("encargado5@bar.com", "ApRREn", "NombreBBEn", Perfil.ENCARGADO, "claveEncargado5", "claveEncargado5"));
+        System.out.println(gu.crearUsuario("encargado1@bar.com", "ApUUEn", "NombreZZEn", Perfil.ENCARGADO, "claveEncargado1", "claveEncargado1"));
+        System.out.println(gu.crearUsuario("encargado2@bar.com", "ApTTEn", "NombrePPEn", Perfil.ENCARGADO, "claveEncargado2", "claveEncargado2"));
+        System.out.println(gu.crearUsuario("encargado3@bar.com", "ApLLEn", "NombreKKEn", Perfil.ENCARGADO, "claveEncargado3", "claveEncargado3"));
+        System.out.println(gu.crearUsuario("encargado4@bar.com", "ApCCEn", "NombreFFEn", Perfil.ENCARGADO, "claveEncargado4", "claveEncargado4"));
+
         System.out.println(gu.crearUsuario("encargado3@bar.com", "ApellidoEncargado4", "NombreEncargado4", Perfil.ENCARGADO, "claveEncargado4", "claveEncargado4"));
         //encargado duplicado
         System.out.println(gu.crearUsuario(null, "ApellidoEncargado4", "NombreEncargado4", Perfil.ENCARGADO, "claveEncargado4", "claveEncargado4"));
@@ -244,13 +250,13 @@ public class ControladorPrincipalTP6 {
             }
         }
         System.out.println();
-        
-        System.out.println("Menu");
-        System.out.println("=========");
-        for (Producto p : gp.menu()) {
-            p.mostrar();
-        }
-        System.out.println();
+//        repetido
+//        System.out.println("Menu");
+//        System.out.println("=========");
+//        for (Producto p : gp.menu()) {
+//            p.mostrar();
+//        }
+//        System.out.println();
         
         System.out.println("Obtener usuarios y productos");
         System.out.println("=========");
@@ -272,6 +278,7 @@ public class ControladorPrincipalTP6 {
         if (!productosDelPedido1.contains(pdp2)) {
             productosDelPedido1.add(pdp2);
         }
+        System.out.print("1)");
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido1, (Cliente) unCliente1));
 
         Usuario unCliente2 = gu.obtenerUsuario("cliente2@bar.com");
@@ -289,19 +296,23 @@ public class ControladorPrincipalTP6 {
         if (!productosDelPedido2.contains(pdp5)) {
             productosDelPedido2.add(pdp5);
         }
+        
+        System.out.print("2)");
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido2, (Cliente) unCliente2));
 
+        
         System.out.println(gPed.crearPedido(null, hora, productosDelPedido2, (Cliente) unCliente1));
         //sin fecha
         System.out.println(gPed.crearPedido(fecha, null, productosDelPedido2, (Cliente) unCliente1));
         //sin hora
-        ArrayList<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
+        List<ProductoDelPedido> productosDelPedido3 = new ArrayList<>();
         System.out.println(gPed.crearPedido(fecha, hora, null, (Cliente) unCliente1));
         //sin productos
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido3, (Cliente) unCliente1));
         //sin productos
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido2, null));
         //sin cliente
+        
         System.out.println("");
         System.out.println("=======");
         System.out.println("Pedidos");
@@ -373,7 +384,7 @@ public class ControladorPrincipalTP6 {
         }
         
         System.out.println();
-        List<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
+        List<Usuario> usuariosBuscados = gu.buscarUsuarios("ApAA");
         System.out.println("Usuarios filtrados");
         System.out.println("==================");
         for (Usuario u : usuariosBuscados) {
