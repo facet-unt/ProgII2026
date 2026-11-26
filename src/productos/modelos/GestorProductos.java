@@ -6,6 +6,10 @@ package productos.modelos;
 
 import interfaces.IGestorPedidos;
 import interfaces.IGestorProductos;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -16,12 +20,15 @@ import pedidos.modelos.GestorPedidos;
  * @author Arebalo
  */
 public class GestorProductos implements IGestorProductos{
+    //Constantes para el archivo y separador
+    private static final String NOMBRE_ARCHIVO = "productos.txt";
+    private static final String SEPARADOR = ";";
     private static GestorProductos gestor;
     
     private ArrayList<Producto> productos = new ArrayList<>();
     
     
-    
+    //Singleton
     private GestorProductos(){
     }
     public static GestorProductos instanciar(){
@@ -29,6 +36,48 @@ public class GestorProductos implements IGestorProductos{
             gestor = new GestorProductos();
         }
         return gestor;
+    }
+    
+    //=================================
+    //Metodos auxiliares de archivo
+    //=================================
+    
+    private String leerArchivo(){
+        File archivo = new File(NOMBRE_ARCHIVO);
+        if(!archivo.exists()){
+            try{
+                if(archivo.createNewFile()){
+                    return CREACION_OK;
+                }
+            }catch(IOException e){
+                return CREACION_ERROR;
+            }
+        }
+        
+    
+        try(BufferedReader br = new BufferedReader(new FileReader(archivo))){
+            String linea;
+            while((linea = br.readLine()) != null){
+                if(!linea.trim().isEmpty()){
+                    String[] datos = linea.split(SEPARADOR);
+                    if(datos.length == 5){
+                        int codigo = Integer.parseInt(datos[0].trim());
+                        String descripcion = datos[1].trim();
+                        float precio = Float.parseFloat(datos[2].trim());
+                        Categoria categoria = Categoria.valueOf(datos[4].trim());
+                        Estado estado = Estado.valueOf(datos[4].trim());
+                
+                        Producto p = new Producto(codigo, descripcion, categoria, estado, precio);
+                        if(!this.productos.contains(p)){
+                            this.productos.add(p);
+                        }
+                    }
+                }
+            }
+            return LECTURA_OK;
+        } catch(IOException | IllegalArgumentException e){
+            return LECTURA_ERROR;
+        }
     }
     //Metodo para validar datos
     
