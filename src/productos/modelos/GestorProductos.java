@@ -150,17 +150,35 @@ public class GestorProductos implements IGestorProductos{
         if (!validacion.equals(EXITO)){
             return validacion;
         }
+        
         if(productoAModificar.verCodigo() != codigo){
             Producto aux = new Producto(codigo,descripcion,categoria,estado,precio);
             if (this.productos.contains(aux)){
                 return PRODUCTOS_DUPLICADOS;
             }
         }
+        
         productoAModificar.asignarDescripcion(descripcion.trim());
         productoAModificar.asignarPrecio(precio);
         productoAModificar.setCategoria(categoria);
         productoAModificar.asignarEstado(estado);
+        
+        String descAnterior = productoAModificar.verDescripcion();
+        float precioAnterior = productoAModificar.verPrecio();
+        Categoria catAnterior = productoAModificar.verCategoria();
+        Estado estadoAnterior = productoAModificar.verEstado();
+        
+        
+        String resultadoEscritura = this.escribirArchivo();
+        if(!resultadoEscritura.equals(ESCRITURA_OK)){       
+        productoAModificar.asignarDescripcion(descAnterior);
+        productoAModificar.asignarPrecio(precioAnterior);
+        productoAModificar.setCategoria(catAnterior);
+        productoAModificar.asignarEstado(estadoAnterior);
+        return resultadoEscritura;
+        }
         return EXITO;
+        
     
     }
          
