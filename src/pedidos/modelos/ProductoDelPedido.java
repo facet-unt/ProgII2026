@@ -4,6 +4,7 @@
  */
 package pedidos.modelos;
 
+import java.util.Locale;
 import java.util.Objects;
 import productos.modelos.Producto;
 
@@ -15,6 +16,14 @@ import productos.modelos.Producto;
 public class ProductoDelPedido {
     private Producto producto;
     private int cantidad;
+    
+//=================================================================================
+//                              Constructor
+//=================================================================================    
+    public ProductoDelPedido(Producto producto, int cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
 
     public Producto verProducto() {
         return producto;
@@ -29,15 +38,18 @@ public class ProductoDelPedido {
     }
 
     public String verDescripcion() {
-        return producto.verDescripcion();
+        if (producto != null && producto.verDescripcion() != null) {
+            return producto.verDescripcion();
+        }
+        return "-";
     }
 
     public int verCodigo() {
-        return producto.verCodigo();
+        return(producto != null) ? producto.verCodigo() : 0;
     }
 
     public float verPrecio() {
-        return producto.verPrecio();
+        return(producto != null) ? producto.verPrecio() : 0.0f;
     }
 
     public void asignarProducto(Producto producto) {
@@ -45,17 +57,15 @@ public class ProductoDelPedido {
     }
 
 
-
-//=================================================================================
-//                              Constructor
-//=================================================================================    
-    public ProductoDelPedido(Producto producto, int cantidad) {
-        this.producto = producto;
-        this.cantidad = cantidad;
-    }
-
     public void mostrar() {
-        System.out.println("Producto: " + producto.verCodigo() + " - " + producto.verDescripcion() + " Precio $:" + producto.verPrecio() + " " + cantidad);
+        if (producto != null) {
+            String desc = (producto.verDescripcion() != null) ? producto.verDescripcion() : "-";
+            String precioFormateado = String.format(Locale.US, "$%.2f", producto.verPrecio());
+            System.out.println("Producto: [" + producto.verCodigo() + "] " + desc + " - Precio: " + precioFormateado + " - Cantidad: " + cantidad);
+        }else{
+            System.out.println("Producto: - Cantidad: " +cantidad);
+        }
+        
     }
 
     @Override
@@ -82,6 +92,11 @@ public class ProductoDelPedido {
 
     @Override
     public String toString() {
-        return "Producto: " + producto.verCodigo() + " - " + producto.verDescripcion() + " Precio $:" + producto.verPrecio() + " " + cantidad;
+        if (producto != null) {
+            String desc = (producto.verDescripcion() != null) ? producto.verDescripcion() : "-";
+            String precioFormateado = String.format(Locale.US, "$%.2f", producto.verPrecio());
+            return "[" + producto.verCodigo() + "] " + desc + " " + precioFormateado + " (" + cantidad + ")";
+        }
+        return "- (" + cantidad + ")";
     }
 }
