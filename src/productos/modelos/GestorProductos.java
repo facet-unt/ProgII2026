@@ -259,8 +259,15 @@ public String borrarProducto(Producto producto) {
     if (gp.hayPedidosConEsteProducto(producto)) {
         return ERROR_BORRAR;
     }
-
+    
+    int indice = this.productos.indexOf(producto);
     this.productos.remove(producto);
+
+    String resultadoEscritura = this.escribirArchivo();
+        if (!resultadoEscritura.equals(ESCRITURA_OK)) {
+            this.productos.add(indice, producto);
+            return resultadoEscritura;                        
+        }
     return EXITO;
 }
 
