@@ -46,8 +46,9 @@ public class ProductoDelPedido {
 
 
 
-
-
+//=================================================================================
+//                              Constructor
+//=================================================================================    
     public ProductoDelPedido(Producto producto, int cantidad) {
         this.producto = producto;
         this.cantidad = cantidad;

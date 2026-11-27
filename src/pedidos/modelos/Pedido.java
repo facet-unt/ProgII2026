@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
@@ -29,9 +30,11 @@ public class Pedido {
     public Pedido(int numero, LocalDateTime fechaYHora, List<ProductoDelPedido> productosDelPedido, Cliente cliente) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
-        this.productosDelPedido = productosDelPedido;
+        this.productosDelPedido = (productosDelPedido != null) ? productosDelPedido : new ArrayList();
         this.cliente = cliente;
-        
+        this.estado = Estado.CREADO;
+        if (cliente != null) {this.cliente.agregarPedido(this);}
+                
     }
     
 

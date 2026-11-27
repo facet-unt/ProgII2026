@@ -13,6 +13,8 @@ import java.util.Comparator;
 import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
+import usuarios.modelos.GestorUsuarios;
+import usuarios.modelos.Usuario;
 
 /**
  *
@@ -136,16 +138,28 @@ public class GestorPedidos implements IGestorPedidos{
         if(producto == null){
             return false;
         }
-        for(Pedido p : this.pedidos){
-            if(p.verProductosDelPedido() != null){
-                for(ProductoDelPedido pdp : p.verProductosDelPedido()){
-                    if(pdp.verProducto() != null && pdp.verProducto().equals(producto)){
-                        return true;
-                    }
+        //recorrer pedidos registrados en el gestor
+        for (Pedido p : this.pedidos) {
+            for (ProductoDelPedido pdp : p.verProductosDelPedido()) {
+                if(pdp.verProducto().equals(producto)){
+                    return true;
                 }
             }
             
         }
+        for (Usuario u : GestorUsuarios.instanciar().verUsuarios()) {
+            if (u instanceof Cliente) {
+                Cliente c = (Cliente) u;
+                for (Pedido p : c.verPedidos()) {
+                    for(ProductoDelPedido pdp : p.verProductosDelPedido()){
+                        if(pdp.verProducto().equals(producto)){
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
         return false;
             
         }

@@ -42,60 +42,60 @@ public class ControladorPrincipalTP7 {
         
         //<editor-fold defaultstate="collapsed" desc="Listado ordenado por categoría y descripción">
         List<Producto> productos = gp.menu();
-//        for(Producto p : productos)
-//            p.mostrar();
+        for(Producto p : productos)
+            p.mostrar();
         //</editor-fold>
         
         //<editor-fold defaultstate="collapsed" desc="Listado ordenado alfabéticamente por descripción">
         productos = gp.verProductosPorCategoria(Categoria.ENTRADA);
-//        System.out.println("Cantidad de productos tipo " + Categoria.ENTRADA + ": " + productos.size()); //2
-//        for(Producto p : productos)
-//            p.mostrar();        
+        System.out.println("Cantidad de productos tipo " + Categoria.ENTRADA + ": " + productos.size()); //2
+        for(Producto p : productos)
+            p.mostrar();        
         //</editor-fold>
         
         //<editor-fold defaultstate="collapsed" desc="Verificación de la existencia de un producto">
-//        System.out.println(gp.existeEsteProducto(gp.obtenerProducto(6))); //true
-//        System.out.println(gp.existeEsteProducto(gp.obtenerProducto(10))); //false
+        System.out.println(gp.existeEsteProducto(gp.obtenerProducto(6))); //true
+        System.out.println(gp.existeEsteProducto(gp.obtenerProducto(10))); //false
         //</editor-fold>
         
         //<editor-fold defaultstate="collapsed" desc="Búsqueda de productos total o parcialmente por su descripción">
         productos = gp.buscarProductos("Producto1");
-//        System.out.println("Cantidad de productos: " + productos.size()); //1
-//        for(Producto p : productos)
-//            p.mostrar();
+        System.out.println("Cantidad de productos: " + productos.size()); //1
+        for(Producto p : productos)
+            p.mostrar();
         
         productos = gp.buscarProductos("Producto");
-//        System.out.println("Cantidad de productos: " + productos.size()); //4
-//        for(Producto p : productos)
-//            p.mostrar();
+        System.out.println("Cantidad de productos: " + productos.size()); //4
+        for(Producto p : productos)
+            p.mostrar();
         
-//        productos = gp.buscarProductos("Coca"); //debe devolver una lista vacía
-//        System.out.println("Cantidad de productos: " + productos.size()); //0
-//        for(Producto p : productos)
-//            p.mostrar();
+        productos = gp.buscarProductos("Coca"); //debe devolver una lista vacía
+        System.out.println("Cantidad de productos: " + productos.size()); //0
+        for(Producto p : productos)
+            p.mostrar();
         //</editor-fold>        
         
         //<editor-fold defaultstate="collapsed" desc="Modificación de productos">
         Producto p1 = gp.obtenerProducto(1);
-//        System.out.println("Antes de cambiar los valores");
-//        p1.mostrar();
-//        System.out.println(gp.modificarProducto(p1, 1, "Producto10", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));
+        System.out.println("Antes de cambiar los valores");
+        p1.mostrar();
+        System.out.println(gp.modificarProducto(p1, 1, "Producto10", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));
         p1 = gp.obtenerProducto(1);
-//        System.out.println("Después de cambiar los valores");               
-//        p1.mostrar(); //nuevos valores
+        System.out.println("Después de cambiar los valores");               
+        p1.mostrar(); //nuevos valores
         
         p1 = gp.obtenerProducto(10);
-//        System.out.println(gp.modificarProducto(p1, 1, "Producto10", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));        
+        System.out.println(gp.modificarProducto(p1, 1, "Producto10", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));        
 
         //</editor-fold>                
         
         //<editor-fold defaultstate="collapsed" desc="Borrado de productos:">
         Producto p6 = gp.obtenerProducto(6);
         System.out.println(gp.borrarProducto(p6)); //sí se puede borrar
-//        productos = gp.menu();
-//        System.out.println("Cantidad de productos luego de borrar uno: " + productos.size());
-//        for(Producto p : productos)
-//            p.mostrar();
+        productos = gp.menu();
+        System.out.println("Cantidad de productos luego de borrar uno: " + productos.size());
+        for(Producto p : productos)
+            p.mostrar();
         
         System.out.println(gu.crearUsuario("correo5.cliente@bar.com", "ApeCli5", "NomCli5", Perfil.CLIENTE, "123456", "123456"));
         Usuario u = gu.obtenerUsuario("correo5.cliente@bar.com");

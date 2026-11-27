@@ -1,0 +1,4 @@
+5;Producto5;4.0;Entrada;disponible;
+1;Producto10;10.0;Plato Principal;no disponible;
+3;Producto3;3.0;Postre;disponible;
+4;Producto4;4.0;Postre;disponible;
