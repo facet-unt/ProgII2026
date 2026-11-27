@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.GestorPedidos;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.ProductoDelPedido;
@@ -21,6 +22,9 @@ import usuarios.modelos.Encargado;
 import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
+import interfaces.IGestorProductos;
+import interfaces.IGestorUsuarios;
+import interfaces.IGestorPedidos;
 
 /**
  *
@@ -28,9 +32,9 @@ import usuarios.modelos.Usuario;
  */
 public class ControladorPrincipalTP5 {
     public static void main(String[] args) {
-        GestorProductos gp = GestorProductos.instanciar();
-        GestorUsuarios gu=GestorUsuarios.instanciar();
-        GestorPedidos gPed = GestorPedidos.instanciar();
+        IGestorProductos gp = GestorProductos.instanciar();
+IGestorUsuarios gu = GestorUsuarios.instanciar();
+IGestorPedidos gPed = GestorPedidos.instanciar();
         
         System.out.println("#####PRODUCTOS#####");
         /*CREAR PRODUCTO*/
@@ -69,7 +73,7 @@ public class ControladorPrincipalTP5 {
         
         System.out.println("######## PRODUCTOS DE UNA CATEGORIA ########");
         /*SUBCONJUNTO DE PRODUCTOS DE UNA CATEGORIA*/
-        ArrayList<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
+        List<Producto> productosBuscados = gp.verProductosPorCategoria(Categoria.POSTRE);
         System.out.println("Productos filtrados por categoría");
         System.out.println("===================");
         for(Producto p : productosBuscados) {
@@ -103,6 +107,8 @@ public class ControladorPrincipalTP5 {
         
         System.out.println(gp.modificarProducto(unProducto1, 100, "", 10.0f, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE));
 //    
+System.out.println("######## BORRAR PRODUCTO ########");
+System.out.println(gp.borrarProducto(unProducto2));
         System.out.println("#####USUARIOS#####");
     
         System.out.println(gu.crearUsuario("cliente1@bar.com", "ApellidoCliente1", "NombreCliente1", Perfil.CLIENTE, "claveCliente1", "claveCliente1"));
@@ -266,6 +272,12 @@ public class ControladorPrincipalTP5 {
         if (!productosDelPedido2.contains(pdp5))
             productosDelPedido2.add(pdp5);
         System.out.println(gPed.crearPedido(fecha, hora, productosDelPedido2, (Cliente)unCliente2));
+        System.out.println("######## BORRAR USUARIO CON PEDIDOS ########");
+System.out.println(gu.borrarUsuario(unCliente1));
+        System.out.println("######## BORRAR PRODUCTO CON PEDIDOS ########");
+System.out.println(gp.borrarProducto(unProducto1));
+Usuario unCliente3= gu.obtenerUsuario("cliente3@bar.com");
+System.out.println(gu.borrarUsuario(unCliente3));
 
         System.out.println(gPed.crearPedido(null, hora, productosDelPedido2, (Cliente)unCliente1));
         //sin fecha
@@ -291,7 +303,7 @@ public class ControladorPrincipalTP5 {
         System.out.println("=======");
         
         System.out.println("Hay pedidos con un cliente");
-        Usuario unCliente3= gu.obtenerUsuario("cliente3@bar.com");
+        
         System.out.println(gPed.hayPedidosConEsteCliente((Cliente)unCliente3));
         System.out.println("=======");
         
@@ -351,7 +363,7 @@ public class ControladorPrincipalTP5 {
         }
         System.out.println();
         
-        ArrayList<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
+        List<Usuario> usuariosBuscados = gu.buscarUsuarios("ApellidoCliente");
         System.out.println("Usuarios filtrados");
         System.out.println("==================");
         for(Usuario u : usuariosBuscados) {

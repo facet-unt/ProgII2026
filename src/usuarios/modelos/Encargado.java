@@ -3,8 +3,9 @@
 // * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
 // */
 package usuarios.modelos;
-import java.util.ArrayList;
+import java.util.List;
 import pedidos.modelos.Pedido;
+import pedidos.modelos.GestorPedidos;
 
 
 
@@ -33,8 +34,8 @@ public class Encargado extends Usuario{
         return verApellido() + ", " + verNombre();
     }
 
-    @Override
-    public ArrayList<Pedido> verPedidos() {
-        return new ArrayList<>();
-    }
+   @Override
+public List<Pedido> verPedidos() {
+    return GestorPedidos.instanciar().verPedidos();
+}
 }

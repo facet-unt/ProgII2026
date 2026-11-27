@@ -15,6 +15,7 @@ public class ModeloComboCategorias extends DefaultComboBoxModel {
     public ModeloComboCategorias() {
         for(Categoria c : Categoria.values()) {
             this.addElement(c);
+            
         }
     }
     

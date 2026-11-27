@@ -16,6 +16,7 @@ import productos.modelos.Producto;
 public class VentanaAMProducto extends JDialog {
     private ArrayList<Producto> productos = new ArrayList<>();
     
+    
     /**
      * Constructor
      * @param ventanaPadre ventana padre (VentanaUsuarios en este caso)
@@ -29,6 +30,7 @@ public class VentanaAMProducto extends JDialog {
         this.comboEstado.setModel(mce);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+       
         
     }
     
@@ -173,14 +175,17 @@ public class VentanaAMProducto extends JDialog {
         Categoria c = ((ModeloComboCategorias)this.comboCategorias.getModel()).obtenerCategoria();
         Estado e = ((ModeloComboEstados)this.comboEstado.getModel()).obtenerEstado();
         
+        
 //        System.out.println(c);
 //        String categoria = this.txtCategoria.getText().trim();
 //        String estado  = this.txtEstado.getText().trim();
+
         Producto unProducto = new Producto(codigo, descripcion, c, e, precio);
         this.productos.add(unProducto);
         
         System.out.println("Productos");
         System.out.println("=========");
+      
         for(Producto p : this.productos) {
             p.mostrar();
             System.out.println();

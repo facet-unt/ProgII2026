@@ -4,7 +4,10 @@
 // */
 package usuarios.modelos;
 
-import java.util.ArrayList;
+
+import java.util.List;
+import pedidos.modelos.GestorPedidos;
+import pedidos.modelos.Pedido;
 
 /**
  *
@@ -18,12 +21,10 @@ public class Empleado extends Usuario {
     //====================================
     //      Metodos de Empleado
     //====================================
-    @Override
-       public  ArrayList verPedidos(){
-//           ArrayList vacio = new ArrayList<>();
-//           return vacio;
-            return null;
-       }
+   @Override
+public List<Pedido> verPedidos() {
+    return GestorPedidos.instanciar().verPedidos();
+}
        
     //====================================
     //      Constructor de Empleado

@@ -27,5 +27,6 @@ public enum Categoria {
     
     Categoria(String descripcion){
         this.descripcion = descripcion;
+        
     }
 }

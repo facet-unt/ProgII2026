@@ -42,36 +42,7 @@ public class ControladorPrincipalTP4Seccion1 {
         /***************************************************
           SENTENCIAS PARA LLENAR LA LISTA DE PRODUCTOS
         ***************************************************/
-<<<<<<< HEAD
-             if (!listaProductos.contains(p1)) {
-    listaProductos.add(p1);
-}
-
-if (!listaProductos.contains(p2)) {
-    listaProductos.add(p2);
-}
-
-if (!listaProductos.contains(p3)) {
-    listaProductos.add(p3);
-}
-
-if (!listaProductos.contains(p4)) {
-    listaProductos.add(p4);
-}
-
-if (!listaProductos.contains(p5)) {
-    listaProductos.add(p5);
-}
-        /***************************************************
-         * AGREGAR aqui las sentencias para mostrar la lista
-         * de productos, deberían listarse 4
-        ***************************************************/
-           for (Producto p : listaProductos) {
-    p.mostrar();
-}
-=======
         listaProductos.add(p1);
->>>>>>> desarrollo
         
         if (!listaProductos.contains(p2))
             listaProductos.add(p2);
@@ -152,29 +123,16 @@ if (!listaProductos.contains(p5)) {
         Pedido unPedido3 = new Pedido(2, LocalDateTime.now(), productosDelPedido3, cliente3);        
         //pedido repetido no debe agregarse a la lista
 
-        
+        if(!listaPedidos.contains(unPedido1))
+            listaPedidos.add(unPedido1);
         //***********************************************
         //    AGREGADO DE PEDIDOS SIN REPETIR
         //*************************************************
-<<<<<<< HEAD
-        if (!listaPedidos.contains(unPedido1)) {
-    listaPedidos.add(unPedido1);
-}
-
-if (!listaPedidos.contains(unPedido2)) {
-    listaPedidos.add(unPedido2);
-}
-
-if (!listaPedidos.contains(unPedido3)) {
-    listaPedidos.add(unPedido3);
-}
-=======
         if(!listaPedidos.contains(unPedido2))
             listaPedidos.add(unPedido2);
         
         if(!listaPedidos.contains(unPedido3))
             listaPedidos.add(unPedido3);
->>>>>>> desarrollo
         System.out.println("\n\nLos pedidos son: ");
         System.out.println("=======");
         /*
@@ -182,17 +140,11 @@ if (!listaPedidos.contains(unPedido3)) {
                  MOSTRAR LOS PEDIDOS
         *************************************************
         */
-<<<<<<< HEAD
-        for (Pedido p : listaPedidos) {
-    p.mostrar();
-}
-=======
         for (Pedido pdp: listaPedidos){
             pdp.mostrar();
         }
->>>>>>> desarrollo
          
-        System.out.println();       
+        System.out.println();        
     
     /*
     *************************************************

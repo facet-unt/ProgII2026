@@ -16,6 +16,7 @@ public class ModeloComboEstados extends DefaultComboBoxModel {
     public ModeloComboEstados() {
         for(Estado e : Estado.values()) {
             this.addElement(e);
+            
         }
     }
     
