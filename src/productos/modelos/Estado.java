@@ -44,11 +44,15 @@ public enum Estado {
     }
     
     public static Estado esValido(String s){
-        if (s == Estado.DISPONIBLE.toString())
-            return Estado.DISPONIBLE;
-        if (s == Estado.NO_DISPONIBLE.toString())
-            return Estado.NO_DISPONIBLE;
-        return null; 
+        if (s == null) {
+            return null;
+        }
+        for (Estado e : Estado.values()) {
+            if (e.toString().equalsIgnoreCase(s.trim())) {
+                return e;
+            }
+        }
+        return null;
     }
 }
 

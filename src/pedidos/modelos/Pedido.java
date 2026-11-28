@@ -158,27 +158,7 @@ public class Pedido {
         }
     }
     
-    // ====================================
-    //       Salida y Representación
-    // ====================================
-
-    /**
-     * Muestra por consola el comprobante detallado del pedido,
-     * incluyendo cabecera, datos del cliente y los productos solicitados.
-     */
-    public void mostrar() {
-        System.out.printf("\nNro: %d                    Estado: %s", numero, estado);
-        System.out.printf("\nFecha: %1$td/%1$tm/%1$tY \t\tHora: %1$tH:%1$tM\n", fechaYHora);
-        System.out.println("Cliente: " + this.cliente.verApellido() + ", " + this.cliente.verNombre());
-        System.out.println("clave: " + this.cliente.verClave() + " | correo: " + this.cliente.verCorreo() + "\n");
-        System.out.println("      Producto                                                Cantidad");
-        System.out.println("================================================================================");
-        for(ProductoDelPedido pido: ProductoDelPedido){
-            pido.mostrar();
-        }
-        System.out.printf("\n\n");
-    }
-
+    
     /**
      * Calcula el código hash tomando como base el número del pedido.
      *
@@ -213,4 +193,26 @@ public class Pedido {
         final Pedido other = (Pedido) obj;
         return this.numero == other.numero;
     }
+    
+    // ====================================
+    //       Salida y Representación
+    // ====================================
+
+    /**
+     * Muestra por consola el comprobante detallado del pedido,
+     * incluyendo cabecera, datos del cliente y los productos solicitados.
+     */
+    public void mostrar() {
+        System.out.printf("\nNro: %d                    Estado: %s", numero, estado);
+        System.out.printf("\nFecha: %1$td/%1$tm/%1$tY \t\tHora: %1$tH:%1$tM\n", fechaYHora);
+        System.out.println("Cliente: " + this.cliente.verApellido() + ", " + this.cliente.verNombre());
+        System.out.println("      Producto                                                Cantidad");
+        System.out.println("================================================================================");
+        for(ProductoDelPedido pido: ProductoDelPedido){
+            pido.mostrar();
+        }
+        System.out.printf("\n\n");
+    }
+
+    
 }

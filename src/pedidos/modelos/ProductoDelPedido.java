@@ -11,7 +11,7 @@ import productos.modelos.Producto;
 public class ProductoDelPedido {
 
     /** Cantidad de unidades solicitadas del producto. */
-    int cantidad;
+    private int cantidad;
 
     /** Instancia del producto asociado al renglón del pedido. */
     private Producto producto;
@@ -77,28 +77,6 @@ public class ProductoDelPedido {
         this.producto = producto;
     }
     
-    // ====================================
-    //       Salida y Representación
-    // ====================================
-    
-    /**
-     * Muestra por consola el renglón formateado con el código,
-     * la descripción, el precio unitario y la cantidad del producto.
-     */
-    public void mostrar() {
-        System.out.printf("[%d]   %-30s%11s %25d%n", producto.verCodigo(), producto.verDescripcion(), "$" + producto.verPrecio(), this.cantidad);
-    }
-
-    /**
-     * Retorna un texto resumido del producto y la cantidad asignada.
-     *
-     * @return cadena con el formato "Producto: [producto] - Cant: [cantidad]"
-     */
-    @Override
-    public String toString() {
-        return "Producto: " + producto + " - Cant: " + cantidad;
-    }
-
     /**
      * Calcula el código hash tomando como base el producto asociado.
      *
@@ -134,4 +112,30 @@ public class ProductoDelPedido {
         final ProductoDelPedido other = (ProductoDelPedido) obj;
         return Objects.equals(this.producto, other.producto);
     }
+    
+    // ====================================
+    //       Salida y Representación
+    // ====================================
+    
+    /**
+     * Muestra por consola el renglón formateado con el código,
+     * la descripción, el precio unitario y la cantidad del producto.
+     */
+    public void mostrar() {
+        if (producto != null){
+            System.out.printf("[%d]   %-30s%11s %25d%n", producto.verCodigo(), producto.verDescripcion(), "$" + producto.verPrecio(), this.cantidad);
+        }
+    }
+
+    /**
+     * Retorna un texto resumido del producto y la cantidad asignada.
+     *
+     * @return cadena con el formato "Producto: [producto] - Cant: [cantidad]"
+     */
+    @Override
+    public String toString() {
+        return "Producto: " + producto + " - Cant: " + cantidad;
+    }
+
+    
 }

@@ -33,6 +33,16 @@ public enum Categoria {
     Categoria(String descripcion) {
         this.descripcion = descripcion;
     }
+    
+    public static Categoria esValido(String s){
+        if (s == null) return null;
+        for (Categoria c : Categoria.values()) {
+            if (c.toString().equalsIgnoreCase(s.trim())) {
+                return c;
+            }
+        }
+        return null;
+    }
 
     /**
      * Obtiene la descripción de la categoría.
@@ -44,15 +54,6 @@ public enum Categoria {
         return descripcion;
     }
     
-    public static Categoria esValido(String s){
-        if (s == Categoria.ENTRADA.toString())
-            return Categoria.ENTRADA;
-        if (s == Categoria.PLATO_PRINCIPAL.toString())
-            return Categoria.PLATO_PRINCIPAL;
-        
-        if (s == Categoria.POSTRE.toString())
-            return Categoria.POSTRE;
-        
-        return null; 
-    }
 }
+    
+

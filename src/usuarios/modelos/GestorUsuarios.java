@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import pedidos.modelos.GestorPedidos;
 
 /**
  *
@@ -30,10 +31,10 @@ public class GestorUsuarios implements IGestorUsuarios{
     // thencomparing Permite Añadir un Criterio Secundario, terciario de comparacion
     private final Comparator<Usuario> comparadorApellyNom = Comparator.comparing(Usuario::verApellido,String.CASE_INSENSITIVE_ORDER).thenComparing(Usuario::verNombre,String.CASE_INSENSITIVE_ORDER);
     
-    
+    //deberiamos poner collection.sort dsp de que agregamos un producto o etc
 
     //=======================
-    //      Singletone
+    //      Singleton
     //=======================
     private static final GestorUsuarios instancia = new GestorUsuarios();
     private GestorUsuarios(){}
@@ -43,23 +44,17 @@ public class GestorUsuarios implements IGestorUsuarios{
     }
     
     private String corroborarDatos(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
-        int contador = 0;
         if (correo == null || !correo.contains("@"))
             return ERROR_CORREO;
-        if (apellido == null || apellido.isEmpty())
+        if (apellido == null || apellido.isBlank())
             return ERROR_APELLIDO;
-        if (nombre == null || nombre.isEmpty()){
+        if (nombre == null || nombre.isBlank()){
             return ERROR_NOMBRE;
         }
-        if (clave == null|| clave.isEmpty() || !clave.equals(claveRepetida))
+        if (clave == null|| clave.isBlank() || !clave.equals(claveRepetida) || claveRepetida == null || claveRepetida.isBlank())
             return ERROR_CLAVES;
-        for (Perfil p : Perfil.values()){
-            if (perfil == null || !perfil.equals(p))
-                contador ++;
-        }
-        if (contador == 3)
+        if (perfil == null)
             return ERROR_PERFIL;
-        
         Usuario u = new Cliente(correo, clave, apellido, nombre);
         if (GestorUsuarios.usuarios.contains(u))
             return USUARIOS_DUPLICADOS;
@@ -78,19 +73,19 @@ public class GestorUsuarios implements IGestorUsuarios{
                 case Perfil.CLIENTE -> {
                     Usuario u = new Cliente(correo, clave, apellido, nombre);
                     GestorUsuarios.usuarios.add(u);
-                    return proceso;
+                    return EXITO;
                 }
                 
                 case Perfil.EMPLEADO -> {
                     Usuario u1 = new Empleado(correo, clave, apellido, nombre);
                     GestorUsuarios.usuarios.add(u1);
-                    return proceso;
+                    return EXITO;
                 }
                 
                 case Perfil.ENCARGADO -> {
                     Usuario u2 = new Encargado(correo, clave, apellido, nombre);
                     GestorUsuarios.usuarios.add(u2);
-                    return proceso;
+                    return EXITO;
                 }
             }
             
@@ -105,19 +100,18 @@ public class GestorUsuarios implements IGestorUsuarios{
     }
     
     @Override
-    public List<Usuario> buscarUsuarios(String apellido){
-        List<Usuario> usuarios_coincidentes = new ArrayList<>();
-        
-        for (Usuario u : usuarios){
-            if (u.verApellido().contains(apellido))
-                usuarios_coincidentes.add(u);
+    public List<Usuario> buscarUsuarios(String apellido) {
+        List<Usuario> usuariosCoincidentes = new ArrayList<>();
+        if (apellido == null) {
+            return usuariosCoincidentes;
         }
-        
-        if (usuarios_coincidentes.isEmpty())
-            //return null
-            return usuarios_coincidentes;
-        Collections.sort(usuarios_coincidentes,comparadorApellyNom);
-        return usuarios_coincidentes;
+        for (Usuario u : usuarios) {
+            if (u.verApellido() != null && u.verApellido().toLowerCase().contains(apellido.toLowerCase())) {
+                usuariosCoincidentes.add(u);
+            }
+        }
+        Collections.sort(usuariosCoincidentes, comparadorApellyNom);
+        return usuariosCoincidentes;
     }
     
     @Override
@@ -126,23 +120,27 @@ public class GestorUsuarios implements IGestorUsuarios{
     }
     
     @Override
-    public Usuario obtenerUsuario(String Correo){
+    public Usuario obtenerUsuario(String correo){
+        if (correo == null) {
+            return null;
+        }
         for (Usuario u: usuarios){
-            if (u.verCorreo().equals(Correo)){
+            if (u.verCorreo().equals(correo)){
                 return u;
-        
             }
         }
         return null;
     }
     
     @Override
-    public String borrarUsuario(Usuario usuario){
-        if (!usuarios.contains(usuario)){
+    public String borrarUsuario(Usuario usuario) {
+        if (usuario == null || !usuarios.contains(usuario)) {
             return ERROR_NO_EXISTE;
-        }else{
-            usuarios.remove(usuario);
-            return EXITO_BORRAR;
         }
+        if (usuario instanceof Cliente && GestorPedidos.instanciar().hayPedidosConEsteCliente((Cliente) usuario)) {
+            return ERROR_USUARIO_CON_PEDIDOS;
+        }
+        usuarios.remove(usuario);
+        return EXITO_BORRAR;
     }
 }

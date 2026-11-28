@@ -20,6 +20,10 @@ public class Producto {
 
     /** Precio unitario de venta. */
     private float precio;
+ 
+    /** Separador utilizado para serializar y deserializar productos en archivo de texto.
+     */
+    public static final String SEPARADOR = ";";
     
     //====================================
     //      Constructor de Producto
@@ -47,7 +51,7 @@ public class Producto {
     // ====================================
 
     /**
-     * Obtiene la categoría del producto en formato texto.
+     * Obtiene la categoría del producto.
      *
      * @return texto asociado a la categoría del producto
      */
@@ -74,7 +78,7 @@ public class Producto {
     }
     
     /**
-     * Obtiene el estado del producto en formato texto.
+     * Obtiene el estado del producto
      *
      * @return texto asociado al estado del producto
      */
@@ -155,22 +159,43 @@ public class Producto {
     
     //int codigo, String descripcion, Categoria categoria, Estado estado, float precio
     
-    public static String concatenar(Producto p){
-        String cadena = 
-                Integer.toString(p.verCodigo()) + ";" + p.verDescripcion() + ";" + p.verCategoria().toString() + ";" + p.verEstado().toString() + ";" + Float.toString(p.verPrecio());
-        return cadena;
+    /**
+    * Serializa el producto a una línea de texto separada por {@link #SEPARADOR}.  
+    *
+    * @return cadena con los datos del producto
+    */
+    public String concatenar() {
+        return codigo + SEPARADOR + descripcion + SEPARADOR + categoria + SEPARADOR + estado + SEPARADOR + precio;
     }
-    
-    public static Producto desconcatenar(String cadenaDeProducto){
-        String[] cadena = cadenaDeProducto.split(";");
-        int codigo = Integer.parseInt(cadena[0]);
-        float precio = Float.parseFloat(cadena[4]);
-        Categoria categoria = Categoria.esValido(cadena[2]);
-        Estado estado = Estado.esValido(cadena[3]);
-        if (categoria != null && estado != null)
-            return new Producto(codigo, cadena[1], categoria, estado, precio);
-        
-        return "Producto no valido";
+
+    /**
+    * Reconstruye un {@link Producto} a partir de una línea de texto.
+    *
+    * @param cadenaDeProducto línea leída del archivo de productos
+    * @return instancia de {@link Producto} si la línea es válida; {@code null} en caso contrario
+    */
+    public static Producto desconcatenar(String cadenaDeProducto) {
+        if (cadenaDeProducto == null || cadenaDeProducto.isBlank()) {
+            return null;
+        }
+        String[] cadena = cadenaDeProducto.split(SEPARADOR);
+        if (cadena.length != 5) {
+            return null;
+        }
+        try {
+            int codigo = Integer.parseInt(cadena[0].trim());
+            String descripcion = cadena[1].trim();
+            Categoria categoria = Categoria.esValido(cadena[2].trim());
+            Estado estado = Estado.esValido(cadena[3].trim());
+            float precio = Float.parseFloat(cadena[4].trim());
+
+            if (codigo > 0 && !descripcion.isBlank() && precio > 0 && categoria != null && estado != null) {
+                return new Producto(codigo, descripcion, categoria, estado, precio);
+            }
+        } catch (NumberFormatException ex) {
+            return null;
+        }
+        return null;
     }
     
     // ====================================
@@ -180,9 +205,21 @@ public class Producto {
     /**
      * Muestra por consola los datos detallados del producto.
      */
-    public void mostrar() {        
-        System.out.println("Producto "+"<Codigo "+codigo+"> "+descripcion);
-        System.out.println("Categoria: "+categoria + " Estado: "+estado +"  Precio: " +precio);
+    public void mostrar() {
+        String desc = "";
+        if (descripcion != null) {
+            desc = descripcion;
+        }
+        String cat = "";
+        if (categoria != null) {
+            cat = categoria.toString();
+        }
+        String est = "";
+        if (estado != null) {
+            est = estado.toString();
+        }
+        System.out.println("Producto <Codigo " + codigo + "> " + desc);
+        System.out.println("Categoria: " + cat + " Estado: " + est + "  Precio: " + precio);
     }
     
     /**
@@ -191,8 +228,11 @@ public class Producto {
      * @return descripción del producto
      */
     @Override
-    public String toString(){
-          return descripcion;
+    public String toString() {
+        if (descripcion != null) {
+            return descripcion;
+        }
+        return "";
     }
 
     /**

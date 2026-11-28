@@ -62,6 +62,9 @@ public class Cliente extends Usuario {
      * @param unPedido instancia de {@link Pedido} que se desea cancelar
      */
     public void cancelarPedido(Pedido unPedido) {
+        if (unPedido == null) {
+            return;
+        }
         if (pedidos.contains(unPedido)) {
             pedidos.remove(unPedido);
             System.out.println("Pedido cancelado! ");
