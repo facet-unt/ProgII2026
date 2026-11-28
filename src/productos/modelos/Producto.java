@@ -27,7 +27,7 @@ public class Producto implements Comparable<Producto>{
     
     public void mostrar() {        
         System.out.println("Producto "+verCodigo()+" "+verDescripcion());
-            System.out.println("Categoria: "+verCategoria()+" Estado: "+verEstado()+" Precio: "+verPrecio());
+        System.out.println("Categoria: "+verCategoria()+" Estado: "+verEstado()+" Precio: "+verPrecio());
     }
     
     //<editor-fold defaultstate="collapsed" desc="Metodos 'ver/mostrar'">
