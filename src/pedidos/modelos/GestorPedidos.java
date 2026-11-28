@@ -19,7 +19,7 @@ import usuarios.modelos.Cliente;
  */
 public class GestorPedidos implements IGestorPedidos 
 {
-    ArrayList<Pedido> pedidos = new ArrayList<>();
+    List<Pedido> pedidos = new ArrayList<>();
     private static GestorPedidos gestorP;
     private static int numero=0;
     
@@ -67,6 +67,7 @@ public class GestorPedidos implements IGestorPedidos
             {
                 pedidos.add(p);
                 numero+=1;
+                cliente.agregarPedido(p);
                 return EXITO;
             }
         }

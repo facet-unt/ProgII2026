@@ -21,7 +21,7 @@ public class Encargado extends Usuario{
     
     @Override
        public List verPedidos(){
-           return gdp.verPedidos();
+            return gdp.verPedidos();
        }
        
     

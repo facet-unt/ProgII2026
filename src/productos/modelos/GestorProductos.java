@@ -117,9 +117,9 @@ public class GestorProductos implements IGestorProductos{
     public boolean existeEsteProducto(Producto producto){
         return prods.contains(producto);
 }
-    public ArrayList<Producto> verProductosPorCategoria(Categoria
+    public List<Producto> verProductosPorCategoria(Categoria
     categoria){
-        ArrayList<Producto> encontrados = new ArrayList<>();
+        List<Producto> encontrados = new ArrayList<>();
         for(Producto p: prods){
             if(p.verCategoria()== categoria.toString()){
                 encontrados.add(p);
